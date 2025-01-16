@@ -91,6 +91,13 @@
             font-size: 0.9rem;
             color: #6B5B95;
         }
+
+        .success-message {
+            margin-top: 1rem;
+            color: #78A265;
+            text-align: center;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +106,7 @@
             <img src="https://cdn.bookingkoala.com/uploads/zenzonecleaningservices/2024/12/12/1734026325mooselogo.png" alt="Zen Zone Logo">
             <h1>Book Your Cleaning Service</h1>
         </div>
-        <form action="/submit-booking" method="POST">
+        <form id="bookingForm">
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -115,11 +122,10 @@
             <div class="form-group">
                 <label for="service">Select Service</label>
                 <select id="service" name="service" required>
-                    <option value="" disabled selected>Select a service</option>
-                    <option value="deep-clean">Deep Clean</option>
-                    <option value="regular-clean">Regular Cleaning</option>
-                    <option value="move-in-out-clean">Move-In/Move-Out Cleaning</option>
-                    <option value="post-construction-clean">Post-Construction Cleaning</option>
+                    <option value="Deep Clean">Deep Clean</option>
+                    <option value="Regular Cleaning">Regular Cleaning</option>
+                    <option value="Move-In/Move-Out Cleaning">Move-In/Move-Out Cleaning</option>
+                    <option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
                 </select>
             </div>
             <div class="form-group">
@@ -127,14 +133,32 @@
                 <input type="date" id="date" name="date" required>
             </div>
             <div class="form-group">
-                <label for="details">Additional Details (Optional)</label>
+                <label for="details">Additional Details</label>
                 <textarea id="details" name="details" rows="4" placeholder="Provide any additional details about your cleaning request"></textarea>
             </div>
             <button type="submit" class="submit-btn">Submit Booking</button>
+            <p class="success-message" id="successMessage" style="display: none;">Booking submitted successfully! We will contact you shortly.</p>
         </form>
         <div class="footer">
             © 2025 Zen Zone Cleaning Services
         </div>
     </div>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            emailjs.init('9CwBWUPI_pCtZXPr0'); // Replace with your EmailJS Public User ID
+
+            emailjs.sendForm('service_156d2p8', 'template_i7i7zz7', this)
+                .then(function() {
+                    document.getElementById('successMessage').style.display = 'block';
+                }, function(error) {
+                    alert('Failed to send booking request. Please try again later.');
+                    console.error('Error:', error);
+                });
+        });
+    </script>
 </body>
 </html>
