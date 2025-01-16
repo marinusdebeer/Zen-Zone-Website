@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zen Zone Cleaning - Booking Form</title>
+  <title>Zen Zone Cleaning - Quote Form</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -155,6 +155,7 @@
           type="text"
           id="name"
           name="name"
+          value="Limo"
           placeholder="Enter your full name"
           required
         />
@@ -165,6 +166,7 @@
           type="email"
           id="email"
           name="email"
+          value="limo@zenzonecleaning.com"
           placeholder="Enter your email"
           required
         />
@@ -175,6 +177,7 @@
           type="tel"
           id="phone"
           name="phone"
+          value="6472277305"
           placeholder="Enter your phone number"
           required
         />
@@ -185,7 +188,7 @@
           <option value="" disabled selected hidden>
             -- Select a Service --
           </option>
-          <option value="Deep Clean">Deep Clean</option>
+          <option value="Deep Clean" selected>Deep Clean</option>
           <option value="Regular Cleaning">Regular Cleaning</option>
           <option value="Move-In/Move-Out Cleaning">Move-In/Move-Out Cleaning</option>
           <option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
@@ -193,7 +196,7 @@
       </div>
       <div class="form-group">
         <label for="date">Preferred Date <span>*</span></label>
-        <input type="date" id="date" name="date" required />
+        <input type="date" id="date" name="date" value="2025-01-21" required />
       </div>
       <div class="form-group">
         <label for="details">Additional Details</label>
@@ -202,43 +205,71 @@
           name="details"
           rows="4"
           placeholder="Provide any additional details about your cleaning request"
-        ></textarea>
+        >Test message from limo</textarea>
       </div>
-      <button type="submit" class="submit-btn">Submit Booking Request</button>
+      <button type="submit" class="submit-btn">Submit Quote Request</button>
       <p
         class="success-message"
         id="successMessage"
         style="display: none; opacity: 0;"
       >
-        Booking submitted successfully! We will contact you shortly.
+        Quote Request submitted successfully! We will contact you shortly.
       </p>
     </form>
     <div class="footer">© 2025 Zen Zone Cleaning Services</div>
   </div>
 
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
-    document.getElementById("bookingForm").addEventListener("submit", function (event) {
-      event.preventDefault(); // Prevent the default form submission
+  document.getElementById("bookingForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
 
-      emailjs.init("9CwBWUPI_pCtZXPr0"); // Replace with your EmailJS Public User ID
+    const serviceID = "service_156d2p8"; // Your EmailJS service ID
+    const formTemplateID = "template_i7i7zz7"; // Template for your form submission
+    const confirmationTemplateID = "template_nrcx4ff"; // Template for the confirmation email
 
-      emailjs
-        .sendForm("service_156d2p8", "template_i7i7zz7", this)
-        .then(function () {
-          // Show success message
-          const successMessage = document.getElementById("successMessage");
-          successMessage.style.display = "block";
-          // Fade in the success message
-          setTimeout(() => {
-            successMessage.style.opacity = "1";
-          }, 50);
-        })
-        .catch(function (error) {
-          alert("Failed to send booking request. Please try again later.");
-          console.error("Error:", error);
+    emailjs.init("9CwBWUPI_pCtZXPr0");
+
+    // Collect user input from the form
+    const leadName = document.getElementById("name").value;
+    const leadEmail = document.getElementById("email").value;
+    const leadMessage = `
+      Name: ${leadName}
+      Email: ${leadEmail}
+      Phone: ${document.getElementById("phone").value}
+      Service: ${document.getElementById("service").value}
+      Preferred Date: ${document.getElementById("date").value}
+      Additional Details: ${document.getElementById("details").value || "None"}
+    `;
+
+    // Send the form data to your email
+    emailjs.sendForm(serviceID, formTemplateID, this)
+      .then(() => {
+        console.log("Form submission email sent successfully!");
+
+        // Send a confirmation email to the lead
+        emailjs.send(serviceID, confirmationTemplateID, {
+          to_name: leadName, // Replace with the lead's name
+          to_email: leadEmail, // Lead's email address
+          message: leadMessage, // Summary of their request
+        }).then(() => {
+          console.log("Confirmation email sent to the lead successfully!");
+        }).catch(err => {
+          console.error("Error sending confirmation email:", err);
         });
-    });
-  </script>
+
+        // Show success message on the form
+        const successMessage = document.getElementById("successMessage");
+        successMessage.style.display = "block";
+        setTimeout(() => {
+          successMessage.style.opacity = "1";
+        }, 50);
+      })
+      .catch(err => {
+        alert("Failed to send the form. Please try again.");
+        console.error("Error:", err);
+      });
+  });
+</script>
 </body>
 </html>
