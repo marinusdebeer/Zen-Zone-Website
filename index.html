@@ -2,280 +2,436 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zen Zone Cleaning Services</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zen Zone Cleaning - Quote Form</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
-    /* General Reset */
+    /* Base style */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f4f7f5;
       color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
+    /* Booking Container */
+    .booking-container {
+      width: 100%;
+      max-width: 600px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
     }
 
     /* Header */
-    header {
-      background-color: #2E3D2F;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .header-left img {
-      height: 50px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-links a {
-      color: white;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: #78A265;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .header-right span {
-      font-weight: bold;
-    }
-
-    .header-right button {
+    .header {
       background-color: #78A265;
-      color: white;
-      padding: 0.5rem 1rem;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .header img {
+      width: 80px;
+      margin-bottom: 1rem;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Housecall Pro button styling (Optional, tweak as desired) */
+    .hcp-button {
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #6b5b95;
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .hcp-button:hover {
+      background-color: #594A7A; /* Slightly darker on hover */
+    }
+
+    /* Form Container */
+    form {
+      padding: 2rem 1.5rem;
+    }
+
+    /* Form Groups */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group label span {
+      color: #e63946; /* Red for required asterisk */
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #78A265;
+      box-shadow: 0 0 0 3px rgba(120, 162, 101, 0.2);
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 0.9rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #78A265;
       border: none;
       border-radius: 4px;
-      font-weight: bold;
       cursor: pointer;
       transition: background-color 0.2s;
-    }
-
-    .header-right button:hover {
-      background-color: #5c814d;
-    }
-
-    /* Hero Section */
-    .hero {
-      background-color: #78A265;
-      color: white;
-      padding: 3rem 2rem;
-      text-align: left;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      margin-bottom: 2rem;
-      font-size: 1.2rem;
-    }
-
-    .hero .btn {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background-color: #6b5b95;
-      color: white;
-      border-radius: 4px;
-      font-weight: bold;
       text-transform: uppercase;
-      margin-right: 1rem;
-      transition: background-color 0.2s;
+      letter-spacing: 0.5px;
     }
 
-    .hero .btn:hover {
-      background-color: #594A7A;
+    .submit-btn:hover {
+      background-color: #6b5b95;
     }
 
-    /* Services Section */
-    .services {
-      padding: 2rem 1rem;
-      background-color: #ffffff;
-      text-align: center;
-    }
-
-    .services h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #2E3D2F;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+    /* Success Message */
+    .success-message {
       margin-top: 1rem;
-    }
-
-    .service {
-      padding: 1rem;
-      background-color: #f9f9f9;
-      border-radius: 8px;
+      color: #78A265;
       text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+      transition: opacity 0.3s;
     }
 
-    .service img {
-      width: 60px;
+    /* Confirmation Page */
+    .confirmation-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f7f5;
+      padding: 1rem;
+    }
+
+    .confirmation-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .confirmation-container h1 {
+      font-size: 2.5rem;
+      color: #78A265;
       margin-bottom: 1rem;
     }
 
-    .service h3 {
+    .confirmation-container p {
       font-size: 1.2rem;
-      font-weight: bold;
       color: #333;
+      margin-bottom: 2rem;
+    }
+
+    .return-btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #78A265;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .return-btn:hover {
+      background-color: #6b5b95;
     }
 
     /* Footer */
-    footer {
-      background-color: #2E3D2F;
-      color: white;
-      padding: 2rem 1rem;
+    .footer {
       text-align: center;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #6b5b95;
     }
 
-    .footer-links {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
-      flex-wrap: wrap;
+    /* Basic Invalid Field Styling */
+    input:invalid,
+    select:invalid,
+    textarea:invalid {
+      border-color: #e63946;
     }
 
-    .footer-links div {
-      margin: 0.5rem;
-    }
+    /* Responsive Design */
+    @media screen and (max-width: 480px) {
+      .header h1 {
+        font-size: 1.6rem;
+      }
 
-    .footer-links h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-links ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links ul li {
-      margin-bottom: 0.5rem;
+      .submit-btn {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-left">
-      <img src="moose_logo.png" alt="Zen Zone Cleaning Logo" />
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="header-right">
-      <span>(555) 123-4567</span>
-      <button>Book Online</button>
-    </div>
-  </header>
+  <div class="booking-container">
+    <div class="header">
+      <img
+        src="https://cdn.bookingkoala.com/uploads/zenzonecleaningservices/2024/12/12/1734026325mooselogo.png"
+        alt="Zen Zone Logo"
+      />
+      <h1>Request Your Cleaning Service Quote</h1>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Zen Zone Cleaning Services</h1>
-    <p>Your trusted partner for spotless homes and offices.</p>
-    <!-- Housecall Pro Booking Button -->
-    <button data-token="59e40d5c554f4d22b624e18e8a05fcd5" data-orgname="Zen-Zone-Cleaning-Services" class="hcp-button"
-      onclick="HCPWidget.openModal()">Book Online</button>
-    <script async
-      src="https://online-booking.housecallpro.com/script.js?token=59e40d5c554f4d22b624e18e8a05fcd5&orgName=Zen-Zone-Cleaning-Services"></script>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service">
-        <img src="https://via.placeholder.com/60" alt="Deep Cleaning">
-        <h3>Deep Cleaning</h3>
-      </div>
-      <div class="service">
-        <img src="https://via.placeholder.com/60" alt="Regular Cleaning">
-        <h3>Regular Cleaning</h3>
-      </div>
-      <div class="service">
-        <img src="https://via.placeholder.com/60" alt="Move-In/Out Cleaning">
-        <h3>Move-In/Out Cleaning</h3>
-      </div>
-      <div class="service">
-        <img src="https://via.placeholder.com/60" alt="Post-Construction Cleaning">
-        <h3>Post-Construction Cleaning</h3>
-      </div>
+      <!--Start of Housecall Pro Online booking button-->
+      <button
+        data-token="59e40d5c554f4d22b624e18e8a05fcd5"
+        data-orgname="Zen-Zone-Cleaning-Services"
+        class="hcp-button"
+        onClick="HCPWidget.openModal()"
+      >
+        Book Online
+      </button>
+      <!--End of Housecall Pro Online booking button-->
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Zen Zone Cleaning Services. All rights reserved.</p>
-    <div class="footer-links">
-      <div>
-        <h3>Our Services</h3>
-        <ul>
-          <li>Deep Cleaning</li>
-          <li>Regular Cleaning</li>
-          <li>Move-In/Out Cleaning</li>
-          <li>Post-Construction Cleaning</li>
-        </ul>
+    <!-- Optional: Keep or remove your existing form below -->
+    <form id="bookingForm" novalidate>
+      <div class="form-group">
+        <label for="name">Full Name <span>*</span></label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter your full name"
+          required
+          aria-required="true"
+        />
       </div>
-      <div>
-        <h3>Contact</h3>
-        <p>(555) 123-4567</p>
-        <p>info@zenzonecleaning.com</p>
+      <div class="form-group">
+        <label for="email">Email Address <span>*</span></label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          aria-required="true"
+        />
       </div>
+      <div class="form-group">
+        <label for="phone">Phone Number <span>*</span></label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Enter your phone number"
+          required
+          aria-required="true"
+          pattern="^\\+?\\d{10,15}$"
+          title="Please enter a valid phone number (10 to 15 digits)."
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">
+          Address <span>*</span>
+        </label>
+        <input
+          id="address"
+          name="address"
+          placeholder="Enter your full address"
+          required
+          aria-required="true"
+        />
+      </div>
+      <div class="form-group">
+        <label for="service">Select Service <span>*</span></label>
+        <select id="service" name="service" required aria-required="true">
+          <option value="" disabled selected hidden>-- Select a Service --</option>
+          <option value="Deep Clean">Deep Clean</option>
+          <option value="Regular Cleaning">Regular Cleaning</option>
+          <option value="Move-In/Move-Out Cleaning">Move-In/Move-Out</option>
+          <option value="Post-Construction Cleaning">Post-Construction</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Preferred Date <span>*</span></label>
+        <input type="date" id="date" name="date" required aria-required="true" />
+      </div>
+      <div class="form-group">
+        <label for="details">Additional Details</label>
+        <textarea
+          id="details"
+          name="details"
+          rows="4"
+          placeholder="Provide any additional details about your cleaning request"
+        ></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Submit Quote Request</button>
+      <p
+        class="success-message"
+        id="successMessage"
+        style="display: none; opacity: 0;"
+      >
+        Quote Request submitted successfully! We will contact you shortly.
+      </p>
+    </form>
+
+    <div class="footer">
+      © 2025 Zen Zone Cleaning Services
     </div>
-  </footer>
+  </div>
+
+  <!-- Include EmailJS if you're still using it for your original form logic -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+  ></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const bookingContainer = document.querySelector(".booking-container");
+      const form = document.getElementById("bookingForm");
+
+      // Toggle for testing the confirmation page
+      const isTestingConfirmationPage = false;
+
+      if (isTestingConfirmationPage) {
+        // Show the confirmation page for testing
+        bookingContainer.innerHTML = `
+          <div class="confirmation-page">
+            <div class="confirmation-container">
+              <h1>Thank You!</h1>
+              <p>Your request has been submitted successfully. We will contact you shortly.</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Validate the form
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        // If you want to keep using EmailJS:
+        const serviceID = "service_156d2p8";
+        const formTemplateID = "template_i7i7zz7";
+        const confirmationTemplateID = "template_nrcx4ff";
+
+        emailjs.init("9CwBWUPI_pCtZXPr0"); // Your public key
+
+        // Gather form data
+        const leadName = document.getElementById("name").value;
+        const leadEmail = document.getElementById("email").value;
+        const leadPhone = document.getElementById("phone").value;
+        const leadAddress = document.getElementById("address").value;
+        const leadService = document.getElementById("service").value;
+        const leadDate = document.getElementById("date").value;
+        const leadDetails =
+          document.getElementById("details").value || "None";
+
+        const leadMessage = `
+          Name: ${leadName}
+          Email: ${leadEmail}
+          Phone: ${leadPhone}
+          Address: ${leadAddress}
+          Service: ${leadService}
+          Preferred Date: ${leadDate}
+          Additional Details: ${leadDetails}
+        `;
+
+        // Send the form data
+        emailjs
+          .send(serviceID, formTemplateID, { message: leadMessage })
+          .then(() => {
+            console.log("Form submission email sent successfully!");
+            // Confirmation email
+            emailjs
+              .send(serviceID, confirmationTemplateID, {
+                to_name: leadName,
+                to_email: leadEmail,
+                message: leadMessage,
+              })
+              .then(() => {
+                console.log("Confirmation email sent!");
+              })
+              .catch((err) => {
+                console.error("Error sending confirmation email:", err);
+              });
+
+            // Replace with a confirmation message or redirect
+            bookingContainer.innerHTML = `
+              <div class="confirmation-message" style="text-align: center; padding: 2rem;">
+                <h1>Thank You!</h1>
+                <p>Your request has been submitted successfully. We will contact you shortly.</p>
+              </div>
+            `;
+          })
+          .catch((err) => {
+            alert("Failed to send the form. Please try again.");
+            console.error("Error:", err);
+          });
+      });
+    });
+  </script>
+
+  <!-- Start of Housecallpro Online booking script -->
+  <script
+    async
+    src="https://online-booking.housecallpro.com/script.js?token=59e40d5c554f4d22b624e18e8a05fcd5&orgName=Zen-Zone-Cleaning-Services">
+  </script>
+  <!-- End of Housecallpro Online booking script -->
 </body>
-
 </html>

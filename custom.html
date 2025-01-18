@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zen Zone Cleaning Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #FAFFFA;
+      color: #2E3D2F;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Header */
+    header {
+      background-color: #2E3D2F;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-left img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #78A265;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-right span {
+      font-weight: bold;
+    }
+
+    .header-right button {
+      background-color: #78A265;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .header-right button:hover {
+      background-color: #5c814d;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #78A265;
+      color: white;
+      padding: 3rem 2rem;
+      text-align: left;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+
+    .hero .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: #6B5B95;
+      color: white;
+      border-radius: 4px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-right: 1rem;
+      transition: background-color 0.2s;
+    }
+
+    .hero .btn:hover {
+      background-color: #594A7A;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 2rem 1rem;
+      background-color: white;
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service {
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .service img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .service h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Areas We Serve */
+    .areas {
+      padding: 2rem 1rem;
+      background-color: #FAFFFA;
+      text-align: center;
+    }
+
+    .areas h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .areas ul {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .areas ul li {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* Reviews Section */
+    .reviews {
+      padding: 2rem 1rem;
+      background-color: white;
+      text-align: center;
+    }
+
+    .reviews h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .review-card {
+      margin: 1rem auto;
+      padding: 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background-color: #FAFFFA;
+      max-width: 500px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2E3D2F;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .footer-links div {
+      margin: 0.5rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <img src="moose_logo.png" alt="Zen Zone Logo">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#areas">Areas We Serve</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-right">
+      <span>(705) 242-1166</span>
+      <!-- Start of Housecall Pro Online Booking Button -->
+      <button data-token="59e40d5c554f4d22b624e18e8a05fcd5" data-orgname="Zen-Zone-Cleaning-Services" class="hcp-button"
+        onClick="HCPWidget.openModal()">Book Online</button>
+      <script async
+        src="https://online-booking.housecallpro.com/script.js?token=59e40d5c554f4d22b624e18e8a05fcd5&orgName=Zen-Zone-Cleaning-Services"></script>
+      <!-- End of Housecall Pro Online Booking Button -->
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Zen Zone Cleaning Services</h1>
+    <p>Professional cleaning services for homes and businesses in Ontario.</p>
+    <!-- Start of Housecall Pro Online Booking Button -->
+    <button data-token="59e40d5c554f4d22b624e18e8a05fcd5" data-orgname="Zen-Zone-Cleaning-Services" class="hcp-button"
+      onClick="HCPWidget.openModal()">Book Online</button>
+    <script async
+      src="https://online-booking.housecallpro.com/script.js?token=59e40d5c554f4d22b624e18e8a05fcd5&orgName=Zen-Zone-Cleaning-Services"></script>
+    <!-- End of Housecall Pro Online Booking Button -->
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service">
+        <img src="https://via.placeholder.com/60" alt="Deep Cleaning">
+        <h3>Deep Cleaning</h3>
+      </div>
+      <div class="service">
+        <img src="https://via.placeholder.com/60" alt="Move-In/Out Cleaning">
+        <h3>Move-In/Out Cleaning</h3>
+      </div>
+      <div class="service">
+        <img src="https://via.placeholder.com/60" alt="Commercial Cleaning">
+        <h3>Commercial Cleaning</h3>
+      </div>
+      <div class="service">
+        <img src="https://via.placeholder.com/60" alt="Green Cleaning">
+        <h3>Green Cleaning</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas We Serve -->
+  <section id="areas" class="areas">
+    <h2>Areas We Serve</h2>
+    <ul>
+      <li>Orillia</li>
+      <li>Barrie</li>
+      <li>Midland</li>
+      <li>Vaughan</li>
+      <li>Richmond Hill</li>
+      <li>Bradford</li>
+    </ul>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews" class="reviews">
+    <h2>What Our Clients Say</h2>
+    <div class="review-card">
+      <p><strong>Alyssa B.:</strong> The cleaning was perfect and stress-free. Highly recommend Zen Zone!</p>
+    </div>
+    <div class="review-card">
+      <p><strong>John D.:</strong> Amazing team and flawless cleaning services. My office sparkles now!</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Zen Zone Cleaning Services Inc. All rights reserved.</p>
+    <div class="footer-links">
+      <div>
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Email: admin@zenzonecleaning.com</li>
+          <li>Phone: (705) 242-1166</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Social Media</h3>
+        <ul>
+          <li><a href="https://facebook.com">Facebook</a></li>
+          <li><a href="https://instagram.com">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
