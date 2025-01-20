@@ -24,6 +24,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  const links = document.querySelectorAll('a[href^="#"]');
+  const navbar = document.querySelector('.navbar'); // Adjust the selector to match your navbar
+
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        e.preventDefault(); // Prevent default jump
+
+        // Dynamically get the height of the navbar
+        const navbarHeight = navbar.offsetHeight;
+
+        // Get the target element's position
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+
+        // Smooth scroll to the adjusted position
+        window.scrollTo({
+          top: targetPosition - navbarHeight + 30, // Offset by the navbar's height
+          behavior: 'smooth',
+        });
+      }
+    });
+  });
+  
+
   // ============================
   // Initialize EmailJS
   // ============================
