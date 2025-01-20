@@ -23,6 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
       paginationBulletMessage: 'Go to slide {{index}}'
     }
   });
+  fetch('https://maps.googleapis.com/maps/api/place/details/json?place_id=J2H4XrpgPTrA5kaRA&fields=reviews&key=AIzaSyBm6pxfZsxvgfhm6r0c44Cwz5CRP06ogFk')
+  .then(response => response.json())
+  .then(data => {
+    const reviews = data.result.reviews;
+    console.log(reviews);
+    const reviewContainer = document.getElementById('reviews');
+
+    reviews.forEach(review => {
+      const reviewElement = document.createElement('div');
+      reviewElement.innerHTML = `
+        <h3>${review.author_name}</h3>
+        <p>${review.text}</p>
+        <small>Rating: ${review.rating}</small>
+      `;
+      reviewContainer.appendChild(reviewElement);
+    });
+  })
+  .catch(error => console.error('Error fetching reviews:', error));
+
 
   const links = document.querySelectorAll('a[href^="#"]');
   const navbar = document.querySelector('.navbar'); // Adjust the selector to match your navbar
