@@ -2,27 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================
   // Initialize Swiper.js for Gallery Carousel
   // ============================
-  // const swiper = new Swiper('.swiper-container', {
-  //   loop: true,
-  //   autoplay: {
-  //     delay: 5000,
-  //     disableOnInteraction: false
-  //   },
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //     clickable: true
-  //   },
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev'
-  //   },
-  //   a11y: {
-  //     enabled: true,
-  //     prevSlideMessage: 'Previous slide',
-  //     nextSlideMessage: 'Next slide',
-  //     paginationBulletMessage: 'Go to slide {{index}}'
-  //   }
-  // });
+  const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    a11y: {
+      enabled: true,
+      prevSlideMessage: 'Previous slide',
+      nextSlideMessage: 'Next slide',
+      paginationBulletMessage: 'Go to slide {{index}}'
+    }
+  });
 
   // ============================
   // Initialize EmailJS
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formSteps = bookingForm.querySelectorAll('.form-step');
   const nextButtons = bookingForm.querySelectorAll('.next-btn');
   const prevButtons = bookingForm.querySelectorAll('.prev-btn');
-  const progressBar = bookingForm.querySelector('.progress');
+  const progressBar = document.querySelector('.progress');
 
   let currentStep = 1;
   const totalSteps = formSteps.length;
