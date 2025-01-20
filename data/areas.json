@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Barrie",
+    "description": "Top-notch residential and commercial cleaning.",
+    "icon": "barrie_icon.png"
+  },
+  {
+    "id": 2,
+    "name": "Orillia",
+    "description": "Catering to both residential and commercial clients.",
+    "icon": "orillia_icon.png"
+  },
+  {
+    "id": 3,
+    "name": "Midland & Penetanguishene",
+    "description": "Expert cleaning solutions tailored for homes and offices.",
+    "icon": "midland_icon.png"
+  }
+]

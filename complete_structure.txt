@@ -1,0 +1,3298 @@
+.
+./css
+./js
+./data
+./assets
+-e \nFile: ./index.html\n
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description"
+    content="Zen Zone Cleaning Services - Accepting New Clients. Fast, reliable, and professional cleaning for Barrie, Orillia, Midland, Innisfil, Bradford, and beyond." />
+  <meta name="keywords"
+    content="cleaning services, house cleaning, deep cleaning, post construction cleaning, Barrie, Orillia, Midland, Airbnb cleaning, office cleaning" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zen Zone Cleaning Services</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Zen Zone Cleaning Services" />
+  <meta property="og:description"
+    content="Professional cleaning services for homes and businesses. Insured, background-checked, and trusted by clients." />
+  <meta property="og:image" content="moose_logo.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:title" content="Zen Zone Cleaning Services">
+  <meta name="twitter:description" content="Professional cleaning services for homes and businesses.">
+  <meta name="twitter:image" content="moose_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/areas.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/referral.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/reviews.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/modals.css">
+  <link rel="stylesheet" href="css/forms.css">
+
+  <!-- Swiper.js CSS for Gallery Carousel -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    crossorigin="anonymous" />
+
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo-container">
+      <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Logo" class="company-logo" loading="lazy" />
+      <div class="company-name">Zen Zone Cleaning Services</div>
+    </div>
+    <div class="contact-info">
+      <a href="tel:+17052421166" class="call-button" aria-label="Call us at 705-242-1166">Call us: 705-242-1166</a>
+      <button id="openModal" class="cta-button" aria-label="Book online">Book Online</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1 class="hero-title">Accepting New Clients Today!</h1>
+        <p class="hero-subtitle">
+          Transform your space with insured, background-checked, and highly trusted cleaners.
+          Enjoy discounted rates on recurring services!
+        </p>
+        <div class="cta-buttons">
+          <button id="openModal2" class="cta-button hero-button" aria-label="Get your free quote">Get Your Free
+            Quote</button>
+          <a href="#services" class="cta-button secondary-cta" aria-label="Explore our services">Explore Our
+            Services</a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img src="assets/hero.png" alt="A clean and tidy living room after professional cleaning." class="hero-image"
+          loading="lazy" />
+      </div>
+    </section>
+
+    <!-- FLEX CONTAINER FOR MAIN CONTENT AND REVIEWS -->
+    <div class="content-reviews-container">
+      <div class="main-content">
+
+        <!-- SERVICES SECTION WITH HERO TILES -->
+        <section class="services" id="services">
+          <h2>Our Cleaning Services</h2>
+          <div class="services-hero-tiles">
+            <div class="service-tile">
+              <h3>Deep Cleaning</h3>
+              <p>
+                Transform your space with a meticulous deep clean that reaches every
+                hidden corner, leaving it refreshed and spotless.
+              </p>
+              <button class="learn-more-btn" data-service="DeepCleaning" aria-label="Learn more about Deep Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Standard Cleaning</h3>
+              <p>
+                Keep your home or office consistently fresh and tidy with our thorough
+                and reliable standard cleaning service.
+              </p>
+              <button class="learn-more-btn" data-service="StandardCleaning"
+                aria-label="Learn more about Standard Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Post-Construction Cleaning</h3>
+              <p>
+                Clear away the dust and debris after your renovation with our
+                specialized cleaning, leaving your space safe and pristine.
+              </p>
+              <button class="learn-more-btn" data-service="PostConstructionCleaning"
+                aria-label="Learn more about Post-Construction Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Move-In Cleaning</h3>
+              <p>
+                Ensure a healthy and welcoming start in your new home with our detailed
+                move-in cleaning service.
+              </p>
+              <button class="learn-more-btn" data-service="MoveInCleaning"
+                aria-label="Learn more about Move-In Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Move-Out Cleaning</h3>
+              <p>
+                Leave a spotless impression with our move-out cleaning that ensures
+                your property is ready for its next chapter.
+              </p>
+              <button class="learn-more-btn" data-service="MoveOutCleaning"
+                aria-label="Learn more about Move-Out Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Airbnb Cleaning</h3>
+              <p>
+                Enhance guest satisfaction with our fast and efficient cleaning for
+                seamless Airbnb turnovers.
+              </p>
+              <button class="learn-more-btn" data-service="AirbnbCleaning"
+                aria-label="Learn more about Airbnb Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Office Cleaning</h3>
+              <p>
+                Boost productivity and maintain a professional image with our
+                comprehensive office cleaning services.
+              </p>
+              <button class="learn-more-btn" data-service="OfficeCleaning"
+                aria-label="Learn more about Office Cleaning">
+                Learn More
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- REVIEWS SECTION -->
+        <aside class="reviews" id="reviews" aria-label="Client Reviews">
+          <div class="reviews-card">
+            <h2><i class="fas fa-comments"></i> What Our Clients Say</h2>
+            <div class="google-button-container" style="margin-bottom: 30px;">
+              <a href="https://maps.app.goo.gl/EyMWdSuMsExvrxaG7" target="_blank" rel="noopener noreferrer"
+                class="google-button">
+                <i class="fab fa-google"></i> Visit Our Google Business Profile
+              </a>
+            </div>
+            <div class="reviews-container">
+              <!-- Review 1 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+
+                  <div class="reviewer-info">
+                    <strong>Jane Doe</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">January 15, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Amazing service! My house has never looked so clean."
+                </blockquote>
+                <em class="review-service">Deep Cleaning in Barrie</em>
+              </div>
+
+              <!-- Review 2 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>John Smith</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i> <!-- Empty Star -->
+                    </div>
+                    <span class="review-date">January 10, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "The team was professional and thorough. Highly recommend!"
+                </blockquote>
+                <em class="review-service">Office Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 3 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Alice Brown</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">January 12, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Great attention to detail and very friendly staff!"
+                </blockquote>
+                <em class="review-service">Move-Out Cleaning in Midland</em>
+              </div>
+
+              <!-- Review 4 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Michael Johnson</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">January 08, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "The post-construction cleaning was superb. Our new office looks amazing!"
+                </blockquote>
+                <em class="review-service">Post-Construction Cleaning in Innisfil</em>
+              </div>
+
+              <!-- Review 5 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Emma Davis</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">January 05, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Efficient and reliable. They cleaned our Airbnb property quickly between guest stays."
+                </blockquote>
+                <em class="review-service">Airbnb Cleaning in Bradford</em>
+              </div>
+
+              <!-- Review 6 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Lucas Wilson</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">January 03, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Our office has never been cleaner. The team was punctual and left no stone unturned."
+                </blockquote>
+                <em class="review-service">Office Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 7 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Olivia Martin</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">January 02, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "They did a fantastic job cleaning after our move-in. Everything is spotless!"
+                </blockquote>
+                <em class="review-service">Move-In Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 8 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Noah Thomas</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">December 30, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "The deep cleaning service exceeded my expectations. Highly professional!"
+                </blockquote>
+                <em class="review-service">Deep Cleaning in Barrie</em>
+              </div>
+
+              <!-- Review 9 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Sophia Lee</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">December 28, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their move-out cleaning met all our lease requirements. Couldn't ask for better service."
+                </blockquote>
+                <em class="review-service">Move-Out Cleaning in Midland</em>
+              </div>
+
+              <!-- Review 10 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Ethan Clark</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">December 25, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Consistently excellent service. Our Airbnb guests always leave great reviews because of Zen Zone."
+                </blockquote>
+                <em class="review-service">Airbnb Cleaning in Bradford</em>
+              </div>
+
+              <!-- Review 11 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Mia Jackson</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">December 20, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "The office cleaning service is exceptional. Our workspace is always spotless and inviting."
+                </blockquote>
+                <em class="review-service">Office Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 12 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Liam Martinez</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">December 18, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Excellent post-construction cleaning. Our renovated home looks flawless!"
+                </blockquote>
+                <em class="review-service">Post-Construction Cleaning in Innisfil</em>
+              </div>
+
+              <!-- Review 13 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Ava Roberts</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">December 15, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their standard cleaning service keeps our home organized and clean. Very happy with the consistent
+                  service."
+                </blockquote>
+                <em class="review-service">Standard Cleaning in Barrie</em>
+              </div>
+
+              <!-- Review 14 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Noah Wright</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">December 12, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their move-in cleaning was outstanding. Our new home was spotless and ready to live in."
+                </blockquote>
+                <em class="review-service">Move-In Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 15 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Logan Thomas</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 28, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Excellent Airbnb cleaning service. Our guests always leave positive feedback."
+                </blockquote>
+                <em class="review-service">Airbnb Cleaning in Bradford</em>
+              </div>
+
+              <!-- Review 16 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Emma Miller</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 25, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their move-out cleaning was thorough and efficient. Made our move so much easier!"
+                </blockquote>
+                <em class="review-service">Move-Out Cleaning in Midland</em>
+              </div>
+
+              <!-- Review 17 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Ava Rodriguez</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 22, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Standard cleaning keeps our home organized and clean. Very happy with the consistent service."
+                </blockquote>
+                <em class="review-service">Standard Cleaning in Barrie</em>
+              </div>
+
+              <!-- Review 18 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Elijah Moore</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 20, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their standard cleaning service keeps our home organized and clean. Very happy with the consistent
+                  service."
+                </blockquote>
+                <em class="review-service">Standard Cleaning in Barrie</em>
+              </div>
+
+              <!-- Review 19 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Isabella Miller</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 18, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their move-in cleaning was outstanding. Our new home was spotless and ready to live in."
+                </blockquote>
+                <em class="review-service">Move-In Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 20 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Charlotte White</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">November 15, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Excellent post-construction cleaning. Our renovated home looks flawless!"
+                </blockquote>
+                <em class="review-service">Post-Construction Cleaning in Innisfil</em>
+              </div>
+
+              <!-- Review 21 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Logan Hall</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 12, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their move-out cleaning was thorough and efficient. Made our move so much easier!"
+                </blockquote>
+                <em class="review-service">Move-Out Cleaning in Midland</em>
+              </div>
+
+              <!-- Review 22 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Mia Allen</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 10, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "The office cleaning service is exceptional. Our workspace is always spotless and inviting."
+                </blockquote>
+                <em class="review-service">Office Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 23 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Noah Perez</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 08, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their move-out cleaning was thorough and efficient. Made our move so much easier!"
+                </blockquote>
+                <em class="review-service">Move-Out Cleaning in Midland</em>
+              </div>
+
+              <!-- Review 24 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Ava Rodriguez</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 05, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Standard cleaning keeps our home organized and clean. Very happy with the consistent service."
+                </blockquote>
+                <em class="review-service">Standard Cleaning in Barrie</em>
+              </div>
+
+              <!-- Review 25 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Elijah Moore</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 03, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Excellent Airbnb cleaning service. Our guests always leave positive feedback."
+                </blockquote>
+                <em class="review-service">Airbnb Cleaning in Bradford</em>
+              </div>
+
+              <!-- Review 26 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Emma Allen</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">November 01, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their move-in cleaning was outstanding. Our new home was spotless and ready to live in."
+                </blockquote>
+                <em class="review-service">Move-In Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 27 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Oliver Jones</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">October 30, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their standard cleaning service keeps our office looking professional and welcoming."
+                </blockquote>
+                <em class="review-service">Office Cleaning in Orillia</em>
+              </div>
+
+              <!-- Review 28 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Charlotte Roberts</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">October 28, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Post-construction cleaning was handled perfectly. Our newly renovated kitchen looks amazing!"
+                </blockquote>
+                <em class="review-service">Post-Construction Cleaning in Innisfil</em>
+              </div>
+
+              <!-- Review 29 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Noah Hall</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">October 25, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Standard cleaning has kept our home consistently neat and tidy. Very reliable service."
+                </blockquote>
+                <em class="review-service">Standard Cleaning in Barrie</em>
+              </div>
+
+              <!-- Review 30 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Isabella Moore</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <span class="review-date">October 22, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Their move-in cleaning was outstanding. Our new home was spotless and ready to live in."
+                </blockquote>
+                <em class="review-service">Move-In Cleaning in Orillia</em>
+              </div>
+
+            </div>
+          </div>
+        </aside>
+
+
+        <!-- ABOUT -->
+        <section class="about" id="about">
+          <h2>About Zen Zone Cleaning</h2>
+          <p>
+            Zen Zone Cleaning Services is a locally owned and operated cleaning company. Our mission is to bring peace
+            of
+            mind and a spotless shine to every home or business we touch. With years of experience, a dedicated staff,
+            and
+            a
+            commitment to eco-friendly products, we pride ourselves on delivering top-quality cleans that exceed
+            customer
+            expectations.
+          </p>
+          <p class="highlight-text"><strong>Fully insured, background-checked, and trusted!</strong></p>
+        </section>
+
+        <!-- REFERRAL & GIFT CARDS -->
+        <section class="referral" id="referral">
+          <h2>Gift Cards & Referral Program</h2>
+          <p>
+            Give the gift of a spotless home! Purchase a <strong>Gift Card</strong> for friends or family.
+            Plus, join our <strong>Referral Program</strong> and receive exclusive rewards for every successful
+            referral.
+          </p>
+          <div class="referral-buttons">
+            <button class="cta-button" aria-label="Purchase a Gift Card">Purchase Gift Card</button>
+            <button class="cta-button" aria-label="Join Referral Program">Join Referral Program</button>
+          </div>
+        </section>
+
+        <!-- BLOG SECTION -->
+        <section class="blog-section" id="blog">
+          <h2>Our Blog</h2>
+          <div class="blog-list">
+            <!-- Blog Entry 1 -->
+            <div class="blog-entry">
+              <img src="blog1_thumbnail.jpg" alt="Declutter Your Space, Declutter Your Mind: The Link Between
+          Cleanliness and Mental Clarity" class="blog-thumbnail" loading="lazy" />
+              <h3>Declutter Your Space, Declutter Your Mind: The Link Between
+                Cleanliness and Mental Clarity</h3>
+              <p>Discover effective strategies to keep your home spotless with minimal effort.</p>
+              <button class="learn-more-blog-btn" data-blog="Blog1"
+                aria-label="Read Declutter Your Space, Declutter Your Mind">Read More</button>
+            </div>
+            <!-- Blog Entry 2 -->
+            <div class="blog-entry">
+              <img src="blog2_thumbnail.jpg" alt="Eco-Friendly Cleaning Solutions" class="blog-thumbnail"
+                loading="lazy" />
+              <h3>Eco-Friendly Cleaning Solutions</h3>
+              <p>Learn about sustainable cleaning products that are safe for your home and the environment.</p>
+              <button class="learn-more-blog-btn" data-blog="Blog2"
+                aria-label="Read Eco-Friendly Cleaning Solutions">Read
+                More</button>
+            </div>
+            <!-- Blog Entry 3 -->
+            <div class="blog-entry">
+              <img src="blog3_thumbnail.jpg" alt="How to Prepare Your Home for a Cleaning Service"
+                class="blog-thumbnail" loading="lazy" />
+              <h3>How to Prepare Your Home for a Cleaning Service</h3>
+              <p>Ensure a smooth and efficient cleaning experience with our preparation tips.</p>
+              <button class="learn-more-blog-btn" data-blog="Blog3"
+                aria-label="Read How to Prepare Your Home for a Cleaning Service">Read More</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- <section class="areas" id="areas">
+        <div class="areas-card">
+          <h2><i class="fas fa-map-marker-alt"></i> Areas We Serve</h2>
+          <div class="areas-container">
+            <div class="area-item">
+              <div>
+                <img src="path/to/icon.svg" alt="Barrie" class="area-icon">
+              </div>
+              <h3>Barrie</h3>
+            </div>
+            <div class="area-item">
+              <div>
+                <img src="path/to/icon.svg" alt="Orillia" class="area-icon">
+              </div>
+              <h3>Orillia</h3>
+            </div>
+            <div class="area-item">
+              <div>
+                <img src="path/to/icon.svg" alt="Midland" class="area-icon">
+              </div>
+              <h3>Midland</h3>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+
+
+    </div>
+  </main>
+
+  <!-- Footer with Terms and Privacy Links -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <p>© 2025 Zen Zone Cleaning Services. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" id="openTermsModal">Terms of Service</a> •
+        <a href="#" id="openPrivacyModal">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- Removed the Inline loadModals Script -->
+
+  <!-- JavaScript Files (Order Matters) -->
+  <script src="js/modals.js" defer></script>
+  <script src="js/reviews.js" defer></script>
+  <script src="js/areas.js" defer></script>
+  <script src="js/bookingForm.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+
+</body>
+
+</html>-e \nFile: ./css/referral.css\n
+/* REFERRAL & GIFT CARDS SECTION */
+.referral {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.referral h2 {
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 1.5rem;
+}
+
+.referral p {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  font-size: 1rem;
+  color: #555;
+}
+
+.referral-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.referral-buttons .cta-button {
+  flex: 1 1 150px;
+  max-width: 200px;
+}
+-e \nFile: ./css/typography.css\n
+/* TYPOGRAPHY */
+h2, h3, h1 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: bold;
+}
+
+a {
+  color: #6b5b95;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #78a265;
+}
+-e \nFile: ./css/services.css\n
+/* SERVICES SECTION */
+.services {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 3rem;
+}
+
+.services-hero-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  min-height: 350px; /* Ensure consistent height across tiles */
+}
+
+.service-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-tile h3 {
+  font-size: 1.5rem;
+  color: #2e3d2f;
+  margin-bottom: 1rem;
+}
+
+.service-tile p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Push the button to the bottom */
+}
+
+.learn-more-btn {
+  background-color: #78a265;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #5e774c;
+}
+-e \nFile: ./css/reset.css\n
+/* RESET & GLOBAL STYLES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Prevent background scroll when a modal is open */
+.modal-open {
+  overflow: hidden;
+}
+-e \nFile: ./css/areas.css\n
+/* AREAS SERVED SECTION */
+.areas-card {
+  background-color: #fff;
+  border-top: 5px solid #78a265; /* Light Green Accent */
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.areas-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.areas-card h2 {
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.areas-card h2 i {
+  margin-right: 0.5rem;
+  color: #78a265; /* Matching Accent Color */
+}
+
+.areas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.area-item {
+  flex: 1 1 200px;
+  max-width: 250px;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.area-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.area-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+  filter: grayscale(50%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.area-icon:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.area-item h3 {
+  font-size: 1.3rem;
+  color: #6b5b95;
+  margin-bottom: 0.5rem;
+}
+
+.area-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Badge for New Areas */
+.new-badge {
+  display: inline-block;
+  background-color: #6b5b95;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+-e \nFile: ./css/modals.css\n
+/* MODAL STYLES */
+.modal-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-content {
+  margin-top: 1rem;
+}
+
+.modal-inner-content img.blog-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.modal-inner-content h2 {
+  color: #2e3d2f;
+  margin-bottom: 1rem;
+}
+
+.modal-inner-content h3 {
+  color: #6b5b95;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-inner-content p,
+.modal-inner-content ul,
+.modal-inner-content ol {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.modal-inner-content ul,
+.modal-inner-content ol {
+  padding-left: 1.5rem;
+}
+
+.modal-inner-content a {
+  color: #6b5b95;
+  text-decoration: underline;
+}
+
+.modal-inner-content a:hover {
+  color: #78a265;
+}
+
+/* Booking Form Modal Specific */
+#statusModalBg .modal {
+  max-width: 400px;
+  text-align: center;
+}
+
+#statusModalContent h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+#statusModalContent p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Prevent background scrolling when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+-e \nFile: ./css/hero.css\n
+/* HERO SECTION */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem 2rem 2rem 2rem; /* Extra top padding to offset fixed navbar */
+  background-color: #fff;
+}
+
+.hero-text {
+  flex: 1 1 500px;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  color: #2e3d2f;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.secondary-cta {
+  background-color: transparent;
+  border: 2px solid #6b5b95;
+  color: #6b5b95;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.secondary-cta:hover {
+  background-color: #6b5b95;
+  color: #fff;
+}
+
+.hero-image-wrapper {
+  flex: 1 1 400px;
+  max-width: 600px;
+  margin-top: 2rem;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+-e \nFile: ./css/navbar.css\n
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e3d2f; /* Dark Green */
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  height: 50px;
+  margin-right: 0.5rem;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.call-button {
+  background-color: #78a265; /* Light Green */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  height: 40px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.call-button:hover {
+  background-color: #5e774c;
+}
+
+.cta-button {
+  background-color: #6b5b95; /* Purple */
+  color: #fff;
+  height: 40px;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #574a7a;
+}
+-e \nFile: ./css/reviews.css\n
+/* REVIEWS SECTION */
+.reviews {
+  flex: 1;
+  width: 100%;
+  padding: 2rem;
+  background-color: #f9f9f9; /* Maintains a light background for contrast */
+  box-sizing: border-box;
+  position: relative; /* For gradient overlays */
+}
+
+/* Reviews Card Container */
+.reviews-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reviews-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Reviews Title */
+.reviews-card h2 {
+  font-size: 2.2rem;
+  color: #2e3d2f;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  font-weight: 700;
+}
+
+.reviews-card h2 i {
+  margin-right: 0.5rem;
+  color: #6b5b95;
+  font-size: 1.2em;
+}
+
+/* Reviews Container */
+.reviews-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem; /* Space between cards */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  padding-bottom: 1rem;
+  padding-left: 1rem; /* Adds padding to the left for better spacing */
+  scroll-snap-type: x mandatory; /* Enables scroll snapping */
+}
+
+/* Hide scrollbar for WebKit browsers */
+.reviews-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox and IE */
+.reviews-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Individual Review Card */
+.review {
+  flex: 0 0 300px; /* Fixed width for each card */
+  background-color: #fff;
+  border-left: 4px solid #6b5b95;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  scroll-snap-align: start; /* Aligns the card at the start during snapping */
+}
+
+.review:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Review Header */
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.review-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  width: 40px; /* Avatar width */
+  height: 40px; /* Avatar height */
+  background-color: #6b5b95; /* Background color to match branding */
+  border-radius: 50%; /* Circular shape */
+  color: #ffffff; /* Icon color */
+  font-size: 2rem; /* Icon size */
+  border: 2px solid #6b5b95; /* Optional border */
+  overflow: hidden;
+}
+
+
+.review-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* Reviewer Information */
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-info strong {
+  font-size: 1.1rem;
+  color: #2e3d2f;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.review-rating {
+  color: #ffc107; /* Gold color for stars */
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+}
+
+.review-rating i {
+  margin-right: 2px;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Review Text */
+.review-text {
+  font-style: italic;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.review-text::before {
+  content: open-quote;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+  color: #6b5b95;
+}
+
+/* Review Service */
+.review-service {
+  font-size: 0.9rem;
+  color: #6b5b95;
+  font-weight: 500;
+}
+
+/* Google Button Container */
+.google-button-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Google Business Profile Button */
+.google-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #4285F4; /* Google Blue */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.google-button i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Google Button Hover Effect */
+.google-button:hover {
+  background-color: #357ae8;
+  transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .review {
+    flex: 0 0 280px;
+  }
+}
+
+@media (max-width: 992px) {
+  .review {
+    flex: 0 0 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-container {
+    gap: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .review {
+    flex: 0 0 250px; /* Smaller cards on tablet */
+    padding: 1rem;
+  }
+
+  .review-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.8rem;
+  }
+
+  .review-text {
+    font-size: 0.95rem;
+  }
+
+  .reviews-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .google-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .google-button i {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .review {
+    flex: 0 0 220px;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+  .reviews-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .google-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .google-button i {
+    font-size: 0.9rem;
+  }
+}
+
+/* Optional: Add gradient overlays on the sides to indicate scrollability */
+.reviews::before,
+.reviews::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 3rem;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.reviews::before {
+  left: 0;
+  background: linear-gradient(to right, #f9f9f9, rgba(249, 249, 249, 0));
+}
+
+.reviews::after {
+  right: 0;
+  background: linear-gradient(to left, #f9f9f9, rgba(249, 249, 249, 0));
+}
+-e \nFile: ./css/about.css\n
+/* ABOUT SECTION */
+.about {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.about h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 2rem;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1rem;
+  color: #555;
+}
+
+.about .highlight-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #6b5b95;
+  font-weight: bold;
+}
+-e \nFile: ./css/forms.css\n
+/* BOOKING FORM MODAL */
+.modal-header h2 {
+  font-size: 1.8rem;
+  color: #2e3d2f;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.modal-body {
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.progress {
+  height: 8px;
+  background-color: #6b5b95;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group label span {
+  color: #e63946; /* Red for required */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #78a265;
+  outline: none;
+}
+
+.form-group input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  margin-top: 0.5rem;
+}
+
+.form-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #6b5b95;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-group input[type="range"]::-webkit-slider-thumb:hover {
+  background: #5e774c;
+}
+
+.form-group input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #6b5b95;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-group input[type="range"]::-moz-range-thumb:hover {
+  background: #5e774c;
+}
+
+.form-navigation {
+  display: flex;
+  justify-content: space-between; /* Default: buttons on both sides */
+  margin-top: 1rem;
+}
+
+.form-navigation .next-btn {
+  margin-left: auto; /* Ensures proper alignment when Prev button is absent */
+}
+
+.form-navigation.only-next {
+  justify-content: flex-end; /* Aligns Next button to the right */
+}
+
+.form-navigation.only-next .prev-btn {
+  display: none; /* Hides the Prev button when not needed */
+}
+
+
+.next-btn,
+.prev-btn,
+.submit-btn {
+  background-color: #6b5b95;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.next-btn:hover,
+.prev-btn:hover,
+.submit-btn:hover {
+  background-color: #574a7a;
+}
+
+.submit-btn {
+  background-color: #78a265;
+}
+
+.submit-btn:hover {
+  background-color: #5e774c;
+}
+-e \nFile: ./css/utilities.css\n
+/* UTILITIES */
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Focus States for Accessibility */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid #78a265; /* Visible focus ring */
+}
+
+.modal-close:focus {
+  outline: none;
+}
+
+/* Custom Select Dropdown */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='%236B5B95' d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+select:focus {
+  border-color: #78a265;
+}
+
+/* Swiper Navigation */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #6b5b95;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #5e774c;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #6b5b95;
+}
+-e \nFile: ./css/blog.css\n
+/* BLOG SECTION */
+.blog-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.blog-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 2rem;
+}
+
+.blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.blog-entry {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-entry:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.blog-thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.blog-entry h3 {
+  font-size: 1.2rem;
+  color: #6b5b95;
+  margin-bottom: 0.5rem;
+}
+
+.blog-entry p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.learn-more-blog-btn {
+  background-color: #78a265;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more-blog-btn:hover {
+  background-color: #5e774c;
+}
+-e \nFile: ./css/footer.css\n
+/* FOOTER */
+.footer {
+  background-color: #2e3d2f;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: underline;
+  margin: 0 0.5rem;
+}
+
+.footer-links a:hover {
+  color: #78a265;
+}
+-e \nFile: ./js/areas.js\n
+// // js/areas.js
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetchAreas()
+//     .then(renderAreas)
+//     .catch((error) => console.error("Error loading areas:", error));
+// });
+
+// /**
+//  * Fetch Areas from JSON
+//  */
+// async function fetchAreas() {
+//   const response = await fetch("data/areas.json");
+//   if (!response.ok) {
+//     throw new Error(`HTTP error! Status: ${response.status}`);
+//   }
+//   const areas = await response.json();
+//   return areas;
+// }
+
+// /**
+//  * Render Areas into the Areas Container
+//  */
+// function renderAreas(areas) {
+//   const areasContainer = document.querySelector(".areas-container");
+  
+//   areas.forEach((area) => {
+//     const areaItem = document.createElement("div");
+//     areaItem.classList.add("area-item");
+//     areaItem.innerHTML = `
+//       <img src="assets/${area.icon}" alt="${area.name} Icon" class="area-icon" loading="lazy" />
+//       <h3>${area.name}</h3>
+//       <p>${area.description}</p>
+//     `;
+//     areasContainer.appendChild(areaItem);
+//   });
+// }
+-e \nFile: ./js/services.js\n
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetchServices()
+//     .then(renderServices)
+//     .catch((error) => console.error("Error loading services:", error));
+// });
+
+// /**
+//  * Fetch Services from JSON
+//  */
+// async function fetchServices() {
+//   const response = await fetch("data/services.json");
+//   if (!response.ok) {
+//     throw new Error(`HTTP error! Status: ${response.status}`);
+//   }
+//   return response.json();
+// }
+
+// /**
+//  * Render Services into the Services Container
+//  */
+// function renderServices(services) {
+//   const servicesContainer = document.querySelector(".services-hero-tiles");
+
+//   servicesContainer.innerHTML = services
+//     .map(
+//       (service) => `
+//       <div class="service-tile">
+//         <h3>${service.title}</h3>
+//         <p>${service.description}</p>
+//         <button class="learn-more-btn" data-service="${service.id}" aria-label="Learn more about ${service.title}">
+//           Learn More
+//         </button>
+//       </div>
+//     `
+//     )
+//     .join("");
+
+//   // Add event listeners to Learn More buttons
+//   const learnMoreButtons = document.querySelectorAll(".learn-more-btn");
+//   learnMoreButtons.forEach((button) => {
+//     button.addEventListener("click", () => {
+//       const serviceId = button.getAttribute("data-service");
+//       openModal(`serviceModal${serviceId}`);
+//     });
+//   });
+// }
+-e \nFile: ./js/reviews.js\n
+// js/reviews.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeSwiper();
+});
+
+/**
+ * Initialize Swiper.js for Reviews Carousel
+ */
+function initializeSwiper() {
+  new Swiper(".reviews-swiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    centeredSlides: true,
+    pagination: { 
+      el: ".swiper-pagination", 
+      clickable: true 
+    },
+    navigation: { 
+      nextEl: ".swiper-button-next", 
+      prevEl: ".swiper-button-prev" 
+    },
+    loop: true,
+    autoplay: { 
+      delay: 5000, 
+      disableOnInteraction: false 
+    },
+    a11y: {
+      enabled: true,
+      prevSlideMessage: "Previous review",
+      nextSlideMessage: "Next review",
+      slideLabelMessage: "{{index}} / {{slidesLength}}",
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+      600: {
+        slidesPerView: 'auto',
+        spaceBetween: 20
+      }
+    }
+  });
+}
+-e \nFile: ./js/main.js\n
+// js/main.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Swiper.js for any additional carousels if needed
+  // const swiperElements = document.querySelectorAll('.swiper-container:not(.reviews-swiper)');
+  // swiperElements.forEach((swiperEl) => {
+  //   new Swiper(swiperEl, {
+  //     loop: true,
+  //     autoplay: {
+  //       delay: 5000,
+  //       disableOnInteraction: false,
+  //     },
+  //     pagination: {
+  //       el: '.swiper-pagination',
+  //       clickable: true,
+  //     },
+  //     navigation: {
+  //       nextEl: '.swiper-button-next',
+  //       prevEl: '.swiper-button-prev',
+  //     },
+  //     a11y: {
+  //       enabled: true,
+  //       prevSlideMessage: 'Previous slide',
+  //       nextSlideMessage: 'Next slide',
+  //       paginationBulletMessage: 'Go to slide {{index}}',
+  //     },
+  //   });
+  // });
+
+  // Smooth Scroll for Anchor Links
+  const links = document.querySelectorAll('a[href^="#"]');
+  const navbar = document.querySelector('.navbar'); // Adjust selector if different
+
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        e.preventDefault(); // Prevent default jump
+
+        // Dynamically get the height of the navbar
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+        // Get the target element's position
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+
+        // Smooth scroll to the adjusted position
+        window.scrollTo({
+          top: targetPosition - navbarHeight + 30, // Offset by the navbar's height
+          behavior: 'smooth',
+        });
+      }
+    });
+  });
+});
+-e \nFile: ./js/bookingForm.js\n
+// js/bookingForm.js
+
+document.addEventListener("modalsLoaded", () => {
+  initBookingForm();
+});
+
+/**
+ * Initialize Booking Form Functionality
+ */
+function initBookingForm() {
+  const bookingForm = document.getElementById("bookingForm");
+  if (!bookingForm) {
+    console.error("Booking form not found.");
+    return;
+  }
+
+  const formSteps = bookingForm.querySelectorAll(".form-step");
+  const progressBar = document.querySelector(".progress");
+  const submitButton = bookingForm.querySelector(".submit-btn");
+
+  let currentStep = 1;
+  const totalSteps = formSteps.length;
+
+  // Initialize EmailJS
+  emailjs.init("9CwBWUPI_pCtZXPr0");
+
+  // Show the first step
+  showFormStep(currentStep);
+
+  // Event delegation for next and previous buttons
+  bookingForm.addEventListener("click", (e) => {
+    if (e.target.classList.contains("next-btn")) {
+      e.preventDefault();
+      console.log(`Next button clicked on step ${currentStep}`);
+      if (validateFormStep(currentStep)) {
+        currentStep++;
+        showFormStep(currentStep);
+      }
+    }
+
+    if (e.target.classList.contains("prev-btn")) {
+      e.preventDefault();
+      console.log(`Previous button clicked on step ${currentStep}`);
+      currentStep--;
+      showFormStep(currentStep);
+    }
+  });
+
+  // Handle form submission
+  bookingForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (validateFormStep(currentStep)) {
+      // Collect form data
+      const formData = new FormData(bookingForm);
+      const data = Object.fromEntries(formData.entries());
+
+      // Send data via EmailJS
+      sendBookingRequest(data);
+    }
+  });
+
+  /**
+   * Show the form step based on index
+   */
+  function showFormStep(step) {
+    console.log(`Showing step ${step}`);
+    formSteps.forEach((formStep, index) => {
+      formStep.classList.toggle("active", index + 1 === step);
+    });
+
+    // Update progress bar
+    const progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
+    if(progressBar)
+      progressBar.style.width = `${progressPercent}%`;
+  }
+
+  /**
+   * Validate current form step
+   */
+  function validateFormStep(step) {
+    console.log(`Validating step ${step}`);
+    const currentFormStep = formSteps[step - 1];
+    const inputs = currentFormStep.querySelectorAll("input, select, textarea");
+    let valid = true;
+
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        valid = false;
+        input.reportValidity();
+        console.warn(`Invalid input: ${input.name}`);
+      }
+    });
+
+    return valid;
+  }
+
+  /**
+   * Reset the form to the first step
+   */
+  function resetForm() {
+    currentStep = 1;
+    showFormStep(currentStep);
+    bookingForm.reset();
+    progressBar.style.width = "0%";
+  }
+
+  /**
+   * Send booking request using EmailJS
+   */
+  function sendBookingRequest(data) {
+    // Disable submit button to prevent multiple submissions
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    // Prepare the EmailJS service for admin notification
+    emailjs
+      .send("service_156d2p8", "template_i7i7zz7", { ...data, message: constructAdminMessage(data) })
+      .then(() => {
+        console.log("Booking form submitted successfully");
+
+        // Prepare and send confirmation email to user
+        const confirmationData = {
+          to_name: data.name,
+          to_email: data.email,
+          service: data.service,
+          date: data.date,
+          message: constructUserMessage(data),
+        };
+
+        return emailjs.send("service_156d2p8", "template_nrcx4ff", confirmationData);
+      })
+      .then(() => {
+        console.log("Confirmation email sent successfully");
+        // Show success modal
+        showStatusModal(
+          "Your request has been submitted successfully. We will contact you shortly.",
+          true
+        );
+        resetForm();
+        closeModal(document.getElementById("modalBg"));
+      })
+      .catch((error) => {
+        console.error("Error:", error.text || error);
+        // Show error modal
+        showStatusModal("Failed to submit your request. Please try again later.", false);
+      })
+      .finally(() => {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Quote Request";
+      });
+  }
+
+  /**
+   * Construct the admin message from form data
+   */
+  function constructAdminMessage(data) {
+    return `
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Service: ${data.service}
+Square Footage: ${data.squareFootage} sq ft
+Bedrooms: ${data.bedrooms}
+Bathrooms: ${data.bathrooms}
+Powder Rooms: ${data.powderRooms}
+Address: ${data.address}
+Preferred Date: ${data.date}
+Additional Details: ${data.details || "N/A"}
+    `.trim();
+  }
+
+  /**
+   * Construct the user confirmation message
+   */
+  function constructUserMessage(data) {
+    return `
+Thank you for choosing Zen Zone Cleaning Services! Here’s a summary of your request:
+
+Service: ${data.service}
+Preferred Date: ${data.date}
+Address: ${data.address}
+Square Footage: ${data.squareFootage} sq ft
+Bedrooms: ${data.bedrooms}
+Bathrooms: ${data.bathrooms}
+Powder Rooms: ${data.powderRooms}
+
+Additional Details: ${data.details || "None provided"}
+    `.trim();
+  }
+
+  /**
+   * Show status modal with message
+   */
+  function showStatusModal(message, isSuccess) {
+    const statusModalBg = document.getElementById("statusModalBg");
+    const statusModalContent = document.getElementById("statusModalContent");
+
+    statusModalContent.innerHTML = `
+      <h2>${isSuccess ? "Success" : "Error"}</h2>
+      <p>${message}</p>
+    `;
+
+    openModal("statusModalBg");
+
+    // Automatically close after 5 seconds
+    setTimeout(() => {
+      closeModal(statusModalBg);
+    }, 5000);
+  }
+}
+-e \nFile: ./js/modals.js\n
+// js/modals.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadModals()
+    .then(() => {
+      setupModalEventListeners();
+      // Dispatch the custom event after modals are loaded
+      const modalsLoadedEvent = new Event("modalsLoaded");
+      document.dispatchEvent(modalsLoadedEvent);
+      console.log("modalsLoaded event dispatched");
+    })
+    .catch((error) => console.error("Error loading modals:", error));
+});
+
+/**
+ * Load modals.html and append its content to the body
+ */
+function loadModals() {
+  return fetch("modals.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to load modals.html: ${response.status} ${response.statusText}`);
+      }
+      return response.text();
+    })
+    .then((data) => {
+      const modalContainer = document.createElement("div");
+      modalContainer.innerHTML = data;
+      document.body.appendChild(modalContainer);
+      console.log("Modals loaded successfully");
+    });
+}
+
+/**
+ * Setup Event Listeners for Modal Interactions
+ */
+function setupModalEventListeners() {
+  console.log("Setting up modal event listeners");
+
+  // Function to open a modal
+  window.openModal = function (modalId) {
+    const modalBg = document.getElementById(modalId);
+    console.log(`Attempting to open modal with ID: ${modalId}`);
+    if (modalBg) {
+      modalBg.style.display = "flex";
+      document.body.classList.add("modal-open");
+      trapFocus(modalBg);
+    } else {
+      console.warn(`Modal with ID "${modalId}" not found.`);
+    }
+  };
+
+  // Function to close a modal
+  window.closeModal = function (modalBg) {
+    if (modalBg) {
+      modalBg.style.display = "none";
+      document.body.classList.remove("modal-open");
+      releaseFocus();
+      console.log(`Modal with ID "${modalBg.id}" closed.`);
+    }
+  };
+
+  // Setup open modal buttons (buttons with IDs starting with 'open')
+  const openModalButtons = document.querySelectorAll("[id^='open']");
+  openModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      let modalId = "";
+
+      // Special handling for 'openModal' and 'openModal2' to open 'modalBg'
+      if (button.id === "openModal" || button.id === "openModal2") {
+        modalId = "modalBg";
+      } else {
+        // Remove 'open' prefix and lowercase the first character
+        const baseId = button.id.replace(/^open/, ""); // e.g., 'TermsModal'
+        modalId = baseId.charAt(0).toLowerCase() + baseId.slice(1); // e.g., 'termsModal'
+      }
+
+      console.log(`Button with ID "${button.id}" will open modal with ID "${modalId}"`);
+      openModal(modalId);
+    });
+  });
+
+  // Setup close modal buttons (elements with class 'modal-close')
+  const closeModalButtons = document.querySelectorAll(".modal-close");
+  closeModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modalBg = button.closest(".modal-bg");
+      if (modalBg) {
+        console.log(`Close button clicked for modal with ID "${modalBg.id}"`);
+        closeModal(modalBg);
+      }
+    });
+  });
+
+  // Close modal when clicking outside the modal content
+  const modalBgs = document.querySelectorAll(".modal-bg");
+  modalBgs.forEach((modalBg) => {
+    modalBg.addEventListener("click", (e) => {
+      if (e.target === modalBg) {
+        console.log(`Clicked outside modal content for modal with ID "${modalBg.id}"`);
+        closeModal(modalBg);
+      }
+    });
+  });
+
+  // Close modal on Escape key press
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const openModals = document.querySelectorAll(".modal-bg[style*='display: flex']");
+      openModals.forEach((modalBg) => {
+        console.log(`Escape key pressed. Closing modal with ID "${modalBg.id}"`);
+        closeModal(modalBg);
+      });
+    }
+  });
+
+  // Setup event listeners for "Learn More" service buttons
+  const learnMoreButtons = document.querySelectorAll(".learn-more-btn");
+  learnMoreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const service = button.getAttribute("data-service");
+      const modalId = `serviceModal${service}`;
+      console.log(`Learn More button clicked for service "${service}". Opening modal "${modalId}"`);
+      openModal(modalId);
+    });
+  });
+
+  // Setup event listeners for "Read More" blog buttons
+  const readMoreBlogButtons = document.querySelectorAll(".learn-more-blog-btn");
+  readMoreBlogButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const blog = button.getAttribute("data-blog");
+      const modalId = `blogModal${blog}`;
+      console.log(`Read More button clicked for blog "${blog}". Opening modal "${modalId}"`);
+      openModal(modalId);
+    });
+  });
+
+  // Setup event listeners for "Book Now" buttons within service modals
+  const bookNowButtons = document.querySelectorAll(".cta-button.book-now");
+  bookNowButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const serviceModal = button.closest(".service-modal");
+      if (serviceModal) {
+        // Get service name from the modal’s <h2>
+        const serviceName = serviceModal.querySelector("h2").innerText;
+        console.log(`Book Now button clicked for service "${serviceName}". Opening booking modal.`);
+        // Close the current service modal
+        closeModal(serviceModal);
+        // Open booking modal
+        openModal("modalBg");
+        // Pre-fill the service selection
+        const serviceSelect = document.getElementById("service");
+        if (serviceSelect) {
+          serviceSelect.value = serviceName;
+          console.log(`Service selection pre-filled with "${serviceName}".`);
+        }
+      }
+    });
+  });
+}
+
+/**
+ * Trap focus within the modal for accessibility
+ */
+let focusedElementBeforeModal;
+
+function trapFocus(modal) {
+  const focusableElementsString =
+    'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+  const focusableElements = modal.querySelectorAll(focusableElementsString);
+
+  if (focusableElements.length === 0) return;
+
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  focusedElementBeforeModal = document.activeElement;
+
+  function handleFocus(e) {
+    if (e.key !== "Tab") return;
+
+    if (e.shiftKey) {
+      // Shift + Tab
+      if (document.activeElement === firstFocusableElement) {
+        e.preventDefault();
+        lastFocusableElement.focus();
+      }
+    } else {
+      // Tab
+      if (document.activeElement === lastFocusableElement) {
+        e.preventDefault();
+        firstFocusableElement.focus();
+      }
+    }
+  }
+
+  modal.addEventListener("keydown", handleFocus);
+  firstFocusableElement.focus();
+
+  // Store the handler to remove later
+  modal._handleFocus = handleFocus;
+}
+
+/**
+ * Release focus and return to the previously focused element
+ */
+function releaseFocus() {
+  const modal = document.querySelector(".modal-bg[style*='display: flex']");
+  if (modal && modal._handleFocus) {
+    modal.removeEventListener("keydown", modal._handleFocus);
+    if (focusedElementBeforeModal) focusedElementBeforeModal.focus();
+    console.log(
+      `Focus returned to "${focusedElementBeforeModal ? focusedElementBeforeModal.id : 'previous element'}"`
+    );
+  }
+}
+-e \nFile: ./modals.html\n
+<!-- Modals -->
+<!-- Terms of Service Modal -->
+<div class="modal-bg" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle"
+  aria-describedby="termsModalDescription">
+  <div class="modal" role="document">
+    <button class="modal-close" id="closeTermsModal" aria-label="Close Terms of Service">&times;</button>
+    <div class="modal-content">
+      <!-- Terms of Service Content -->
+      <div class="modal-inner-content">
+        <h2 id="termsModalTitle">Terms of Service</h2>
+        <div id="termsModalDescription">
+          <h3>Introduction</h3>
+          <p>Welcome to Zen Zone Cleaning Services. By accessing and using our services, you agree to be bound by
+            these Terms of Service. Please read them carefully.</p>
+          <h3>Services</h3>
+          <p>Zen Zone Cleaning Services provides residential and commercial cleaning services. Our services include
+            but are not limited to general cleaning, deep cleaning, move-in/move-out cleaning, and customized cleaning
+            plans.</p>
+          <h3>Booking and Payment</h3>
+          <ul>
+            <li><strong>Booking:</strong> To book our services, you can contact us via phone, email, or our online
+              booking system. We require accurate information to provide the best service.</li>
+            <li><strong>Payment:</strong> Payment for services is due upon completion unless otherwise agreed upon in
+              writing. We accept various forms of payment, including cash, credit/debit cards, and online payment
+              options.</li>
+            <li><strong>Cancellations and Rescheduling:</strong> Cancellations or rescheduling requests must be made
+              at least 24 hours before the scheduled service. Failure to do so may result in a cancellation fee.</li>
+          </ul>
+          <h3>Service Terms</h3>
+          <ul>
+            <li><strong>Access:</strong> Customers must provide access to the property at the scheduled time. Failure
+              to do so may result in a rescheduling fee.</li>
+            <li><strong>Safety:</strong> For the safety of our staff, we request that customers secure any pets and
+              inform us of any potential hazards in the property.</li>
+            <li><strong>Damage and Liability:</strong> While we take utmost care during our services, Zen Zone
+              Cleaning Services is not responsible for any pre-existing damage to items or property. In case of
+              accidental damage caused by our staff, please report it within 24 hours for us to address the issue.
+            </li>
+            <li><strong>Quality Guarantee:</strong> We strive to provide high-quality cleaning services. If you are
+              not satisfied with our service, please contact us within 24 hours, and we will rectify the issue at no
+              additional charge.</li>
+          </ul>
+          <h3>Privacy</h3>
+          <p>We value your privacy and are committed to protecting your personal information. We will not share your
+            information with third parties without your consent, except as required by law.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div class="modal-bg" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle"
+  aria-describedby="privacyModalDescription">
+  <div class="modal" role="document">
+    <button class="modal-close" id="closePrivacyModal" aria-label="Close Privacy Policy">&times;</button>
+    <div class="modal-content">
+      <!-- Privacy Policy Content -->
+      <div class="modal-inner-content">
+        <h2 id="privacyModalTitle">Privacy Policy</h2>
+        <div id="privacyModalDescription">
+          <p>Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to
+            understand how we collect, use, communicate, disclose, and make use of personal information.</p>
+          <h3>1. Purpose of Information Collection</h3>
+          <p>Before or at the time of collecting personal information, we will identify the purposes for which
+            information is being collected.</p>
+          <h3>2. Use of Personal Information</h3>
+          <p>We will collect and use personal information solely with the objective of fulfilling those purposes
+            specified by us and for other compatible purposes, unless we obtain the consent of the individual
+            concerned or as required by law.</p>
+          <h3>3. Retention of Personal Information</h3>
+          <p>We will only retain personal information as long as necessary for the fulfillment of those purposes.</p>
+          <h3>4. Lawful and Fair Means</h3>
+          <p>We will collect personal information by lawful and fair means and, where appropriate, with the knowledge
+            or consent of the individual concerned.</p>
+          <h3>5. Relevance and Accuracy</h3>
+          <p>Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary
+            for those purposes, should be accurate, complete, and up-to-date.</p>
+          <h3>6. Security Safeguards</h3>
+          <p>We will protect personal information by reasonable security safeguards against loss or theft, as well as
+            unauthorized access, disclosure, copying, use, or modification.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Service Modals -->
+<!-- Deep Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalDeepCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleDeepCleaning" aria-describedby="serviceModalDescDeepCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Deep Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleDeepCleaning">Deep Cleaning</h2>
+        <div id="serviceModalDescDeepCleaning">
+          <p>Our Deep Cleaning service goes beyond the basics to tackle both visible and hidden dirt. This includes
+            cleaning behind appliances, baseboards, door frames, interior windows, blinds, ceiling fans, light
+            fixtures, wall spots, and grout. We sanitize high-touch areas, leaving your home feeling refreshed and
+            comfortable.</p>
+          <ul>
+            <li>Comprehensive dusting and vacuuming</li>
+            <li>Sanitizing all surfaces</li>
+            <li>Special attention to high-touch areas</li>
+            <li>Eco-friendly cleaning products</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Deep Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Standard Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalStandardCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleStandardCleaning" aria-describedby="serviceModalDescStandardCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Standard Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleStandardCleaning">Standard Cleaning</h2>
+        <div id="serviceModalDescStandardCleaning">
+          <p>Maintain the sparkle in your home with our Standard Cleaning service. We focus on essential cleaning
+            tasks to keep your living spaces tidy and hygienic.</p>
+          <ul>
+            <li>Dusting all surfaces</li>
+            <li>Sweeping, mopping, and vacuuming floors</li>
+            <li>Cleaning and sanitizing bathrooms and kitchens</li>
+            <li>Emptying trash bins</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Standard Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Post-Construction Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalPostConstructionCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitlePostConstructionCleaning"
+  aria-describedby="serviceModalDescPostConstructionCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Post-Construction Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitlePostConstructionCleaning">Post-Construction Cleaning</h2>
+        <div id="serviceModalDescPostConstructionCleaning">
+          <p>After a renovation or construction project, let us handle the mess. Our Post-Construction Cleaning
+            service ensures your property is clean, safe, and ready for use.</p>
+          <ul>
+            <li>Removal of construction debris</li>
+            <li>Detailed dusting and wiping</li>
+            <li>Window and glass cleaning</li>
+            <li>Floor care and restoration</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Post-Construction Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Move-In Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalMoveInCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleMoveInCleaning" aria-describedby="serviceModalDescMoveInCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Move-In Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleMoveInCleaning">Move-In Cleaning</h2>
+        <div id="serviceModalDescMoveInCleaning">
+          <p>Moving into a new home? Our Move-In Cleaning service ensures your new space is immaculate and ready for
+            you to settle in.</p>
+          <ul>
+            <li>Comprehensive cleaning of all rooms</li>
+            <li>Kitchen and bathroom sanitization</li>
+            <li>Floor care and carpet cleaning</li>
+            <li>Spotless surfaces and fixtures</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Move-In Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Move-Out Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalMoveOutCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleMoveOutCleaning" aria-describedby="serviceModalDescMoveOutCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Move-Out Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleMoveOutCleaning">Move-Out Cleaning</h2>
+        <div id="serviceModalDescMoveOutCleaning">
+          <p>Preparing to leave your current residence? Our Move-Out Cleaning service ensures the property is spotless
+            for the next occupants, helping you meet lease requirements and leave a positive impression.</p>
+          <ul>
+            <li>Thorough cleaning of all rooms</li>
+            <li>Kitchen and bathroom deep cleaning</li>
+            <li>Carpet and floor cleaning</li>
+            <li>Removal of all personal items and trash</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Move-Out Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Airbnb Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalAirbnbCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleAirbnbCleaning" aria-describedby="serviceModalDescAirbnbCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Airbnb Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleAirbnbCleaning">Airbnb Cleaning</h2>
+        <div id="serviceModalDescAirbnbCleaning">
+          <p>Hosting on Airbnb? Our Airbnb Cleaning service guarantees a sparkling clean property between guest stays,
+            ensuring quick turnarounds without compromising on quality.</p>
+          <ul>
+            <li>Detailed cleaning of all guest areas</li>
+            <li>Restocking of essential supplies</li>
+            <li>Quick and efficient service to meet tight schedules</li>
+            <li>Professional presentation to enhance guest experience</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Airbnb Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Office Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalOfficeCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleOfficeCleaning" aria-describedby="serviceModalDescOfficeCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Office Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleOfficeCleaning">Office Cleaning</h2>
+        <div id="serviceModalDescOfficeCleaning">
+          <p>Create a clean and productive workspace with our Office Cleaning service. We customize our cleaning plans
+            to fit your business needs, maintaining a healthy environment for your employees and impressing your
+            clients.</p>
+          <ul>
+            <li>Daily/weekly/monthly cleaning schedules</li>
+            <li>Sanitizing workstations and common areas</li>
+            <li>Window and glass cleaning</li>
+            <li>Floor care and maintenance</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Office Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blog Modals -->
+<!-- Blog 1 Modal -->
+<div class="modal-bg blog-modal" id="blogModalBlog1" role="dialog" aria-modal="true"
+  aria-labelledby="blogModalTitleBlog1" aria-describedby="blogModalDescBlog1">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Blog 1 Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="blogModalTitleBlog1">Declutter Your Space, Declutter Your Mind: The Link Between
+          Cleanliness and Mental Clarity</h2>
+        <div id="blogModalDescBlog1">
+          <img src="blog1_image.jpg" alt="Clean Home" class="blog-image" loading="lazy" />
+          <p style="margin-bottom: 20px;">In today&rsquo;s fast-paced world, it&rsquo;s easy to feel overwhelmed by
+            the clutter around us. Whether at home or in the office, mess and disorganization can silently take a
+            toll&mdash;not only on your physical environment but also on your mental well-being. At Zen Zone Cleaning
+            Services, we believe that cleanliness is more than just an aesthetic; it plays a vital role in mental
+            clarity, emotional balance, and productivity.</p>
+          <h3 style="color: #ff6600; margin-bottom: 15px;">The Hidden Impact of Clutter on Mental Health</h3>
+          <p style="margin-bottom: 20px;">Clutter doesn't just take up physical space&mdash;it occupies mental space
+            too. Research shows that people who live or work in cluttered environments often experience higher levels
+            of stress, anxiety, and even fatigue. The constant visual reminders of disorganization make it harder to
+            relax, focus, or feel in control of your surroundings.</p>
+          <p style="margin-bottom: 20px;"><strong>Zen Zone Insight:</strong> A clean space restores a sense of
+            control, helping you reduce mental overload and unwind at the end of the day.</p>
+          <h3 style="color: #ff6600; margin-bottom: 15px;">Enhanced Focus and Productivity in a Clean Space</h3>
+          <p style="margin-bottom: 20px;">A neat and organized workspace promotes better focus by reducing
+            distractions. In environments like offices, where efficiency matters, cleanliness directly contributes to
+            higher productivity. Tasks feel more manageable in a tidy space, allowing you to focus on what really
+            matters.</p>
+          <p style="margin-bottom: 20px;"><strong>Zen Zone Tip:</strong> Maintain a clutter-free workspace to
+            eliminate unnecessary distractions and sharpen your focus. <a
+              href="https://zenzonecleaning.com/blog/office-cleaning-frequency">Learn how often to clean your
+              office</a> to stay productive.</p>
+          <h3 style="color: #ff6600; margin-bottom: 15px;">How Clean Spaces Promote Emotional Well-Being</h3>
+          <p style="margin-bottom: 20px;">Stepping into a clean and organized space can immediately lift your mood.
+            The orderliness provides a sense of accomplishment and emotional relief, making your home or workplace
+            feel more comfortable and welcoming.</p>
+          <p style="margin-bottom: 20px;"><strong>Zen Zone Suggestion:</strong> Schedule regular cleaning
+            sessions&mdash;either bi-weekly or monthly&mdash;to maintain that sense of peace. We&rsquo;ll make sure
+            your space stays serene and inviting all year long.</p>
+          <h3 style="color: #ff6600; margin-bottom: 15px;">Better Sleep Starts with a Clean Bedroom</h3>
+          <p style="margin-bottom: 20px;">A cluttered bedroom can interfere with your ability to unwind and get
+            quality sleep. Mental distractions caused by visual chaos can keep your mind active when it should be
+            relaxing. In contrast, a clean, cozy space sets the stage for deeper, more restorative sleep.</p>
+          <p style="margin-bottom: 20px;"><strong>Zen Zone Tip:</strong> Add a bedroom deep clean to your next
+            service. We&rsquo;ll ensure your sleep space is spotless, so you can enjoy restful nights without
+            clutter-induced stress.</p>
+          <h3 style="color: #ff6600; margin-bottom: 15px;">Healthy Habits Begin with a Clean Space</h3>
+          <p style="margin-bottom: 20px;">A clean environment promotes healthy routines. When your surroundings are in
+            order, it&rsquo;s easier to stay on track with your goals, whether that&rsquo;s sticking to a workout
+            plan, preparing healthy meals, or managing time effectively.</p>
+          <p style="margin-bottom: 20px;"><strong>Zen Zone Insight:</strong> Kickstart positive habits by scheduling a
+            deep clean with Zen Zone. A clean slate helps you stay motivated and on track with your routines.</p>
+          <h3 style="color: #ff6600; margin-bottom: 15px;">Areas We Serve</h3>
+          <p style="margin-bottom: 20px;">Zen Zone Cleaning Services offers expert cleaning solutions across Ontario.
+            Whether you need residential, office, or Airbnb cleaning, our professional team ensures your space remains
+            spotless. We proudly serve:</p>
+          <ul style="margin-bottom: 20px; padding-left: 20px;">
+            <li style="margin-bottom: 10px;"><strong>Barrie:</strong> From the downtown core to suburban
+              neighborhoods, we&rsquo;ve got you covered.</li>
+            <li style="margin-bottom: 10px;"><strong>Orillia:</strong> Whether it&rsquo;s a small apartment or a large
+              family home, we&rsquo;ll make it shine.</li>
+            <li style="margin-bottom: 10px;"><strong>Midland and Penetanguishene:</strong> Offering premium services
+              to these beautiful waterfront communities.</li>
+            <li style="margin-bottom: 10px;"><strong>Oro-Medonte, Severn, and Tay:</strong> Meeting the unique
+              cleaning needs of rural and suburban homes.</li>
+            <li style="margin-bottom: 10px;"><strong>Innisfil, Bradford West Gwillimbury, and East
+                Gwillimbury:</strong> Providing expert cleaning for growing communities.</li>
+            <li style="margin-bottom: 10px;"><strong>Newmarket, Aurora, and King City:</strong> Ensuring both small
+              businesses and homes look their best.</li>
+            <li style="margin-bottom: 10px;"><strong>Vaughan and Richmond Hill:</strong> From condos to houses, we
+              deliver top-tier cleaning services.</li>
+          </ul>
+          <div
+            style="background-color: #ff6600; color: white; padding: 15px; text-align: center; border-radius: 5px; margin-top: 30px;">
+            <p style="margin-bottom: 0;">Contact us today to schedule your next cleaning service or <a
+                style="color: white; font-weight: bold; text-decoration: none;"
+                href="https://zenzonecleaning.com/booknow">book online</a>. A decluttered space&mdash;and a clearer
+              mind&mdash;are just a cleaning session away!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blog 2 Modal -->
+<div class="modal-bg blog-modal" id="blogModalBlog2" role="dialog" aria-modal="true"
+  aria-labelledby="blogModalTitleBlog2" aria-describedby="blogModalDescBlog2">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Blog 2 Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="blogModalTitleBlog2">Eco-Friendly Cleaning Solutions</h2>
+        <div id="blogModalDescBlog2">
+          <img src="blog2_image.jpg" alt="Eco-Friendly Cleaning" class="blog-image" loading="lazy" />
+          <p>In today's world, sustainability is key. Discover how eco-friendly cleaning products can benefit both
+            your home and the environment:</p>
+          <ul>
+            <li><strong>Health Benefits:</strong> Non-toxic ingredients reduce exposure to harmful chemicals.</li>
+            <li><strong>Environmental Impact:</strong> Biodegradable products minimize pollution and waste.</li>
+            <li><strong>Cost-Effective:</strong> Many eco-friendly cleaners are concentrated and last longer.</li>
+            <li><strong>Versatility:</strong> Suitable for a variety of surfaces and cleaning needs.</li>
+          </ul>
+          <p>Switching to eco-friendly cleaning solutions not only promotes a healthier living space but also
+            contributes to a sustainable future.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Blog 3 Modal -->
+<div class="modal-bg blog-modal" id="blogModalBlog3" role="dialog" aria-modal="true"
+  aria-labelledby="blogModalTitleBlog3" aria-describedby="blogModalDescBlog3">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Blog 3 Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="blogModalTitleBlog3">How to Prepare Your Home for a Cleaning Service</h2>
+        <div id="blogModalDescBlog3">
+          <img src="blog3_image.jpg" alt="Preparing Home for Cleaning" class="blog-image" loading="lazy" />
+          <p>Ensuring your home is ready for a professional cleaning service can enhance the efficiency and
+            effectiveness of the process. Follow these preparation tips:</p>
+          <ul>
+            <li><strong>Declutter Spaces:</strong> Remove personal items and clutter to allow cleaners access to all
+              areas.</li>
+            <li><strong>Secure Valuables:</strong> Keep valuables in a safe place to prevent accidental handling.</li>
+            <li><strong>Communicate Specific Needs:</strong> Inform cleaners of any particular areas or items that
+              need special attention.</li>
+            <li><strong>Clear Paths:</strong> Ensure easy access to rooms and areas that need cleaning.</li>
+            <li><strong>Provide Necessary Supplies:</strong> If you have preferred cleaning products, make them
+              available.</li>
+          </ul>
+          <p>By preparing your home beforehand, you help our cleaners provide a thorough and efficient service,
+            ensuring your satisfaction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success/Error Modal -->
+<div class="modal-bg" id="statusModalBg" role="dialog" aria-modal="true" aria-labelledby="statusModalTitle"
+  aria-describedby="statusModalDesc">
+  <div class="modal" role="document">
+    <button class="modal-close" id="statusModalClose" aria-label="Close status message">&times;</button>
+    <div class="modal-content" id="statusModalContent">
+      <!-- Content will be dynamically inserted here -->
+    </div>
+  </div>
+</div>
+
+<!-- MODAL BOOKING FORM -->
+<div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle"
+  aria-describedby="bookingModalDesc">
+  <div class="modal" role="document">
+    <button class="modal-close" id="closeModal" aria-label="Close booking form">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="bookingModalTitle">Request Your Cleaning Service Quote</h2>
+        <div id="bookingModalDesc">
+          <!-- Progress Bar -->
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+
+          <!-- Multi-Step Form -->
+          <form id="bookingForm" novalidate>
+            <!-- Step 1: Personal Information -->
+            <div class="form-step active" data-step="1">
+              <h3>Step 1: Personal Information</h3>
+              <div class="form-group">
+                <label for="name">Full Name <span>*</span></label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required
+                  aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address <span>*</span></label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required
+                  aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number <span>*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required
+                  aria-required="true" pattern="^\+?\d{10,15}$"
+                  title="Please enter a valid phone number (10 to 15 digits)." />
+              </div>
+              <div class="form-navigation">
+                <button type="button" class="next-btn" aria-label="Next step">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Service Selection -->
+            <div class="form-step" data-step="2">
+              <h3>Step 2: Select Service</h3>
+              <div class="form-group">
+                <label for="service">Select Service <span>*</span></label>
+                <select id="service" name="service" required aria-required="true">
+                  <option value="" disabled selected hidden>-- Select a Service --</option>
+                  <option value="Standard Cleaning">Standard Cleaning</option>
+                  <option value="Deep Cleaning">Deep Cleaning</option>
+                  <option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
+                  <option value="Move-In Cleaning">Move-In Cleaning</option>
+                  <option value="Move-Out Cleaning">Move-Out Cleaning</option>
+                  <option value="Airbnb Cleaning">Airbnb Cleaning</option>
+                  <option value="Office Cleaning">Office Cleaning</option>
+                </select>
+              </div>
+              <div class="form-navigation only-next">
+                <button type="button" class="prev-btn" aria-label="Previous step">Previous</button>
+                <button type="button" class="next-btn" aria-label="Next step">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Property Details -->
+            <div class="form-step" data-step="3">
+              <h3>Step 3: Property Details</h3>
+              <div class="form-group">
+                <label for="squareFootage">Square Footage <span>*</span></label>
+                <input type="range" id="squareFootage" name="squareFootage" min="500" max="10000" step="100"
+                  value="2500"
+                  oninput="document.getElementById('squareFootageValue').innerText = this.value + ' sq ft';" required
+                  aria-required="true" />
+                <span id="squareFootageValue">2500 sq ft</span>
+              </div>
+              <div class="form-group">
+                <label for="bedrooms">Number of Bedrooms <span>*</span></label>
+                <input type="range" id="bedrooms" name="bedrooms" min="1" max="10" step="1" value="3"
+                  oninput="document.getElementById('bedroomsValue').innerText = this.value;" required
+                  aria-required="true" />
+                <span id="bedroomsValue">3</span>
+              </div>
+              <div class="form-group">
+                <label for="bathrooms">Number of Bathrooms <span>*</span></label>
+                <input type="range" id="bathrooms" name="bathrooms" min="1" max="10" step="1" value="2"
+                  oninput="document.getElementById('bathroomsValue').innerText = this.value;" required
+                  aria-required="true" />
+                <span id="bathroomsValue">2</span>
+              </div>
+              <div class="form-group">
+                <label for="powderRooms">Number of Powder Rooms <span>*</span></label>
+                <input type="range" id="powderRooms" name="powderRooms" min="0" max="10" step="1" value="1"
+                  oninput="document.getElementById('powderRoomsValue').innerText = this.value;" required
+                  aria-required="true" />
+                <span id="powderRoomsValue">1</span>
+              </div>
+              <div class="form-navigation">
+                <button type="button" class="prev-btn" aria-label="Previous step">Previous</button>
+                <button type="button" class="next-btn" aria-label="Next step">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Additional Details -->
+            <div class="form-step" data-step="4">
+              <h3>Step 4: Additional Details</h3>
+              <div class="form-group">
+                <label for="address">
+                  Address <span>*</span>
+                </label>
+                <input type="text" id="address" name="address" placeholder="Enter your full address" required
+                  aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="date">Preferred Date <span>*</span></label>
+                <input type="date" id="date" name="date" required aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="details">Additional Details</label>
+                <textarea id="details" name="details" rows="4"
+                  placeholder="Provide any additional details about your cleaning request"></textarea>
+              </div>
+              <div class="form-navigation">
+                <button type="button" class="prev-btn" aria-label="Previous step">Previous</button>
+                <button type="submit" class="submit-btn" aria-label="Submit quote request">Submit Quote
+                  Request</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

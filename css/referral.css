@@ -1,0 +1,30 @@
+/* REFERRAL & GIFT CARDS SECTION */
+.referral {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.referral h2 {
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 1.5rem;
+}
+
+.referral p {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  font-size: 1rem;
+  color: #555;
+}
+
+.referral-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.referral-buttons .cta-button {
+  flex: 1 1 150px;
+  max-width: 200px;
+}

@@ -1,0 +1,58 @@
+/* UTILITIES */
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Focus States for Accessibility */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid #78a265; /* Visible focus ring */
+}
+
+.modal-close:focus {
+  outline: none;
+}
+
+/* Custom Select Dropdown */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='%236B5B95' d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+select:focus {
+  border-color: #78a265;
+}
+
+/* Swiper Navigation */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #6b5b95;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #5e774c;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #6b5b95;
+}

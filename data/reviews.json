@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "author": "Limo Xu De Beer",
+    "rating": 5,
+    "reviewText": "Zen Zone Cleaning transformed my office! Highly professional and detail-oriented.",
+    "date": "2025-01-15",
+    "location": "Barrie",
+    "service": "Office Cleaning"
+  },
+  {
+    "id": 2,
+    "author": "Jane Smith",
+    "rating": 4,
+    "reviewText": "Great service! My Airbnb looked spotless. Will use them again.",
+    "date": "2025-01-10",
+    "location": "Orillia",
+    "service": "Airbnb Cleaning"
+  },
+  {
+    "id": 3,
+    "author": "Michael Brown",
+    "rating": 5,
+    "reviewText": "Deep cleaning was exceptional! My house has never looked better.",
+    "date": "2025-01-05",
+    "location": "Midland",
+    "service": "Deep Cleaning"
+  }
+]

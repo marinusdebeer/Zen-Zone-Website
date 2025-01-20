@@ -1,0 +1,67 @@
+/* SERVICES SECTION */
+.services {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 3rem;
+}
+
+.services-hero-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  min-height: 350px; /* Ensure consistent height across tiles */
+}
+
+.service-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-tile h3 {
+  font-size: 1.5rem;
+  color: #2e3d2f;
+  margin-bottom: 1rem;
+}
+
+.service-tile p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Push the button to the bottom */
+}
+
+.learn-more-btn {
+  background-color: #78a265;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #5e774c;
+}
