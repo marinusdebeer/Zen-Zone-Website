@@ -294,37 +294,65 @@ document.addEventListener('DOMContentLoaded', () => {
         details: bookingForm.querySelector('#details').value.trim()
       };
 
-      // Disable submit button to avoid multiple submissions
+      // Construct admin message
+      const adminMessage = `
+        Name: ${formData.name}
+        Email: ${formData.email}
+        Phone: ${formData.phone}
+        Service: ${formData.service}
+        Square Footage: ${formData.squareFootage}
+        Bedrooms: ${formData.bedrooms}
+        Bathrooms: ${formData.bathrooms}
+        Powder Rooms: ${formData.powderRooms}
+        Address: ${formData.address}
+        Preferred Date: ${formData.date}
+        Additional Details: ${formData.details || "N/A"}
+      `.trim();
+
+      // Disable submit button
       const submitBtn = bookingForm.querySelector('.submit-btn');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting...';
 
       // Send booking form data via EmailJS
-      emailjs.send('service_156d2p8', 'template_i7i7zz7', formData)
-        .then((response) => {
-          console.log('Booking form submitted successfully:', response.status, response.text);
+      emailjs
+        .send('service_156d2p8', 'template_i7i7zz7', { ...formData, message: adminMessage })
+        .then(() => {
+          console.log('Booking form submitted successfully');
 
           // Send confirmation email to user
           const confirmationData = {
             to_name: formData.name,
             to_email: formData.email,
             service: formData.service,
-            date: formData.date
+            date: formData.date,
+            message: `
+              Thank you for choosing Zen Zone Cleaning Services! Here’s a summary of your request:
+              
+              Service: ${formData.service}
+              Preferred Date: ${formData.date}
+              Address: ${formData.address}
+              Square Footage: ${formData.squareFootage} sq ft
+              Bedrooms: ${formData.bedrooms}
+              Bathrooms: ${formData.bathrooms}
+              Powder Rooms: ${formData.powderRooms}
+              
+              Additional Details: ${formData.details || 'None provided'}
+            `.trim()
           };
 
           return emailjs.send('service_156d2p8', 'template_nrcx4ff', confirmationData);
         })
-        .then((response) => {
-          console.log('Confirmation email sent successfully:', response.status, response.text);
+
+        .then(() => {
+          console.log('Confirmation email sent successfully');
           // Show success modal
           showStatusModal('Your request has been submitted successfully. We will contact you shortly.', true);
-          // Reset form
           resetForm();
-          // Close booking modal
           closeModal(document.getElementById('modalBg'));
         })
         .catch((error) => {
-          console.error('Error submitting booking form:', error);
+          console.error('Error:', error.text || error);
           // Show error modal
           showStatusModal('Failed to submit your request. Please try again later.', false);
         })
@@ -335,6 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
   });
+
 
   // ============================
   // Status Modal Handling
