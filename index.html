@@ -65,37 +65,78 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo-container">
-      <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Logo" class="company-logo" loading="lazy" />
-      <div class="company-name">Zen Zone Cleaning Services</div>
+      <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Services Logo" class="company-logo" />
+      <span class="company-name">Zen Zone Cleaning</span>
     </div>
     <div class="contact-info">
-      <a href="tel:+17052421166" class="call-button" aria-label="Call us at 705-242-1166">Call us: 705-242-1166</a>
-      <button id="openModal" class="cta-button" aria-label="Book online">Book Online</button>
+      <!-- These buttons will be hidden on mobile via CSS -->
+      <a href="tel:+1234567890" class="call-button desktop-only" aria-label="Call us">
+        <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
+      </a>
+      <button class="cta-button book-now desktop-only" aria-label="Book Now">
+        <i class="fas fa-book" aria-hidden="true"></i> Book Now
+      </button>
+      <!-- Menu Toggle for Mobile -->
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu closed" aria-hidden="true">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#referral">Referral</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <!-- Add the buttons here for mobile -->
+        <li>
+          <a href="tel:+1234567890" class="call-button mobile-only" aria-label="Call us">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
+          </a>
+        </li>
+        <li>
+          <button class="cta-button book-now mobile-only" aria-label="Book Now">
+            <i class="fas fa-book" aria-hidden="true"></i> Book Now
+          </button>
+        </li>
+      </ul>
+    </nav>
   </header>
+
+  <!-- MOBILE MENU OVERLAY (added to dim background when menu is open) -->
+  <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
 
   <!-- MAIN CONTENT -->
   <main>
     <!-- HERO SECTION -->
     <section class="hero">
-      <div class="hero-text">
-        <h1 class="hero-title">Accepting New Clients Today!</h1>
-        <p class="hero-subtitle">
-          Transform your space with insured, background-checked, and highly trusted cleaners.
-          Enjoy discounted rates on recurring services!
-        </p>
-        <div class="cta-buttons">
-          <button id="openModal2" class="cta-button hero-button" aria-label="Get your free quote">Get Your Free
-            Quote</button>
-          <a href="#services" class="cta-button secondary-cta" aria-label="Explore our services">Explore Our
-            Services</a>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">Professional Cleaning Services</h1>
+          <p class="hero-subtitle">
+            Elevate your living environment with our insured, background-checked, and highly trusted cleaning
+            professionals. Enjoy exclusive discounts on our recurring service packages! Serving Barrie, Orillia,
+            Midland, Innisfil, Bradford, and beyond.
+          </p>
+          <div class="cta-buttons">
+            <button id="openModal2" class="cta-button-hero primary-cta" aria-label="Get your free quote">
+              Get Your Free Quote
+            </button>
+            <a href="#services" class="cta-button-hero secondary-cta" aria-label="Explore our services">
+              Explore Our Services
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="assets/hero.png"
+            alt="A pristine and inviting living room showcasing professional cleaning services." class="hero-image"
+            loading="lazy" />
         </div>
       </div>
-      <div class="hero-image-wrapper">
-        <img src="assets/hero.png" alt="A clean and tidy living room after professional cleaning." class="hero-image"
-          loading="lazy" />
-      </div>
     </section>
+
+
 
     <!-- FLEX CONTAINER FOR MAIN CONTENT AND REVIEWS -->
     <div class="content-reviews-container">
@@ -196,9 +237,9 @@
             </div>
 
             <!-- Swipe Indicator (Optional) -->
-            <div class="swipe-indicator">
+            <!-- <div class="swipe-indicator">
               <i class="fas fa-hand-point-right"></i> Swipe to see more
-            </div>
+            </div> -->
 
             <div class="reviews-container">
               <!-- Review 1 -->
@@ -1056,7 +1097,6 @@
   <!-- JavaScript Files (Order Matters) -->
   <script src="js/modals.js" defer></script>
   <script src="js/reviews.js" defer></script>
-  <script src="js/areas.js" defer></script>
   <script src="js/bookingForm.js" defer></script>
   <script src="js/main.js" defer></script>
 

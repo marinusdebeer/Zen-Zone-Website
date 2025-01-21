@@ -1,4 +1,4 @@
-// js/modals.js
+// modals.js
 
 document.addEventListener("DOMContentLoaded", () => {
   loadModals()
@@ -60,14 +60,14 @@ function setupModalEventListeners() {
     }
   };
 
-  // Setup open modal buttons (buttons with IDs starting with 'open')
-  const openModalButtons = document.querySelectorAll("[id^='open']");
+  // Setup open modal buttons (buttons with IDs starting with 'open' or class 'book-now')
+  const openModalButtons = document.querySelectorAll("[id^='open'], .book-now");
   openModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
       let modalId = "";
 
       // Special handling for 'openModal' and 'openModal2' to open 'modalBg'
-      if (button.id === "openModal" || button.id === "openModal2") {
+      if (button.id === "openModal" || button.id === "openModal2" || button.classList.contains("book-now")) {
         modalId = "modalBg";
       } else {
         // Remove 'open' prefix and lowercase the first character

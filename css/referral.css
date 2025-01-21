@@ -1,3 +1,5 @@
+/* referral.css */
+
 /* REFERRAL & GIFT CARDS SECTION */
 .referral {
   padding: 4rem 2rem;
@@ -24,7 +26,7 @@
   gap: 1rem;
 }
 
-.referral-buttons .cta-button {
-  flex: 1 1 150px;
-  max-width: 200px;
+.referral-buttons .cta-button.referral-cta {
+  /* Inherits base styles from .cta-button */
+  /* Specific styles are already defined in utilities.css */
 }

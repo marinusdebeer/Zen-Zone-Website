@@ -70,6 +70,7 @@
 .google-button:hover {
   background-color: #357ae8;
   transform: translateY(-2px);
+  color: #fff;
 }
 
 /* Reviews Container */
@@ -234,6 +235,7 @@
     width: 2rem;
     height: 2rem;
   }
+  
 }
 
 /* Enhanced Gradient Overlays for Scroll Indication */

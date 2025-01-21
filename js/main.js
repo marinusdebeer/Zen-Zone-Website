@@ -1,31 +1,34 @@
-// js/main.js
+// main.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Swiper.js for any additional carousels if needed
-  // const swiperElements = document.querySelectorAll('.swiper-container:not(.reviews-swiper)');
-  // swiperElements.forEach((swiperEl) => {
-  //   new Swiper(swiperEl, {
-  //     loop: true,
-  //     autoplay: {
-  //       delay: 5000,
-  //       disableOnInteraction: false,
-  //     },
-  //     pagination: {
-  //       el: '.swiper-pagination',
-  //       clickable: true,
-  //     },
-  //     navigation: {
-  //       nextEl: '.swiper-button-next',
-  //       prevEl: '.swiper-button-prev',
-  //     },
-  //     a11y: {
-  //       enabled: true,
-  //       prevSlideMessage: 'Previous slide',
-  //       nextSlideMessage: 'Next slide',
-  //       paginationBulletMessage: 'Go to slide {{index}}',
-  //     },
-  //   });
-  // });
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+  if (menuToggle && mobileMenu && mobileMenuOverlay) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      mobileMenu.setAttribute("aria-hidden", !isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      mobileMenuOverlay.classList.toggle("active", isOpen);
+    });
+
+    // Close menu when clicking on the overlay
+    mobileMenuOverlay.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      menuToggle.setAttribute("aria-expanded", "false");
+      mobileMenuOverlay.classList.remove("active");
+    });
+
+    // Allow menu toggle via keyboard
+    menuToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        menuToggle.click();
+      }
+    });
+  }
 
   // Smooth Scroll for Anchor Links
   const links = document.querySelectorAll('a[href^="#"]');
@@ -50,6 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
           top: targetPosition - navbarHeight + 30, // Offset by the navbar's height
           behavior: 'smooth',
         });
+
+        // Close the mobile menu if it's open
+        if (mobileMenu.classList.contains("open")) {
+          mobileMenu.classList.remove("open");
+          mobileMenu.setAttribute("aria-hidden", "true");
+          menuToggle.setAttribute("aria-expanded", "false");
+          mobileMenuOverlay.classList.remove("active");
+        }
       }
     });
   });

@@ -1,7 +1,6 @@
 .
 ./css
 ./js
-./data
 ./assets
 -e \nFile: ./index.html\n
 <!DOCTYPE html>
@@ -51,43 +50,98 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     crossorigin="anonymous" />
 
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/65fafd4ea0c6737bd122e1cd/1hpe6qv15';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+
 </head>
 
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo-container">
-      <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Logo" class="company-logo" loading="lazy" />
-      <div class="company-name">Zen Zone Cleaning Services</div>
+      <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Services Logo" class="company-logo" />
+      <span class="company-name">Zen Zone Cleaning</span>
     </div>
     <div class="contact-info">
-      <a href="tel:+17052421166" class="call-button" aria-label="Call us at 705-242-1166">Call us: 705-242-1166</a>
-      <button id="openModal" class="cta-button" aria-label="Book online">Book Online</button>
+      <!-- These buttons will be hidden on mobile via CSS -->
+      <a href="tel:+1234567890" class="call-button desktop-only" aria-label="Call us">
+        <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
+      </a>
+      <button class="cta-button book-now desktop-only" aria-label="Book Now">
+        <i class="fas fa-book" aria-hidden="true"></i> Book Now
+      </button>
+      <!-- Menu Toggle for Mobile -->
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu closed" aria-hidden="true">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#referral">Referral</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <!-- Add the buttons here for mobile -->
+        <li>
+          <a href="tel:+1234567890" class="call-button mobile-only" aria-label="Call us">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
+          </a>
+        </li>
+        <li>
+          <button class="cta-button book-now mobile-only" aria-label="Book Now">
+            <i class="fas fa-book" aria-hidden="true"></i> Book Now
+          </button>
+        </li>
+      </ul>
+    </nav>
   </header>
+
+  <!-- MOBILE MENU OVERLAY (added to dim background when menu is open) -->
+  <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
 
   <!-- MAIN CONTENT -->
   <main>
     <!-- HERO SECTION -->
     <section class="hero">
-      <div class="hero-text">
-        <h1 class="hero-title">Accepting New Clients Today!</h1>
-        <p class="hero-subtitle">
-          Transform your space with insured, background-checked, and highly trusted cleaners.
-          Enjoy discounted rates on recurring services!
-        </p>
-        <div class="cta-buttons">
-          <button id="openModal2" class="cta-button hero-button" aria-label="Get your free quote">Get Your Free
-            Quote</button>
-          <a href="#services" class="cta-button secondary-cta" aria-label="Explore our services">Explore Our
-            Services</a>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">Professional Cleaning Services</h1>
+          <p class="hero-subtitle">
+            Elevate your living environment with our insured, background-checked, and highly trusted cleaning
+            professionals. Enjoy exclusive discounts on our recurring service packages! Serving Barrie, Orillia,
+            Midland, Innisfil, Bradford, and beyond.
+          </p>
+          <div class="cta-buttons">
+            <button id="openModal2" class="cta-button-hero primary-cta" aria-label="Get your free quote">
+              Get Your Free Quote
+            </button>
+            <a href="#services" class="cta-button-hero secondary-cta" aria-label="Explore our services">
+              Explore Our Services
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="assets/hero.png"
+            alt="A pristine and inviting living room showcasing professional cleaning services." class="hero-image"
+            loading="lazy" />
         </div>
       </div>
-      <div class="hero-image-wrapper">
-        <img src="assets/hero.png" alt="A clean and tidy living room after professional cleaning." class="hero-image"
-          loading="lazy" />
-      </div>
     </section>
+
+
 
     <!-- FLEX CONTAINER FOR MAIN CONTENT AND REVIEWS -->
     <div class="content-reviews-container">
@@ -186,6 +240,12 @@
                 <i class="fab fa-google"></i> Visit Our Google Business Profile
               </a>
             </div>
+
+            <!-- Swipe Indicator (Optional) -->
+            <!-- <div class="swipe-indicator">
+              <i class="fas fa-hand-point-right"></i> Swipe to see more
+            </div> -->
+
             <div class="reviews-container">
               <!-- Review 1 -->
               <div class="review">
@@ -911,6 +971,13 @@
               </div>
 
             </div>
+            <!-- Navigation Arrows -->
+            <button class="reviews-nav left" aria-label="Scroll reviews to the left" tabindex="0">
+              &#9664;
+            </button>
+            <button class="reviews-nav right" aria-label="Scroll reviews to the right" tabindex="0">
+              &#9654;
+            </button>
           </div>
         </aside>
 
@@ -1035,7 +1102,6 @@
   <!-- JavaScript Files (Order Matters) -->
   <script src="js/modals.js" defer></script>
   <script src="js/reviews.js" defer></script>
-  <script src="js/areas.js" defer></script>
   <script src="js/bookingForm.js" defer></script>
   <script src="js/main.js" defer></script>
 
@@ -1164,6 +1230,8 @@ a:hover {
   background-color: #5e774c;
 }
 -e \nFile: ./css/reset.css\n
+/* reset.css */
+
 /* RESET & GLOBAL STYLES */
 * {
   box-sizing: border-box;
@@ -1171,11 +1239,30 @@ a:hover {
   padding: 0;
 }
 
+:root {
+  --navbar-height: 70px; /* Default navbar height for desktop */
+}
+
+/* Tablet Devices */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 60px; /* Adjusted for tablet */
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  :root {
+    --navbar-height: 50px; /* Adjusted for mobile */
+  }
+}
+
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
   line-height: 1.6;
+  padding-top: var(--navbar-height); /* Dynamic padding-top based on navbar height */
 }
 
 /* Prevent background scroll when a modal is open */
@@ -1378,31 +1465,61 @@ body.modal-open {
   overflow: hidden;
 }
 -e \nFile: ./css/hero.css\n
-/* HERO SECTION */
+/* hero.css */
+
+/* Hero Section */
 .hero {
+  width: 100%;
+  padding: 6rem 2rem; /* Increased padding-top implicitly handled by body padding */
+  background-color: #f0f4f8;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  padding: 6rem 2rem 2rem 2rem; /* Extra top padding to offset fixed navbar */
-  background-color: #fff;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: url('assets/hero-background.svg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-text {
-  flex: 1 1 500px;
-  max-width: 600px;
+  flex: 1;
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #2e3d2f;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
   color: #555;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
 }
 
 .cta-buttons {
@@ -1410,111 +1527,111 @@ body.modal-open {
   gap: 1rem;
 }
 
-.secondary-cta {
-  background-color: transparent;
-  border: 2px solid #6b5b95;
-  color: #6b5b95;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
+.cta-button-hero {
+  padding: 0.85rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
-.secondary-cta:hover {
+.primary-cta {
   background-color: #6b5b95;
   color: #fff;
 }
 
+.primary-cta:hover {
+  background-color: #574f8f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(107, 91, 149, 0.3);
+}
+
+.secondary-cta {
+  background-color: #e0e7ef;
+  color: #2e3d2f;
+}
+
+.secondary-cta:hover {
+  background-color: #c7d2dc;
+  color: #2E3D2F;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(32, 33, 36, 0.1);
+}
+
 .hero-image-wrapper {
-  flex: 1 1 400px;
-  max-width: 600px;
-  margin-top: 2rem;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .hero-image {
   width: 100%;
-  border-radius: 8px;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile-specific styles */
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 0 1rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .hero {
-    flex-direction: column; /* Stack text and image vertically */
-    padding: 8rem 1.5rem 2rem 1.5rem; /* Increased top padding for taller navbar */
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .hero-text {
-    max-width: 100%;
-    text-align: center; /* Center align text */
+  .hero-image-wrapper {
+    justify-content: center;
+    margin-top: 2rem;
   }
 
   .hero-title {
-    font-size: 2rem; /* Slightly smaller font for mobile */
+    font-size: 2.5rem;
   }
 
   .hero-subtitle {
     font-size: 1rem;
-    margin-bottom: 1.5rem;
   }
 
   .cta-buttons {
-    flex-direction: column; /* Stack buttons vertically */
+    justify-content: center;
+    flex-direction: column;
     gap: 0.75rem;
   }
 
-  .cta-buttons .cta-button,
-  .cta-buttons .secondary-cta {
-    width: 100%; /* Full-width buttons */
-    padding: 0.75rem 1rem; /* Increased padding for better touch areas */
-    font-size: 1rem; /* Larger font for readability */
-  }
-
-  .hero-image-wrapper {
-    max-width: 100%;
-    margin-top: 1.5rem; /* Reduced margin-top */
-  }
-
-  .hero-image {
-    height: auto; /* Maintain aspect ratio */
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 10rem 1rem 2rem 1rem; /* Further increase top padding if necessary */
-  }
-
-  .hero-title {
-    font-size: 1.8rem;
-  }
-
-  .hero-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-  }
-
-  .cta-buttons .cta-button,
-  .cta-buttons .secondary-cta {
-    font-size: 0.95rem;
-    padding: 0.65rem 0.8rem;
+  .cta-button-hero {
+    width: 100%;
   }
 }
 -e \nFile: ./css/navbar.css\n
+/* navbar.css */
+
 /* NAVBAR STYLING */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #2e3d2f; /* Dark Green */
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem; /* Reduced padding for smaller screens */
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: var(--navbar-height); /* Set navbar height based on CSS variable */
+  transition: height 0.3s ease;
 }
 
 /* Logo Container Styling */
@@ -1524,12 +1641,12 @@ body.modal-open {
 }
 
 .company-logo {
-  height: 50px;
+  height: 40px; /* Reduced logo size for smaller screens */
   margin-right: 0.5rem;
 }
 
 .company-name {
-  font-size: 1.5rem;
+  font-size: 1.3rem; /* Adjusted font size */
   font-weight: bold;
   color: #fff;
 }
@@ -1538,87 +1655,143 @@ body.modal-open {
 .contact-info {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem; /* Reduced gap between buttons */
 }
 
+/* Call Button */
 .call-button {
   background-color: #78a265; /* Light Green */
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.6rem; /* Reduced padding */
   border: none;
-  height: 40px;
+  height: 35px; /* Reduced height */
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px; /* Reduced font size */
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.call-button i {
+  margin-right: 0.3rem; /* Space between icon and text */
+  font-size: 0.9rem; /* Smaller icon size */
 }
 
 .call-button:hover {
   background-color: #5e774c;
 }
 
+/* CTA Button */
 .cta-button {
   background-color: #6b5b95; /* Purple */
   color: #fff;
-  height: 40px;
-  font-size: 14px;
-  padding: 0.5rem 1rem;
+  height: 35px; /* Reduced height */
+  font-size: 12px; /* Reduced font size */
+  padding: 0.3rem 0.6rem; /* Reduced padding */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.cta-button i {
+  margin-right: 0.3rem; /* Space between icon and text */
+  font-size: 0.9rem; /* Smaller icon size */
 }
 
 .cta-button:hover {
   background-color: #574a7a;
 }
 
-/* Mobile-specific styles */
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 1400;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mobile-menu-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+
+/* Mobile Menu Styling */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: var(--navbar-height);
+  right: 0;
+  width: 80%;
+  max-width: 300px;
+  height: 100%;
+  background-color: #2e3d2f;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+  z-index: 1500; /* Above overlay */
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Mobile Menu Links */
+.mobile-menu ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.mobile-menu li {
+  margin-bottom: 1rem;
+}
+
+.mobile-menu a,
+.mobile-menu button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.mobile-menu a:hover,
+.mobile-menu button:hover {
+  color: #78a265;
+}
+
+/* Show Menu Toggle on Mobile */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center align items horizontally */
-    padding: 1rem; /* Uniform padding */
+  .menu-toggle {
+    display: block;
   }
 
-  .logo-container {
-    flex-direction: column; /* Stack logo and name vertically */
-    align-items: center; /* Center align logo and name */
-    margin-bottom: 1rem; /* Space below logo container */
-  }
+  /* Remove display: block for .mobile-menu, control via JS class */
+  /* .mobile-menu {
+    display: block;
+  } */
 
-  .company-logo {
-    margin-right: 0; /* Remove right margin since stacked vertically */
-    margin-bottom: 0.5rem; /* Space below the logo */
-  }
-
-  .company-name {
-    font-size: 1.3rem; /* Slightly smaller font for mobile */
-    text-align: center; /* Center the company name */
-  }
-
-  .contact-info {
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 0.5rem; /* Reduce gap between buttons */
-    width: 250px; /* Full width for buttons */
-    align-items: stretch; /* Stretch buttons to full width */
-  }
-
-  .call-button,
-  .cta-button {
-    width: 100%; /* Full width buttons */
-    text-align: center; /* Center text inside buttons */
-    padding: 0.75rem 1rem; /* Increase padding for better touch areas */
-    font-size: 16px; /* Larger font for readability */
-  }
-
-  /* Optional: Add margin between buttons for better spacing */
-  .contact-info .call-button:not(:last-child),
-  .contact-info .cta-button:not(:last-child) {
-    margin-bottom: 0.5rem;
-  }
+  /* No need for .mobile-menu.closed since we're handling with transform */
 }
 -e \nFile: ./css/reviews.css\n
 /* REVIEWS SECTION */
@@ -1628,7 +1801,7 @@ body.modal-open {
   padding: 2rem;
   background-color: #f9f9f9; /* Maintains a light background for contrast */
   box-sizing: border-box;
-  position: relative; /* For gradient overlays */
+  position: relative; /* For gradient overlays and navigation arrows */
 }
 
 /* Reviews Card Container */
@@ -1638,6 +1811,7 @@ body.modal-open {
   padding: 2rem;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* To position navigation arrows relative to this container */
 }
 
 .reviews-card:hover {
@@ -1659,6 +1833,40 @@ body.modal-open {
   margin-right: 0.5rem;
   color: #6b5b95;
   font-size: 1.2em;
+}
+
+/* Google Button Container */
+.google-button-container {
+  text-align: center;
+  margin-bottom: 30px; /* Inline style in HTML */
+}
+
+/* Google Business Profile Button */
+.google-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #4285F4; /* Google Blue */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.google-button i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Google Button Hover Effect */
+.google-button:hover {
+  background-color: #357ae8;
+  transform: translateY(-2px);
+  color: #fff;
 }
 
 /* Reviews Container */
@@ -1727,7 +1935,6 @@ body.modal-open {
   overflow: hidden;
 }
 
-
 .review-avatar:hover {
   transform: scale(1.05);
 }
@@ -1786,120 +1993,54 @@ body.modal-open {
   font-weight: 500;
 }
 
-/* Google Button Container */
-.google-button-container {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-/* Google Business Profile Button */
-.google-button {
-  display: inline-flex;
-  align-items: center;
-  background-color: #4285F4; /* Google Blue */
-  color: #fff;
-  padding: 0.75rem 1.5rem;
+/* Navigation Arrows */
+.reviews-nav {
+  position: absolute;
+  top: 65%;
+  transform: translateY(-50%);
+  background-color: rgba(107, 91, 149, 0.8); /* Semi-transparent purple */
   border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.google-button i {
-  margin-right: 0.5rem;
-  font-size: 1.2rem;
+.reviews-nav:hover {
+  background-color: rgba(94, 119, 76, 0.8); /* Change color on hover */
+  transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
 }
 
-/* Google Button Hover Effect */
-.google-button:hover {
-  background-color: #357ae8;
-  transform: translateY(-2px);
+.reviews-nav.left {
+  left: 0.5rem;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .review {
-    flex: 0 0 280px;
-  }
+.reviews-nav.right {
+  right: 0.5rem;
 }
 
-@media (max-width: 992px) {
-  .review {
-    flex: 0 0 260px;
+/* Responsive Adjustments for Navigation Arrows */
+@media (max-width: 480px) {
+  .reviews-nav {
+    width: 2rem;
+    height: 2rem;
   }
+  
 }
 
-@media (max-width: 768px) {
-  .reviews-container {
-    gap: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .review {
-    flex: 0 0 250px; /* Smaller cards on tablet */
-    padding: 1rem;
-  }
-
-  .review-avatar {
-    width: 40px;
-    height: 40px;
-    margin-right: 0.8rem;
-  }
-
-  .review-text {
-    font-size: 0.95rem;
-  }
-
-  .reviews-card h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .google-button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-  }
-
-  .google-button i {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .review {
-    flex: 0 0 220px;
-  }
-
-  .review-text {
-    font-size: 0.9rem;
-  }
-
-  .reviews-card h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-  }
-
-  .google-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .google-button i {
-    font-size: 0.9rem;
-  }
-}
-
-/* Optional: Add gradient overlays on the sides to indicate scrollability */
+/* Enhanced Gradient Overlays for Scroll Indication */
 .reviews::before,
 .reviews::after {
   content: '';
   position: absolute;
   top: 0;
-  width: 3rem;
+  width: 4rem; /* Increased width for better visibility */
   height: 100%;
   pointer-events: none;
   z-index: 2;
@@ -1907,12 +2048,71 @@ body.modal-open {
 
 .reviews::before {
   left: 0;
-  background: linear-gradient(to right, #f9f9f9, rgba(249, 249, 249, 0));
+  background: linear-gradient(to right, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
 }
 
 .reviews::after {
   right: 0;
-  background: linear-gradient(to left, #f9f9f9, rgba(249, 249, 249, 0));
+  background: linear-gradient(to left, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
+}
+
+/* Responsive Adjustments for Gradient Overlays */
+@media (max-width: 768px) {
+  .reviews::before,
+  .reviews::after {
+    width: 3rem; /* Slightly reduce width on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews::before,
+  .reviews::after {
+    width: 2.5rem; /* Further reduce width for very small screens */
+  }
+}
+
+/* Ensure Gradient Overlays are above other elements but below navigation arrows */
+.reviews::before,
+.reviews::after {
+  pointer-events: none; /* Allow clicks to pass through gradients */
+}
+
+.reviews-nav {
+  pointer-events: auto; /* Enable clicks on navigation arrows */
+}
+
+/* Swipe Indicator (Optional) */
+.swipe-indicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(107, 91, 149, 0.8);
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: flex;
+  /* margin-right: -40px; */
+  /* margin-left: -40px; */
+  align-items: center;
+  gap: 0.3rem;
+  animation: fadeInOut 3s infinite;
+}
+
+.swipe-indicator i {
+  animation: bounce 2s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+  60% { transform: translateY(-3px); }
 }
 -e \nFile: ./css/about.css\n
 /* ABOUT SECTION */
@@ -2081,7 +2281,47 @@ body.modal-open {
   background-color: #5e774c;
 }
 -e \nFile: ./css/utilities.css\n
+/* css/utilities.css */
+
 /* UTILITIES */
+
+/* Hide elements on desktop */
+.desktop-only {
+  display: none;
+}
+
+/* Hide elements on mobile */
+.mobile-only {
+  display: block;
+}
+
+/* For screens larger than 768px, show desktop-only and hide mobile-only */
+@media (min-width: 769px) {
+  .desktop-only {
+    display: flex; /* Or inline-flex, block, etc., based on your layout */
+    align-items: center;
+  }
+  
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Skip Navigation Link Styles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #6b5b95;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
 
 /* Animations */
 @keyframes fadeIn {
@@ -2233,166 +2473,131 @@ select:focus {
 .footer-links a:hover {
   color: #78a265;
 }
--e \nFile: ./js/areas.js\n
-// // js/areas.js
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   fetchAreas()
-//     .then(renderAreas)
-//     .catch((error) => console.error("Error loading areas:", error));
-// });
-
-// /**
-//  * Fetch Areas from JSON
-//  */
-// async function fetchAreas() {
-//   const response = await fetch("data/areas.json");
-//   if (!response.ok) {
-//     throw new Error(`HTTP error! Status: ${response.status}`);
-//   }
-//   const areas = await response.json();
-//   return areas;
-// }
-
-// /**
-//  * Render Areas into the Areas Container
-//  */
-// function renderAreas(areas) {
-//   const areasContainer = document.querySelector(".areas-container");
-  
-//   areas.forEach((area) => {
-//     const areaItem = document.createElement("div");
-//     areaItem.classList.add("area-item");
-//     areaItem.innerHTML = `
-//       <img src="assets/${area.icon}" alt="${area.name} Icon" class="area-icon" loading="lazy" />
-//       <h3>${area.name}</h3>
-//       <p>${area.description}</p>
-//     `;
-//     areasContainer.appendChild(areaItem);
-//   });
-// }
--e \nFile: ./js/services.js\n
-// document.addEventListener("DOMContentLoaded", () => {
-//   fetchServices()
-//     .then(renderServices)
-//     .catch((error) => console.error("Error loading services:", error));
-// });
-
-// /**
-//  * Fetch Services from JSON
-//  */
-// async function fetchServices() {
-//   const response = await fetch("data/services.json");
-//   if (!response.ok) {
-//     throw new Error(`HTTP error! Status: ${response.status}`);
-//   }
-//   return response.json();
-// }
-
-// /**
-//  * Render Services into the Services Container
-//  */
-// function renderServices(services) {
-//   const servicesContainer = document.querySelector(".services-hero-tiles");
-
-//   servicesContainer.innerHTML = services
-//     .map(
-//       (service) => `
-//       <div class="service-tile">
-//         <h3>${service.title}</h3>
-//         <p>${service.description}</p>
-//         <button class="learn-more-btn" data-service="${service.id}" aria-label="Learn more about ${service.title}">
-//           Learn More
-//         </button>
-//       </div>
-//     `
-//     )
-//     .join("");
-
-//   // Add event listeners to Learn More buttons
-//   const learnMoreButtons = document.querySelectorAll(".learn-more-btn");
-//   learnMoreButtons.forEach((button) => {
-//     button.addEventListener("click", () => {
-//       const serviceId = button.getAttribute("data-service");
-//       openModal(`serviceModal${serviceId}`);
-//     });
-//   });
-// }
 -e \nFile: ./js/reviews.js\n
-// js/reviews.js
+// reviews.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  initializeSwiper();
+  initializeReviewsNavigation();
 });
 
 /**
- * Initialize Swiper.js for Reviews Carousel
+ * Setup Navigation Arrows Functionality
  */
-function initializeSwiper() {
-  new Swiper(".reviews-swiper", {
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-    centeredSlides: true,
-    pagination: { 
-      el: ".swiper-pagination", 
-      clickable: true 
-    },
-    navigation: { 
-      nextEl: ".swiper-button-next", 
-      prevEl: ".swiper-button-prev" 
-    },
-    loop: true,
-    autoplay: { 
-      delay: 5000, 
-      disableOnInteraction: false 
-    },
-    a11y: {
-      enabled: true,
-      prevSlideMessage: "Previous review",
-      nextSlideMessage: "Next review",
-      slideLabelMessage: "{{index}} / {{slidesLength}}",
-    },
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-        spaceBetween: 10
-      },
-      600: {
-        slidesPerView: 'auto',
-        spaceBetween: 20
-      }
+function initializeReviewsNavigation() {
+  const leftArrow = document.querySelector(".reviews-nav.left");
+  const rightArrow = document.querySelector(".reviews-nav.right");
+  const reviewsContainer = document.querySelector(".reviews-container");
+
+  if (!leftArrow || !rightArrow || !reviewsContainer) {
+    console.error("Reviews navigation elements not found.");
+    return;
+  }
+
+  /**
+   * Calculate the amount to scroll based on review card width and gap
+   * @returns {number} Scroll amount in pixels
+   */
+  const calculateScrollAmount = () => {
+    const reviewCard = reviewsContainer.querySelector(".review");
+    if (reviewCard) {
+      const cardStyle = window.getComputedStyle(reviewCard);
+      const cardWidth = reviewCard.offsetWidth;
+      const gap = parseInt(cardStyle.marginRight) || 20; // Default gap if not set
+      return cardWidth + gap;
     }
+    return 320; // Fallback value if no review cards found
+  };
+
+  let scrollAmount = calculateScrollAmount();
+
+  /**
+   * Update scroll amount on window resize
+   */
+  window.addEventListener("resize", () => {
+    scrollAmount = calculateScrollAmount();
+    updateArrowsVisibility();
   });
+
+  /**
+   * Event listener for left arrow
+   */
+  leftArrow.addEventListener("click", () => {
+    reviewsContainer.scrollBy({
+      left: -scrollAmount,
+      behavior: "smooth",
+    });
+  });
+
+  /**
+   * Event listener for right arrow
+   */
+  rightArrow.addEventListener("click", () => {
+    reviewsContainer.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth",
+    });
+  });
+
+  /**
+   * Function to update the visibility of navigation arrows based on scroll position
+   */
+  const updateArrowsVisibility = () => {
+    const maxScrollLeft = reviewsContainer.scrollWidth - reviewsContainer.clientWidth;
+    leftArrow.style.display = reviewsContainer.scrollLeft > 0 ? "flex" : "none";
+    rightArrow.style.display = reviewsContainer.scrollLeft < maxScrollLeft ? "flex" : "none";
+  };
+
+  /**
+   * Initial arrow visibility
+   */
+  updateArrowsVisibility();
+
+  /**
+   * Update arrow visibility on scroll
+   */
+  reviewsContainer.addEventListener("scroll", updateArrowsVisibility);
+
+  /**
+   * Keyboard Accessibility: Allow navigation via Enter or Space keys
+   */
+  const handleKeyDown = (event, direction) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      reviewsContainer.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  leftArrow.addEventListener("keydown", (event) => handleKeyDown(event, "left"));
+  rightArrow.addEventListener("keydown", (event) => handleKeyDown(event, "right"));
 }
 -e \nFile: ./js/main.js\n
-// js/main.js
+// main.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Swiper.js for any additional carousels if needed
-  // const swiperElements = document.querySelectorAll('.swiper-container:not(.reviews-swiper)');
-  // swiperElements.forEach((swiperEl) => {
-  //   new Swiper(swiperEl, {
-  //     loop: true,
-  //     autoplay: {
-  //       delay: 5000,
-  //       disableOnInteraction: false,
-  //     },
-  //     pagination: {
-  //       el: '.swiper-pagination',
-  //       clickable: true,
-  //     },
-  //     navigation: {
-  //       nextEl: '.swiper-button-next',
-  //       prevEl: '.swiper-button-prev',
-  //     },
-  //     a11y: {
-  //       enabled: true,
-  //       prevSlideMessage: 'Previous slide',
-  //       nextSlideMessage: 'Next slide',
-  //       paginationBulletMessage: 'Go to slide {{index}}',
-  //     },
-  //   });
-  // });
+ 
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+  if (menuToggle && mobileMenu && mobileMenuOverlay) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      mobileMenu.setAttribute("aria-hidden", !isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      mobileMenuOverlay.classList.toggle("active", isOpen);
+    });
+
+    // Close menu when clicking on the overlay
+    mobileMenuOverlay.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      menuToggle.setAttribute("aria-expanded", "false");
+      mobileMenuOverlay.classList.remove("active");
+    });
+  }
 
   // Smooth Scroll for Anchor Links
   const links = document.querySelectorAll('a[href^="#"]');
@@ -2417,6 +2622,14 @@ document.addEventListener("DOMContentLoaded", () => {
           top: targetPosition - navbarHeight + 30, // Offset by the navbar's height
           behavior: 'smooth',
         });
+
+        // Close the mobile menu if it's open
+        if (mobileMenu.classList.contains("open")) {
+          mobileMenu.classList.remove("open");
+          mobileMenu.setAttribute("aria-hidden", "true");
+          menuToggle.setAttribute("aria-expanded", "false");
+          mobileMenuOverlay.classList.remove("active");
+        }
       }
     });
   });
@@ -2634,7 +2847,7 @@ Additional Details: ${data.details || "None provided"}
   }
 }
 -e \nFile: ./js/modals.js\n
-// js/modals.js
+// modals.js
 
 document.addEventListener("DOMContentLoaded", () => {
   loadModals()
@@ -2696,14 +2909,14 @@ function setupModalEventListeners() {
     }
   };
 
-  // Setup open modal buttons (buttons with IDs starting with 'open')
-  const openModalButtons = document.querySelectorAll("[id^='open']");
+  // Setup open modal buttons (buttons with IDs starting with 'open' or class 'book-now')
+  const openModalButtons = document.querySelectorAll("[id^='open'], .book-now");
   openModalButtons.forEach((button) => {
     button.addEventListener("click", () => {
       let modalId = "";
 
       // Special handling for 'openModal' and 'openModal2' to open 'modalBg'
-      if (button.id === "openModal" || button.id === "openModal2") {
+      if (button.id === "openModal" || button.id === "openModal2" || button.classList.contains("book-now")) {
         modalId = "modalBg";
       } else {
         // Remove 'open' prefix and lowercase the first character

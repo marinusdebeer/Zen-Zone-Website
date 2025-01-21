@@ -1,30 +1,58 @@
 /* hero.css */
 
-/* HERO SECTION */
+/* Hero Section */
 .hero {
+  width: 100%;
+  padding: 6rem 2rem; /* Increased padding-top implicitly handled by body padding */
+  background-color: #f0f4f8;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  padding: 4rem 2rem 2rem 2rem; /* Reduced top padding */
-  background-color: #fff;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: url('assets/hero-background.svg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-text {
-  flex: 1 1 400px;
-  max-width: 600px;
+  flex: 1;
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #2e3d2f;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
   color: #555;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
 }
 
 .cta-buttons {
@@ -32,124 +60,91 @@
   gap: 1rem;
 }
 
-.secondary-cta {
-  background-color: transparent;
-  border: 2px solid #6b5b95;
-  color: #6b5b95;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
+.cta-button-hero {
+  padding: 0.85rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
-.secondary-cta:hover {
+.primary-cta {
   background-color: #6b5b95;
   color: #fff;
 }
 
+.primary-cta:hover {
+  background-color: #574f8f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(107, 91, 149, 0.3);
+}
+
+.secondary-cta {
+  background-color: #e0e7ef;
+  color: #2e3d2f;
+}
+
+.secondary-cta:hover {
+  background-color: #c7d2dc;
+  color: #2E3D2F;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(32, 33, 36, 0.1);
+}
+
 .hero-image-wrapper {
-  flex: 1 1 400px;
-  max-width: 600px;
-  margin-top: 2rem;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .hero-image {
   width: 100%;
-  border-radius: 8px;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile-specific styles */
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 0 1rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .hero {
-    flex-direction: column; /* Stack text and image vertically */
-    padding: 6rem 1.5rem 2rem 1.5rem; /* Adjusted top padding */
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .hero-text {
-    max-width: 100%;
-    text-align: center; /* Center align text */
+  .hero-image-wrapper {
+    justify-content: center;
+    margin-top: 2rem;
   }
 
   .hero-title {
-    font-size: 2rem; /* Slightly smaller font for mobile */
+    font-size: 2.5rem;
   }
 
   .hero-subtitle {
     font-size: 1rem;
-    margin-bottom: 1.5rem;
   }
 
   .cta-buttons {
-    flex-direction: column; /* Stack buttons vertically */
+    justify-content: center;
+    flex-direction: column;
     gap: 0.75rem;
   }
 
-  .cta-buttons .cta-button,
-  .cta-buttons .secondary-cta {
-    width: 100%; /* Full-width buttons */
-    padding: 0.75rem 1rem; /* Increased padding for better touch areas */
-    font-size: 1rem; /* Larger font for readability */
+  .cta-button-hero {
+    width: 100%;
   }
-
-  /* Optional: Add margin between buttons for better spacing */
-  .cta-buttons .cta-button:not(:last-child),
-  .cta-buttons .secondary-cta:not(:last-child) {
-    margin-bottom: 0.75rem;
-  }
-
-  .hero-image-wrapper {
-    max-width: 100%;
-    margin-top: 1.5rem; /* Reduced margin-top */
-  }
-
-  .hero-image {
-    height: auto; /* Maintain aspect ratio */
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 8rem 1rem 2rem 1rem; /* Further reduce top padding */
-  }
-
-  .hero-title {
-    font-size: 1.8rem;
-  }
-
-  .hero-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-  }
-
-  .cta-buttons .cta-button,
-  .cta-buttons .secondary-cta {
-    font-size: 0.95rem;
-    padding: 0.65rem 0.8rem;
-  }
-
-  /* Optional: Adjust margin if needed */
-  .cta-buttons .cta-button:not(:last-child),
-  .cta-buttons .secondary-cta:not(:last-child) {
-    margin-bottom: 0.5rem;
-  }
-}
-
-/* Primary Button Specific Styling */
-.cta-button.hero-button {
-  background-color: #78a265; /* Primary Button Color */
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button.hero-button:hover {
-  background-color: #5e774c;
 }
