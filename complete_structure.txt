@@ -89,12 +89,6 @@
     <!-- Mobile Menu -->
     <nav class="mobile-menu closed" aria-hidden="true">
       <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#referral">Referral</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <!-- Add the buttons here for mobile -->
         <li>
           <a href="tel:+1234567890" class="call-button mobile-only" aria-label="Call us">
             <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
@@ -105,6 +99,13 @@
             <i class="fas fa-book" aria-hidden="true"></i> Book Now
           </button>
         </li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#referral">Referral</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <!-- Add the buttons here for mobile -->
+        
       </ul>
     </nav>
   </header>
@@ -233,11 +234,11 @@
         <!-- REVIEWS SECTION -->
         <aside class="reviews" id="reviews" aria-label="Client Reviews">
           <div class="reviews-card">
-            <h2><i class="fas fa-comments"></i> What Our Clients Say</h2>
+            <h2><i class="fas fa-comments"></i> Reviews</h2>
             <div class="google-button-container" style="margin-bottom: 30px;">
               <a href="https://maps.app.goo.gl/EyMWdSuMsExvrxaG7" target="_blank" rel="noopener noreferrer"
                 class="google-button">
-                <i class="fab fa-google"></i> Visit Our Google Business Profile
+                <i class="fab fa-google"></i> Google Business Profile
               </a>
             </div>
 
@@ -1109,6 +1110,8 @@
 </body>
 
 </html>-e \nFile: ./css/referral.css\n
+/* referral.css */
+
 /* REFERRAL & GIFT CARDS SECTION */
 .referral {
   padding: 4rem 2rem;
@@ -1135,9 +1138,9 @@
   gap: 1rem;
 }
 
-.referral-buttons .cta-button {
-  flex: 1 1 150px;
-  max-width: 200px;
+.referral-buttons .cta-button.referral-cta {
+  /* Inherits base styles from .cta-button */
+  /* Specific styles are already defined in utilities.css */
 }
 -e \nFile: ./css/typography.css\n
 /* TYPOGRAPHY */
@@ -1683,29 +1686,13 @@ body.modal-open {
   background-color: #5e774c;
 }
 
-/* CTA Button */
-.cta-button {
-  background-color: #6b5b95; /* Purple */
-  color: #fff;
-  height: 35px; /* Reduced height */
-  font-size: 12px; /* Reduced font size */
-  padding: 0.3rem 0.6rem; /* Reduced padding */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  display: flex;
-  align-items: center;
+/* Navbar CTA Button */
+.cta-button.navbar-cta {
+  /* Inherits base styles from .cta-button */
 }
 
-.cta-button i {
-  margin-right: 0.3rem; /* Space between icon and text */
-  font-size: 0.9rem; /* Smaller icon size */
-}
-
-.cta-button:hover {
-  background-color: #574a7a;
+.cta-button.navbar-cta:hover {
+  /* Optional: Override hover if different from base */
 }
 
 /* Menu Toggle Button */
@@ -1717,6 +1704,11 @@ body.modal-open {
   font-size: 1.5rem;
   cursor: pointer;
   margin-left: 0.5rem;
+  padding: 0.5rem; /* Increased padding for better touch area */
+}
+
+.menu-toggle:focus {
+  outline: 2px solid #78a265; /* Visible focus state */
 }
 
 /* Mobile Menu Overlay */
@@ -1728,7 +1720,7 @@ body.modal-open {
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.4);
-  z-index: 1400;
+  z-index: 100;
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -1736,7 +1728,6 @@ body.modal-open {
   display: block;
   opacity: 1;
 }
-
 
 /* Mobile Menu Styling */
 .mobile-menu {
@@ -1786,12 +1777,18 @@ body.modal-open {
     display: block;
   }
 
-  /* Remove display: block for .mobile-menu, control via JS class */
-  /* .mobile-menu {
-    display: block;
-  } */
+  .mobile-menu {
+    display: block; /* Ensure menu is block-level on mobile */
+  }
 
-  /* No need for .mobile-menu.closed since we're handling with transform */
+  /* Hide desktop-only elements */
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
 }
 -e \nFile: ./css/reviews.css\n
 /* REVIEWS SECTION */
@@ -2281,103 +2278,45 @@ body.modal-open {
   background-color: #5e774c;
 }
 -e \nFile: ./css/utilities.css\n
-/* css/utilities.css */
+/* utilities.css */
 
-/* UTILITIES */
-
-/* Hide elements on desktop */
-.desktop-only {
-  display: none;
-}
-
-/* Hide elements on mobile */
-.mobile-only {
-  display: block;
-}
-
-/* For screens larger than 768px, show desktop-only and hide mobile-only */
-@media (min-width: 769px) {
-  .desktop-only {
-    display: flex; /* Or inline-flex, block, etc., based on your layout */
-    align-items: center;
-  }
-  
-  .mobile-only {
-    display: none;
-  }
-}
-
-/* Skip Navigation Link Styles */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #6b5b95;
+/* Base CTA Button */
+.cta-button {
+  background-color: #6b5b95; /* Purple */
   color: #fff;
-  padding: 8px 16px;
-  z-index: 100;
-  transition: top 0.3s;
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Focus States for Accessibility */
-button:focus,
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 3px solid #78a265; /* Visible focus ring */
-}
-
-.modal-close:focus {
-  outline: none;
-}
-
-/* Custom Select Dropdown */
-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='%236B5B95' d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 12px;
-  padding-right: 30px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 4px;
-  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem; /* Adjusted padding for better usability */
+  font-size: 1rem; /* Increased font size for readability */
+  height: auto; /* Allow height to adjust based on content */
 }
 
-select:focus {
-  border-color: #78a265;
+.cta-button i {
+  margin-right: 0.5rem; /* Space between icon and text */
+  font-size: 1rem; /* Consistent icon size */
 }
 
-/* Swiper Navigation */
-.swiper-button-prev,
-.swiper-button-next {
-  color: #6b5b95;
+.cta-button:hover {
+  background-color: #574a7a;
 }
 
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  color: #5e774c;
+/* Modifier Classes */
+.navbar-cta {
+  /* Specific styles for navbar CTA buttons */
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  height: 35px;
 }
 
-.swiper-pagination-bullet-active {
-  background-color: #6b5b95;
+.referral-cta {
+  /* Specific styles for referral CTA buttons */
+  flex: 1 1 150px;
+  max-width: 200px;
 }
 -e \nFile: ./css/blog.css\n
 /* BLOG SECTION */
@@ -2577,7 +2516,6 @@ function initializeReviewsNavigation() {
 // main.js
 
 document.addEventListener("DOMContentLoaded", () => {
- 
   const menuToggle = document.querySelector(".menu-toggle");
   const mobileMenu = document.querySelector(".mobile-menu");
   const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
@@ -2596,6 +2534,14 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileMenu.setAttribute("aria-hidden", "true");
       menuToggle.setAttribute("aria-expanded", "false");
       mobileMenuOverlay.classList.remove("active");
+    });
+
+    // Allow menu toggle via keyboard
+    menuToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        menuToggle.click();
+      }
     });
   }
 

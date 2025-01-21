@@ -1,40 +1,60 @@
 /* utilities.css */
+:root {
+  /* Primary Colors */
+  --color-primary: #6b5b95; /* Purple */
+  --color-primary-hover: #574a7a;
+
+  --color-secondary: #78a265; /* Light Green */
+  --color-secondary-hover: #5e774c;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Shadow Color */
+  --color-shadow: rgba(0, 0, 0, 0.2);
+}
 
 /* Base CTA Button */
 .cta-button {
-  background-color: #6b5b95; /* Purple */
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem; /* Adjusted padding for better usability */
-  font-size: 1rem; /* Increased font size for readability */
-  height: auto; /* Allow height to adjust based on content */
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  color: var(--color-white);
 }
 
-.cta-button i {
-  margin-right: 0.5rem; /* Space between icon and text */
-  font-size: 1rem; /* Consistent icon size */
+/* Modifier for Call Button */
+.cta-button.call-button {
+  background-color: var(--color-secondary);
 }
 
+.cta-button.call-button:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+/* Modifier for Book Now Button */
+.cta-button.book-now {
+  background-color: var(--color-primary);
+}
+
+.cta-button.book-now:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Common Hover Effects */
 .cta-button:hover {
-  background-color: #574a7a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--color-shadow);
 }
 
-/* Modifier Classes */
-.navbar-cta {
-  /* Specific styles for navbar CTA buttons */
-  padding: 0.3rem 0.6rem;
-  font-size: 0.9rem;
-  height: 35px;
-}
-
-.referral-cta {
-  /* Specific styles for referral CTA buttons */
-  flex: 1 1 150px;
-  max-width: 200px;
+/* Focus States */
+.cta-button:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
