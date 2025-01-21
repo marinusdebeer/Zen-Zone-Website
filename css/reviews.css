@@ -248,7 +248,7 @@
 
 @media (max-width: 576px) {
   .review {
-    flex: 0 0 220px;
+    flex: 0 0 100%;
   }
 
   .review-text {
