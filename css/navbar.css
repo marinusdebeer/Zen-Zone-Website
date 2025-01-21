@@ -1,4 +1,6 @@
-/* NAVBAR */
+/* navbar.css */
+
+/* NAVBAR STYLING */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -12,6 +14,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo Container Styling */
 .logo-container {
   display: flex;
   align-items: center;
@@ -28,6 +31,7 @@
   color: #fff;
 }
 
+/* Contact Info Styling */
 .contact-info {
   display: flex;
   align-items: center;
@@ -66,4 +70,70 @@
 
 .cta-button:hover {
   background-color: #574a7a;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align items horizontally */
+    padding: 1rem; /* Uniform padding */
+  }
+
+  .logo-container {
+    flex-direction: column; /* Stack logo and name vertically */
+    align-items: center; /* Center align logo and name */
+    margin-bottom: 1rem; /* Space below logo container */
+  }
+
+  .company-logo {
+    margin-right: 0; /* Remove right margin since stacked vertically */
+    margin-bottom: 0.5rem; /* Space below the logo */
+  }
+
+  .company-name {
+    font-size: 1.3rem; /* Slightly smaller font for mobile */
+    text-align: center; /* Center the company name */
+  }
+
+  .contact-info {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.5rem; /* Reduce gap between buttons */
+    width: 100%; /* Full width for buttons */
+    align-items: stretch; /* Stretch buttons to full width */
+  }
+
+  .call-button,
+  .cta-button {
+    width: 100%; /* Full width buttons */
+    text-align: center; /* Center text inside buttons */
+    padding: 0.75rem 1rem; /* Increase padding for better touch areas */
+    font-size: 16px; /* Larger font for readability */
+  }
+
+  /* Optional: Add margin between buttons for better spacing */
+  .contact-info .call-button:not(:last-child),
+  .contact-info .cta-button:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.8rem 1rem; /* Slightly reduced padding */
+  }
+
+  .company-logo {
+    height: 40px;
+  }
+
+  .company-name {
+    font-size: 1.1rem;
+  }
+
+  .call-button,
+  .cta-button {
+    padding: 0.6rem 0.8rem;
+    font-size: 14px;
+  }
 }

@@ -1438,8 +1438,72 @@ body.modal-open {
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column; /* Stack text and image vertically */
+    padding: 8rem 1.5rem 2rem 1.5rem; /* Increased top padding for taller navbar */
+  }
+
+  .hero-text {
+    max-width: 100%;
+    text-align: center; /* Center align text */
+  }
+
+  .hero-title {
+    font-size: 2rem; /* Slightly smaller font for mobile */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.75rem;
+  }
+
+  .cta-buttons .cta-button,
+  .cta-buttons .secondary-cta {
+    width: 100%; /* Full-width buttons */
+    padding: 0.75rem 1rem; /* Increased padding for better touch areas */
+    font-size: 1rem; /* Larger font for readability */
+  }
+
+  .hero-image-wrapper {
+    max-width: 100%;
+    margin-top: 1.5rem; /* Reduced margin-top */
+  }
+
+  .hero-image {
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 10rem 1rem 2rem 1rem; /* Further increase top padding if necessary */
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-buttons .cta-button,
+  .cta-buttons .secondary-cta {
+    font-size: 0.95rem;
+    padding: 0.65rem 0.8rem;
+  }
+}
 -e \nFile: ./css/navbar.css\n
-/* NAVBAR */
+/* NAVBAR STYLING */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -1453,6 +1517,7 @@ body.modal-open {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo Container Styling */
 .logo-container {
   display: flex;
   align-items: center;
@@ -1469,6 +1534,7 @@ body.modal-open {
   color: #fff;
 }
 
+/* Contact Info Styling */
 .contact-info {
   display: flex;
   align-items: center;
@@ -1507,6 +1573,52 @@ body.modal-open {
 
 .cta-button:hover {
   background-color: #574a7a;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align items horizontally */
+    padding: 1rem; /* Uniform padding */
+  }
+
+  .logo-container {
+    flex-direction: column; /* Stack logo and name vertically */
+    align-items: center; /* Center align logo and name */
+    margin-bottom: 1rem; /* Space below logo container */
+  }
+
+  .company-logo {
+    margin-right: 0; /* Remove right margin since stacked vertically */
+    margin-bottom: 0.5rem; /* Space below the logo */
+  }
+
+  .company-name {
+    font-size: 1.3rem; /* Slightly smaller font for mobile */
+    text-align: center; /* Center the company name */
+  }
+
+  .contact-info {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.5rem; /* Reduce gap between buttons */
+    width: 250px; /* Full width for buttons */
+    align-items: stretch; /* Stretch buttons to full width */
+  }
+
+  .call-button,
+  .cta-button {
+    width: 100%; /* Full width buttons */
+    text-align: center; /* Center text inside buttons */
+    padding: 0.75rem 1rem; /* Increase padding for better touch areas */
+    font-size: 16px; /* Larger font for readability */
+  }
+
+  /* Optional: Add margin between buttons for better spacing */
+  .contact-info .call-button:not(:last-child),
+  .contact-info .cta-button:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
 }
 -e \nFile: ./css/reviews.css\n
 /* REVIEWS SECTION */
@@ -1938,18 +2050,6 @@ body.modal-open {
   display: flex;
   justify-content: space-between; /* Default: buttons on both sides */
   margin-top: 1rem;
-}
-
-.form-navigation .next-btn {
-  margin-left: auto; /* Ensures proper alignment when Prev button is absent */
-}
-
-.form-navigation.only-next {
-  justify-content: flex-end; /* Aligns Next button to the right */
-}
-
-.form-navigation.only-next .prev-btn {
-  display: none; /* Hides the Prev button when not needed */
 }
 
 

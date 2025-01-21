@@ -1,15 +1,17 @@
+/* hero.css */
+
 /* HERO SECTION */
 .hero {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 6rem 2rem 2rem 2rem; /* Extra top padding to offset fixed navbar */
+  padding: 4rem 2rem 2rem 2rem; /* Reduced top padding */
   background-color: #fff;
 }
 
 .hero-text {
-  flex: 1 1 500px;
+  flex: 1 1 400px;
   max-width: 600px;
 }
 
@@ -57,4 +59,97 @@
   border-radius: 8px;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column; /* Stack text and image vertically */
+    padding: 6rem 1.5rem 2rem 1.5rem; /* Adjusted top padding */
+  }
+
+  .hero-text {
+    max-width: 100%;
+    text-align: center; /* Center align text */
+  }
+
+  .hero-title {
+    font-size: 2rem; /* Slightly smaller font for mobile */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.75rem;
+  }
+
+  .cta-buttons .cta-button,
+  .cta-buttons .secondary-cta {
+    width: 100%; /* Full-width buttons */
+    padding: 0.75rem 1rem; /* Increased padding for better touch areas */
+    font-size: 1rem; /* Larger font for readability */
+  }
+
+  /* Optional: Add margin between buttons for better spacing */
+  .cta-buttons .cta-button:not(:last-child),
+  .cta-buttons .secondary-cta:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-image-wrapper {
+    max-width: 100%;
+    margin-top: 1.5rem; /* Reduced margin-top */
+  }
+
+  .hero-image {
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 8rem 1rem 2rem 1rem; /* Further reduce top padding */
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-buttons .cta-button,
+  .cta-buttons .secondary-cta {
+    font-size: 0.95rem;
+    padding: 0.65rem 0.8rem;
+  }
+
+  /* Optional: Adjust margin if needed */
+  .cta-buttons .cta-button:not(:last-child),
+  .cta-buttons .secondary-cta:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Primary Button Specific Styling */
+.cta-button.hero-button {
+  background-color: #78a265; /* Primary Button Color */
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button.hero-button:hover {
+  background-color: #5e774c;
 }
