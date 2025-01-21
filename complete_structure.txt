@@ -75,7 +75,7 @@
     </div>
     <div class="contact-info">
       <!-- These buttons will be hidden on mobile via CSS -->
-      <a href="tel:+1234567890" class="call-button desktop-only" aria-label="Call us">
+      <a href="tel:+1234567890" class="call-button desktop-only" aria-label="Call Zen Zone Cleaning Services">
         <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
       </a>
       <button class="cta-button book-now desktop-only" aria-label="Book Now">
@@ -90,7 +90,7 @@
     <nav class="mobile-menu closed" aria-hidden="true">
       <ul>
         <li>
-          <a href="tel:+1234567890" class="call-button mobile-only" aria-label="Call us">
+          <a href="tel:+1234567890" class="call-button mobile-only" aria-label="Call Zen Zone Cleaning Services">
             <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
           </a>
         </li>
@@ -105,10 +105,10 @@
         <li><a href="#referral">Referral</a></li>
         <li><a href="#blog">Blog</a></li>
         <!-- Add the buttons here for mobile -->
-        
       </ul>
     </nav>
   </header>
+
 
   <!-- MOBILE MENU OVERLAY (added to dim background when menu is open) -->
   <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
@@ -242,12 +242,8 @@
               </a>
             </div>
 
-            <!-- Swipe Indicator (Optional) -->
-            <!-- <div class="swipe-indicator">
-              <i class="fas fa-hand-point-right"></i> Swipe to see more
-            </div> -->
-
             <div class="reviews-container">
+
               <!-- Review 1 -->
               <div class="review">
                 <div class="review-header">
@@ -256,7 +252,7 @@
                   </div>
 
                   <div class="reviewer-info">
-                    <strong>Jane Doe</strong>
+                    <strong>Michelle</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
@@ -264,13 +260,15 @@
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">January 15, 2025</span>
+                    <span class="review-date">January 18, 2025</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Amazing service! My house has never looked so clean."
+                  "Zen Zone Cleaning Services is amazing and I would highly recommend them. Our company recently found
+                  them online and used them for the first time last week. They were quick, kind, and extremely
+                  professional and we look forward to our weekly cleaning with them. Definitely did a great job!"
                 </blockquote>
-                <em class="review-service">Deep Cleaning in Barrie</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 2 -->
@@ -280,21 +278,21 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>John Smith</strong>
+                    <strong>Rick R</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i> <!-- Empty Star -->
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">January 10, 2025</span>
+                    <span class="review-date">January 1, 2025</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "The team was professional and thorough. Highly recommend!"
+                  "Very thorough move-out cleaning! Amazing work."
                 </blockquote>
-                <em class="review-service">Office Cleaning in Orillia</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 3 -->
@@ -304,21 +302,21 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Alice Brown</strong>
+                    <strong>Kylee Munro</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">January 12, 2025</span>
+                    <span class="review-date">January 1, 2025</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Great attention to detail and very friendly staff!"
+                  "Zen cleaning did an awesome job. I would recommend them to anyone looking for a trustworthy company."
                 </blockquote>
-                <em class="review-service">Move-Out Cleaning in Midland</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 4 -->
@@ -328,7 +326,7 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Michael Johnson</strong>
+                    <strong>Paul Carletti</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
@@ -336,13 +334,13 @@
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">January 08, 2025</span>
+                    <span class="review-date">December 9, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "The post-construction cleaning was superb. Our new office looks amazing!"
+                  "Zen cleaning did an awesome job. I would recommend them to anyone looking for a trustworthy company."
                 </blockquote>
-                <em class="review-service">Post-Construction Cleaning in Innisfil</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 5 -->
@@ -352,21 +350,23 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Emma Davis</strong>
+                    <strong>W N</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">January 05, 2025</span>
+                    <span class="review-date">December 8, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Efficient and reliable. They cleaned our Airbnb property quickly between guest stays."
+                  "I've had a bi-weekly cleaning service for a while now at my home in Innisfil, and they never
+                  disappoint. The team is professional and really pays attention to the details. They did a great job
+                  with my baseboards and other areas that haven’t been cleaned in a while. Highly recommend!"
                 </blockquote>
-                <em class="review-service">Airbnb Cleaning in Bradford</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 6 -->
@@ -376,7 +376,7 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Lucas Wilson</strong>
+                    <strong>Khalil Barakzai</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
@@ -384,13 +384,16 @@
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">January 03, 2025</span>
+                    <span class="review-date">December 8, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Our office has never been cleaner. The team was punctual and left no stone unturned."
+                  "I've been using Zen Zone Cleaning for weekly cleanings at my home in Barrie, and they've been
+                  incredible. The team is always on time, professional, and leaves my house looking spotless every time.
+                  It's such a relief to have a consistently clean home without worrying about it myself. Highly
+                  recommend their weekly service if you want reliable and thorough cleaners!"
                 </blockquote>
-                <em class="review-service">Office Cleaning in Orillia</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 7 -->
@@ -400,21 +403,23 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Olivia Martin</strong>
+                    <strong>Jlb</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">January 02, 2025</span>
+                    <span class="review-date">December 6, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "They did a fantastic job cleaning after our move-in. Everything is spotless!"
+                  "I called last minute looking for help with my MIL move from her house and they accommodated our
+                  schedule. They did a fantastic job. Extremely thorough and very friendly. I would 100% recommend them
+                  and use them again."
                 </blockquote>
-                <em class="review-service">Move-In Cleaning in Orillia</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 8 -->
@@ -424,21 +429,23 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Noah Thomas</strong>
+                    <strong>Elizabeth Wrenshall</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">December 30, 2024</span>
+                    <span class="review-date">November 29, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "The deep cleaning service exceeded my expectations. Highly professional!"
+                  "The job gets done with Zen Zone Cleaning! They are professional, thorough, and efficient. I am happy
+                  to have them come back routinely to help keep up with the tasks. I can now enjoy my beautiful home
+                  even more."
                 </blockquote>
-                <em class="review-service">Deep Cleaning in Barrie</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 9 -->
@@ -448,21 +455,24 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Sophia Lee</strong>
+                    <strong>Lucia Haggart</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">December 28, 2024</span>
+                    <span class="review-date">November 28, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Their move-out cleaning met all our lease requirements. Couldn't ask for better service."
+                  "The cleaning job that my husband and I come home to is excellent! Everything we request to be
+                  addressed is cleaned and done so. We even get follow-up texts to check that nothing was missed. We are
+                  happy with the service we have received from this company so far and appreciate their attention to
+                  detail."
                 </blockquote>
-                <em class="review-service">Move-Out Cleaning in Midland</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 10 -->
@@ -472,7 +482,7 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Ethan Clark</strong>
+                    <strong>Hgalasaad</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
@@ -480,13 +490,13 @@
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">December 25, 2024</span>
+                    <span class="review-date">November 27, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Consistently excellent service. Our Airbnb guests always leave great reviews because of Zen Zone."
+                  "Excellent service. Very professional."
                 </blockquote>
-                <em class="review-service">Airbnb Cleaning in Bradford</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 11 -->
@@ -496,21 +506,22 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Mia Jackson</strong>
+                    <strong>Stefanie Dale Lilly</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">December 20, 2024</span>
+                    <span class="review-date">November 4, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "The office cleaning service is exceptional. Our workspace is always spotless and inviting."
+                  "I would recommend Zen Zone Cleaning Services! They clean the office I work in and the cleaners are
+                  very respectful and responsive to requests!"
                 </blockquote>
-                <em class="review-service">Office Cleaning in Orillia</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 12 -->
@@ -520,21 +531,22 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Liam Martinez</strong>
+                    <strong>Tye Hunt</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">December 18, 2024</span>
+                    <span class="review-date">November 1, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Excellent post-construction cleaning. Our renovated home looks flawless!"
+                  "Been using Zen Zone for a few months now. Great service. Very reliable. Danee is very professional
+                  and prompt. I highly recommend them."
                 </blockquote>
-                <em class="review-service">Post-Construction Cleaning in Innisfil</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 13 -->
@@ -544,7 +556,7 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Ava Roberts</strong>
+                    <strong>Kim Wickett</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
@@ -552,14 +564,14 @@
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">December 15, 2024</span>
+                    <span class="review-date">October 21, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Their standard cleaning service keeps our home organized and clean. Very happy with the consistent
-                  service."
+                  "Always friendly and asks if there is anything special that needs to be done before they start. Always
+                  on time and very efficient."
                 </blockquote>
-                <em class="review-service">Standard Cleaning in Barrie</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 14 -->
@@ -569,21 +581,21 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Noah Wright</strong>
+                    <strong>Jackie and Rob</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">December 12, 2024</span>
+                    <span class="review-date">October 21, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Their move-in cleaning was outstanding. Our new home was spotless and ready to live in."
+                  "Great work—fabulous attention to detail!"
                 </blockquote>
-                <em class="review-service">Move-In Cleaning in Orillia</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 15 -->
@@ -593,21 +605,22 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Logan Thomas</strong>
+                    <strong>Sean Deece-Cassidy</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">November 28, 2024</span>
+                    <span class="review-date">October 21, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Excellent Airbnb cleaning service. Our guests always leave positive feedback."
+                  "Wonderful experience. I had two cleaners come to assist in an Estate clean. They truly worked harder
+                  and longer than I anticipated and remained happy and positive. Highly recommended. Thanks again!"
                 </blockquote>
-                <em class="review-service">Airbnb Cleaning in Bradford</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 16 -->
@@ -617,21 +630,22 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Emma Miller</strong>
+                    <strong>Jeremy Walker</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">November 25, 2024</span>
+                    <span class="review-date">October 19, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Their move-out cleaning was thorough and efficient. Made our move so much easier!"
+                  "Great group of professional cleaners. Zen Zone is reliable and my go-to cleaners when I have a
+                  property that needs cleaning."
                 </blockquote>
-                <em class="review-service">Move-Out Cleaning in Midland</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 17 -->
@@ -641,21 +655,25 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Ava Rodriguez</strong>
+                    <strong>Iga de Beer</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">November 22, 2024</span>
+                    <span class="review-date">August 6, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Standard cleaning keeps our home organized and clean. Very happy with the consistent service."
+                  "I've been using Zen Zone Cleaning Services for biweekly home cleanings, and I couldn't be happier.
+                  The team is always friendly, on time, and professional. After every clean, my home isn't just
+                  spotless—it smells amazing too. Their attention to detail and dedication to keeping things super clean
+                  are really impressive. I highly recommend Zen Zone Cleaning Services to anyone who needs reliable and
+                  thorough home cleaning!"
                 </blockquote>
-                <em class="review-service">Standard Cleaning in Barrie</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
               <!-- Review 18 -->
@@ -665,56 +683,7 @@
                     <i class="fas fa-user-circle"></i>
                   </div>
                   <div class="reviewer-info">
-                    <strong>Elijah Moore</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">November 20, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Their standard cleaning service keeps our home organized and clean. Very happy with the consistent
-                  service."
-                </blockquote>
-                <em class="review-service">Standard Cleaning in Barrie</em>
-              </div>
-
-              <!-- Review 19 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Isabella Miller</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">November 18, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Their move-in cleaning was outstanding. Our new home was spotless and ready to live in."
-                </blockquote>
-                <em class="review-service">Move-In Cleaning in Orillia</em>
-              </div>
-
-              <!-- Review 20 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Charlotte White</strong>
+                    <strong>Yinze X</strong>
                     <div class="review-rating">
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
@@ -722,253 +691,16 @@
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                     </div>
-                    <span class="review-date">November 15, 2024</span>
+                    <span class="review-date">June 28, 2024</span>
                   </div>
                 </div>
                 <blockquote class="review-text">
-                  "Excellent post-construction cleaning. Our renovated home looks flawless!"
+                  "I've hired Zen Zone a number of times to clean my rental property, both for tenant turnover and for
+                  post-construction clean-up. Each time they've done a stellar job, really taking care to leave it in
+                  perfect shape. Fair pricing for the services too. Will continue to use Zen Zone for any future
+                  cleaning needs."
                 </blockquote>
-                <em class="review-service">Post-Construction Cleaning in Innisfil</em>
-              </div>
-
-              <!-- Review 21 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Logan Hall</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">November 12, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Their move-out cleaning was thorough and efficient. Made our move so much easier!"
-                </blockquote>
-                <em class="review-service">Move-Out Cleaning in Midland</em>
-              </div>
-
-              <!-- Review 22 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Mia Allen</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">November 10, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "The office cleaning service is exceptional. Our workspace is always spotless and inviting."
-                </blockquote>
-                <em class="review-service">Office Cleaning in Orillia</em>
-              </div>
-
-              <!-- Review 23 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Noah Perez</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">November 08, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Their move-out cleaning was thorough and efficient. Made our move so much easier!"
-                </blockquote>
-                <em class="review-service">Move-Out Cleaning in Midland</em>
-              </div>
-
-              <!-- Review 24 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Ava Rodriguez</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">November 05, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Standard cleaning keeps our home organized and clean. Very happy with the consistent service."
-                </blockquote>
-                <em class="review-service">Standard Cleaning in Barrie</em>
-              </div>
-
-              <!-- Review 25 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Elijah Moore</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">November 03, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Excellent Airbnb cleaning service. Our guests always leave positive feedback."
-                </blockquote>
-                <em class="review-service">Airbnb Cleaning in Bradford</em>
-              </div>
-
-              <!-- Review 26 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Emma Allen</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">November 01, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Their move-in cleaning was outstanding. Our new home was spotless and ready to live in."
-                </blockquote>
-                <em class="review-service">Move-In Cleaning in Orillia</em>
-              </div>
-
-              <!-- Review 27 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Oliver Jones</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">October 30, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Their standard cleaning service keeps our office looking professional and welcoming."
-                </blockquote>
-                <em class="review-service">Office Cleaning in Orillia</em>
-              </div>
-
-              <!-- Review 28 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Charlotte Roberts</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">October 28, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Post-construction cleaning was handled perfectly. Our newly renovated kitchen looks amazing!"
-                </blockquote>
-                <em class="review-service">Post-Construction Cleaning in Innisfil</em>
-              </div>
-
-              <!-- Review 29 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Noah Hall</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star-half-alt"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">October 25, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Standard cleaning has kept our home consistently neat and tidy. Very reliable service."
-                </blockquote>
-                <em class="review-service">Standard Cleaning in Barrie</em>
-              </div>
-
-              <!-- Review 30 -->
-              <div class="review">
-                <div class="review-header">
-                  <div class="review-avatar">
-                    <i class="fas fa-user-circle"></i>
-                  </div>
-                  <div class="reviewer-info">
-                    <strong>Isabella Moore</strong>
-                    <div class="review-rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                    <span class="review-date">October 22, 2024</span>
-                  </div>
-                </div>
-                <blockquote class="review-text">
-                  "Their move-in cleaning was outstanding. Our new home was spotless and ready to live in."
-                </blockquote>
-                <em class="review-service">Move-In Cleaning in Orillia</em>
+                <em class="review-service">General Cleaning</em>
               </div>
 
             </div>
@@ -981,6 +713,7 @@
             </button>
           </div>
         </aside>
+
 
 
         <!-- ABOUT -->
@@ -1661,38 +1394,66 @@ body.modal-open {
   gap: 0.5rem; /* Reduced gap between buttons */
 }
 
-/* Call Button */
+/* Improved Call Button */
 .call-button {
-  background-color: #78a265; /* Light Green */
-  color: #fff;
-  padding: 0.3rem 0.6rem; /* Reduced padding */
+  background-color: var(--color-secondary); /* Light Green */
+  color: var(--color-white);
+  padding: 0.5rem 1rem; /* Increased padding */
   border: none;
-  height: 35px; /* Reduced height */
-  border-radius: 4px;
+  border-radius: 6px; /* Slightly more rounded corners */
   text-decoration: none;
-  font-weight: bold;
-  font-size: 12px; /* Reduced font size */
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 14px; /* Increased font size */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   display: flex;
   align-items: center;
 }
 
 .call-button i {
-  margin-right: 0.3rem; /* Space between icon and text */
-  font-size: 0.9rem; /* Smaller icon size */
+  margin-right: 0.5rem; /* Space between icon and text */
+  font-size: 1.2rem; /* Consistent icon size */
 }
 
 .call-button:hover {
-  background-color: #5e774c;
+  background-color: var(--color-secondary-hover);
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px var(--color-shadow); /* Subtle shadow */
 }
 
-/* Navbar CTA Button */
-.cta-button.navbar-cta {
-  /* Inherits base styles from .cta-button */
+.call-button:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
 
-.cta-button.navbar-cta:hover {
-  /* Optional: Override hover if different from base */
+/* Improved CTA Button */
+.cta-button {
+  background-color: var(--color-primary); /* Purple */
+  color: var(--color-white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.2rem; /* Increased padding */
+  font-size: 14px; /* Increased font size */
+}
+
+.cta-button i {
+  margin-right: 0.5rem; /* Space between icon and text */
+  font-size: 1.2rem; /* Consistent icon size */
+}
+
+.cta-button:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px var(--color-shadow); /* Subtle shadow */
+}
+
+.cta-button:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
 
 /* Menu Toggle Button */
@@ -1708,7 +1469,7 @@ body.modal-open {
 }
 
 .menu-toggle:focus {
-  outline: 2px solid #78a265; /* Visible focus state */
+  outline: 2px solid var(--color-secondary);
 }
 
 /* Mobile Menu Overlay */
@@ -1761,14 +1522,22 @@ body.modal-open {
 
 .mobile-menu a,
 .mobile-menu button {
-  color: #fff;
+  color: var(--color-white);
   text-decoration: none;
   font-size: 1rem;
+  width: 100%;
+  justify-content: center; /* Center content */
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .mobile-menu a:hover,
 .mobile-menu button:hover {
-  color: #78a265;
+  background-color: var(--color-secondary-hover);
+  color: var(--color-white);
 }
 
 /* Show Menu Toggle on Mobile */
@@ -1789,7 +1558,26 @@ body.modal-open {
   .mobile-only {
     display: block;
   }
+
+  /* Mobile Menu Buttons */
+  .mobile-menu a.call-button,
+  .mobile-menu button.cta-button {
+    width: 100%; /* Full width for better touch targets */
+    justify-content: center; /* Center the content */
+    font-size: 16px; /* Larger font size for readability */
+    padding: 0.6rem 1.2rem; /* Increased padding */
+    margin-bottom: 0.5rem; /* Space between buttons */
+  }
+
+  .mobile-menu a.call-button i,
+  .mobile-menu button.cta-button i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem; /* Consistent icon size */
+  }
 }
+
+/* Optional: Additional Styling for Navbar Links (if any) */
+/* Add your styles for other navbar links here */
 -e \nFile: ./css/reviews.css\n
 /* REVIEWS SECTION */
 .reviews {
@@ -2279,44 +2067,64 @@ body.modal-open {
 }
 -e \nFile: ./css/utilities.css\n
 /* utilities.css */
+:root {
+  /* Primary Colors */
+  --color-primary: #6b5b95; /* Purple */
+  --color-primary-hover: #574a7a;
+
+  --color-secondary: #78a265; /* Light Green */
+  --color-secondary-hover: #5e774c;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Shadow Color */
+  --color-shadow: rgba(0, 0, 0, 0.2);
+}
 
 /* Base CTA Button */
 .cta-button {
-  background-color: #6b5b95; /* Purple */
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem; /* Adjusted padding for better usability */
-  font-size: 1rem; /* Increased font size for readability */
-  height: auto; /* Allow height to adjust based on content */
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  color: var(--color-white);
 }
 
-.cta-button i {
-  margin-right: 0.5rem; /* Space between icon and text */
-  font-size: 1rem; /* Consistent icon size */
+/* Modifier for Call Button */
+.cta-button.call-button {
+  background-color: var(--color-secondary);
 }
 
+.cta-button.call-button:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+/* Modifier for Book Now Button */
+.cta-button.book-now {
+  background-color: var(--color-primary);
+}
+
+.cta-button.book-now:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Common Hover Effects */
 .cta-button:hover {
-  background-color: #574a7a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--color-shadow);
 }
 
-/* Modifier Classes */
-.navbar-cta {
-  /* Specific styles for navbar CTA buttons */
-  padding: 0.3rem 0.6rem;
-  font-size: 0.9rem;
-  height: 35px;
-}
-
-.referral-cta {
-  /* Specific styles for referral CTA buttons */
-  flex: 1 1 150px;
-  max-width: 200px;
+/* Focus States */
+.cta-button:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
 }
 -e \nFile: ./css/blog.css\n
 /* BLOG SECTION */

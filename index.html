@@ -63,54 +63,54 @@
 
 <body>
   <!-- NAVBAR -->
-<header class="navbar">
-  <div class="logo-container">
-    <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Services Logo" class="company-logo" />
-    <span class="company-name">Zen Zone Cleaning</span>
-  </div>
-  <div class="contact-info">
-    <!-- These buttons will be hidden on mobile via CSS -->
-    <a href="tel:+1234567890" class="call-button desktop-only" aria-label="Call Zen Zone Cleaning Services">
-      <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
-    </a>
-    <button class="cta-button book-now desktop-only" aria-label="Book Now">
-      <i class="fas fa-book" aria-hidden="true"></i> Book Now
-    </button>
-    <!-- Menu Toggle for Mobile -->
-    <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-  <!-- Mobile Menu -->
-  <nav class="mobile-menu closed" aria-hidden="true">
-    <ul>
-      <li>
-        <a href="tel:+1234567890" class="call-button mobile-only" aria-label="Call Zen Zone Cleaning Services">
-          <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
-        </a>
-      </li>
-      <li>
-        <button class="cta-button book-now mobile-only" aria-label="Book Now">
-          <i class="fas fa-book" aria-hidden="true"></i> Book Now
-        </button>
-      </li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#referral">Referral</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <!-- Add the buttons here for mobile -->
-    </ul>
-  </nav>
-</header>
+  <header class="navbar">
+    <div class="logo-container">
+      <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Services Logo" class="company-logo" />
+      <span class="company-name">Zen Zone Cleaning</span>
+    </div>
+    <div class="contact-info">
+      <!-- These buttons will be hidden on mobile via CSS -->
+      <a href="tel:+1234567890" class="call-button desktop-only" aria-label="Call Zen Zone Cleaning Services">
+        <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
+      </a>
+      <button class="cta-button book-now desktop-only" aria-label="Book Now">
+        <i class="fas fa-book" aria-hidden="true"></i> Book Now
+      </button>
+      <!-- Menu Toggle for Mobile -->
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu closed" aria-hidden="true">
+      <ul>
+        <li>
+          <a href="tel:+1234567890" class="call-button mobile-only" aria-label="Call Zen Zone Cleaning Services">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i> +1 (234) 567-890
+          </a>
+        </li>
+        <li>
+          <button class="cta-button book-now mobile-only" aria-label="Book Now">
+            <i class="fas fa-book" aria-hidden="true"></i> Book Now
+          </button>
+        </li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#referral">Referral</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <!-- Add the buttons here for mobile -->
+      </ul>
+    </nav>
+  </header>
 
 
   <!-- MOBILE MENU OVERLAY (added to dim background when menu is open) -->
   <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
 
   <!-- MAIN CONTENT -->
-  <main>
-    <!-- HERO SECTION -->
+  <main id="home">
+    <!-- HERO SECTION WITH ABOUT CONTENT -->
     <section class="hero">
       <div class="hero-content">
         <div class="hero-text">
@@ -120,6 +120,19 @@
             professionals. Enjoy exclusive discounts on our recurring service packages! Serving Barrie, Orillia,
             Midland, Innisfil, Bradford, and beyond.
           </p>
+          <!-- Integrated About Content -->
+          <div class="hero-about">
+            <h2>About Zen Zone Cleaning</h2>
+            <p>
+              Zen Zone Cleaning Services is a locally owned and operated cleaning company. Our mission is to bring peace
+              of mind and a spotless shine to every home or business we touch. With years of experience, a dedicated
+              staff,
+              and a commitment to eco-friendly products, we pride ourselves on delivering top-quality cleans that exceed
+              customer expectations.
+            </p>
+            <p class="highlight-text"><strong>Fully insured, background-checked, and trusted!</strong></p>
+          </div>
+          <!-- Enhanced CTA Buttons -->
           <div class="cta-buttons">
             <button id="openModal2" class="cta-button-hero primary-cta" aria-label="Get your free quote">
               Get Your Free Quote
@@ -227,487 +240,490 @@
         </section>
 
         <!-- REVIEWS SECTION -->
-<aside class="reviews" id="reviews" aria-label="Client Reviews">
-  <div class="reviews-card">
-    <h2><i class="fas fa-comments"></i> Reviews</h2>
-    <div class="google-button-container" style="margin-bottom: 30px;">
-      <a href="https://maps.app.goo.gl/EyMWdSuMsExvrxaG7" target="_blank" rel="noopener noreferrer"
-        class="google-button">
-        <i class="fab fa-google"></i> Google Business Profile
-      </a>
-    </div>
-
-    <!-- Swipe Indicator (Optional) -->
-    <!-- <div class="swipe-indicator">
-      <i class="fas fa-hand-point-right"></i> Swipe to see more
-    </div> -->
-
-    <div class="reviews-container">
-      
-      <!-- Review 1 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-
-          <div class="reviewer-info">
-            <strong>Michelle</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+        <aside class="reviews" id="reviews" aria-label="Client Reviews">
+          <div class="reviews-card">
+            <h2><i class="fas fa-comments"></i> Reviews</h2>
+            <div class="google-button-container" style="margin-bottom: 30px;">
+              <a href="https://maps.app.goo.gl/EyMWdSuMsExvrxaG7" target="_blank" rel="noopener noreferrer"
+                class="google-button">
+                <i class="fab fa-google"></i> Google Business Profile
+              </a>
             </div>
-            <span class="review-date">January 18, 2025</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Zen Zone Cleaning Services is amazing and I would highly recommend them. Our company recently found them online and used them for the first time last week. They were quick, kind, and extremely professional and we look forward to our weekly cleaning with them. Definitely did a great job!"
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
 
-      <!-- Review 2 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Rick R</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+            <div class="reviews-container">
+
+              <!-- Review 1 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+
+                  <div class="reviewer-info">
+                    <strong>Michelle</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">January 18, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Zen Zone Cleaning Services is amazing and I would highly recommend them. Our company recently found
+                  them online and used them for the first time last week. They were quick, kind, and extremely
+                  professional and we look forward to our weekly cleaning with them. Definitely did a great job!"
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 2 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Rick R</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">January 1, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Very thorough move-out cleaning! Amazing work."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 3 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Kylee Munro</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">January 1, 2025</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Zen cleaning did an awesome job. I would recommend them to anyone looking for a trustworthy company."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 4 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Paul Carletti</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">December 9, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Zen cleaning did an awesome job. I would recommend them to anyone looking for a trustworthy company."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 5 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>W N</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">December 8, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "I've had a bi-weekly cleaning service for a while now at my home in Innisfil, and they never
+                  disappoint. The team is professional and really pays attention to the details. They did a great job
+                  with my baseboards and other areas that haven’t been cleaned in a while. Highly recommend!"
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 6 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Khalil Barakzai</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">December 8, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "I've been using Zen Zone Cleaning for weekly cleanings at my home in Barrie, and they've been
+                  incredible. The team is always on time, professional, and leaves my house looking spotless every time.
+                  It's such a relief to have a consistently clean home without worrying about it myself. Highly
+                  recommend their weekly service if you want reliable and thorough cleaners!"
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 7 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Jlb</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">December 6, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "I called last minute looking for help with my MIL move from her house and they accommodated our
+                  schedule. They did a fantastic job. Extremely thorough and very friendly. I would 100% recommend them
+                  and use them again."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 8 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Elizabeth Wrenshall</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">November 29, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "The job gets done with Zen Zone Cleaning! They are professional, thorough, and efficient. I am happy
+                  to have them come back routinely to help keep up with the tasks. I can now enjoy my beautiful home
+                  even more."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 9 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Lucia Haggart</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">November 28, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "The cleaning job that my husband and I come home to is excellent! Everything we request to be
+                  addressed is cleaned and done so. We even get follow-up texts to check that nothing was missed. We are
+                  happy with the service we have received from this company so far and appreciate their attention to
+                  detail."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 10 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Hgalasaad</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">November 27, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Excellent service. Very professional."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 11 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Stefanie Dale Lilly</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">November 4, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "I would recommend Zen Zone Cleaning Services! They clean the office I work in and the cleaners are
+                  very respectful and responsive to requests!"
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 12 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Tye Hunt</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">November 1, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Been using Zen Zone for a few months now. Great service. Very reliable. Danee is very professional
+                  and prompt. I highly recommend them."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 13 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Kim Wickett</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">October 21, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Always friendly and asks if there is anything special that needs to be done before they start. Always
+                  on time and very efficient."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 14 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Jackie and Rob</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">October 21, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Great work—fabulous attention to detail!"
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 15 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Sean Deece-Cassidy</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">October 21, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Wonderful experience. I had two cleaners come to assist in an Estate clean. They truly worked harder
+                  and longer than I anticipated and remained happy and positive. Highly recommended. Thanks again!"
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 16 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Jeremy Walker</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">October 19, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "Great group of professional cleaners. Zen Zone is reliable and my go-to cleaners when I have a
+                  property that needs cleaning."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 17 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Iga de Beer</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">August 6, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "I've been using Zen Zone Cleaning Services for biweekly home cleanings, and I couldn't be happier.
+                  The team is always friendly, on time, and professional. After every clean, my home isn't just
+                  spotless—it smells amazing too. Their attention to detail and dedication to keeping things super clean
+                  are really impressive. I highly recommend Zen Zone Cleaning Services to anyone who needs reliable and
+                  thorough home cleaning!"
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
+              <!-- Review 18 -->
+              <div class="review">
+                <div class="review-header">
+                  <div class="review-avatar">
+                    <i class="fas fa-user-circle"></i>
+                  </div>
+                  <div class="reviewer-info">
+                    <strong>Yinze X</strong>
+                    <div class="review-rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">June 28, 2024</span>
+                  </div>
+                </div>
+                <blockquote class="review-text">
+                  "I've hired Zen Zone a number of times to clean my rental property, both for tenant turnover and for
+                  post-construction clean-up. Each time they've done a stellar job, really taking care to leave it in
+                  perfect shape. Fair pricing for the services too. Will continue to use Zen Zone for any future
+                  cleaning needs."
+                </blockquote>
+                <em class="review-service">General Cleaning</em>
+              </div>
+
             </div>
-            <span class="review-date">January 1, 2025</span>
+            <!-- Navigation Arrows -->
+            <button class="reviews-nav left" aria-label="Scroll reviews to the left" tabindex="0">
+              &#9664;
+            </button>
+            <button class="reviews-nav right" aria-label="Scroll reviews to the right" tabindex="0">
+              &#9654;
+            </button>
           </div>
-        </div>
-        <blockquote class="review-text">
-          "Very thorough move-out cleaning! Amazing work."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Kylee Munro</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">January 1, 2025</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Zen cleaning did an awesome job. I would recommend them to anyone looking for a trustworthy company."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 4 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Paul Carletti</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">December 9, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Zen cleaning did an awesome job. I would recommend them to anyone looking for a trustworthy company."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 5 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>W N</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">December 8, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "I've had a bi-weekly cleaning service for a while now at my home in Innisfil, and they never disappoint. The team is professional and really pays attention to the details. They did a great job with my baseboards and other areas that haven’t been cleaned in a while. Highly recommend!"
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 6 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Khalil Barakzai</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">December 8, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "I've been using Zen Zone Cleaning for weekly cleanings at my home in Barrie, and they've been incredible. The team is always on time, professional, and leaves my house looking spotless every time. It's such a relief to have a consistently clean home without worrying about it myself. Highly recommend their weekly service if you want reliable and thorough cleaners!"
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 7 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Jlb</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">December 6, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "I called last minute looking for help with my MIL move from her house and they accommodated our schedule. They did a fantastic job. Extremely thorough and very friendly. I would 100% recommend them and use them again."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 8 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Elizabeth Wrenshall</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">November 29, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "The job gets done with Zen Zone Cleaning! They are professional, thorough, and efficient. I am happy to have them come back routinely to help keep up with the tasks. I can now enjoy my beautiful home even more."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 9 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Lucia Haggart</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">November 28, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "The cleaning job that my husband and I come home to is excellent! Everything we request to be addressed is cleaned and done so. We even get follow-up texts to check that nothing was missed. We are happy with the service we have received from this company so far and appreciate their attention to detail."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 10 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Hgalasaad</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">November 27, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Excellent service. Very professional."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 11 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Stefanie Dale Lilly</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">November 4, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "I would recommend Zen Zone Cleaning Services! They clean the office I work in and the cleaners are very respectful and responsive to requests!"
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 12 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Tye Hunt</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">November 1, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Been using Zen Zone for a few months now. Great service. Very reliable. Danee is very professional and prompt. I highly recommend them."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 13 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Kim Wickett</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">October 21, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Always friendly and asks if there is anything special that needs to be done before they start. Always on time and very efficient."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 14 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Jackie and Rob</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">October 21, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Great work—fabulous attention to detail!"
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 15 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Sean Deece-Cassidy</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">October 21, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Wonderful experience. I had two cleaners come to assist in an Estate clean. They truly worked harder and longer than I anticipated and remained happy and positive. Highly recommended. Thanks again!"
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 16 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Jeremy Walker</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">October 19, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "Great group of professional cleaners. Zen Zone is reliable and my go-to cleaners when I have a property that needs cleaning."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 17 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Iga de Beer</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">August 6, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "I've been using Zen Zone Cleaning Services for biweekly home cleanings, and I couldn't be happier. The team is always friendly, on time, and professional. After every clean, my home isn't just spotless—it smells amazing too. Their attention to detail and dedication to keeping things super clean are really impressive. I highly recommend Zen Zone Cleaning Services to anyone who needs reliable and thorough home cleaning!"
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-      <!-- Review 18 -->
-      <div class="review">
-        <div class="review-header">
-          <div class="review-avatar">
-            <i class="fas fa-user-circle"></i>
-          </div>
-          <div class="reviewer-info">
-            <strong>Yinze X</strong>
-            <div class="review-rating">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <span class="review-date">June 28, 2024</span>
-          </div>
-        </div>
-        <blockquote class="review-text">
-          "I've hired Zen Zone a number of times to clean my rental property, both for tenant turnover and for post-construction clean-up. Each time they've done a stellar job, really taking care to leave it in perfect shape. Fair pricing for the services too. Will continue to use Zen Zone for any future cleaning needs."
-        </blockquote>
-        <em class="review-service">General Cleaning</em>
-      </div>
-
-    </div>
-    <!-- Navigation Arrows -->
-    <button class="reviews-nav left" aria-label="Scroll reviews to the left" tabindex="0">
-      &#9664;
-    </button>
-    <button class="reviews-nav right" aria-label="Scroll reviews to the right" tabindex="0">
-      &#9654;
-    </button>
-  </div>
-</aside>
-
-
-
-        <!-- ABOUT -->
-        <section class="about" id="about">
-          <h2>About Zen Zone Cleaning</h2>
-          <p>
-            Zen Zone Cleaning Services is a locally owned and operated cleaning company. Our mission is to bring peace
-            of
-            mind and a spotless shine to every home or business we touch. With years of experience, a dedicated staff,
-            and
-            a
-            commitment to eco-friendly products, we pride ourselves on delivering top-quality cleans that exceed
-            customer
-            expectations.
-          </p>
-          <p class="highlight-text"><strong>Fully insured, background-checked, and trusted!</strong></p>
-        </section>
+        </aside>
 
         <!-- REFERRAL & GIFT CARDS -->
-        <section class="referral" id="referral">
+        <!-- <section class="referral" id="referral">
           <h2>Gift Cards & Referral Program</h2>
           <p>
             Give the gift of a spotless home! Purchase a <strong>Gift Card</strong> for friends or family.
@@ -718,7 +734,7 @@
             <button class="cta-button" aria-label="Purchase a Gift Card">Purchase Gift Card</button>
             <button class="cta-button" aria-label="Join Referral Program">Join Referral Program</button>
           </div>
-        </section>
+        </section> -->
 
         <!-- BLOG SECTION -->
         <section class="blog-section" id="blog">
