@@ -3,3 +3,7 @@
 
 #start server
 python -m SimpleHTTPServer 8000
+
+#TODO
+Add gallery of images
+Host on Cloudfront

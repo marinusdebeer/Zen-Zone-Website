@@ -100,10 +100,10 @@
 .review {
   flex: 0 0 300px; /* Fixed width for each card */
   background-color: #fff;
-  border-left: 4px solid #6b5b95;
+  /* border-left: 4px solid #6b5b95; */
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   display: flex;

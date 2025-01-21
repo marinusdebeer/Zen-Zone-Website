@@ -64,6 +64,7 @@
   background-color: var(--color-secondary-hover);
   transform: translateY(-2px); /* Slight lift on hover */
   box-shadow: 0 4px 8px var(--color-shadow); /* Subtle shadow */
+  color: var(--color-white);
 }
 
 .call-button:focus {
