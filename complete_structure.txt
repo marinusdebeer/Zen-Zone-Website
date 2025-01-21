@@ -9,23 +9,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="description"
-    content="Zen Zone Cleaning Services - Accepting New Clients. Fast, reliable, and professional cleaning for Barrie, Orillia, Midland, Innisfil, Bradford, and beyond." />
+    content="Professional cleaning services in Barrie, Orillia, and beyond. Book today for spotless homes and businesses!" />
+
   <meta name="keywords"
     content="cleaning services, house cleaning, deep cleaning, post construction cleaning, Barrie, Orillia, Midland, Airbnb cleaning, office cleaning" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zen Zone Cleaning Services</title>
+  <title>Professional Cleaning Services in Barrie and Orillia | Zen Zone</title>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Zen Zone Cleaning Services" />
   <meta property="og:description"
-    content="Professional cleaning services for homes and businesses. Insured, background-checked, and trusted by clients." />
-  <meta property="og:image" content="moose_logo.png" />
+    content="Trusted and professional cleaning services for homes and businesses in Barrie, Orillia, Midland, and surrounding areas." />
+  <meta property="og:image" content="https://leads.zenzonecleaning.com/moose_logo.png" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter -->
   <meta name="twitter:title" content="Zen Zone Cleaning Services">
-  <meta name="twitter:description" content="Professional cleaning services for homes and businesses.">
-  <meta name="twitter:image" content="moose_logo.png">
+  <meta name="twitter:description" content="Fast, reliable cleaning services for homes and businesses in Barrie and Orillia. Book today!" />
+  <meta name="twitter:image" content="https://leads.zenzonecleaning.com/moose_logo.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- External CSS -->
@@ -36,7 +37,6 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/services.css">
   <link rel="stylesheet" href="css/areas.css">
-  <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/referral.css">
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/reviews.css">
@@ -44,8 +44,6 @@
   <link rel="stylesheet" href="css/modals.css">
   <link rel="stylesheet" href="css/forms.css">
 
-  <!-- Swiper.js CSS for Gallery Carousel -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     crossorigin="anonymous" />
@@ -121,7 +119,12 @@
         <div class="hero-text">
           <h1 class="hero-title">Professional Cleaning Services</h1>
           <p class="hero-subtitle">
-            Zen Zone Cleaning Services is your trusted, locally owned and operated cleaning company, dedicated to elevating your living environment with peace of mind and a spotless shine. Our insured, background-checked professionals deliver top-quality cleans that exceed expectations. With years of experience, a dedicated staff, and a commitment to eco-friendly products, we ensure your home or business sparkles. Enjoy exclusive discounts on our recurring service packages! Proudly serving Barrie, Orillia, Midland, Innisfil, Bradford, and beyond.
+            Zen Zone Cleaning Services is your trusted, locally owned and operated cleaning company, dedicated to
+            elevating your living environment with peace of mind and a spotless shine. Our insured, background-checked
+            professionals deliver top-quality cleans that exceed expectations. With years of experience, a dedicated
+            staff, and a commitment to eco-friendly products, we ensure your home or business sparkles. Enjoy exclusive
+            discounts on our recurring service packages! Proudly serving Barrie, Orillia, Midland, Innisfil, Bradford,
+            and beyond.
           </p>
           <!-- CTA Buttons -->
           <div class="cta-buttons">
@@ -680,7 +683,8 @@
                 <blockquote class="review-text">
                   "I've been using Zen Zone Cleaning Services for biweekly home cleanings, and I couldn't be happier.
                   The team is always friendly, on time, and professional. After every clean, my home isn't just
-                  spotless—it smells amazing too. I highly recommend Zen Zone Cleaning Services to anyone who needs reliable and
+                  spotless—it smells amazing too. I highly recommend Zen Zone Cleaning Services to anyone who needs
+                  reliable and
                   thorough home cleaning!"
                 </blockquote>
                 <em class="review-service">General Cleaning</em>
@@ -820,9 +824,35 @@
   </footer>
 
   <!-- External JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Zen Zone Cleaning Services",
+      "description": "Fast, reliable, and professional cleaning services for Barrie, Orillia, Midland, and surrounding areas.",
+      "image": "https://leads.zenzonecleaning.com/moose_logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Servicing Barrie, Orillia, Midland, and surrounding areas",
+        "addressLocality": "Orillia",
+        "addressRegion": "ON",
+        "postalCode": "",
+        "addressCountry": "CA"
+      },
+      "telephone": "+17052425462",
+      "url": "https://leads.zenzonecleaning.com",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.6085,
+        "longitude": -79.4202
+      },
+      "openingHours": ["Mo-Fr 09:00-18:00"]
+    }
+    </script>
+    
+    
   <!-- Removed the Inline loadModals Script -->
 
   <!-- JavaScript Files (Order Matters) -->
@@ -1644,17 +1674,18 @@ body.modal-open {
 
 /* Reviews Card Container */
 .reviews-card {
-  background: #ffffff;
+  background: #ffffff; /* Consider using a slightly darker shade if needed */
+  border: 1px solid #e0e0e0; /* Added subtle border for definition */
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for more depth */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative; /* To position navigation arrows relative to this container */
 }
 
 .reviews-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  /* transform: translateY(-7px); Increased lift on hover */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
 /* Reviews Title */
@@ -1733,11 +1764,11 @@ body.modal-open {
 /* Individual Review Card */
 .review {
   flex: 0 0 300px; /* Fixed width for each card */
-  background-color: #fff;
-  /* border-left: 4px solid #6b5b95; */
+  background-color: #ffffff; /* Ensure background is white for contrast */
+  border: 1px solid #e0e0e0; /* Added border for definition */
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -1748,7 +1779,7 @@ body.modal-open {
 
 .review:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.15); 
 }
 
 /* Review Header */
@@ -1869,7 +1900,6 @@ body.modal-open {
     width: 2rem;
     height: 2rem;
   }
-  
 }
 
 /* Enhanced Gradient Overlays for Scroll Indication */
@@ -1931,8 +1961,6 @@ body.modal-open {
   border-radius: 4px;
   font-size: 0.9rem;
   display: flex;
-  /* margin-right: -40px; */
-  /* margin-left: -40px; */
   align-items: center;
   gap: 0.3rem;
   animation: fadeInOut 3s infinite;
