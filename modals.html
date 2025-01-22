@@ -337,32 +337,32 @@
               <h3>Step 3: Property Details</h3>
               <div class="form-group">
                 <label for="squareFootage">Square Footage <span>*</span></label>
-                <input type="range" id="squareFootage" name="squareFootage" min="500" max="10000" step="100"
-                  value="2500"
+                <input type="range" id="squareFootage" name="squareFootage" min="0" max="10000" step="100"
+                  value="0"
                   oninput="document.getElementById('squareFootageValue').innerText = this.value + ' sq ft';" required
                   aria-required="true" />
-                <span id="squareFootageValue">2500 sq ft</span>
+                <span id="squareFootageValue">0 sq ft</span>
               </div>
               <div class="form-group">
                 <label for="bedrooms">Number of Bedrooms <span>*</span></label>
-                <input type="range" id="bedrooms" name="bedrooms" min="1" max="10" step="1" value="3"
+                <input type="range" id="bedrooms" name="bedrooms" min="0" max="10" step="1" value="0"
                   oninput="document.getElementById('bedroomsValue').innerText = this.value;" required
                   aria-required="true" />
-                <span id="bedroomsValue">3</span>
+                <span id="bedroomsValue">0</span>
               </div>
               <div class="form-group">
                 <label for="bathrooms">Number of Bathrooms <span>*</span></label>
-                <input type="range" id="bathrooms" name="bathrooms" min="1" max="10" step="1" value="2"
+                <input type="range" id="bathrooms" name="bathrooms" min="0" max="10" step="1" value="0"
                   oninput="document.getElementById('bathroomsValue').innerText = this.value;" required
                   aria-required="true" />
-                <span id="bathroomsValue">2</span>
+                <span id="bathroomsValue">0</span>
               </div>
               <div class="form-group">
                 <label for="powderRooms">Number of Powder Rooms <span>*</span></label>
-                <input type="range" id="powderRooms" name="powderRooms" min="0" max="10" step="1" value="1"
+                <input type="range" id="powderRooms" name="powderRooms" min="0" max="10" step="1" value="0"
                   oninput="document.getElementById('powderRoomsValue').innerText = this.value;" required
                   aria-required="true" />
-                <span id="powderRoomsValue">1</span>
+                <span id="powderRoomsValue">0</span>
               </div>
               <div class="form-navigation">
                 <button type="button" class="prev-btn" aria-label="Previous step">Previous</button>

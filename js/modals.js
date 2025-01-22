@@ -145,31 +145,91 @@ function setupModalEventListeners() {
       }
     });
   });
-  
-  document.getElementById('name').addEventListener('blur', async function() {
-    const userInput = this.value;
-  
-    if (!userInput.trim()) return;
-  
-    const data = { input: userInput };
-  
-    try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwWg_vtKuY4D2oYkFnkiM8dHtnzCA-hI4rohd_Ca37OElkDEqTgl4SckYrUyzJyhKGF/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-  
-      if (response.ok) {
-        console.log('Data sent successfully!');
-      } else {
-        console.error('Failed to send data.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
+
+
+
+  // Generate a unique ID for the user on page load
+const userId = localStorage.getItem("uniqueId") || `user-${Date.now()}`;
+localStorage.setItem("uniqueId", userId);
+
+// Debounce utility function
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+// Function to send data to Google Apps Script
+async function sendData(fieldId, action = null) {
+  const field = document.getElementById(fieldId);
+  let value;
+
+  if (action === "submitClicked") {
+    value = "Submitted"; // Special value for the submit button action
+  } else if (field.type === "range") {
+    value = field.value; // Get the slider's current value
+  } else {
+    value = field.value.trim(); // Get value for other input types
+  }
+
+  if (!value) return;
+
+  const data = {
+    userId, // Include unique user ID
+    fieldId: action || fieldId, // If it's a submit action, send "submitClicked"
+    value, // The field's value
+  };
+
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbx5RXzUMFjXjxANpN1oOAj3H6YBjV6XzReF8SLCCVJqK54szwLS0JxHi-SyJE6zQqA0/exec", {
+      redirect: "follow",
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8", // Specified header
+      },
+      body: JSON.stringify(data), // Convert the object to a JSON string
+    });
+
+    if (response.ok) {
+      console.log(`Data sent successfully for ${fieldId}`);
+    } else {
+      console.error(`Failed to send data for ${fieldId}:`, response.status);
     }
-  });
-  
+  } catch (error) {
+    console.error(`Error sending data for ${fieldId}:`, error);
+  }
+}
+
+// Add event listeners to form fields
+[
+  { id: "name", event: "blur" },
+  { id: "email", event: "blur" },
+  { id: "phone", event: "blur" },
+  { id: "service", event: "change" }, // For dropdowns
+  { id: "squareFootage", event: "input", debounce: true }, // For sliders
+  { id: "bedrooms", event: "input", debounce: true }, // For sliders
+  { id: "bathrooms", event: "input", debounce: true }, // For sliders
+  { id: "powderRooms", event: "input", debounce: true }, // For sliders
+  { id: "address", event: "blur" },
+  { id: "date", event: "blur" },
+  { id: "details", event: "blur" },
+].forEach(({ id, event, debounce: shouldDebounce }) => {
+  const field = document.getElementById(id);
+  if (field) {
+    const handler = shouldDebounce ? debounce(() => sendData(id), 300) : () => sendData(id);
+    field.addEventListener(event, handler);
+  }
+});
+
+// Log when the user clicks the Submit button
+document.querySelector(".submit-btn").addEventListener("click", () => {
+  sendData("submit", "submitClicked");
+});
+
+
+
 }
 
 /**
