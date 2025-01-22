@@ -966,14 +966,15 @@
           </div>
           <!-- Interactive Map -->
           <div class="map-container">
-            <div id="map" role="img" aria-label="Map showing the areas Zen Zone Cleaning serves in and around Hillsdale, Ontario."></div>
+            <div id="map" role="img"
+              aria-label="Map showing the areas Zen Zone Cleaning serves in and around Hillsdale, Ontario."></div>
           </div>
         </div>
       </div>
     </section>
-    
-    
-    
+
+
+
 
 
 
@@ -1091,6 +1092,11 @@
         fillOpacity: 0.3,           // Opacity of the circle
         radius: 45000,             // Radius in meters (15 km)
       }).addTo(map);
+      // Add a label to the map
+      const label = L.marker([44.5856, -79.7691])
+        .addTo(map)
+        .bindPopup("Areas we serve")
+        .openPopup();
     });
   </script>
 
@@ -1099,9 +1105,6 @@
   <script src="js/reviews.js" defer></script>
   <script src="js/bookingForm.js" defer></script>
   <script src="js/main.js" defer></script>
-
-
-
 
 </body>
 

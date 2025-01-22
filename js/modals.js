@@ -145,6 +145,31 @@ function setupModalEventListeners() {
       }
     });
   });
+  
+  document.getElementById('name').addEventListener('blur', async function() {
+    const userInput = this.value;
+  
+    if (!userInput.trim()) return;
+  
+    const data = { input: userInput };
+  
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwWg_vtKuY4D2oYkFnkiM8dHtnzCA-hI4rohd_Ca37OElkDEqTgl4SckYrUyzJyhKGF/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+  
+      if (response.ok) {
+        console.log('Data sent successfully!');
+      } else {
+        console.error('Failed to send data.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+  
 }
 
 /**
