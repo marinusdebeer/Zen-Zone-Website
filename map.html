@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Map with Circle</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+  <style>
+    /* Set map size */
+    #map {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize the map and set its view to Hillsdale, Ontario
+      const map = L.map("map").setView([44.5856, -79.7691], 12); // Hillsdale coordinates
+
+      // Add OpenStreetMap tiles
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      // Add a circle centered at Hillsdale
+      L.circle([44.5856, -79.7691], {
+        color: "red",           // Circle border color
+        fillColor: "#f03",      // Circle fill color
+        fillOpacity: 0.5,       // Opacity of the circle
+        radius: 45000,          // Radius in meters (10 km)
+      }).addTo(map);
+
+      // Optional: Add a marker at the center of the circle
+      L.marker([44.5856, -79.7691])
+        .addTo(map)
+        .bindPopup("Hillsdale, Ontario<br>Radius: 10 km")
+        .openPopup();
+    });
+  </script>
+</body>
+</html>

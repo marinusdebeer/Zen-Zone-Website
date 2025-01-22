@@ -6,7 +6,7 @@
 .reviews {
   flex: 1;
   width: 100%;
-  padding: 1rem;
+  padding: 2rem;
   background-color: #f9f9f9; /* Light background for contrast */
   box-sizing: border-box;
   position: relative; /* For gradient overlays and navigation arrows */
@@ -22,7 +22,7 @@
   padding: 1rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative; /* For positioning navigation arrows relative to this container */
+  position: relative; /* For positioning relative elements */
 }
 
 .reviews-card:hover {
@@ -55,7 +55,7 @@
 /* Container */
 .google-button-container {
   text-align: center;
-  margin-bottom: 3rem; /* 30px */
+  margin-bottom: 3rem; /* 48px */
 }
 
 /* Button */
@@ -83,6 +83,7 @@
 .google-button:hover {
   background-color: #357ae8;
   transform: translateY(-2px);
+  color: #fff;
 }
 
 /* -----------------------------------
@@ -96,16 +97,13 @@
   scroll-behavior: smooth; /* Smooth scrolling */
   padding: 0 1rem 1rem 1rem; /* Top, Right, Bottom, Left */
   scroll-snap-type: x mandatory; /* Enables scroll snapping */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Hide Scrollbars */
 .reviews-container::-webkit-scrollbar {
   display: none;
-}
-
-.reviews-container {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 /* -----------------------------------
@@ -297,49 +295,8 @@
   }
 }
 
-/* Ensure Gradient Overlays are above other elements but below navigation arrows */
+/* Ensure Gradient Overlays are above other elements */
 .reviews::before,
 .reviews::after {
   z-index: 2;
-}
-
-.reviews-nav {
-  z-index: 3; /* Above gradient overlays */
-}
-
-/* -----------------------------------
-   Swipe Indicator Styles (Optional)
------------------------------------ */
-.swipe-indicator {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(107, 91, 149, 0.8);
-  color: #fff;
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  animation: fadeInOut 3s infinite;
-}
-
-.swipe-indicator i {
-  animation: bounce 2s infinite;
-}
-
-/* -----------------------------------
-   Animations
------------------------------------ */
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-5px); }
-  60% { transform: translateY(-3px); }
 }
