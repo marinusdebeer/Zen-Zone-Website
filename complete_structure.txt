@@ -25,7 +25,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:title" content="Zen Zone Cleaning Services">
-  <meta name="twitter:description" content="Fast, reliable cleaning services for homes and businesses in Barrie and Orillia. Book today!" />
+  <meta name="twitter:description"
+    content="Fast, reliable cleaning services for homes and businesses in Barrie and Orillia. Book today!" />
   <meta name="twitter:image" content="https://leads.zenzonecleaning.com/moose_logo.png">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -40,6 +41,7 @@
   <link rel="stylesheet" href="css/referral.css">
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/reviews.css">
+  <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/modals.css">
   <link rel="stylesheet" href="css/forms.css">
@@ -161,89 +163,6 @@
     <!-- FLEX CONTAINER FOR MAIN CONTENT AND REVIEWS -->
     <div class="content-reviews-container">
       <div class="main-content">
-
-        <!-- SERVICES SECTION WITH HERO TILES -->
-        <section class="services" id="services">
-          <h2>Our Cleaning Services</h2>
-          <div class="services-hero-tiles">
-            <div class="service-tile">
-              <h3>Deep Cleaning</h3>
-              <p>
-                Transform your space with a meticulous deep clean that reaches every
-                hidden corner, leaving it refreshed and spotless.
-              </p>
-              <button class="learn-more-btn" data-service="DeepCleaning" aria-label="Learn more about Deep Cleaning">
-                Learn More
-              </button>
-            </div>
-            <div class="service-tile">
-              <h3>Standard Cleaning</h3>
-              <p>
-                Keep your home or office consistently fresh and tidy with our thorough
-                and reliable standard cleaning service.
-              </p>
-              <button class="learn-more-btn" data-service="StandardCleaning"
-                aria-label="Learn more about Standard Cleaning">
-                Learn More
-              </button>
-            </div>
-            <div class="service-tile">
-              <h3>Post-Construction Cleaning</h3>
-              <p>
-                Clear away the dust and debris after your renovation with our
-                specialized cleaning, leaving your space safe and pristine.
-              </p>
-              <button class="learn-more-btn" data-service="PostConstructionCleaning"
-                aria-label="Learn more about Post-Construction Cleaning">
-                Learn More
-              </button>
-            </div>
-            <div class="service-tile">
-              <h3>Move-In Cleaning</h3>
-              <p>
-                Ensure a healthy and welcoming start in your new home with our detailed
-                move-in cleaning service.
-              </p>
-              <button class="learn-more-btn" data-service="MoveInCleaning"
-                aria-label="Learn more about Move-In Cleaning">
-                Learn More
-              </button>
-            </div>
-            <div class="service-tile">
-              <h3>Move-Out Cleaning</h3>
-              <p>
-                Leave a spotless impression with our move-out cleaning that ensures
-                your property is ready for its next chapter.
-              </p>
-              <button class="learn-more-btn" data-service="MoveOutCleaning"
-                aria-label="Learn more about Move-Out Cleaning">
-                Learn More
-              </button>
-            </div>
-            <div class="service-tile">
-              <h3>Airbnb Cleaning</h3>
-              <p>
-                Enhance guest satisfaction with our fast and efficient cleaning for
-                seamless Airbnb turnovers.
-              </p>
-              <button class="learn-more-btn" data-service="AirbnbCleaning"
-                aria-label="Learn more about Airbnb Cleaning">
-                Learn More
-              </button>
-            </div>
-            <div class="service-tile">
-              <h3>Office Cleaning</h3>
-              <p>
-                Boost productivity and maintain a professional image with our
-                comprehensive office cleaning services.
-              </p>
-              <button class="learn-more-btn" data-service="OfficeCleaning"
-                aria-label="Learn more about Office Cleaning">
-                Learn More
-              </button>
-            </div>
-          </div>
-        </section>
 
         <!-- REVIEWS SECTION -->
         <aside class="reviews" id="reviews" aria-label="Client Reviews">
@@ -728,6 +647,218 @@
           </div>
         </aside>
 
+        <!-- SERVICES SECTION WITH HERO TILES -->
+        <section class="services" id="services">
+          <h2>Our Cleaning Services</h2>
+          <div class="services-hero-tiles">
+            <div class="service-tile">
+              <h3>Deep Cleaning</h3>
+              <p>
+                Transform your space with a meticulous deep clean that reaches every
+                hidden corner, leaving it refreshed and spotless.
+              </p>
+              <button class="learn-more-btn" data-service="DeepCleaning" aria-label="Learn more about Deep Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Standard Cleaning</h3>
+              <p>
+                Keep your home or office consistently fresh and tidy with our thorough
+                and reliable standard cleaning service.
+              </p>
+              <button class="learn-more-btn" data-service="StandardCleaning"
+                aria-label="Learn more about Standard Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Post-Construction Cleaning</h3>
+              <p>
+                Clear away the dust and debris after your renovation with our
+                specialized cleaning, leaving your space safe and pristine.
+              </p>
+              <button class="learn-more-btn" data-service="PostConstructionCleaning"
+                aria-label="Learn more about Post-Construction Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Move-In Cleaning</h3>
+              <p>
+                Ensure a healthy and welcoming start in your new home with our detailed
+                move-in cleaning service.
+              </p>
+              <button class="learn-more-btn" data-service="MoveInCleaning"
+                aria-label="Learn more about Move-In Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Move-Out Cleaning</h3>
+              <p>
+                Leave a spotless impression with our move-out cleaning that ensures
+                your property is ready for its next chapter.
+              </p>
+              <button class="learn-more-btn" data-service="MoveOutCleaning"
+                aria-label="Learn more about Move-Out Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Airbnb Cleaning</h3>
+              <p>
+                Enhance guest satisfaction with our fast and efficient cleaning for
+                seamless Airbnb turnovers.
+              </p>
+              <button class="learn-more-btn" data-service="AirbnbCleaning"
+                aria-label="Learn more about Airbnb Cleaning">
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Office Cleaning</h3>
+              <p>
+                Boost productivity and maintain a professional image with our
+                comprehensive office cleaning services.
+              </p>
+              <button class="learn-more-btn" data-service="OfficeCleaning"
+                aria-label="Learn more about Office Cleaning">
+                Learn More
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section class="gallery" id="gallery" aria-label="Gallery of Our Cleaning Work">
+          <h2>Our Cleaning Gallery</h2>
+          <div class="gallery-track">
+            <!-- Original Gallery Container -->
+            <div class="gallery-container">
+              <!-- Gallery Item 1 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+1"
+                  alt="Spotless kitchen after cleaning" loading="lazy" />
+              </div>
+              <!-- Gallery Item 2 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+2" alt="Shiny bathroom surfaces"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 3 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+3" alt="Organized living room"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 4 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+4" alt="Cleaned office workspace"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 5 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+5" alt="Freshly cleaned bedroom"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 6 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+6" alt="Polished hardwood floors"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 7 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+7" alt="Sparkling windows"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 8 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+8"
+                  alt="Immaculate kitchen countertops" loading="lazy" />
+              </div>
+              <!-- Gallery Item 9 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+9" alt="Tidy and organized office"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 10 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+10"
+                  alt="Cleaned and sanitized bathroom" loading="lazy" />
+              </div>
+              <!-- Add more gallery items as needed -->
+            </div>
+
+            <!-- Duplicate Gallery Container for Seamless Loop -->
+            <div class="gallery-container">
+              <!-- Repeat the same gallery items -->
+              <!-- Gallery Item 1 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+1"
+                  alt="Spotless kitchen after cleaning" loading="lazy" />
+              </div>
+              <!-- Gallery Item 2 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+2" alt="Shiny bathroom surfaces"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 3 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+3" alt="Organized living room"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 4 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+4" alt="Cleaned office workspace"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 5 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+5" alt="Freshly cleaned bedroom"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 6 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+6" alt="Polished hardwood floors"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 7 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+7" alt="Sparkling windows"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 8 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+8"
+                  alt="Immaculate kitchen countertops" loading="lazy" />
+              </div>
+              <!-- Gallery Item 9 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+9" alt="Tidy and organized office"
+                  loading="lazy" />
+              </div>
+              <!-- Gallery Item 10 -->
+              <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x800?text=Cleaning+Image+10"
+                  alt="Cleaned and sanitized bathroom" loading="lazy" />
+              </div>
+              <!-- Add more gallery items as needed -->
+            </div>
+          </div>
+        </section>
+
+        <!-- LIGHTBOX -->
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+          <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+            <img src="" alt="Expanded view" id="lightboxImage" />
+          </div>
+        </div>
+
+
+
+
+
         <!-- REFERRAL & GIFT CARDS -->
         <!-- <section class="referral" id="referral">
           <h2>Gift Cards & Referral Program</h2>
@@ -823,6 +954,15 @@
     </div>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+      <img src="" alt="Expanded view" id="lightboxImage" />
+    </div>
+  </div>
+
+
   <!-- External JS -->
   <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -851,8 +991,8 @@
       "openingHours": ["Mo-Fr 09:00-18:00"]
     }
     </script>
-    
-    
+
+
   <!-- Removed the Inline loadModals Script -->
 
   <!-- JavaScript Files (Order Matters) -->
@@ -860,6 +1000,7 @@
   <script src="js/reviews.js" defer></script>
   <script src="js/bookingForm.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/gallery.js" defer></script>
 
 
 </body>
@@ -1221,6 +1362,256 @@ body {
 /* Prevent background scrolling when modal is open */
 body.modal-open {
   overflow: hidden;
+}
+-e \nFile: ./css/gallery.css\n
+/* gallery.css */
+
+:root {
+  /* Gallery Variables */
+  --gallery-item-width: 400px;
+  --gallery-animation-duration: 30s;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --gallery-item-width: 800px;
+    --gallery-animation-duration: 60s;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gallery-item-width: 600px;
+    --gallery-animation-duration: 90s;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gallery-item-width: 400px;
+    --gallery-animation-duration: 120s;
+  }
+}
+
+/* GALLERY SECTION */
+.gallery {
+  padding: 4rem 0; /* Removed side padding to allow full-width */
+  background-color: #f9f9f9; /* Light background for contrast */
+  text-align: center;
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box;
+}
+
+.gallery h2 {
+  font-size: 2.5rem; /* Increased font size for better prominence */
+  color: #2e3d2f;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.gallery h2::after {
+  content: "";
+  display: block;
+  width: 80px; /* Wider underline */
+  height: 4px;
+  background-color: #78a265; /* Matching Accent Color */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Gallery Track for Animation */
+.gallery-track {
+  display: flex;
+  width: calc(var(--gallery-item-width) * 2); /* Total width for duplicated items */
+  animation: scroll-left var(--gallery-animation-duration) linear infinite;
+}
+
+.gallery-track:hover {
+  animation-play-state: paused;
+}
+
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-var(--gallery-item-width));
+  }
+}
+
+/* Gallery Container */
+.gallery-container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: var(--gallery-item-width); /* Width of one set of images */
+}
+
+/* Gallery Items */
+.gallery-item {
+  flex: 0 0 var(--gallery-item-width); /* Fixed width for each image */
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Lightbox Styles */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.lightbox-close:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive Adjustments */
+
+/* Define CSS Variables for Gallery */
+:root {
+  --gallery-item-width: 1200px;
+  --gallery-animation-duration: 30s;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --gallery-item-width: 800px;
+    --gallery-animation-duration: 60s;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gallery-item-width: 600px;
+    --gallery-animation-duration: 90s;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gallery-item-width: 400px;
+    --gallery-animation-duration: 120s;
+  }
+}
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  .gallery-track {
+    animation: scroll-left var(--gallery-animation-duration) linear infinite;
+  }
+
+  .gallery-track,
+  .gallery-container,
+  .gallery-item {
+    width: calc(var(--gallery-item-width) * 2); /* Adjusted via variables */
+  }
+
+  .gallery-container {
+    width: var(--gallery-item-width);
+  }
+
+  .gallery-item {
+    flex: 0 0 var(--gallery-item-width);
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .gallery-track {
+    animation: scroll-left var(--gallery-animation-duration) linear infinite;
+  }
+
+  .gallery-track,
+  .gallery-container,
+  .gallery-item {
+    width: calc(var(--gallery-item-width) * 2); /* Adjusted via variables */
+  }
+
+  .gallery-container {
+    width: var(--gallery-item-width);
+  }
+
+  .gallery-item {
+    flex: 0 0 var(--gallery-item-width);
+  }
+
+  .gallery h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .gallery-track {
+    animation: scroll-left var(--gallery-animation-duration) linear infinite;
+  }
+
+  .gallery-track,
+  .gallery-container,
+  .gallery-item {
+    width: calc(var(--gallery-item-width) * 2); /* Adjusted via variables */
+  }
+
+  .gallery-container {
+    width: var(--gallery-item-width);
+  }
+
+  .gallery-item {
+    flex: 0 0 var(--gallery-item-width);
+  }
+
+  .gallery h2 {
+    font-size: 1.8rem;
+  }
 }
 -e \nFile: ./css/hero.css\n
 /* hero.css */
@@ -2279,8 +2670,42 @@ body.modal-open {
 
 document.addEventListener("DOMContentLoaded", () => {
   initializeReviewsNavigation();
+  makeReviewsClickable();
 });
 
+
+function makeReviewsClickable() {
+  const googleBusinessURL = "https://maps.app.goo.gl/EyMWdSuMsExvrxaG7"; // Your Google Business Profile URL
+  const reviewCards = document.querySelectorAll(".review");
+
+  reviewCards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      // Prevent redirect if the click is on a button or link inside the card
+      if (
+        e.target.closest("button") ||
+        e.target.closest("a") ||
+        e.target.tagName.toLowerCase() === "label"
+      ) {
+        return; // Do nothing, allowing the button/link to function normally
+      }
+
+      // Open the Google Business Profile in a new tab
+      window.open(googleBusinessURL, "_blank", "noopener,noreferrer");
+    });
+
+    // Optional: Enhance Accessibility by allowing keyboard navigation
+    card.setAttribute("tabindex", "0"); // Make the card focusable
+    card.setAttribute("role", "button"); // Indicate the role
+
+    // Handle 'Enter' and 'Space' key presses
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        window.open(googleBusinessURL, "_blank", "noopener,noreferrer");
+      }
+    });
+  });
+}
 /**
  * Setup Navigation Arrows Functionality
  */
@@ -2374,6 +2799,52 @@ function initializeReviewsNavigation() {
   leftArrow.addEventListener("keydown", (event) => handleKeyDown(event, "left"));
   rightArrow.addEventListener("keydown", (event) => handleKeyDown(event, "right"));
 }
+-e \nFile: ./js/gallery.js\n
+// gallery.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Lightbox functionality
+  const galleryItems = document.querySelectorAll(".gallery-item img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  galleryItems.forEach((img) => {
+    img.addEventListener("click", () => {
+      lightboxImage.src = img.src.replace("1200x800", "1600x1200"); // Update if higher resolution is available
+      lightboxImage.alt = img.alt;
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  lightboxClose.addEventListener("click", () => {
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxImage.src = "";
+    lightboxImage.alt = "";
+  });
+
+  // Close lightbox when clicking outside the image
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+    }
+  });
+
+  // Close lightbox with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("active")) {
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+    }
+  });
+});
 -e \nFile: ./js/main.js\n
 // main.js
 

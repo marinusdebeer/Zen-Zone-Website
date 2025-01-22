@@ -1,0 +1,141 @@
+
+/* ===========================
+   CSS Variables for Gallery
+=========================== */
+:root {
+  /* Animation Duration */
+  --gallery-animation-duration: 64s; /* Duration of the scroll animation */
+
+  /* Space Between Images */
+  --gallery-gap: 20px;               /* Space between images */
+
+  /* Desktop Image Dimensions */
+  --gallery-item-width: 400px;       /* Width of each gallery item on desktop */
+  --gallery-item-height: 375px;      /* Height of each gallery item on desktop */
+
+  /* Tablet (iPad) Image Dimensions */
+  --gallery-item-width-tablet: 350px; /* Width on tablets */
+  --gallery-item-height-tablet: 350px; /* Height on tablets */
+
+  /* Mobile Image Dimensions */
+  --gallery-item-width-mobile: 400px; /* Width on mobile devices */
+  --gallery-item-height-mobile: 400px; /* Height on mobile devices */
+
+  /* Number of Images per Container */
+  --images-per-container-desktop: 32; /* Number of images on desktop */
+  --images-per-container-tablet: 32;   /* Number of images on tablets */
+  --images-per-container-mobile: 32;    /* Number of images on mobile */
+
+  /* Calculated Container and Track Widths */
+  --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* Desktop: 300px * 10 + 20px * 9 = 3180px */
+  --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 3180px * 2 = 6360px */
+}
+
+/* ===========================
+   Gallery Section Styling
+=========================== */
+.gallery {
+  padding: 4rem 0;                    /* Top and bottom spacing */
+  background-color: #f9f9f9;          /* Light background color */
+  text-align: center;                 /* Center align text */
+  overflow: hidden;                   /* Hide overflowing content */
+}
+
+.gallery h2 {
+  font-size: 2.5rem;                  /* Heading font size */
+  color: #2e3d2f;                      /* Heading color */
+  margin-bottom: 2rem;                /* Spacing below heading */
+  position: relative;
+}
+
+.gallery h2::after {
+  content: "";
+  display: block;
+  width: 80px;                        /* Underline width */
+  height: 4px;                        /* Underline height */
+  background-color: #78a265;          /* Underline color */
+  margin: 10px auto 0;                /* Spacing above and below underline */
+  border-radius: 2px;                 /* Rounded corners for underline */
+}
+
+/* ===========================
+   Gallery Track for Animation
+=========================== */
+.gallery-track {
+  display: flex;                      /* Flex layout */
+  width: var(--gallery-track-width);  /* Total width for duplicated containers */
+  animation: scroll-loop var(--gallery-animation-duration) linear infinite; /* Scroll animation */
+  align-items: center;                /* Vertically center items */
+}
+
+.gallery-track:hover {
+  animation-play-state: paused;       /* Pause animation on hover */
+}
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0);         /* Start position */
+  }
+  100% {
+    transform: translateX(-50%);      /* End position: move left by half the track's width (one container) */
+  }
+}
+
+/* ===========================
+   Gallery Container Styling
+=========================== */
+.gallery-container {
+  display: flex;                      /* Flex layout */
+  gap: var(--gallery-gap);            /* Space between items */
+  width: var(--gallery-container-width); /* Width of one container */
+  flex-shrink: 0;                     /* Prevent shrinking */
+}
+
+/* ===========================
+   Gallery Item Styling
+=========================== */
+.gallery-item {
+  flex: 0 0 var(--gallery-item-width); /* Fixed width for each image */
+  position: relative;
+  overflow: hidden;                   /* Hide overflowing image parts */
+  height: var(--gallery-item-height); /* Fixed height to maintain consistency */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                  /* Ensure image covers container without distortion */
+  display: block;
+  border-radius: 10px;                /* Rounded corners for images */
+  cursor: pointer;                    /* Cursor changes to pointer on hover */
+  transition: transform 0.3s ease;    /* Smooth zoom effect */
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);              /* Slight zoom on hover */
+}
+
+/* ===========================
+   Responsive Design
+=========================== */
+@media (max-width: 768px) {
+  :root {
+    /* Tablet (iPad) Adjustments */
+    --gallery-item-width: var(--gallery-item-width-tablet);     /* 350px */
+    --gallery-item-height: var(--gallery-item-height-tablet);   /* 350px */
+    --images-per-container-desktop: var(--images-per-container-tablet); /* 8 */
+    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* 350px * 8 + 20px * 7 = 2800px + 140px = 2940px */
+    --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 2940px * 2 = 5880px */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    /* Mobile Adjustments */
+    --gallery-item-width: var(--gallery-item-width-mobile);     /* 400px */
+    --gallery-item-height: var(--gallery-item-height-mobile);   /* 400px */
+    --images-per-container-desktop: var(--images-per-container-mobile); /* 6 */
+    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* 400px * 6 + 20px * 5 = 2400px + 100px = 2500px */
+    --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 2500px * 2 = 5000px */
+  }
+}
