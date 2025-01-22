@@ -4,7 +4,7 @@
 =========================== */
 :root {
   /* Animation Duration */
-  --gallery-animation-duration: 64s; /* Duration of the scroll animation */
+  --gallery-animation-duration: 140s; /* Duration of the scroll animation */
 
   /* Space Between Images */
   --gallery-gap: 20px;               /* Space between images */
