@@ -33,6 +33,50 @@
   color: #fff;
 }
 
+/* Desktop Navigation Menu Styling */
+.desktop-menu {
+  margin-left: 2rem; /* Space between logo and menu */
+}
+
+.desktop-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem; /* Space between menu items */
+}
+
+.desktop-menu li {
+  /* Optional: Add styles for list items if needed */
+}
+
+.desktop-menu a.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  position: relative;
+}
+
+.desktop-menu a.nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.desktop-menu a.nav-link:hover::after {
+  width: 100%;
+}
+
+.desktop-menu a.nav-link:hover {
+  color: var(--color-secondary); /* Light Green on hover */
+}
+
 /* Contact Info Styling */
 .contact-info {
   display: flex;
@@ -198,7 +242,8 @@
   }
 
   /* Hide desktop-only elements */
-  .desktop-only {
+  .desktop-only,
+  .desktop-menu {
     display: none;
   }
 
@@ -220,6 +265,17 @@
   .mobile-menu button.cta-button i {
     margin-right: 0.5rem;
     font-size: 1.2rem; /* Consistent icon size */
+  }
+}
+
+/* Hide Mobile Menu Links on Desktop */
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none;
+  }
+
+  .mobile-menu-overlay {
+    display: none;
   }
 }
 

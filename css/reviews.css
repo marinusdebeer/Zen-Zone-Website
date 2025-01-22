@@ -1,37 +1,46 @@
 /* REVIEWS SECTION */
+
+/* -----------------------------------
+   Container Styles
+----------------------------------- */
 .reviews {
   flex: 1;
   width: 100%;
-  padding: 2rem;
-  background-color: #f9f9f9; /* Maintains a light background for contrast */
+  padding: 1rem;
+  background-color: #f9f9f9; /* Light background for contrast */
   box-sizing: border-box;
   position: relative; /* For gradient overlays and navigation arrows */
 }
 
-/* Reviews Card Container */
+/* -----------------------------------
+   Reviews Card Styles
+----------------------------------- */
 .reviews-card {
-  background: #ffffff; /* Consider using a slightly darker shade if needed */
-  border: 1px solid #e0e0e0; /* Added subtle border for definition */
+  background: #ffffff; /* White background */
+  border: 1px solid #e0e0e0; /* Subtle border for definition */
   border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for more depth */
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative; /* To position navigation arrows relative to this container */
+  position: relative; /* For positioning navigation arrows relative to this container */
 }
 
 .reviews-card:hover {
-  /* transform: translateY(-7px); Increased lift on hover */
+  /* Uncomment and adjust if you want to enable the lift effect on hover */
+  /* transform: translateY(-7px); */
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
-/* Reviews Title */
+/* -----------------------------------
+   Reviews Title Styles
+----------------------------------- */
 .reviews-card h2 {
   font-size: 2.2rem;
   color: #2e3d2f;
   margin-bottom: 2rem;
   text-align: center;
-  position: relative;
   font-weight: 700;
+  position: relative;
 }
 
 .reviews-card h2 i {
@@ -40,13 +49,16 @@
   font-size: 1.2em;
 }
 
-/* Google Button Container */
+/* -----------------------------------
+   Google Button Styles
+----------------------------------- */
+/* Container */
 .google-button-container {
   text-align: center;
-  margin-bottom: 30px; /* Inline style in HTML */
+  margin-bottom: 3rem; /* 30px */
 }
 
-/* Google Business Profile Button */
+/* Button */
 .google-button {
   display: inline-flex;
   align-items: center;
@@ -56,10 +68,10 @@
   border: none;
   border-radius: 4px;
   font-size: 1rem;
-  text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .google-button i {
@@ -67,41 +79,42 @@
   font-size: 1.2rem;
 }
 
-/* Google Button Hover Effect */
+/* Hover Effect */
 .google-button:hover {
   background-color: #357ae8;
   transform: translateY(-2px);
-  color: #fff;
 }
 
-/* Reviews Container */
+/* -----------------------------------
+   Reviews Container Styles
+----------------------------------- */
 .reviews-container {
   display: flex;
   flex-direction: row;
   gap: 1.5rem; /* Space between cards */
   overflow-x: auto; /* Enable horizontal scrolling */
   scroll-behavior: smooth; /* Smooth scrolling */
-  padding-bottom: 1rem;
-  padding-left: 1rem; /* Adds padding to the left for better spacing */
+  padding: 0 1rem 1rem 1rem; /* Top, Right, Bottom, Left */
   scroll-snap-type: x mandatory; /* Enables scroll snapping */
 }
 
-/* Hide scrollbar for WebKit browsers */
+/* Hide Scrollbars */
 .reviews-container::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for Firefox and IE */
 .reviews-container {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 
-/* Individual Review Card */
+/* -----------------------------------
+   Individual Review Card Styles
+----------------------------------- */
 .review {
   flex: 0 0 300px; /* Fixed width for each card */
-  background-color: #ffffff; /* Ensure background is white for contrast */
-  border: 1px solid #e0e0e0; /* Added border for definition */
+  background-color: #ffffff; /* White background for contrast */
+  border: 1px solid #e0e0e0; /* Subtle border for definition */
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
@@ -115,10 +128,12 @@
 
 .review:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Review Header */
+/* -----------------------------------
+   Review Header Styles
+----------------------------------- */
 .review-header {
   display: flex;
   align-items: center;
@@ -129,22 +144,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 1rem;
-  width: 40px; /* Avatar width */
-  height: 40px; /* Avatar height */
-  background-color: #6b5b95; /* Background color to match branding */
+  width: 40px;
+  height: 40px;
+  background-color: #6b5b95; /* Matching branding */
   border-radius: 50%; /* Circular shape */
   color: #ffffff; /* Icon color */
-  font-size: 2rem; /* Icon size */
+  font-size: 2rem;
   border: 2px solid #6b5b95; /* Optional border */
   overflow: hidden;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
 }
 
 .review-avatar:hover {
   transform: scale(1.05);
 }
 
-/* Reviewer Information */
+/* -----------------------------------
+   Reviewer Information Styles
+----------------------------------- */
 .reviewer-info {
   display: flex;
   flex-direction: column;
@@ -172,7 +190,9 @@
   color: #777;
 }
 
-/* Review Text */
+/* -----------------------------------
+   Review Text Styles
+----------------------------------- */
 .review-text {
   font-style: italic;
   font-size: 1rem;
@@ -191,14 +211,18 @@
   color: #6b5b95;
 }
 
-/* Review Service */
+/* -----------------------------------
+   Review Service Styles
+----------------------------------- */
 .review-service {
   font-size: 0.9rem;
   color: #6b5b95;
   font-weight: 500;
 }
 
-/* Navigation Arrows */
+/* -----------------------------------
+   Navigation Arrows Styles
+----------------------------------- */
 .reviews-nav {
   position: absolute;
   top: 65%;
@@ -217,17 +241,17 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.reviews-nav:hover {
-  background-color: rgba(94, 119, 76, 0.8); /* Change color on hover */
-  transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
-}
-
 .reviews-nav.left {
   left: 0.5rem;
 }
 
 .reviews-nav.right {
   right: 0.5rem;
+}
+
+.reviews-nav:hover {
+  background-color: rgba(94, 119, 76, 0.8); /* Changed color on hover */
+  transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
 }
 
 /* Responsive Adjustments for Navigation Arrows */
@@ -238,7 +262,9 @@
   }
 }
 
-/* Enhanced Gradient Overlays for Scroll Indication */
+/* -----------------------------------
+   Gradient Overlays for Scroll Indication
+----------------------------------- */
 .reviews::before,
 .reviews::after {
   content: '';
@@ -246,25 +272,21 @@
   top: 0;
   width: 4rem; /* Increased width for better visibility */
   height: 100%;
-  pointer-events: none;
+  background: linear-gradient(to right, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
+  pointer-events: none; /* Allow clicks to pass through */
   z-index: 2;
 }
 
-.reviews::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
-}
-
 .reviews::after {
-  right: 0;
   background: linear-gradient(to left, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
+  right: 0;
+  left: auto; /* Override left property */
 }
 
-/* Responsive Adjustments for Gradient Overlays */
 @media (max-width: 768px) {
   .reviews::before,
   .reviews::after {
-    width: 3rem; /* Slightly reduce width on smaller screens */
+    width: 3rem; /* Reduce width on smaller screens */
   }
 }
 
@@ -278,14 +300,16 @@
 /* Ensure Gradient Overlays are above other elements but below navigation arrows */
 .reviews::before,
 .reviews::after {
-  pointer-events: none; /* Allow clicks to pass through gradients */
+  z-index: 2;
 }
 
 .reviews-nav {
-  pointer-events: auto; /* Enable clicks on navigation arrows */
+  z-index: 3; /* Above gradient overlays */
 }
 
-/* Swipe Indicator (Optional) */
+/* -----------------------------------
+   Swipe Indicator Styles (Optional)
+----------------------------------- */
 .swipe-indicator {
   position: absolute;
   bottom: 10px;
@@ -306,6 +330,9 @@
   animation: bounce 2s infinite;
 }
 
+/* -----------------------------------
+   Animations
+----------------------------------- */
 @keyframes fadeInOut {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
