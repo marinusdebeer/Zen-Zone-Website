@@ -31,7 +31,6 @@ function initBookingForm() {
   bookingForm.addEventListener("click", (e) => {
     if (e.target.classList.contains("next-btn")) {
       e.preventDefault();
-      console.log(`Next button clicked on step ${currentStep}`);
       if (validateFormStep(currentStep)) {
         currentStep++;
         showFormStep(currentStep);
@@ -40,7 +39,6 @@ function initBookingForm() {
 
     if (e.target.classList.contains("prev-btn")) {
       e.preventDefault();
-      console.log(`Previous button clicked on step ${currentStep}`);
       currentStep--;
       showFormStep(currentStep);
     }
@@ -63,7 +61,6 @@ function initBookingForm() {
    * Show the form step based on index
    */
   function showFormStep(step) {
-    console.log(`Showing step ${step}`);
     formSteps.forEach((formStep, index) => {
       formStep.classList.toggle("active", index + 1 === step);
     });
@@ -78,7 +75,6 @@ function initBookingForm() {
    * Validate current form step
    */
   function validateFormStep(step) {
-    console.log(`Validating step ${step}`);
     const currentFormStep = formSteps[step - 1];
     const inputs = currentFormStep.querySelectorAll("input, select, textarea");
     let valid = true;
@@ -116,7 +112,6 @@ function initBookingForm() {
     emailjs
       .send("service_156d2p8", "template_i7i7zz7", { ...data, message: constructAdminMessage(data) })
       .then(() => {
-        console.log("Booking form submitted successfully");
 
         // Prepare and send confirmation email to user
         const confirmationData = {
@@ -130,7 +125,6 @@ function initBookingForm() {
         return emailjs.send("service_156d2p8", "template_nrcx4ff", confirmationData);
       })
       .then(() => {
-        console.log("Confirmation email sent successfully");
         // Show success modal
         showStatusModal(
           "Your request has been submitted successfully. We will contact you shortly.",

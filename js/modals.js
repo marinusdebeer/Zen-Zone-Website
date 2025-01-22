@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Dispatch the custom event after modals are loaded
       const modalsLoadedEvent = new Event("modalsLoaded");
       document.dispatchEvent(modalsLoadedEvent);
-      console.log("modalsLoaded event dispatched");
     })
     .catch((error) => console.error("Error loading modals:", error));
 });
@@ -27,7 +26,6 @@ function loadModals() {
       const modalContainer = document.createElement("div");
       modalContainer.innerHTML = data;
       document.body.appendChild(modalContainer);
-      console.log("Modals loaded successfully");
     });
 }
 
@@ -35,12 +33,10 @@ function loadModals() {
  * Setup Event Listeners for Modal Interactions
  */
 function setupModalEventListeners() {
-  console.log("Setting up modal event listeners");
 
   // Function to open a modal
   window.openModal = function (modalId) {
     const modalBg = document.getElementById(modalId);
-    console.log(`Attempting to open modal with ID: ${modalId}`);
     if (modalBg) {
       modalBg.style.display = "flex";
       document.body.classList.add("modal-open");
@@ -56,7 +52,6 @@ function setupModalEventListeners() {
       modalBg.style.display = "none";
       document.body.classList.remove("modal-open");
       releaseFocus();
-      console.log(`Modal with ID "${modalBg.id}" closed.`);
     }
   };
 
@@ -75,7 +70,6 @@ function setupModalEventListeners() {
         modalId = baseId.charAt(0).toLowerCase() + baseId.slice(1); // e.g., 'termsModal'
       }
 
-      console.log(`Button with ID "${button.id}" will open modal with ID "${modalId}"`);
       openModal(modalId);
     });
   });
@@ -86,7 +80,6 @@ function setupModalEventListeners() {
     button.addEventListener("click", () => {
       const modalBg = button.closest(".modal-bg");
       if (modalBg) {
-        console.log(`Close button clicked for modal with ID "${modalBg.id}"`);
         closeModal(modalBg);
       }
     });
@@ -97,7 +90,6 @@ function setupModalEventListeners() {
   modalBgs.forEach((modalBg) => {
     modalBg.addEventListener("click", (e) => {
       if (e.target === modalBg) {
-        console.log(`Clicked outside modal content for modal with ID "${modalBg.id}"`);
         closeModal(modalBg);
       }
     });
@@ -108,7 +100,6 @@ function setupModalEventListeners() {
     if (e.key === "Escape") {
       const openModals = document.querySelectorAll(".modal-bg[style*='display: flex']");
       openModals.forEach((modalBg) => {
-        console.log(`Escape key pressed. Closing modal with ID "${modalBg.id}"`);
         closeModal(modalBg);
       });
     }
@@ -120,7 +111,6 @@ function setupModalEventListeners() {
     button.addEventListener("click", () => {
       const service = button.getAttribute("data-service");
       const modalId = `serviceModal${service}`;
-      console.log(`Learn More button clicked for service "${service}". Opening modal "${modalId}"`);
       openModal(modalId);
     });
   });
@@ -131,7 +121,6 @@ function setupModalEventListeners() {
     button.addEventListener("click", () => {
       const blog = button.getAttribute("data-blog");
       const modalId = `blogModal${blog}`;
-      console.log(`Read More button clicked for blog "${blog}". Opening modal "${modalId}"`);
       openModal(modalId);
     });
   });
@@ -144,7 +133,6 @@ function setupModalEventListeners() {
       if (serviceModal) {
         // Get service name from the modal’s <h2>
         const serviceName = serviceModal.querySelector("h2").innerText;
-        console.log(`Book Now button clicked for service "${serviceName}". Opening booking modal.`);
         // Close the current service modal
         closeModal(serviceModal);
         // Open booking modal
@@ -153,7 +141,6 @@ function setupModalEventListeners() {
         const serviceSelect = document.getElementById("service");
         if (serviceSelect) {
           serviceSelect.value = serviceName;
-          console.log(`Service selection pre-filled with "${serviceName}".`);
         }
       }
     });
@@ -210,8 +197,5 @@ function releaseFocus() {
   if (modal && modal._handleFocus) {
     modal.removeEventListener("keydown", modal._handleFocus);
     if (focusedElementBeforeModal) focusedElementBeforeModal.focus();
-    console.log(
-      `Focus returned to "${focusedElementBeforeModal ? focusedElementBeforeModal.id : 'previous element'}"`
-    );
   }
 }
