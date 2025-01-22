@@ -121,7 +121,8 @@
 }
 
 @media (max-width: 768px) {
-  .areas-content {
+  
+  /* .areas-content {
     flex-direction: column;
   }
 
@@ -131,7 +132,7 @@
 
   .areas-list ul {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
+  } */
 }
 
 @media (max-width: 600px) {

@@ -1073,38 +1073,40 @@
     }
     </script>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Initialize the map and set its view to Hillsdale, Ontario
-      const map = L.map("map").setView([44.5856, -79.7691], 9); // Hillsdale coordinates
-
-      // Add OpenStreetMap tiles
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
-      }).addTo(map);
-
-      // Add a circle centered at Hillsdale
-      L.circle([44.5856, -79.7691], {
-        color: "#2E3D2F",           // Circle border color (Deep Green)
-        fillColor: "#78A265",      // Circle fill color (Vibrant Green)
-        fillOpacity: 0.3,           // Opacity of the circle
-        radius: 45000,             // Radius in meters (15 km)
-      }).addTo(map);
-      // Add a label to the map
-      const label = L.marker([44.5856, -79.7691])
-        .addTo(map)
-        .bindPopup("Areas we serve")
-        .openPopup();
-    });
-  </script>
+ 
 
   <!-- JavaScript Files (Order Matters) -->
   <script src="js/modals.js" defer></script>
   <script src="js/reviews.js" defer></script>
   <script src="js/bookingForm.js" defer></script>
   <script src="js/main.js" defer></script>
+
+   <!-- Leaflet JS -->
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+   <script defer>
+     document.addEventListener("DOMContentLoaded", () => {
+       // Initialize the map and set its view to Hillsdale, Ontario
+       const map = L.map("map").setView([44.5856, -79.7691], 9); // Hillsdale coordinates
+ 
+       // Add OpenStreetMap tiles
+       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+         attribution: "&copy; OpenStreetMap contributors",
+       }).addTo(map);
+ 
+       // Add a circle centered at Hillsdale
+       L.circle([44.5856, -79.7691], {
+         color: "#2E3D2F",           // Circle border color (Deep Green)
+         fillColor: "#78A265",      // Circle fill color (Vibrant Green)
+         fillOpacity: 0.3,           // Opacity of the circle
+         radius: 45000,             // Radius in meters (15 km)
+       }).addTo(map);
+       // Add a label to the map
+       const label = L.marker([44.5856, -79.7691])
+         .addTo(map)
+         .bindPopup("Areas we serve")
+         .openPopup();
+     });
+   </script>
 
 </body>
 
