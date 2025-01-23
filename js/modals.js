@@ -129,6 +129,47 @@ function setupModalEventListeners() {
     }
   });
 
+  // Setup event listeners for "Learn More" service buttons
+  const learnMoreButtons = document.querySelectorAll(".learn-more-btn");
+  learnMoreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const service = button.getAttribute("data-service");
+      const modalId = `serviceModal${service}`;
+      openModal(modalId);
+    });
+  });
+
+  // Setup event listeners for "Read More" blog buttons
+  const readMoreBlogButtons = document.querySelectorAll(".learn-more-blog-btn");
+  readMoreBlogButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const blog = button.getAttribute("data-blog");
+      const modalId = `blogModal${blog}`;
+      openModal(modalId);
+    });
+  });
+
+  // Setup event listeners for "Book Now" buttons within service modals
+  const bookNowButtons = document.querySelectorAll(".cta-button.book-now");
+  bookNowButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const serviceModal = button.closest(".service-modal");
+      if (serviceModal) {
+        // Get service name from the modal’s <h2>
+        const serviceName = serviceModal.querySelector("h2").innerText;
+        // Close the current service modal
+        closeModal(serviceModal);
+        // Open booking modal
+        openModal("modalBg");
+        // Pre-fill the service selection
+        const serviceSelect = document.getElementById("service");
+        if (serviceSelect) {
+          serviceSelect.value = serviceName;
+        }
+      }
+    });
+  });
+
   // Generate a unique ID for the user on page load
   const userId = localStorage.getItem("uniqueId") || `user-${Date.now()}`;
   localStorage.setItem("uniqueId", userId);
