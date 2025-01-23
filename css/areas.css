@@ -49,8 +49,8 @@
 .areas-content {
   display: flex;
   gap: 2rem;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -184,8 +184,15 @@
 
 /* Accessibility Enhancements */
 
-/* Focusable Map Container (if interactive) */
+/* Focusable Map Container */
+.map-container iframe:focus,
 .map-container #map:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Focus Styles for Interactive Elements */
+.areas-list li:focus {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
