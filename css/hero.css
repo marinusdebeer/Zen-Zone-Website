@@ -97,13 +97,13 @@
 }
 
 .secondary-cta {
-  background-color: #e0e7ef;
-  color: #2e3d2f;
+  background-color: #d6dfe8; /* Slightly darker for contrast */
+  color: #1a1a1a; /* Darker text for readability */
 }
 
 .secondary-cta:hover {
-  background-color: #c7d2dc;
-  color: #2e3d2f;
+  background-color: #c0c9d2;
+  color: #1a1a1a;
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(32, 33, 36, 0.1);
 }
@@ -149,7 +149,7 @@
   }
   
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   
   .cta-button-hero {
@@ -184,7 +184,7 @@
     max-width: 300px;
   }
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -197,11 +197,11 @@
   }
   
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
   
   .hero-subtitle {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
   }
   
   .cta-button-hero {
