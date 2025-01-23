@@ -140,6 +140,10 @@
 
 /* Tablet Devices */
 @media (max-width: 1024px) {
+  .hero {
+    /* padding-top: 80px; */
+    height: 100vh;
+  }
   .hero-content {
     padding: 0 1rem;
     flex-direction: column;
@@ -161,8 +165,8 @@
 /* Mobile Devices */
 @media (max-width: 768px) {
   .hero {
-    padding-top: 80px;
-    /* height: 80vh; */
+    /* padding-top: 80px; */
+    height: 115vh;
   }
   .hero-content {
     flex-direction: column;
