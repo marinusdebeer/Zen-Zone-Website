@@ -1,8 +1,7 @@
+/* reviews.css */
+
 /* REVIEWS SECTION */
 
-/* -----------------------------------
-   Container Styles
------------------------------------ */
 .reviews {
   flex: 1;
   width: 100%;
@@ -12,9 +11,14 @@
   position: relative; /* For gradient overlays and navigation arrows */
 }
 
-/* -----------------------------------
-   Reviews Card Styles
------------------------------------ */
+.reviews h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-primary-text); /* Updated to use variable */
+  margin-bottom: 2rem;
+}
+
+/* Reviews Card Styles */
 .reviews-card {
   background: #ffffff; /* White background */
   border: 1px solid #e0e0e0; /* Subtle border for definition */
@@ -25,18 +29,21 @@
   position: relative; /* For positioning relative elements */
 }
 
-.reviews-card:hover {
-  /* Uncomment and adjust if you want to enable the lift effect on hover */
-  /* transform: translateY(-7px); */
+.reviews-card:hover,
+.reviews-card:focus-within {
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
-/* -----------------------------------
-   Reviews Title Styles
------------------------------------ */
+/* Reviews Card Focus State */
+.reviews-card:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Reviews Title Styles */
 .reviews-card h2 {
   font-size: 2.2rem;
-  color: #2e3d2f;
+  color: var(--color-primary-text); /* Updated to use variable */
   margin-bottom: 2rem;
   text-align: center;
   font-weight: 700;
@@ -45,13 +52,11 @@
 
 .reviews-card h2 i {
   margin-right: 0.5rem;
-  color: #6b5b95;
+  color: var(--color-primary); /* Updated to use variable */
   font-size: 1.2em;
 }
 
-/* -----------------------------------
-   Google Button Styles
------------------------------------ */
+/* Google Button Styles */
 /* Container */
 .google-button-container {
   text-align: center;
@@ -80,15 +85,21 @@
 }
 
 /* Hover Effect */
-.google-button:hover {
+.google-button:hover,
+.google-button:focus {
   background-color: #357ae8;
   transform: translateY(-2px);
   color: #fff;
+  outline: none;
 }
 
-/* -----------------------------------
-   Reviews Container Styles
------------------------------------ */
+/* Focus State for Google Button */
+.google-button:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Reviews Container Styles */
 .reviews-container {
   display: flex;
   flex-direction: row;
@@ -106,9 +117,7 @@
   display: none;
 }
 
-/* -----------------------------------
-   Individual Review Card Styles
------------------------------------ */
+/* Individual Review Card Styles */
 .review {
   flex: 0 0 300px; /* Fixed width for each card */
   background-color: #ffffff; /* White background for contrast */
@@ -124,14 +133,19 @@
   scroll-snap-align: start; /* Aligns the card at the start during snapping */
 }
 
-.review:hover {
+.review:hover,
+.review:focus-within {
   transform: translateY(-5px);
   box-shadow: 0 12px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* -----------------------------------
-   Review Header Styles
------------------------------------ */
+/* Review Focus State */
+.review:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Review Header Styles */
 .review-header {
   display: flex;
   align-items: center;
@@ -144,23 +158,29 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: #6b5b95; /* Matching branding */
+  background-color: var(--color-primary); /* Updated to use variable */
   border-radius: 50%; /* Circular shape */
-  color: #ffffff; /* Icon color */
-  font-size: 2rem;
-  border: 2px solid #6b5b95; /* Optional border */
+  color: var(--color-white); /* Icon color */
+  font-size: 1.5rem;
+  border: 2px solid var(--color-primary); /* Updated to use variable */
   overflow: hidden;
   margin-right: 1rem;
   transition: transform 0.3s ease;
 }
 
-.review-avatar:hover {
+.review-avatar:hover,
+.review-avatar:focus {
   transform: scale(1.05);
+  outline: none;
 }
 
-/* -----------------------------------
-   Reviewer Information Styles
------------------------------------ */
+/* Focus State for Avatar */
+.review-avatar:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Reviewer Information Styles */
 .reviewer-info {
   display: flex;
   flex-direction: column;
@@ -168,7 +188,7 @@
 
 .reviewer-info strong {
   font-size: 1.1rem;
-  color: #2e3d2f;
+  color: var(--color-primary-text); /* Updated to use variable */
   margin-bottom: 0.3rem;
   font-weight: 600;
 }
@@ -188,9 +208,7 @@
   color: #777;
 }
 
-/* -----------------------------------
-   Review Text Styles
------------------------------------ */
+/* Review Text Styles */
 .review-text {
   font-style: italic;
   font-size: 1rem;
@@ -206,21 +224,17 @@
   position: absolute;
   left: 0;
   top: -0.2rem;
-  color: #6b5b95;
+  color: var(--color-primary); /* Updated to use variable */
 }
 
-/* -----------------------------------
-   Review Service Styles
------------------------------------ */
+/* Review Service Styles */
 .review-service {
   font-size: 0.9rem;
-  color: #6b5b95;
+  color: var(--color-primary); /* Updated to use variable */
   font-weight: 500;
 }
 
-/* -----------------------------------
-   Navigation Arrows Styles
------------------------------------ */
+/* Navigation Arrows Styles */
 .reviews-nav {
   position: absolute;
   top: 65%;
@@ -247,9 +261,17 @@
   right: 0.5rem;
 }
 
-.reviews-nav:hover {
-  background-color: rgba(94, 119, 76, 0.8); /* Changed color on hover */
-  transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
+.reviews-nav:hover,
+.reviews-nav:focus {
+  background-color: rgba(94, 119, 76, 0.8); /* Changed color on hover/focus */
+  transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover/focus */
+  outline: none;
+}
+
+/* Focus State for Navigation Arrows */
+.reviews-nav:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 /* Responsive Adjustments for Navigation Arrows */
@@ -260,9 +282,7 @@
   }
 }
 
-/* -----------------------------------
-   Gradient Overlays for Scroll Indication
------------------------------------ */
+/* Gradient Overlays for Scroll Indication */
 .reviews::before,
 .reviews::after {
   content: '';

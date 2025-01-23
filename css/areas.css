@@ -1,8 +1,10 @@
-/* AREAS WE SERVE SECTION */
+/* areas.css */
 
+/* AREAS WE SERVE SECTION */
 .areas {
   padding: 4rem 2rem;
   background-color: #f0f4f8; /* Soft light background */
+  /* text-align: center; */
 }
 
 .areas-card {
@@ -15,14 +17,20 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.areas-card:hover {
+.areas-card:hover,
+.areas-card:focus-within {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
+.areas-card:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 .areas-card h2 {
   font-size: 2.5rem;
-  color: #2e3d2f; /* Deep green for contrast */
+  color: var(--color-primary-text); /* Updated to use variable */
   margin-bottom: 2rem;
   font-weight: 700;
   display: flex;
@@ -33,7 +41,7 @@
 
 .areas-card h2 i {
   margin-right: 0.75rem;
-  color: #6b5b95; /* Complementary purple */
+  color: var(--color-primary); /* Updated to use variable */
   font-size: 1.8em;
 }
 
@@ -62,7 +70,7 @@
 
 .areas-list li {
   font-size: 1.2rem;
-  color: #2e3d2f;
+  color: var(--color-primary-text); /* Updated to use variable */
   margin-bottom: 0.75rem;
   position: relative;
   padding-left: 1.25rem;
@@ -74,7 +82,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #6b5b95; /* Matching the icon color */
+  color: var(--color-primary); /* Updated to use variable */
   font-size: 1.2rem;
   top: 0;
 }
@@ -124,17 +132,6 @@
   .areas-list ul {
     grid-template-columns: repeat(3, 1fr);
   }
-  /* .areas-content {
-    flex-direction: column;
-  }
-
-  .map-container #map {
-    height: 350px;
-  }
-
-  .areas-list ul {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  } */
 }
 
 @media (max-width: 600px) {

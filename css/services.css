@@ -1,3 +1,5 @@
+/* services.css */
+
 /* SERVICES SECTION */
 .services {
   padding: 4rem 2rem;
@@ -7,7 +9,7 @@
 .services h2 {
   text-align: center;
   font-size: 2rem;
-  color: #2e3d2f;
+  color: var(--color-primary-text); /* Updated to use variable */
   margin-bottom: 3rem;
 }
 
@@ -17,6 +19,7 @@
   gap: 2rem;
 }
 
+/* Service Tile Styles */
 .service-tile {
   display: flex;
   flex-direction: column;
@@ -32,17 +35,26 @@
   min-height: 350px; /* Ensure consistent height across tiles */
 }
 
-.service-tile:hover {
+.service-tile:hover,
+.service-tile:focus-within {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Service Tile Focus State */
+.service-tile:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Service Tile Titles */
 .service-tile h3 {
   font-size: 1.5rem;
-  color: #2e3d2f;
+  color: var(--color-primary-text); /* Updated to use variable */
   margin-bottom: 1rem;
 }
 
+/* Service Tile Descriptions */
 .service-tile p {
   font-size: 1rem;
   color: #555;
@@ -50,18 +62,84 @@
   flex-grow: 1; /* Push the button to the bottom */
 }
 
+/* Learn More Button */
 .learn-more-btn {
-  background-color: #78a265;
-  color: #fff;
+  background-color: var(--color-secondary); /* Updated to use variable */
+  color: var(--color-white);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.learn-more-btn:hover {
-  background-color: #5e774c;
+.learn-more-btn:hover,
+.learn-more-btn:focus {
+  background-color: var(--color-secondary-hover); /* Updated to use variable */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--color-shadow);
+  outline: none;
+}
+
+/* Focus State for Learn More Button */
+.learn-more-btn:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .services {
+    padding: 3rem 1.5rem;
+  }
+
+  .services h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .service-tile {
+    padding: 1.5rem;
+    min-height: 300px;
+  }
+
+  .service-tile h3 {
+    font-size: 1.3rem;
+  }
+
+  .learn-more-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services {
+    padding: 2rem 1rem;
+  }
+
+  .services h2 {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .service-tile {
+    padding: 1rem;
+    min-height: 250px;
+  }
+
+  .service-tile h3 {
+    font-size: 1.2rem;
+  }
+
+  .learn-more-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
 }

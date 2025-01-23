@@ -69,12 +69,14 @@
   left: 0;
 }
 
-.desktop-menu a.nav-link:hover::after {
+.desktop-menu a.nav-link:hover::after,
+.desktop-menu a.nav-link:focus::after {
   width: 100%;
 }
 
-.desktop-menu a.nav-link:hover {
-  color: var(--color-secondary); /* Light Green on hover */
+.desktop-menu a.nav-link:hover,
+.desktop-menu a.nav-link:focus {
+  color: var(--color-secondary); /* Light Green on hover/focus */
 }
 
 /* Contact Info Styling */
@@ -104,16 +106,12 @@
   font-size: 1.2rem; /* Consistent icon size */
 }
 
-.call-button:hover {
+.call-button:hover,
+.call-button:focus {
   background-color: var(--color-secondary-hover);
-  transform: translateY(-2px); /* Slight lift on hover */
+  transform: translateY(-2px); /* Slight lift on hover/focus */
   box-shadow: 0 4px 8px var(--color-shadow); /* Subtle shadow */
   color: var(--color-white);
-}
-
-.call-button:focus {
-  outline: 2px solid var(--color-white);
-  outline-offset: 2px;
 }
 
 /* Improved CTA Button */
@@ -136,15 +134,11 @@
   font-size: 1.2rem; /* Consistent icon size */
 }
 
-.cta-button:hover {
-  background-color: var(--color-primary-hover);
-  transform: translateY(-2px); /* Slight lift on hover */
-  box-shadow: 0 4px 8px var(--color-shadow); /* Subtle shadow */
-}
-
+.cta-button:hover,
 .cta-button:focus {
-  outline: 2px solid var(--color-white);
-  outline-offset: 2px;
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px); /* Slight lift on hover/focus */
+  box-shadow: 0 4px 8px var(--color-shadow); /* Subtle shadow */
 }
 
 /* Menu Toggle Button */
@@ -160,7 +154,16 @@
 }
 
 .menu-toggle:focus {
-  outline: 2px solid var(--color-secondary);
+  outline: 3px solid var(--color-focus);
+}
+
+/* Accessible Menu Toggle Icons */
+.menu-toggle[aria-expanded="true"]::after {
+  /* content: '✖';  */
+}
+
+.menu-toggle[aria-expanded="false"]::after {
+  /* content: '☰'; */
 }
 
 /* Mobile Menu Overlay */
@@ -226,13 +229,15 @@
 }
 
 .mobile-menu a:hover,
-.mobile-menu button:hover {
+.mobile-menu a:focus,
+.mobile-menu button:hover,
+.mobile-menu button:focus {
   background-color: var(--color-secondary-hover);
   color: var(--color-white);
 }
 
 /* Show Menu Toggle on Mobile */
-@media (max-width: 768px) {
+@media (max-width: 1008px) {
   .menu-toggle {
     display: block;
   }
@@ -269,7 +274,7 @@
 }
 
 /* Hide Mobile Menu Links on Desktop */
-@media (min-width: 769px) {
+@media (min-width: 1008px) {
   .mobile-menu {
     display: none;
   }

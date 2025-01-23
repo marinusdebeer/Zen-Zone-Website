@@ -1,35 +1,4 @@
-
-/* ===========================
-   CSS Variables for Gallery
-=========================== */
-:root {
-  /* Animation Duration */
-  --gallery-animation-duration: 140s; /* Duration of the scroll animation */
-
-  /* Space Between Images */
-  --gallery-gap: 20px;               /* Space between images */
-
-  /* Desktop Image Dimensions */
-  --gallery-item-width: 400px;       /* Width of each gallery item on desktop */
-  --gallery-item-height: 375px;      /* Height of each gallery item on desktop */
-
-  /* Tablet (iPad) Image Dimensions */
-  --gallery-item-width-tablet: 350px; /* Width on tablets */
-  --gallery-item-height-tablet: 350px; /* Height on tablets */
-
-  /* Mobile Image Dimensions */
-  --gallery-item-width-mobile: 400px; /* Width on mobile devices */
-  --gallery-item-height-mobile: 400px; /* Height on mobile devices */
-
-  /* Number of Images per Container */
-  --images-per-container-desktop: 32; /* Number of images on desktop */
-  --images-per-container-tablet: 32;   /* Number of images on tablets */
-  --images-per-container-mobile: 32;    /* Number of images on mobile */
-
-  /* Calculated Container and Track Widths */
-  --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* Desktop: 300px * 10 + 20px * 9 = 3180px */
-  --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 3180px * 2 = 6360px */
-}
+/* gallery.css */
 
 /* ===========================
    Gallery Section Styling
@@ -43,7 +12,7 @@
 
 .gallery h2 {
   font-size: 2.5rem;                  /* Heading font size */
-  color: #2e3d2f;                      /* Heading color */
+  color: var(--color-primary-text);    /* Updated to use variable */
   margin-bottom: 2rem;                /* Spacing below heading */
   position: relative;
 }
@@ -53,7 +22,7 @@
   display: block;
   width: 80px;                        /* Underline width */
   height: 4px;                        /* Underline height */
-  background-color: #78a265;          /* Underline color */
+  background-color: var(--color-secondary); /* Updated to use variable */
   margin: 10px auto 0;                /* Spacing above and below underline */
   border-radius: 2px;                 /* Rounded corners for underline */
 }
@@ -111,31 +80,46 @@
   transition: transform 0.3s ease;    /* Smooth zoom effect */
 }
 
-.gallery-item:hover img {
-  transform: scale(1.05);              /* Slight zoom on hover */
+.gallery-item:hover img,
+.gallery-item:focus img {
+  transform: scale(1.05);              /* Slight zoom on hover/focus */
+  outline: none;
 }
 
 /* ===========================
    Responsive Design
 =========================== */
 @media (max-width: 768px) {
+  /* Tablet (iPad) Adjustments */
   :root {
-    /* Tablet (iPad) Adjustments */
-    --gallery-item-width: var(--gallery-item-width-tablet);     /* 350px */
-    --gallery-item-height: var(--gallery-item-height-tablet);   /* 350px */
-    --images-per-container-desktop: var(--images-per-container-tablet); /* 8 */
-    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* 350px * 8 + 20px * 7 = 2800px + 140px = 2940px */
-    --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 2940px * 2 = 5880px */
+    /* These variables are already defined in utilities.css */
+    /* No need to redefine them here */
+    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-tablet) + var(--gallery-gap) * (var(--images-per-container-tablet) - 1));
+    --gallery-track-width: calc(var(--gallery-container-width) * 2);
   }
 }
 
 @media (max-width: 480px) {
+  /* Mobile Adjustments */
   :root {
-    /* Mobile Adjustments */
-    --gallery-item-width: var(--gallery-item-width-mobile);     /* 400px */
-    --gallery-item-height: var(--gallery-item-height-mobile);   /* 400px */
-    --images-per-container-desktop: var(--images-per-container-mobile); /* 6 */
-    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* 400px * 6 + 20px * 5 = 2400px + 100px = 2500px */
-    --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 2500px * 2 = 5000px */
+    /* These variables are already defined in utilities.css */
+    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-mobile) + var(--gallery-gap) * (var(--images-per-container-mobile) - 1));
+    --gallery-track-width: calc(var(--gallery-container-width) * 2);
   }
+}
+
+/* Accessibility Enhancements */
+
+/* Make gallery items focusable if they have interactions (e.g., open modal) */
+/* If gallery items are purely decorative, no need to make them focusable */
+
+.gallery-item {
+  /* If interactive, uncomment the following line */
+  /* tabindex="0" */
+}
+
+/* Optional: Add focus styles if gallery items are focusable */
+.gallery-item:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
 }

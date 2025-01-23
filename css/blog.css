@@ -2,319 +2,344 @@
 
 /* ------------------------------
    Blog Listing Page Styles
-   ------------------------------ */
-   .blog-section {
-    padding: 60px 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .blog-section h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #2E3D2F;
-  }
-  
-  .blog-list {
-    display: grid; /* Use grid for uniform card heights */
-    grid-template-columns: 1fr;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  @media (min-width: 768px) {
-    .blog-list {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .blog-list {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  /* Clickable Blog Card */
-  .blog-card {
-    text-decoration: none; /* Remove default link styling */
-    color: inherit;        /* Inherit text color */
-    display: block;        /* Make the entire area clickable */
-    position: relative;    /* For potential pseudo-elements */
-  }
-  
-  .blog-card:focus {
-    outline: 2px solid #78A265;
-    outline-offset: 4px;
-  }
-  
-  /* Each blog entry (the card content) */
-  .blog-card .blog-entry {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Ensures entries stretch to fill the container */
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .blog-card .blog-entry:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Thumbnail Image */
-  .blog-card .blog-thumbnail {
-    width: 100%;
-    height: 200px;       /* Fixed height */
-    object-fit: cover;   /* Ensures image covers the container */
-    border-radius: 8px;
-  }
-  
-  /* Blog Title - Truncated to 2 lines */
-  .blog-card .blog-entry h3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;    /* Limit to 2 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: 20px;
-    font-size: 1.8rem;
-    color: #2E3D2F;
-    line-height: 1.4; /* Consistent line height */
-  }
+------------------------------ */
+.blog-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
 
-  
-  
-  /* Blog Description - Truncated to 3 lines */
-  .post-description{
-    margin: 15px 0;
-    color: #555;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;    /* Limit to 3 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-grow: 1;             /* Take up remaining space */
-    line-height: 1.4;         /* Consistent line height */
-    max-height: 4.2rem;       /* Approx. 3 lines */
-    max-height: 4.2rem; /* Approx. 3 lines */
-    display: block;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    overflow: hidden;
+.blog-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: var(--color-primary-text); /* Updated to use variable */
+}
+
+.blog-list {
+  display: grid; /* Use grid for uniform card heights */
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .blog-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
   }
-  
-  /* "Read More" Button */
-  .read-more-btn {
-    display: inline-block;
-    background-color: #78A265;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    align-self: flex-start; /* Aligns button to the start */
+}
+
+@media (min-width: 1024px) {
+  .blog-list {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  .blog-card:hover .read-more-btn {
-    background-color: #2E3D2F;
-  }
-  
-  .read-more-btn:hover {
-    background-color: #2E3D2F;
-  }
-  
-  /* ------------------------------
-     Individual Blog Post Styles
-     ------------------------------ */
+}
+
+/* Clickable Blog Card */
+.blog-card {
+  text-decoration: none; /* Remove default link styling */
+  color: inherit;        /* Inherit text color */
+  display: block;        /* Make the entire area clickable */
+  position: relative;    /* For potential pseudo-elements */
+}
+
+.blog-card:focus {
+  outline: 3px solid var(--color-focus); /* Added focus outline */
+  outline-offset: 4px;
+}
+
+/* Each blog entry (the card content) */
+.blog-card .blog-entry {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures entries stretch to fill the container */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-card .blog-entry:hover,
+.blog-card .blog-entry:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card .blog-entry:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Thumbnail Image */
+.blog-card .blog-thumbnail {
+  width: 100%;
+  height: 200px;       /* Fixed height */
+  object-fit: cover;   /* Ensures image covers the container */
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.blog-card .blog-thumbnail:hover,
+.blog-card .blog-thumbnail:focus {
+  transform: scale(1.05); /* Slight zoom on hover/focus */
+  outline: none;
+}
+
+/* Blog Title - Truncated to 2 lines */
+.blog-card .blog-entry h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;    /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 20px;
+  font-size: 1.8rem;
+  color: var(--color-primary-text); /* Updated to use variable */
+  line-height: 1.4; /* Consistent line height */
+}
+
+/* Blog Description - Truncated to 3 lines */
+.post-description {
+  margin: 15px 0;
+  color: #555;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;    /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;             /* Take up remaining space */
+  line-height: 1.4;         /* Consistent line height */
+  max-height: 4.2rem;       /* Approx. 3 lines */
+  display: block;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+
+/* "Read More" Button */
+.read-more-btn {
+  display: inline-block;
+  background-color: var(--color-secondary); /* Updated to use variable */
+  color: var(--color-white);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-start; /* Aligns button to the start */
+}
+
+.blog-card:hover .read-more-btn,
+.blog-card:focus .read-more-btn {
+  background-color: var(--color-primary-text); /* Updated to use variable */
+}
+
+.read-more-btn:hover,
+.read-more-btn:focus {
+  background-color: var(--color-primary-text); /* Updated to use variable */
+  outline: none;
+}
+
+/* ------------------------------
+   Individual Blog Post Styles
+------------------------------ */
+.blog-post {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h1 {
+  font-size: 2.5rem;
+  color: var(--color-primary-text); /* Updated to use variable */
+  margin-bottom: 10px;
+}
+
+.post-date {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.post-date-entry {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  height: 1px;
+}
+
+.featured-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.post-content h2 {
+  font-size: 1.8rem;
+  color: var(--color-primary-text); /* Updated to use variable */
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.post-content h4 {
+  font-size: 1.5rem;
+  color: var(--color-primary-text); /* Updated to use variable */
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.post-content p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.post-content ul,
+.post-content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.post-content a {
+  color: var(--color-secondary); /* Updated to use variable */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.post-content a:hover,
+.post-content a:focus {
+  text-decoration: underline;
+  color: var(--color-secondary-hover); /* Updated to use variable */
+  outline: none;
+}
+
+/* ------------------------------
+   Breadcrumb Styles
+------------------------------ */
+.breadcrumb {
+  font-size: 0.9rem;
+  margin: 20px 0;
+  color: #555;
+}
+
+.breadcrumb a {
+  color: var(--color-secondary); /* Updated to use variable */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+  text-decoration: underline;
+  color: var(--color-secondary-hover); /* Updated to use variable */
+  outline: none;
+}
+
+.breadcrumb span {
+  color: #999;
+}
+
+/* ------------------------------
+   Social Sharing Styles
+------------------------------ */
+.social-sharing {
+  margin-top: 40px;
+}
+
+.social-sharing p {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--color-primary-text); /* Updated to use variable */
+}
+
+.social-sharing a {
+  color: var(--color-white); /* Updated to use variable */
+  background-color: var(--color-secondary); /* Updated to use variable */
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-right: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.social-sharing a:hover,
+.social-sharing a:focus {
+  background-color: var(--color-primary-text); /* Updated to use variable */
+  outline: none;
+}
+
+.social-sharing a i {
+  font-size: 1.2rem;
+}
+
+/* ------------------------------
+   Back to Top Button
+------------------------------ */
+#backToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: var(--color-secondary); /* Updated to use variable */
+  color: var(--color-white);
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+#backToTop:hover,
+#backToTop:focus {
+  background-color: var(--color-primary-text); /* Updated to use variable */
+}
+
+#backToTop i {
+  font-size: 1.2rem;
+}
+
+/* ------------------------------
+   Responsive Design
+------------------------------ */
+@media (min-width: 768px) {
   .blog-post {
-    max-width: 800px;
-    margin: 60px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
   }
-  
-  .blog-post h1 {
-    font-size: 2.5rem;
-    color: #2E3D2F;
-    margin-bottom: 10px;
-  }
-  
-  .post-date {
-    color: #888;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-  }
-  .post-date-entry{
-    color: #888;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    height: 1px;
-  }
-  
-  .featured-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  .post-content h2 {
-    font-size: 1.8rem;
-    color: #2E3D2F;
-    margin-top: 30px;
-    margin-bottom: 15px;
-  }
-  
-  .post-content h4 {
-    font-size: 1.5rem;
-    color: #2E3D2F;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .post-content p {
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 15px;
-  }
-  
-  .post-content ul,
-  .post-content ol {
-    margin-left: 20px;
-    margin-bottom: 15px;
-  }
-  
-  .post-content a {
-    color: #78A265;
-    text-decoration: none;
-  }
-  
-  .post-content a:hover {
-    text-decoration: underline;
-  }
-  
-  /* ------------------------------
-     Breadcrumb Styles
-     ------------------------------ */
-  .breadcrumb {
-    font-size: 0.9rem;
-    margin: 20px 0;
-    color: #555;
-  }
-  
-  .breadcrumb a {
-    color: #78A265;
-    text-decoration: none;
-  }
-  
-  .breadcrumb a:hover {
-    text-decoration: underline;
-  }
-  
-  .breadcrumb span {
-    color: #999;
-  }
-  
-  /* ------------------------------
-     Social Sharing Styles
-     ------------------------------ */
-  .social-sharing {
-    margin-top: 40px;
-  }
-  
-  .social-sharing p {
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #2E3D2F;
-  }
-  
-  .social-sharing a {
-    color: #fff;
-    background-color: #78A265;
-    padding: 10px 15px;
-    border-radius: 4px;
-    margin-right: 10px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-  }
-  
-  .social-sharing a:hover {
-    background-color: #2E3D2F;
-  }
-  
-  .social-sharing a i {
-    font-size: 1.2rem;
-  }
-  
-  /* ------------------------------
-     Back to Top Button
-     ------------------------------ */
-  #backToTop {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    background-color: #78A265;
-    color: #fff;
-    border: none;
-    padding: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none; /* Hidden by default */
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    transition: background-color 0.3s, opacity 0.3s;
-  }
-  
-  #backToTop:hover {
-    background-color: #2E3D2F;
-  }
-  
-  #backToTop i {
-    font-size: 1.2rem;
-  }
-  
-  /* ------------------------------
-     Responsive Design
-     ------------------------------ */
-  @media (min-width: 768px) {
-    .blog-post {
-      padding: 40px;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    /* Further styles if needed */
-  }
-  
-  /* ------------------------------
-     Focus Styles for Accessibility
-     ------------------------------ */
-  .blog-card:focus .blog-entry {
-    outline: 2px solid #78A265;
-    outline-offset: 4px;
-  }
-  
-  /* Individual Blog Post Breadcrumb */
-  .blog-post .breadcrumb {
-    display: flex;
-    align-items: center;
-  }
-  
-  .blog-post .breadcrumb a {
-    margin-right: 5px;
-  }
-  
-  .blog-post .breadcrumb span {
-    margin-right: 5px;
-  }
-  
+}
+
+@media (min-width: 1024px) {
+  /* Further styles if needed */
+}
+
+/* ------------------------------
+   Focus Styles for Accessibility
+------------------------------ */
+.blog-card:focus .blog-entry {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+/* Individual Blog Post Breadcrumb */
+.blog-post .breadcrumb {
+  display: flex;
+  align-items: center;
+}
+
+.blog-post .breadcrumb a {
+  margin-right: 5px;
+}
+
+.blog-post .breadcrumb span {
+  margin-right: 5px;
+}

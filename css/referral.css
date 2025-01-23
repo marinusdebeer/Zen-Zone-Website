@@ -9,7 +9,7 @@
 
 .referral h2 {
   font-size: 2rem;
-  color: #2e3d2f;
+  color: var(--color-primary-text); /* Updated to use variable */
   margin-bottom: 1.5rem;
 }
 
@@ -26,7 +26,20 @@
   gap: 1rem;
 }
 
+/* Referral CTA Button */
 .referral-buttons .cta-button.referral-cta {
   /* Inherits base styles from .cta-button */
   /* Specific styles are already defined in utilities.css */
+  background-color: var(--color-primary); /* Ensured to use variable */
+}
+
+.referral-buttons .cta-button.referral-cta:hover,
+.referral-buttons .cta-button.referral-cta:focus {
+  background-color: var(--color-primary-hover); /* Ensured to use variable */
+}
+
+/* Accessibility Enhancements */
+.referral-buttons .cta-button.referral-cta:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
 }

@@ -1,8 +1,13 @@
 /* utilities.css */
 :root {
+  /* Navbar Heights */
+  --navbar-height-desktop: 70px; /* Default navbar height for desktop */
+  --navbar-height-tablet: 60px;  /* Adjusted for tablet */
+  --navbar-height-mobile: 50px;  /* Adjusted for mobile */
+
   /* Primary Colors */
   --color-primary: #6b5b95; /* Purple */
-  --color-primary-hover: #574a7a;
+  --color-primary-hover: #574f8f;
 
   --color-secondary: #78a265; /* Light Green */
   --color-secondary-hover: #5e774c;
@@ -10,8 +15,66 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
+  /* Additional Colors */
+  --color-secondary-text: #37474F; /* For subtitles and secondary text */
+  --color-primary-text: #2e3d2f;   /* For primary text */
+
+  /* Footer Specific Colors */
+  --color-footer-background: #2e3d2f; /* Dark Green */
+  --color-footer-link: #ffffff;       /* White links in footer */
+  --color-footer-link-hover: #78a265; /* Light Green on hover */
+
   /* Shadow Color */
   --color-shadow: rgba(0, 0, 0, 0.2);
+
+  /* Focus Color */
+  --color-focus: #ffbf47; /* High-contrast color for focus outlines */
+
+  /* -------------------------
+     Gallery Specific Variables
+  ------------------------- */
+  --gallery-animation-duration: 140s; /* Duration of the scroll animation */
+  --gallery-gap: 20px;               /* Space between images */
+
+  /* Desktop Image Dimensions */
+  --gallery-item-width: 400px;       /* Width of each gallery item on desktop */
+  --gallery-item-height: 375px;      /* Height of each gallery item on desktop */
+
+  /* Tablet (iPad) Image Dimensions */
+  --gallery-item-width-tablet: 350px; /* Width on tablets */
+  --gallery-item-height-tablet: 350px; /* Height on tablets */
+
+  /* Mobile Image Dimensions */
+  --gallery-item-width-mobile: 400px; /* Width on mobile devices */
+  --gallery-item-height-mobile: 400px; /* Height on mobile devices */
+
+  /* Number of Images per Container */
+  --images-per-container-desktop: 32; /* Number of images on desktop */
+  --images-per-container-tablet: 32;   /* Number of images on tablets */
+  --images-per-container-mobile: 32;    /* Number of images on mobile */
+
+  /* Calculated Container and Track Widths */
+  --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1));
+  --gallery-track-width: calc(var(--gallery-container-width) * 2);
+}
+
+/* Responsive Navbar Heights */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: var(--navbar-height-tablet);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --navbar-height: var(--navbar-height-mobile);
+  }
+}
+
+@media (min-width: 769px) {
+  :root {
+    --navbar-height: var(--navbar-height-desktop);
+  }
 }
 
 /* Base CTA Button */
@@ -29,12 +92,18 @@
   color: var(--color-white);
 }
 
+.cta-button:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 /* Modifier for Call Button */
 .cta-button.call-button {
   background-color: var(--color-secondary);
 }
 
-.cta-button.call-button:hover {
+.cta-button.call-button:hover,
+.cta-button.call-button:focus {
   background-color: var(--color-secondary-hover);
 }
 
@@ -43,7 +112,8 @@
   background-color: var(--color-primary);
 }
 
-.cta-button.book-now:hover {
+.cta-button.book-now:hover,
+.cta-button.book-now:focus {
   background-color: var(--color-primary-hover);
 }
 
@@ -53,8 +123,46 @@
   box-shadow: 0 4px 8px var(--color-shadow);
 }
 
-/* Focus States */
-.cta-button:focus {
-  outline: 2px solid var(--color-white);
+/* Accessible Links Styled as Buttons */
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.button-link:hover,
+.button-link:focus {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--color-shadow);
+  outline: none;
+}
+
+.button-link:focus {
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
+}
+
+/* Focus Styles for Interactive Elements */
+a.nav-link:focus,
+.cta-button:focus,
+.call-button:focus,
+.menu-toggle:focus {
+  outline: 3px solid var(--color-focus); /* High-contrast color */
+  outline-offset: 2px;
+}
+
+/* Respect User’s Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
