@@ -66,64 +66,7 @@
 
 <body>
   <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo-container">
-      <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Services Logo" class="company-logo" />
-      <span class="company-name">Zen Zone Cleaning</span>
-    </div>
-
-    <!-- Desktop Navigation Menu -->
-    <nav class="desktop-menu" aria-label="Primary Navigation">
-      <ul>
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#reviews" class="nav-link">Reviews</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#gallery" class="nav-link">Gallery</a></li>
-        <li><a href="#areas" class="nav-link">Areas</a></li>
-        <li><a href="#blog" class="nav-link">Blog</a></li>
-      </ul>
-    </nav>
-
-    <div class="contact-info">
-      <!-- These buttons will be hidden on mobile via CSS -->
-      <a href="tel:+17052425462" class="call-button desktop-only" aria-label="Call Zen Zone Cleaning Services">
-        <i class="fas fa-phone-alt" aria-hidden="true"></i> 705 242 5462
-      </a>
-      <button class="cta-button book-now desktop-only" aria-label="Book Now">
-        <i class="fas fa-book" aria-hidden="true"></i> Book Now
-      </button>
-      <!-- Menu Toggle for Mobile -->
-      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu closed" aria-hidden="true">
-      <ul>
-        <li>
-          <a href="tel:+17052425462" class="call-button mobile-only" aria-label="Call Zen Zone Cleaning Services">
-            <i class="fas fa-phone-alt" aria-hidden="true"></i> 705 242 5462
-          </a>
-        </li>
-        <li>
-          <button class="cta-button book-now mobile-only" aria-label="Book Now">
-            <i class="fas fa-book" aria-hidden="true"></i> Book Now
-          </button>
-        </li>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#areas">Areas</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <!-- Add the buttons here for mobile -->
-      </ul>
-    </nav>
-  </header>
-
-  <!-- MOBILE MENU OVERLAY (added to dim background when menu is open) -->
-  <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
+  <div id="navbar"></div>
 
   <main id="home">
     <section class="hero">
@@ -975,45 +918,6 @@
 
 
 
-
-
-
-
-
-
-    <!-- BLOG SECTION -->
-    <section class="blog-section" id="blog">
-      <h2>Our Blog</h2>
-      <div class="blog-list">
-        <div class="blog-entry">
-          <img src="blog1_thumbnail.jpg" alt="Declutter Your Space, Declutter Your Mind: The Link Between
-      Cleanliness and Mental Clarity" class="blog-thumbnail" loading="lazy" />
-          <h3>Declutter Your Space, Declutter Your Mind: The Link Between
-            Cleanliness and Mental Clarity</h3>
-          <p>Discover effective strategies to keep your home spotless with minimal effort.</p>
-          <button class="learn-more-blog-btn" data-blog="Blog1"
-            aria-label="Read Declutter Your Space, Declutter Your Mind">Read More</button>
-        </div>
-
-        <div class="blog-entry">
-          <img src="blog2_thumbnail.jpg" alt="Eco-Friendly Cleaning Solutions" class="blog-thumbnail" loading="lazy" />
-          <h3>Eco-Friendly Cleaning Solutions</h3>
-          <p>Learn about sustainable cleaning products that are safe for your home and the environment.</p>
-          <button class="learn-more-blog-btn" data-blog="Blog2" aria-label="Read Eco-Friendly Cleaning Solutions">Read
-            More</button>
-        </div>
-        <div class="blog-entry">
-          <img src="blog3_thumbnail.jpg" alt="How to Prepare Your Home for a Cleaning Service" class="blog-thumbnail"
-            loading="lazy" />
-          <h3>How to Prepare Your Home for a Cleaning Service</h3>
-          <p>Ensure a smooth and efficient cleaning experience with our preparation tips.</p>
-          <button class="learn-more-blog-btn" data-blog="Blog3"
-            aria-label="Read How to Prepare Your Home for a Cleaning Service">Read More</button>
-        </div>
-      </div>
-    </section>
-
-
     <!-- REFERRAL & GIFT CARDS -->
     <!-- <section class="referral" id="referral">
       <h2>Gift Cards & Referral Program</h2>
@@ -1079,6 +983,7 @@
   <script src="js/modals.js" defer></script>
   <script src="js/reviews.js" defer></script>
   <script src="js/bookingForm.js" defer></script>
+  <script src="js/navbar.js" defer></script>
   <script src="js/main.js" defer></script>
 
    <!-- Leaflet JS -->

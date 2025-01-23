@@ -1,0 +1,3144 @@
+.
+./blogs
+./css
+./js
+./assets
+./assets/portfolio
+-e \nFile: ./map.html\n
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Map with Circle</title>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+  <style>
+    /* Set map size */
+    #map {
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize the map and set its view to Hillsdale, Ontario
+      const map = L.map("map").setView([44.5856, -79.7691], 12); // Hillsdale coordinates
+
+      // Add OpenStreetMap tiles
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      // Add a circle centered at Hillsdale
+      L.circle([44.5856, -79.7691], {
+        color: "red",           // Circle border color
+        fillColor: "#f03",      // Circle fill color
+        fillOpacity: 0.5,       // Opacity of the circle
+        radius: 45000,          // Radius in meters (10 km)
+      }).addTo(map);
+
+      // Optional: Add a marker at the center of the circle
+      L.marker([44.5856, -79.7691])
+        .addTo(map)
+        .bindPopup("Hillsdale, Ontario<br>Radius: 10 km")
+        .openPopup();
+    });
+  </script>
+</body>
+</html>
+-e \nFile: ./index.html\n
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description"
+    content="Professional cleaning services in Barrie, Orillia, and beyond. Book today for spotless homes and businesses!" />
+
+  <meta name="keywords"
+    content="cleaning services, house cleaning, deep cleaning, post construction cleaning, Barrie, Orillia, Midland, Airbnb cleaning, office cleaning" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Cleaning Services in Barrie and Orillia | Zen Zone</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Zen Zone Cleaning Services" />
+  <meta property="og:description"
+    content="Trusted and professional cleaning services for homes and businesses in Barrie, Orillia, Midland, and surrounding areas." />
+  <meta property="og:image" content="https://leads.zenzonecleaning.com/moose_logo.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:title" content="Zen Zone Cleaning Services">
+  <meta name="twitter:description"
+    content="Fast, reliable cleaning services for homes and businesses in Barrie and Orillia. Book today!" />
+  <meta name="twitter:image" content="https://leads.zenzonecleaning.com/moose_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/referral.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/reviews.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/modals.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/areas.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    crossorigin="anonymous" />
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/65fafd4ea0c6737bd122e1cd/1hpe6qv15';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo-container">
+      <img src="assets/moose_logo.png" alt="Zen Zone Cleaning Services Logo" class="company-logo" />
+      <span class="company-name">Zen Zone Cleaning</span>
+    </div>
+
+    <!-- Desktop Navigation Menu -->
+    <nav class="desktop-menu" aria-label="Primary Navigation">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#reviews" class="nav-link">Reviews</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#areas" class="nav-link">Areas</a></li>
+        <li><a href="#blog" class="nav-link">Blog</a></li>
+      </ul>
+    </nav>
+
+    <div class="contact-info">
+      <!-- These buttons will be hidden on mobile via CSS -->
+      <a href="tel:+17052425462" class="call-button desktop-only" aria-label="Call Zen Zone Cleaning Services">
+        <i class="fas fa-phone-alt" aria-hidden="true"></i> 705 242 5462
+      </a>
+      <button class="cta-button book-now desktop-only" aria-label="Book Now">
+        <i class="fas fa-book" aria-hidden="true"></i> Book Now
+      </button>
+      <!-- Menu Toggle for Mobile -->
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu closed" aria-hidden="true">
+      <ul>
+        <li>
+          <a href="tel:+17052425462" class="call-button mobile-only" aria-label="Call Zen Zone Cleaning Services">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i> 705 242 5462
+          </a>
+        </li>
+        <li>
+          <button class="cta-button book-now mobile-only" aria-label="Book Now">
+            <i class="fas fa-book" aria-hidden="true"></i> Book Now
+          </button>
+        </li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#areas">Areas</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <!-- Add the buttons here for mobile -->
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU OVERLAY (added to dim background when menu is open) -->
+  <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">Professional Cleaning Services</h1>
+          <p class="hero-subtitle">
+            Zen Zone Cleaning Services is your trusted, locally owned and operated cleaning company, dedicated to
+            elevating your living environment with peace of mind and a spotless shine. Our insured, background-checked
+            professionals deliver top-quality cleans that exceed expectations. With years of experience, a dedicated
+            staff, and a commitment to eco-friendly products, we ensure your home or business sparkles. Enjoy exclusive
+            discounts on our recurring service packages! Proudly serving Barrie, Orillia, Midland, Innisfil, Bradford,
+            and beyond.
+          </p>
+          <!-- CTA Buttons -->
+          <div class="cta-buttons">
+            <button id="openModal2" class="cta-button-hero primary-cta" aria-label="Get your free quote">
+              Get Your Free Quote
+            </button>
+            <a href="#services" class="cta-button-hero secondary-cta" aria-label="Explore our services">
+              Explore Our Services
+            </a>
+          </div>
+          <!-- About Section Below Buttons -->
+          <!-- <div class="hero-about">
+            <h2><i class="fas fa-info-circle" aria-hidden="true"></i> About Zen Zone Cleaning</h2>
+            <p>
+              Zen Zone Cleaning Services is a locally owned and operated cleaning company. Our mission is to bring peace
+              of mind and a spotless shine to every home or business we touch. With years of experience, a dedicated
+              staff,
+              and a commitment to eco-friendly products, we pride ourselves on delivering top-quality cleans that exceed
+              customer expectations.
+            </p>
+            <p class="highlight-text"><strong>Fully insured, background-checked, and trusted!</strong></p>
+          </div> -->
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="assets/hero.png"
+            alt="A pristine and inviting living room showcasing professional cleaning services." class="hero-image"
+            loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+
+    <!-- AREAS WE SERVE SECTION -->
+    <section class="areas" id="areas" aria-labelledby="areas-heading">
+      <div class="areas-card">
+        <h2 id="areas-heading">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          Areas We Serve
+        </h2>
+        <div class="areas-content">
+          <!-- List of Areas -->
+          <div class="areas-list">
+            <ul>
+              <li>Barrie</li>
+              <li>Orillia</li>
+              <li>Midland</li>
+              <li>Innisfil</li>
+              <li>Bradford</li>
+              <li>Wasaga Beach</li>
+              <li>Severn</li>
+              <li>Oro-Medonte</li>
+              <li>Angus</li>
+              <li>Elmvale</li>
+              <li>Tay</li>
+              <li>Horseshoe Valley</li>
+            </ul>
+          </div>
+          <!-- Interactive Map -->
+          <div class="map-container">
+            <div id="map" role="img"
+              aria-label="Map showing the areas Zen Zone Cleaning serves in and around Hillsdale, Ontario."></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- REFERRAL & GIFT CARDS -->
+    <!-- <section class="referral" id="referral">
+      <h2>Gift Cards & Referral Program</h2>
+      <p>
+        Give the gift of a spotless home! Purchase a <strong>Gift Card</strong> for friends or family.
+        Plus, join our <strong>Referral Program</strong> and receive exclusive rewards for every successful
+        referral.
+      </p>
+      <div class="referral-buttons">
+        <button class="cta-button" aria-label="Purchase a Gift Card">Purchase Gift Card</button>
+        <button class="cta-button" aria-label="Join Referral Program">Join Referral Program</button>
+      </div>
+    </section> -->
+
+  </main>
+
+  <!-- Footer with Terms and Privacy Links -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <p>© 2025 Zen Zone Cleaning Services. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" id="openTermsModal">Terms of Service</a> •
+        <a href="#" id="openPrivacyModal">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- External JS -->
+  <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Zen Zone Cleaning Services",
+      "description": "Fast, reliable, and professional cleaning services for Barrie, Orillia, Midland, and surrounding areas.",
+      "image": "https://leads.zenzonecleaning.com/moose_logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Servicing Barrie, Orillia, Midland, and surrounding areas",
+        "addressLocality": "Orillia",
+        "addressRegion": "ON",
+        "postalCode": "",
+        "addressCountry": "CA"
+      },
+      "telephone": "+17052425462",
+      "url": "https://leads.zenzonecleaning.com",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.6085,
+        "longitude": -79.4202
+      },
+      "openingHours": ["Mo-Fr 09:00-18:00"]
+    }
+    </script>
+
+ 
+
+  <!-- JavaScript Files (Order Matters) -->
+  <script src="js/modals.js" defer></script>
+  <script src="js/reviews.js" defer></script>
+  <script src="js/bookingForm.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+   <!-- Leaflet JS -->
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+   <script defer>
+     document.addEventListener("DOMContentLoaded", () => {
+       // Initialize the map and set its view to Hillsdale, Ontario
+       const map = L.map("map").setView([44.5856, -79.7691], 9); // Hillsdale coordinates
+ 
+       // Add OpenStreetMap tiles
+       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+         attribution: "&copy; OpenStreetMap contributors",
+       }).addTo(map);
+ 
+       // Add a circle centered at Hillsdale
+       L.circle([44.5856, -79.7691], {
+         color: "#2E3D2F",           // Circle border color (Deep Green)
+         fillColor: "#78A265",      // Circle fill color (Vibrant Green)
+         fillOpacity: 0.3,           // Opacity of the circle
+         radius: 45000,             // Radius in meters (15 km)
+       }).addTo(map);
+       // Add a label to the map
+       const label = L.marker([44.5856, -79.7691])
+         .addTo(map)
+         .bindPopup("Areas we serve")
+         .openPopup();
+     });
+   </script>
+
+</body>
+
+</html>-e \nFile: ./css/referral.css\n
+/* referral.css */
+
+/* REFERRAL & GIFT CARDS SECTION */
+.referral {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.referral h2 {
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 1.5rem;
+}
+
+.referral p {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  font-size: 1rem;
+  color: #555;
+}
+
+.referral-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.referral-buttons .cta-button.referral-cta {
+  /* Inherits base styles from .cta-button */
+  /* Specific styles are already defined in utilities.css */
+}
+-e \nFile: ./css/typography.css\n
+/* TYPOGRAPHY */
+h2, h3, h1 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: bold;
+}
+
+a {
+  color: #6b5b95;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #78a265;
+}
+-e \nFile: ./css/services.css\n
+/* SERVICES SECTION */
+.services {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 3rem;
+}
+
+.services-hero-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  min-height: 350px; /* Ensure consistent height across tiles */
+}
+
+.service-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-tile h3 {
+  font-size: 1.5rem;
+  color: #2e3d2f;
+  margin-bottom: 1rem;
+}
+
+.service-tile p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Push the button to the bottom */
+}
+
+.learn-more-btn {
+  background-color: #78a265;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #5e774c;
+}
+-e \nFile: ./css/reset.css\n
+/* reset.css */
+
+/* RESET & GLOBAL STYLES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navbar-height: 70px; /* Default navbar height for desktop */
+}
+
+/* Tablet Devices */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 60px; /* Adjusted for tablet */
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  :root {
+    --navbar-height: 50px; /* Adjusted for mobile */
+  }
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  padding-top: var(--navbar-height); /* Dynamic padding-top based on navbar height */
+}
+
+/* Prevent background scroll when a modal is open */
+.modal-open {
+  overflow: hidden;
+}
+-e \nFile: ./css/areas.css\n
+/* AREAS WE SERVE SECTION */
+
+.areas {
+  padding: 4rem 2rem;
+  background-color: #f0f4f8; /* Soft light background */
+}
+
+.areas-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff; /* White card background */
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.areas-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.areas-card h2 {
+  font-size: 2.5rem;
+  color: #2e3d2f; /* Deep green for contrast */
+  margin-bottom: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.areas-card h2 i {
+  margin-right: 0.75rem;
+  color: #6b5b95; /* Complementary purple */
+  font-size: 1.8em;
+}
+
+/* Flex Container for List and Map */
+.areas-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Areas List Styling */
+.areas-list {
+  flex: 1 1 300px; /* Flex-grow, Flex-shrink, Flex-basis */
+}
+
+.areas-list ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.areas-list li {
+  font-size: 1.2rem;
+  color: #2e3d2f;
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.25rem;
+  line-height: 1.5;
+}
+
+/* Custom Bullet Points */
+.areas-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #6b5b95; /* Matching the icon color */
+  font-size: 1.2rem;
+  top: 0;
+}
+
+/* Map Container Styling */
+.map-container {
+  flex: 1 1 500px; /* Flex-grow, Flex-shrink, Flex-basis */
+}
+
+.map-container #map {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .areas-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .areas-card h2 {
+    font-size: 2.2rem;
+  }
+
+  .areas-list li {
+    font-size: 1.1rem;
+  }
+
+  .map-container #map {
+    height: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  /* For larger tablets (e.g., landscape iPad) */
+  .areas-list ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .areas-list ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* .areas-content {
+    flex-direction: column;
+  }
+
+  .map-container #map {
+    height: 350px;
+  }
+
+  .areas-list ul {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  } */
+}
+
+@media (max-width: 600px) {
+  .areas-card h2 {
+    font-size: 2rem;
+  }
+
+  .areas-list li {
+    font-size: 1rem;
+  }
+
+  .map-container #map {
+    height: 350px;
+  }
+
+  .areas-list ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .areas {
+    padding: 2rem 1rem;
+  }
+
+  .areas-card {
+    padding: 1.5rem;
+  }
+
+  .areas-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .areas-list li {
+    font-size: 0.95rem;
+  }
+
+  .map-container #map {
+    height: 350px;
+  }
+
+  .areas-list ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+-e \nFile: ./css/modals.css\n
+/* MODAL STYLES */
+.modal-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-content {
+  margin-top: 1rem;
+}
+
+.modal-inner-content img.blog-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.modal-inner-content h2 {
+  color: #2e3d2f;
+  margin-bottom: 1rem;
+}
+
+.modal-inner-content h3 {
+  color: #6b5b95;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-inner-content p,
+.modal-inner-content ul,
+.modal-inner-content ol {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.modal-inner-content ul,
+.modal-inner-content ol {
+  padding-left: 1.5rem;
+}
+
+.modal-inner-content a {
+  color: #6b5b95;
+  text-decoration: underline;
+}
+
+.modal-inner-content a:hover {
+  color: #78a265;
+}
+
+/* Booking Form Modal Specific */
+#statusModalBg .modal {
+  max-width: 400px;
+  text-align: center;
+}
+
+#statusModalContent h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+#statusModalContent p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Prevent background scrolling when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+-e \nFile: ./css/gallery.css\n
+
+/* ===========================
+   CSS Variables for Gallery
+=========================== */
+:root {
+  /* Animation Duration */
+  --gallery-animation-duration: 140s; /* Duration of the scroll animation */
+
+  /* Space Between Images */
+  --gallery-gap: 20px;               /* Space between images */
+
+  /* Desktop Image Dimensions */
+  --gallery-item-width: 400px;       /* Width of each gallery item on desktop */
+  --gallery-item-height: 375px;      /* Height of each gallery item on desktop */
+
+  /* Tablet (iPad) Image Dimensions */
+  --gallery-item-width-tablet: 350px; /* Width on tablets */
+  --gallery-item-height-tablet: 350px; /* Height on tablets */
+
+  /* Mobile Image Dimensions */
+  --gallery-item-width-mobile: 400px; /* Width on mobile devices */
+  --gallery-item-height-mobile: 400px; /* Height on mobile devices */
+
+  /* Number of Images per Container */
+  --images-per-container-desktop: 32; /* Number of images on desktop */
+  --images-per-container-tablet: 32;   /* Number of images on tablets */
+  --images-per-container-mobile: 32;    /* Number of images on mobile */
+
+  /* Calculated Container and Track Widths */
+  --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* Desktop: 300px * 10 + 20px * 9 = 3180px */
+  --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 3180px * 2 = 6360px */
+}
+
+/* ===========================
+   Gallery Section Styling
+=========================== */
+.gallery {
+  padding: 4rem 0;                    /* Top and bottom spacing */
+  background-color: #f9f9f9;          /* Light background color */
+  text-align: center;                 /* Center align text */
+  overflow: hidden;                   /* Hide overflowing content */
+}
+
+.gallery h2 {
+  font-size: 2.5rem;                  /* Heading font size */
+  color: #2e3d2f;                      /* Heading color */
+  margin-bottom: 2rem;                /* Spacing below heading */
+  position: relative;
+}
+
+.gallery h2::after {
+  content: "";
+  display: block;
+  width: 80px;                        /* Underline width */
+  height: 4px;                        /* Underline height */
+  background-color: #78a265;          /* Underline color */
+  margin: 10px auto 0;                /* Spacing above and below underline */
+  border-radius: 2px;                 /* Rounded corners for underline */
+}
+
+/* ===========================
+   Gallery Track for Animation
+=========================== */
+.gallery-track {
+  display: flex;                      /* Flex layout */
+  width: var(--gallery-track-width);  /* Total width for duplicated containers */
+  animation: scroll-loop var(--gallery-animation-duration) linear infinite; /* Scroll animation */
+  align-items: center;                /* Vertically center items */
+}
+
+.gallery-track:hover {
+  animation-play-state: paused;       /* Pause animation on hover */
+}
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0);         /* Start position */
+  }
+  100% {
+    transform: translateX(-50%);      /* End position: move left by half the track's width (one container) */
+  }
+}
+
+/* ===========================
+   Gallery Container Styling
+=========================== */
+.gallery-container {
+  display: flex;                      /* Flex layout */
+  gap: var(--gallery-gap);            /* Space between items */
+  width: var(--gallery-container-width); /* Width of one container */
+  flex-shrink: 0;                     /* Prevent shrinking */
+}
+
+/* ===========================
+   Gallery Item Styling
+=========================== */
+.gallery-item {
+  flex: 0 0 var(--gallery-item-width); /* Fixed width for each image */
+  position: relative;
+  overflow: hidden;                   /* Hide overflowing image parts */
+  height: var(--gallery-item-height); /* Fixed height to maintain consistency */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                  /* Ensure image covers container without distortion */
+  display: block;
+  border-radius: 10px;                /* Rounded corners for images */
+  cursor: pointer;                    /* Cursor changes to pointer on hover */
+  transition: transform 0.3s ease;    /* Smooth zoom effect */
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);              /* Slight zoom on hover */
+}
+
+/* ===========================
+   Responsive Design
+=========================== */
+@media (max-width: 768px) {
+  :root {
+    /* Tablet (iPad) Adjustments */
+    --gallery-item-width: var(--gallery-item-width-tablet);     /* 350px */
+    --gallery-item-height: var(--gallery-item-height-tablet);   /* 350px */
+    --images-per-container-desktop: var(--images-per-container-tablet); /* 8 */
+    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* 350px * 8 + 20px * 7 = 2800px + 140px = 2940px */
+    --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 2940px * 2 = 5880px */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    /* Mobile Adjustments */
+    --gallery-item-width: var(--gallery-item-width-mobile);     /* 400px */
+    --gallery-item-height: var(--gallery-item-height-mobile);   /* 400px */
+    --images-per-container-desktop: var(--images-per-container-mobile); /* 6 */
+    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1)); /* 400px * 6 + 20px * 5 = 2400px + 100px = 2500px */
+    --gallery-track-width: calc(var(--gallery-container-width) * 2); /* 2500px * 2 = 5000px */
+  }
+}
+-e \nFile: ./css/hero.css\n
+/* hero.css */
+
+/* HERO SECTION */
+.hero {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  /* margin-top: 10vh; */
+  display: flex;
+  flex-direction: column; /* Changed to column for vertical stacking */
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f4f8;
+  overflow: hidden;
+}
+
+/* Background Image with Overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: url('assets/hero-background.svg') no-repeat center center; */
+  background-size: cover;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* Hero Content Container */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  max-width: 90%;
+  width: 100%;
+  padding: 0 2rem;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Textual Content */
+.hero-text {
+  flex: 1;
+  color: #2e3d2f;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: #2e3d2f;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cta-button-hero {
+  padding: 0.85rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.primary-cta {
+  background-color: #6b5b95;
+  color: #fff;
+}
+
+.primary-cta:hover {
+  background-color: #574f8f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(107, 91, 149, 0.3);
+}
+
+.secondary-cta {
+  background-color: #e0e7ef;
+  color: #2e3d2f;
+}
+
+.secondary-cta:hover {
+  background-color: #c7d2dc;
+  color: #2e3d2f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(32, 33, 36, 0.1);
+}
+
+/* Image Wrapper */
+.hero-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  width: 100%;
+  /* max-width: 500px; */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.02);
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+
+/* Tablet Devices */
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 0 1rem;
+    flex-direction: column;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .cta-button-hero {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.8rem;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 80px;
+    /* height: 80vh; */
+  }
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-image-wrapper {
+    margin-top: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  
+  .cta-button-hero {
+    width: 100%;
+    max-width: 300px;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .hero {
+    padding: 4rem 1rem;
+    /* padding-top: 100px; */
+    height:115vh;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .cta-button-hero {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+  }
+}
+-e \nFile: ./css/navbar.css\n
+/* navbar.css */
+
+/* NAVBAR STYLING */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e3d2f; /* Dark Green */
+  padding: 0.5rem 1rem; /* Reduced padding for smaller screens */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: var(--navbar-height); /* Set navbar height based on CSS variable */
+  transition: height 0.3s ease;
+}
+
+/* Logo Container Styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  height: 40px; /* Reduced logo size for smaller screens */
+  margin-right: 0.5rem;
+}
+
+.company-name {
+  font-size: 1.3rem; /* Adjusted font size */
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Desktop Navigation Menu Styling */
+.desktop-menu {
+  margin-left: 2rem; /* Space between logo and menu */
+}
+
+.desktop-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem; /* Space between menu items */
+}
+
+.desktop-menu li {
+  /* Optional: Add styles for list items if needed */
+}
+
+.desktop-menu a.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  position: relative;
+}
+
+.desktop-menu a.nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.desktop-menu a.nav-link:hover::after {
+  width: 100%;
+}
+
+.desktop-menu a.nav-link:hover {
+  color: var(--color-secondary); /* Light Green on hover */
+}
+
+/* Contact Info Styling */
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Reduced gap between buttons */
+}
+
+/* Improved Call Button */
+.call-button {
+  background-color: var(--color-secondary); /* Light Green */
+  color: var(--color-white);
+  padding: 0.5rem 1rem; /* Increased padding */
+  border: none;
+  border-radius: 6px; /* Slightly more rounded corners */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px; /* Increased font size */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.call-button i {
+  margin-right: 0.5rem; /* Space between icon and text */
+  font-size: 1.2rem; /* Consistent icon size */
+}
+
+.call-button:hover {
+  background-color: var(--color-secondary-hover);
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px var(--color-shadow); /* Subtle shadow */
+  color: var(--color-white);
+}
+
+.call-button:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* Improved CTA Button */
+.cta-button {
+  background-color: var(--color-primary); /* Purple */
+  color: var(--color-white);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.2rem; /* Increased padding */
+  font-size: 14px; /* Increased font size */
+}
+
+.cta-button i {
+  margin-right: 0.5rem; /* Space between icon and text */
+  font-size: 1.2rem; /* Consistent icon size */
+}
+
+.cta-button:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px var(--color-shadow); /* Subtle shadow */
+}
+
+.cta-button:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  padding: 0.5rem; /* Increased padding for better touch area */
+}
+
+.menu-toggle:focus {
+  outline: 2px solid var(--color-secondary);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 100;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mobile-menu-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Mobile Menu Styling */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: var(--navbar-height);
+  right: 0;
+  width: 80%;
+  max-width: 300px;
+  height: 100%;
+  background-color: #2e3d2f;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+  z-index: 1500; /* Above overlay */
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Mobile Menu Links */
+.mobile-menu ul {
+  list-style: none;
+  padding: 1rem;
+}
+
+.mobile-menu li {
+  margin-bottom: 1rem;
+}
+
+.mobile-menu a,
+.mobile-menu button {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 1rem;
+  width: 100%;
+  justify-content: center; /* Center content */
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.mobile-menu a:hover,
+.mobile-menu button:hover {
+  background-color: var(--color-secondary-hover);
+  color: var(--color-white);
+}
+
+/* Show Menu Toggle on Mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: block; /* Ensure menu is block-level on mobile */
+  }
+
+  /* Hide desktop-only elements */
+  .desktop-only,
+  .desktop-menu {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  /* Mobile Menu Buttons */
+  .mobile-menu a.call-button,
+  .mobile-menu button.cta-button {
+    width: 100%; /* Full width for better touch targets */
+    justify-content: center; /* Center the content */
+    font-size: 16px; /* Larger font size for readability */
+    padding: 0.6rem 1.2rem; /* Increased padding */
+    margin-bottom: 0.5rem; /* Space between buttons */
+  }
+
+  .mobile-menu a.call-button i,
+  .mobile-menu button.cta-button i {
+    margin-right: 0.5rem;
+    font-size: 1.2rem; /* Consistent icon size */
+  }
+}
+
+/* Hide Mobile Menu Links on Desktop */
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none;
+  }
+
+  .mobile-menu-overlay {
+    display: none;
+  }
+}
+
+/* Optional: Additional Styling for Navbar Links (if any) */
+/* Add your styles for other navbar links here */
+-e \nFile: ./css/reviews.css\n
+/* REVIEWS SECTION */
+
+/* -----------------------------------
+   Container Styles
+----------------------------------- */
+.reviews {
+  flex: 1;
+  width: 100%;
+  padding: 2rem;
+  background-color: #f9f9f9; /* Light background for contrast */
+  box-sizing: border-box;
+  position: relative; /* For gradient overlays and navigation arrows */
+}
+
+/* -----------------------------------
+   Reviews Card Styles
+----------------------------------- */
+.reviews-card {
+  background: #ffffff; /* White background */
+  border: 1px solid #e0e0e0; /* Subtle border for definition */
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* For positioning relative elements */
+}
+
+.reviews-card:hover {
+  /* Uncomment and adjust if you want to enable the lift effect on hover */
+  /* transform: translateY(-7px); */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* -----------------------------------
+   Reviews Title Styles
+----------------------------------- */
+.reviews-card h2 {
+  font-size: 2.2rem;
+  color: #2e3d2f;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+}
+
+.reviews-card h2 i {
+  margin-right: 0.5rem;
+  color: #6b5b95;
+  font-size: 1.2em;
+}
+
+/* -----------------------------------
+   Google Button Styles
+----------------------------------- */
+/* Container */
+.google-button-container {
+  text-align: center;
+  margin-bottom: 3rem; /* 48px */
+}
+
+/* Button */
+.google-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #4285F4; /* Google Blue */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.google-button i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Hover Effect */
+.google-button:hover {
+  background-color: #357ae8;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* -----------------------------------
+   Reviews Container Styles
+----------------------------------- */
+.reviews-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem; /* Space between cards */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  padding: 0 1rem 1rem 1rem; /* Top, Right, Bottom, Left */
+  scroll-snap-type: x mandatory; /* Enables scroll snapping */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide Scrollbars */
+.reviews-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* -----------------------------------
+   Individual Review Card Styles
+----------------------------------- */
+.review {
+  flex: 0 0 300px; /* Fixed width for each card */
+  background-color: #ffffff; /* White background for contrast */
+  border: 1px solid #e0e0e0; /* Subtle border for definition */
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  scroll-snap-align: start; /* Aligns the card at the start during snapping */
+}
+
+.review:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* -----------------------------------
+   Review Header Styles
+----------------------------------- */
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.review-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #6b5b95; /* Matching branding */
+  border-radius: 50%; /* Circular shape */
+  color: #ffffff; /* Icon color */
+  font-size: 2rem;
+  border: 2px solid #6b5b95; /* Optional border */
+  overflow: hidden;
+  margin-right: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.review-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* -----------------------------------
+   Reviewer Information Styles
+----------------------------------- */
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-info strong {
+  font-size: 1.1rem;
+  color: #2e3d2f;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.review-rating {
+  color: #ffc107; /* Gold color for stars */
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+}
+
+.review-rating i {
+  margin-right: 2px;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* -----------------------------------
+   Review Text Styles
+----------------------------------- */
+.review-text {
+  font-style: italic;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.review-text::before {
+  content: open-quote;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+  color: #6b5b95;
+}
+
+/* -----------------------------------
+   Review Service Styles
+----------------------------------- */
+.review-service {
+  font-size: 0.9rem;
+  color: #6b5b95;
+  font-weight: 500;
+}
+
+/* -----------------------------------
+   Navigation Arrows Styles
+----------------------------------- */
+.reviews-nav {
+  position: absolute;
+  top: 65%;
+  transform: translateY(-50%);
+  background-color: rgba(107, 91, 149, 0.8); /* Semi-transparent purple */
+  border: none;
+  color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.reviews-nav.left {
+  left: 0.5rem;
+}
+
+.reviews-nav.right {
+  right: 0.5rem;
+}
+
+.reviews-nav:hover {
+  background-color: rgba(94, 119, 76, 0.8); /* Changed color on hover */
+  transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Responsive Adjustments for Navigation Arrows */
+@media (max-width: 480px) {
+  .reviews-nav {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+/* -----------------------------------
+   Gradient Overlays for Scroll Indication
+----------------------------------- */
+.reviews::before,
+.reviews::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 4rem; /* Increased width for better visibility */
+  height: 100%;
+  background: linear-gradient(to right, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
+  pointer-events: none; /* Allow clicks to pass through */
+  z-index: 2;
+}
+
+.reviews::after {
+  background: linear-gradient(to left, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
+  right: 0;
+  left: auto; /* Override left property */
+}
+
+@media (max-width: 768px) {
+  .reviews::before,
+  .reviews::after {
+    width: 3rem; /* Reduce width on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews::before,
+  .reviews::after {
+    width: 2.5rem; /* Further reduce width for very small screens */
+  }
+}
+
+/* Ensure Gradient Overlays are above other elements */
+.reviews::before,
+.reviews::after {
+  z-index: 2;
+}
+-e \nFile: ./css/forms.css\n
+/* BOOKING FORM MODAL */
+.modal-header h2 {
+  font-size: 1.8rem;
+  color: #2e3d2f;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.modal-body {
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.progress {
+  height: 8px;
+  background-color: #6b5b95;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group label span {
+  color: #e63946; /* Red for required */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #78a265;
+  outline: none;
+}
+
+.form-group input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  margin-top: 0.5rem;
+}
+
+.form-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #6b5b95;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-group input[type="range"]::-webkit-slider-thumb:hover {
+  background: #5e774c;
+}
+
+.form-group input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #6b5b95;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-group input[type="range"]::-moz-range-thumb:hover {
+  background: #5e774c;
+}
+
+.form-navigation {
+  display: flex;
+  justify-content: space-between; /* Default: buttons on both sides */
+  margin-top: 1rem;
+}
+
+
+.next-btn,
+.prev-btn,
+.submit-btn {
+  background-color: #6b5b95;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.next-btn:hover,
+.prev-btn:hover,
+.submit-btn:hover {
+  background-color: #574a7a;
+}
+
+.submit-btn {
+  background-color: #78a265;
+}
+
+.submit-btn:hover {
+  background-color: #5e774c;
+}
+-e \nFile: ./css/utilities.css\n
+/* utilities.css */
+:root {
+  /* Primary Colors */
+  --color-primary: #6b5b95; /* Purple */
+  --color-primary-hover: #574a7a;
+
+  --color-secondary: #78a265; /* Light Green */
+  --color-secondary-hover: #5e774c;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Shadow Color */
+  --color-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Base CTA Button */
+.cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  color: var(--color-white);
+}
+
+/* Modifier for Call Button */
+.cta-button.call-button {
+  background-color: var(--color-secondary);
+}
+
+.cta-button.call-button:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+/* Modifier for Book Now Button */
+.cta-button.book-now {
+  background-color: var(--color-primary);
+}
+
+.cta-button.book-now:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Common Hover Effects */
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--color-shadow);
+}
+
+/* Focus States */
+.cta-button:focus {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+-e \nFile: ./css/blog.css\n
+/* BLOG SECTION */
+.blog-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.blog-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2e3d2f;
+  margin-bottom: 2rem;
+}
+
+.blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.blog-entry {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-entry:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.blog-thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.blog-entry h3 {
+  font-size: 1.2rem;
+  color: #6b5b95;
+  margin-bottom: 0.5rem;
+}
+
+.blog-entry p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.learn-more-blog-btn {
+  background-color: #78a265;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.learn-more-blog-btn:hover {
+  background-color: #5e774c;
+}
+-e \nFile: ./css/footer.css\n
+/* FOOTER */
+.footer {
+  background-color: #2e3d2f;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: underline;
+  margin: 0 0.5rem;
+}
+
+.footer-links a:hover {
+  color: #78a265;
+}
+-e \nFile: ./js/reviews.js\n
+// reviews.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeReviewsNavigation();
+  makeReviewsClickable();
+});
+
+
+function makeReviewsClickable() {
+  const googleBusinessURL = "https://maps.app.goo.gl/EyMWdSuMsExvrxaG7"; // Your Google Business Profile URL
+  const reviewCards = document.querySelectorAll(".review");
+
+  reviewCards.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      // Prevent redirect if the click is on a button or link inside the card
+      if (
+        e.target.closest("button") ||
+        e.target.closest("a") ||
+        e.target.tagName.toLowerCase() === "label"
+      ) {
+        return; // Do nothing, allowing the button/link to function normally
+      }
+
+      // Open the Google Business Profile in a new tab
+      window.open(googleBusinessURL, "_blank", "noopener,noreferrer");
+    });
+
+    // Optional: Enhance Accessibility by allowing keyboard navigation
+    card.setAttribute("tabindex", "0"); // Make the card focusable
+    card.setAttribute("role", "button"); // Indicate the role
+
+    // Handle 'Enter' and 'Space' key presses
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        window.open(googleBusinessURL, "_blank", "noopener,noreferrer");
+      }
+    });
+  });
+}
+/**
+ * Setup Navigation Arrows Functionality
+ */
+function initializeReviewsNavigation() {
+  const leftArrow = document.querySelector(".reviews-nav.left");
+  const rightArrow = document.querySelector(".reviews-nav.right");
+  const reviewsContainer = document.querySelector(".reviews-container");
+
+  if (!leftArrow || !rightArrow || !reviewsContainer) {
+    console.error("Reviews navigation elements not found.");
+    return;
+  }
+
+  /**
+   * Calculate the amount to scroll based on review card width and gap
+   * @returns {number} Scroll amount in pixels
+   */
+  const calculateScrollAmount = () => {
+    const reviewCard = reviewsContainer.querySelector(".review");
+    if (reviewCard) {
+      const cardStyle = window.getComputedStyle(reviewCard);
+      const cardWidth = reviewCard.offsetWidth;
+      const gap = parseInt(cardStyle.marginRight) || 20; // Default gap if not set
+      return cardWidth + gap;
+    }
+    return 320; // Fallback value if no review cards found
+  };
+
+  let scrollAmount = calculateScrollAmount();
+
+  /**
+   * Update scroll amount on window resize
+   */
+  window.addEventListener("resize", () => {
+    scrollAmount = calculateScrollAmount();
+    updateArrowsVisibility();
+  });
+
+  /**
+   * Event listener for left arrow
+   */
+  leftArrow.addEventListener("click", () => {
+    reviewsContainer.scrollBy({
+      left: -scrollAmount,
+      behavior: "smooth",
+    });
+  });
+
+  /**
+   * Event listener for right arrow
+   */
+  rightArrow.addEventListener("click", () => {
+    reviewsContainer.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth",
+    });
+  });
+
+  /**
+   * Function to update the visibility of navigation arrows based on scroll position
+   */
+  const updateArrowsVisibility = () => {
+    const maxScrollLeft = reviewsContainer.scrollWidth - reviewsContainer.clientWidth;
+    leftArrow.style.display = reviewsContainer.scrollLeft > 0 ? "flex" : "none";
+    rightArrow.style.display = reviewsContainer.scrollLeft < maxScrollLeft ? "flex" : "none";
+  };
+
+  /**
+   * Initial arrow visibility
+   */
+  updateArrowsVisibility();
+
+  /**
+   * Update arrow visibility on scroll
+   */
+  reviewsContainer.addEventListener("scroll", updateArrowsVisibility);
+
+  /**
+   * Keyboard Accessibility: Allow navigation via Enter or Space keys
+   */
+  const handleKeyDown = (event, direction) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      reviewsContainer.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  leftArrow.addEventListener("keydown", (event) => handleKeyDown(event, "left"));
+  rightArrow.addEventListener("keydown", (event) => handleKeyDown(event, "right"));
+}
+-e \nFile: ./js/main.js\n
+// main.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+  if (menuToggle && mobileMenu && mobileMenuOverlay) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      mobileMenu.setAttribute("aria-hidden", !isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      mobileMenuOverlay.classList.toggle("active", isOpen);
+    });
+
+    // Close menu when clicking on the overlay
+    mobileMenuOverlay.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      menuToggle.setAttribute("aria-expanded", "false");
+      mobileMenuOverlay.classList.remove("active");
+    });
+
+    // Allow menu toggle via keyboard
+    menuToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        menuToggle.click();
+      }
+    });
+  }
+
+  // Smooth Scroll for Anchor Links
+  const links = document.querySelectorAll('a[href^="#"]');
+  const navbar = document.querySelector('.navbar'); // Adjust selector if different
+
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        e.preventDefault(); // Prevent default jump
+
+        // Dynamically get the height of the navbar
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+        // Get the target element's position
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+
+        // Smooth scroll to the adjusted position
+        window.scrollTo({
+          top: targetPosition - navbarHeight + 30, // Offset by the navbar's height
+          behavior: 'smooth',
+        });
+
+        // Close the mobile menu if it's open
+        if (mobileMenu.classList.contains("open")) {
+          mobileMenu.classList.remove("open");
+          mobileMenu.setAttribute("aria-hidden", "true");
+          menuToggle.setAttribute("aria-expanded", "false");
+          mobileMenuOverlay.classList.remove("active");
+        }
+      }
+    });
+  });
+});
+-e \nFile: ./js/bookingForm.js\n
+// js/bookingForm.js
+
+document.addEventListener("modalsLoaded", () => {
+  initBookingForm();
+});
+
+/**
+ * Initialize Booking Form Functionality
+ */
+function initBookingForm() {
+  const bookingForm = document.getElementById("bookingForm");
+  if (!bookingForm) {
+    console.error("Booking form not found.");
+    return;
+  }
+
+  const formSteps = bookingForm.querySelectorAll(".form-step");
+  const progressBar = document.querySelector(".progress");
+  const submitButton = bookingForm.querySelector(".submit-btn");
+
+  let currentStep = 1;
+  const totalSteps = formSteps.length;
+
+  // Initialize EmailJS
+  emailjs.init("9CwBWUPI_pCtZXPr0");
+
+  // Show the first step
+  showFormStep(currentStep);
+
+  // Event delegation for next and previous buttons
+  bookingForm.addEventListener("click", (e) => {
+    if (e.target.classList.contains("next-btn")) {
+      e.preventDefault();
+      if (validateFormStep(currentStep)) {
+        currentStep++;
+        showFormStep(currentStep);
+      }
+    }
+
+    if (e.target.classList.contains("prev-btn")) {
+      e.preventDefault();
+      currentStep--;
+      showFormStep(currentStep);
+    }
+  });
+
+  // Handle form submission
+  bookingForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (validateFormStep(currentStep)) {
+      // Collect form data
+      const formData = new FormData(bookingForm);
+      const data = Object.fromEntries(formData.entries());
+
+      // Send data via EmailJS
+      sendBookingRequest(data);
+    }
+  });
+
+  /**
+   * Show the form step based on index
+   */
+  function showFormStep(step) {
+    formSteps.forEach((formStep, index) => {
+      formStep.classList.toggle("active", index + 1 === step);
+    });
+
+    // Update progress bar
+    const progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
+    if(progressBar)
+      progressBar.style.width = `${progressPercent}%`;
+  }
+
+  /**
+   * Validate current form step
+   */
+  function validateFormStep(step) {
+    const currentFormStep = formSteps[step - 1];
+    const inputs = currentFormStep.querySelectorAll("input, select, textarea");
+    let valid = true;
+
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        valid = false;
+        input.reportValidity();
+        console.warn(`Invalid input: ${input.name}`);
+      }
+    });
+
+    return valid;
+  }
+
+  /**
+   * Reset the form to the first step
+   */
+  function resetForm() {
+    currentStep = 1;
+    showFormStep(currentStep);
+    bookingForm.reset();
+    progressBar.style.width = "0%";
+  }
+
+  /**
+   * Send booking request using EmailJS
+   */
+  function sendBookingRequest(data) {
+    // Disable submit button to prevent multiple submissions
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    // Prepare the EmailJS service for admin notification
+    emailjs
+      .send("service_156d2p8", "template_i7i7zz7", { ...data, message: constructAdminMessage(data) })
+      .then(() => {
+
+        // Prepare and send confirmation email to user
+        const confirmationData = {
+          to_name: data.name,
+          to_email: data.email,
+          service: data.service,
+          date: data.date,
+          message: constructUserMessage(data),
+        };
+
+        return emailjs.send("service_156d2p8", "template_nrcx4ff", confirmationData);
+      })
+      .then(() => {
+        // Show success modal
+        showStatusModal(
+          "Your request has been submitted successfully. We will contact you shortly.",
+          true
+        );
+        resetForm();
+        closeModal(document.getElementById("modalBg"));
+      })
+      .catch((error) => {
+        console.error("Error:", error.text || error);
+        // Show error modal
+        showStatusModal("Failed to submit your request. Please try again later.", false);
+      })
+      .finally(() => {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Quote Request";
+      });
+  }
+
+  /**
+   * Construct the admin message from form data
+   */
+  function constructAdminMessage(data) {
+    return `
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Service: ${data.service}
+Square Footage: ${data.squareFootage} sq ft
+Bedrooms: ${data.bedrooms}
+Bathrooms: ${data.bathrooms}
+Powder Rooms: ${data.powderRooms}
+Address: ${data.address}
+Preferred Date: ${data.date}
+Additional Details: ${data.details || "N/A"}
+    `.trim();
+  }
+
+  /**
+   * Construct the user confirmation message
+   */
+  function constructUserMessage(data) {
+    return `
+Thank you for choosing Zen Zone Cleaning Services! Here’s a summary of your request:
+
+Service: ${data.service}
+Preferred Date: ${data.date}
+Address: ${data.address}
+Square Footage: ${data.squareFootage} sq ft
+Bedrooms: ${data.bedrooms}
+Bathrooms: ${data.bathrooms}
+Powder Rooms: ${data.powderRooms}
+
+Additional Details: ${data.details || "None provided"}
+    `.trim();
+  }
+
+  /**
+   * Show status modal with message
+   */
+  function showStatusModal(message, isSuccess) {
+    const statusModalBg = document.getElementById("statusModalBg");
+    const statusModalContent = document.getElementById("statusModalContent");
+
+    statusModalContent.innerHTML = `
+      <h2>${isSuccess ? "Success" : "Error"}</h2>
+      <p>${message}</p>
+    `;
+
+    openModal("statusModalBg");
+
+    // Automatically close after 5 seconds
+    setTimeout(() => {
+      closeModal(statusModalBg);
+    }, 5000);
+  }
+}
+-e \nFile: ./js/modals.js\n
+// modals.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadModals()
+    .then(() => {
+      setupModalEventListeners();
+      // Dispatch the custom event after modals are loaded
+      const modalsLoadedEvent = new Event("modalsLoaded");
+      document.dispatchEvent(modalsLoadedEvent);
+    })
+    .catch((error) => console.error("Error loading modals:", error));
+});
+
+/**
+ * Load modals.html and append its content to the body
+ */
+function loadModals() {
+  return fetch("modals.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to load modals.html: ${response.status} ${response.statusText}`);
+      }
+      return response.text();
+    })
+    .then((data) => {
+      const modalContainer = document.createElement("div");
+      modalContainer.innerHTML = data;
+      document.body.appendChild(modalContainer);
+    });
+}
+
+/**
+ * Setup Event Listeners for Modal Interactions
+ */
+function setupModalEventListeners() {
+
+  // Function to open a modal
+  window.openModal = function (modalId) {
+    const modalBg = document.getElementById(modalId);
+    if (modalBg) {
+      modalBg.style.display = "flex";
+      document.body.classList.add("modal-open");
+      trapFocus(modalBg);
+    } else {
+      console.warn(`Modal with ID "${modalId}" not found.`);
+    }
+  };
+
+  // Function to close a modal
+  window.closeModal = function (modalBg) {
+    if (modalBg) {
+      modalBg.style.display = "none";
+      document.body.classList.remove("modal-open");
+      releaseFocus();
+    }
+  };
+
+  // Setup open modal buttons (buttons with IDs starting with 'open' or class 'book-now')
+  const openModalButtons = document.querySelectorAll("[id^='open'], .book-now");
+  openModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      let modalId = "";
+
+      // Special handling for 'openModal' and 'openModal2' to open 'modalBg'
+      if (button.id === "openModal" || button.id === "openModal2" || button.classList.contains("book-now")) {
+        modalId = "modalBg";
+      } else {
+        // Remove 'open' prefix and lowercase the first character
+        const baseId = button.id.replace(/^open/, ""); // e.g., 'TermsModal'
+        modalId = baseId.charAt(0).toLowerCase() + baseId.slice(1); // e.g., 'termsModal'
+      }
+
+      openModal(modalId);
+    });
+  });
+
+  // Setup close modal buttons (elements with class 'modal-close')
+  const closeModalButtons = document.querySelectorAll(".modal-close");
+  closeModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const modalBg = button.closest(".modal-bg");
+      if (modalBg) {
+        closeModal(modalBg);
+      }
+    });
+  });
+
+  // Close modal when clicking outside the modal content
+  const modalBgs = document.querySelectorAll(".modal-bg");
+  modalBgs.forEach((modalBg) => {
+    modalBg.addEventListener("click", (e) => {
+      if (e.target === modalBg) {
+        closeModal(modalBg);
+      }
+    });
+  });
+
+  // Close modal on Escape key press
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const openModals = document.querySelectorAll(".modal-bg[style*='display: flex']");
+      openModals.forEach((modalBg) => {
+        closeModal(modalBg);
+      });
+    }
+  });
+
+  // Setup event listeners for "Learn More" service buttons
+  const learnMoreButtons = document.querySelectorAll(".learn-more-btn");
+  learnMoreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const service = button.getAttribute("data-service");
+      const modalId = `serviceModal${service}`;
+      openModal(modalId);
+    });
+  });
+
+  // Setup event listeners for "Read More" blog buttons
+  const readMoreBlogButtons = document.querySelectorAll(".learn-more-blog-btn");
+  readMoreBlogButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const blog = button.getAttribute("data-blog");
+      const modalId = `blogModal${blog}`;
+      openModal(modalId);
+    });
+  });
+
+  // Setup event listeners for "Book Now" buttons within service modals
+  const bookNowButtons = document.querySelectorAll(".cta-button.book-now");
+  bookNowButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const serviceModal = button.closest(".service-modal");
+      if (serviceModal) {
+        // Get service name from the modal’s <h2>
+        const serviceName = serviceModal.querySelector("h2").innerText;
+        // Close the current service modal
+        closeModal(serviceModal);
+        // Open booking modal
+        openModal("modalBg");
+        // Pre-fill the service selection
+        const serviceSelect = document.getElementById("service");
+        if (serviceSelect) {
+          serviceSelect.value = serviceName;
+        }
+      }
+    });
+  });
+
+
+
+  // Generate a unique ID for the user on page load
+const userId = localStorage.getItem("uniqueId") || `user-${Date.now()}`;
+localStorage.setItem("uniqueId", userId);
+
+// Debounce utility function
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+// Function to send data to Google Apps Script
+async function sendData(fieldId, action = null) {
+  const field = document.getElementById(fieldId);
+  let value;
+
+  if (action === "submitClicked") {
+    value = "Submitted"; // Special value for the submit button action
+  } else if (field.type === "range") {
+    value = field.value; // Get the slider's current value
+  } else {
+    value = field.value.trim(); // Get value for other input types
+  }
+
+  if (!value) return;
+
+  const data = {
+    userId, // Include unique user ID
+    fieldId: action || fieldId, // If it's a submit action, send "submitClicked"
+    value, // The field's value
+  };
+
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbx5RXzUMFjXjxANpN1oOAj3H6YBjV6XzReF8SLCCVJqK54szwLS0JxHi-SyJE6zQqA0/exec", {
+      redirect: "follow",
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8", // Specified header
+      },
+      body: JSON.stringify(data), // Convert the object to a JSON string
+    });
+
+    if (response.ok) {
+      console.log(`Data sent successfully for ${fieldId}`);
+    } else {
+      console.error(`Failed to send data for ${fieldId}:`, response.status);
+    }
+  } catch (error) {
+    console.error(`Error sending data for ${fieldId}:`, error);
+  }
+}
+
+// Add event listeners to form fields
+[
+  { id: "name", event: "blur" },
+  { id: "email", event: "blur" },
+  { id: "phone", event: "blur" },
+  { id: "service", event: "change" }, // For dropdowns
+  { id: "squareFootage", event: "input", debounce: true }, // For sliders
+  { id: "bedrooms", event: "input", debounce: true }, // For sliders
+  { id: "bathrooms", event: "input", debounce: true }, // For sliders
+  { id: "powderRooms", event: "input", debounce: true }, // For sliders
+  { id: "address", event: "blur" },
+  { id: "date", event: "blur" },
+  { id: "details", event: "blur" },
+].forEach(({ id, event, debounce: shouldDebounce }) => {
+  const field = document.getElementById(id);
+  if (field) {
+    const handler = shouldDebounce ? debounce(() => sendData(id), 300) : () => sendData(id);
+    field.addEventListener(event, handler);
+  }
+});
+
+// Log when the user clicks the Submit button
+document.querySelector(".submit-btn").addEventListener("click", () => {
+  sendData("submit", "submitClicked");
+});
+
+
+
+}
+
+/**
+ * Trap focus within the modal for accessibility
+ */
+let focusedElementBeforeModal;
+
+function trapFocus(modal) {
+  const focusableElementsString =
+    'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+  const focusableElements = modal.querySelectorAll(focusableElementsString);
+
+  if (focusableElements.length === 0) return;
+
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  focusedElementBeforeModal = document.activeElement;
+
+  function handleFocus(e) {
+    if (e.key !== "Tab") return;
+
+    if (e.shiftKey) {
+      // Shift + Tab
+      if (document.activeElement === firstFocusableElement) {
+        e.preventDefault();
+        lastFocusableElement.focus();
+      }
+    } else {
+      // Tab
+      if (document.activeElement === lastFocusableElement) {
+        e.preventDefault();
+        firstFocusableElement.focus();
+      }
+    }
+  }
+
+  modal.addEventListener("keydown", handleFocus);
+  firstFocusableElement.focus();
+
+  // Store the handler to remove later
+  modal._handleFocus = handleFocus;
+}
+
+/**
+ * Release focus and return to the previously focused element
+ */
+function releaseFocus() {
+  const modal = document.querySelector(".modal-bg[style*='display: flex']");
+  if (modal && modal._handleFocus) {
+    modal.removeEventListener("keydown", modal._handleFocus);
+    if (focusedElementBeforeModal) focusedElementBeforeModal.focus();
+  }
+}
+-e \nFile: ./modals.html\n
+<!-- Modals -->
+<!-- Terms of Service Modal -->
+<div class="modal-bg" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle"
+  aria-describedby="termsModalDescription">
+  <div class="modal" role="document">
+    <button class="modal-close" id="closeTermsModal" aria-label="Close Terms of Service">&times;</button>
+    <div class="modal-content">
+      <!-- Terms of Service Content -->
+      <div class="modal-inner-content">
+        <h2 id="termsModalTitle">Terms of Service</h2>
+        <div id="termsModalDescription">
+          <h3>Introduction</h3>
+          <p>Welcome to Zen Zone Cleaning Services. By accessing and using our services, you agree to be bound by
+            these Terms of Service. Please read them carefully.</p>
+          <h3>Services</h3>
+          <p>Zen Zone Cleaning Services provides residential and commercial cleaning services. Our services include
+            but are not limited to general cleaning, deep cleaning, move-in/move-out cleaning, and customized cleaning
+            plans.</p>
+          <h3>Booking and Payment</h3>
+          <ul>
+            <li><strong>Booking:</strong> To book our services, you can contact us via phone, email, or our online
+              booking system. We require accurate information to provide the best service.</li>
+            <li><strong>Payment:</strong> Payment for services is due upon completion unless otherwise agreed upon in
+              writing. We accept various forms of payment, including cash, credit/debit cards, and online payment
+              options.</li>
+            <li><strong>Cancellations and Rescheduling:</strong> Cancellations or rescheduling requests must be made
+              at least 24 hours before the scheduled service. Failure to do so may result in a cancellation fee.</li>
+          </ul>
+          <h3>Service Terms</h3>
+          <ul>
+            <li><strong>Access:</strong> Customers must provide access to the property at the scheduled time. Failure
+              to do so may result in a rescheduling fee.</li>
+            <li><strong>Safety:</strong> For the safety of our staff, we request that customers secure any pets and
+              inform us of any potential hazards in the property.</li>
+            <li><strong>Damage and Liability:</strong> While we take utmost care during our services, Zen Zone
+              Cleaning Services is not responsible for any pre-existing damage to items or property. In case of
+              accidental damage caused by our staff, please report it within 24 hours for us to address the issue.
+            </li>
+            <li><strong>Quality Guarantee:</strong> We strive to provide high-quality cleaning services. If you are
+              not satisfied with our service, please contact us within 24 hours, and we will rectify the issue at no
+              additional charge.</li>
+          </ul>
+          <h3>Privacy</h3>
+          <p>We value your privacy and are committed to protecting your personal information. We will not share your
+            information with third parties without your consent, except as required by law.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div class="modal-bg" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle"
+  aria-describedby="privacyModalDescription">
+  <div class="modal" role="document">
+    <button class="modal-close" id="closePrivacyModal" aria-label="Close Privacy Policy">&times;</button>
+    <div class="modal-content">
+      <!-- Privacy Policy Content -->
+      <div class="modal-inner-content">
+        <h2 id="privacyModalTitle">Privacy Policy</h2>
+        <div id="privacyModalDescription">
+          <p>Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to
+            understand how we collect, use, communicate, disclose, and make use of personal information.</p>
+          <h3>1. Purpose of Information Collection</h3>
+          <p>Before or at the time of collecting personal information, we will identify the purposes for which
+            information is being collected.</p>
+          <h3>2. Use of Personal Information</h3>
+          <p>We will collect and use personal information solely with the objective of fulfilling those purposes
+            specified by us and for other compatible purposes, unless we obtain the consent of the individual
+            concerned or as required by law.</p>
+          <h3>3. Retention of Personal Information</h3>
+          <p>We will only retain personal information as long as necessary for the fulfillment of those purposes.</p>
+          <h3>4. Lawful and Fair Means</h3>
+          <p>We will collect personal information by lawful and fair means and, where appropriate, with the knowledge
+            or consent of the individual concerned.</p>
+          <h3>5. Relevance and Accuracy</h3>
+          <p>Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary
+            for those purposes, should be accurate, complete, and up-to-date.</p>
+          <h3>6. Security Safeguards</h3>
+          <p>We will protect personal information by reasonable security safeguards against loss or theft, as well as
+            unauthorized access, disclosure, copying, use, or modification.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Service Modals -->
+<!-- Deep Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalDeepCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleDeepCleaning" aria-describedby="serviceModalDescDeepCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Deep Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleDeepCleaning">Deep Cleaning</h2>
+        <div id="serviceModalDescDeepCleaning">
+          <p>Our Deep Cleaning service goes beyond the basics to tackle both visible and hidden dirt. This includes
+            cleaning behind appliances, baseboards, door frames, interior windows, blinds, ceiling fans, light
+            fixtures, wall spots, and grout. We sanitize high-touch areas, leaving your home feeling refreshed and
+            comfortable.</p>
+          <ul>
+            <li>Comprehensive dusting and vacuuming</li>
+            <li>Sanitizing all surfaces</li>
+            <li>Special attention to high-touch areas</li>
+            <li>Eco-friendly cleaning products</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Deep Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Standard Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalStandardCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleStandardCleaning" aria-describedby="serviceModalDescStandardCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Standard Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleStandardCleaning">Standard Cleaning</h2>
+        <div id="serviceModalDescStandardCleaning">
+          <p>Maintain the sparkle in your home with our Standard Cleaning service. We focus on essential cleaning
+            tasks to keep your living spaces tidy and hygienic.</p>
+          <ul>
+            <li>Dusting all surfaces</li>
+            <li>Sweeping, mopping, and vacuuming floors</li>
+            <li>Cleaning and sanitizing bathrooms and kitchens</li>
+            <li>Emptying trash bins</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Standard Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Post-Construction Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalPostConstructionCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitlePostConstructionCleaning"
+  aria-describedby="serviceModalDescPostConstructionCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Post-Construction Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitlePostConstructionCleaning">Post-Construction Cleaning</h2>
+        <div id="serviceModalDescPostConstructionCleaning">
+          <p>After a renovation or construction project, let us handle the mess. Our Post-Construction Cleaning
+            service ensures your property is clean, safe, and ready for use.</p>
+          <ul>
+            <li>Removal of construction debris</li>
+            <li>Detailed dusting and wiping</li>
+            <li>Window and glass cleaning</li>
+            <li>Floor care and restoration</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Post-Construction Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Move-In Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalMoveInCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleMoveInCleaning" aria-describedby="serviceModalDescMoveInCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Move-In Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleMoveInCleaning">Move-In Cleaning</h2>
+        <div id="serviceModalDescMoveInCleaning">
+          <p>Moving into a new home? Our Move-In Cleaning service ensures your new space is immaculate and ready for
+            you to settle in.</p>
+          <ul>
+            <li>Comprehensive cleaning of all rooms</li>
+            <li>Kitchen and bathroom sanitization</li>
+            <li>Floor care and carpet cleaning</li>
+            <li>Spotless surfaces and fixtures</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Move-In Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Move-Out Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalMoveOutCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleMoveOutCleaning" aria-describedby="serviceModalDescMoveOutCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Move-Out Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleMoveOutCleaning">Move-Out Cleaning</h2>
+        <div id="serviceModalDescMoveOutCleaning">
+          <p>Preparing to leave your current residence? Our Move-Out Cleaning service ensures the property is spotless
+            for the next occupants, helping you meet lease requirements and leave a positive impression.</p>
+          <ul>
+            <li>Thorough cleaning of all rooms</li>
+            <li>Kitchen and bathroom deep cleaning</li>
+            <li>Carpet and floor cleaning</li>
+            <li>Removal of all personal items and trash</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Move-Out Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Airbnb Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalAirbnbCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleAirbnbCleaning" aria-describedby="serviceModalDescAirbnbCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Airbnb Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleAirbnbCleaning">Airbnb Cleaning</h2>
+        <div id="serviceModalDescAirbnbCleaning">
+          <p>Hosting on Airbnb? Our Airbnb Cleaning service guarantees a sparkling clean property between guest stays,
+            ensuring quick turnarounds without compromising on quality.</p>
+          <ul>
+            <li>Detailed cleaning of all guest areas</li>
+            <li>Restocking of essential supplies</li>
+            <li>Quick and efficient service to meet tight schedules</li>
+            <li>Professional presentation to enhance guest experience</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Airbnb Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Office Cleaning Modal -->
+<div class="modal-bg service-modal" id="serviceModalOfficeCleaning" role="dialog" aria-modal="true"
+  aria-labelledby="serviceModalTitleOfficeCleaning" aria-describedby="serviceModalDescOfficeCleaning">
+  <div class="modal" role="document">
+    <button class="modal-close" aria-label="Close Office Cleaning Modal">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="serviceModalTitleOfficeCleaning">Office Cleaning</h2>
+        <div id="serviceModalDescOfficeCleaning">
+          <p>Create a clean and productive workspace with our Office Cleaning service. We customize our cleaning plans
+            to fit your business needs, maintaining a healthy environment for your employees and impressing your
+            clients.</p>
+          <ul>
+            <li>Daily/weekly/monthly cleaning schedules</li>
+            <li>Sanitizing workstations and common areas</li>
+            <li>Window and glass cleaning</li>
+            <li>Floor care and maintenance</li>
+          </ul>
+          <button class="cta-button book-now" aria-label="Book Office Cleaning">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Success/Error Modal -->
+<div class="modal-bg" id="statusModalBg" role="dialog" aria-modal="true" aria-labelledby="statusModalTitle"
+  aria-describedby="statusModalDesc">
+  <div class="modal" role="document">
+    <button class="modal-close" id="statusModalClose" aria-label="Close status message">&times;</button>
+    <div class="modal-content" id="statusModalContent">
+      <!-- Content will be dynamically inserted here -->
+    </div>
+  </div>
+</div>
+
+<!-- MODAL BOOKING FORM -->
+<div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle"
+  aria-describedby="bookingModalDesc">
+  <div class="modal" role="document">
+    <button class="modal-close" id="closeModal" aria-label="Close booking form">&times;</button>
+    <div class="modal-content">
+      <div class="modal-inner-content">
+        <h2 id="bookingModalTitle">Request Your Cleaning Service Quote</h2>
+        <div id="bookingModalDesc">
+          <!-- Progress Bar -->
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+
+          <!-- Multi-Step Form -->
+          <form id="bookingForm" novalidate>
+            <!-- Step 1: Personal Information -->
+            <div class="form-step active" data-step="1">
+              <h3>Step 1: Personal Information</h3>
+              <div class="form-group">
+                <label for="name">Full Name <span>*</span></label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required
+                  aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address <span>*</span></label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required
+                  aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number <span>*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required
+                  aria-required="true" pattern="^\+?\d{10,15}$"
+                  title="Please enter a valid phone number (10 to 15 digits)." />
+              </div>
+              <div class="form-navigation">
+                <button type="button" class="next-btn" aria-label="Next step">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Service Selection -->
+            <div class="form-step" data-step="2">
+              <h3>Step 2: Select Service</h3>
+              <div class="form-group">
+                <label for="service">Select Service <span>*</span></label>
+                <select id="service" name="service" required aria-required="true">
+                  <option value="" disabled selected hidden>-- Select a Service --</option>
+                  <option value="Standard Cleaning">Standard Cleaning</option>
+                  <option value="Deep Cleaning">Deep Cleaning</option>
+                  <option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
+                  <option value="Move-In Cleaning">Move-In Cleaning</option>
+                  <option value="Move-Out Cleaning">Move-Out Cleaning</option>
+                  <option value="Airbnb Cleaning">Airbnb Cleaning</option>
+                  <option value="Office Cleaning">Office Cleaning</option>
+                </select>
+              </div>
+              <div class="form-navigation only-next">
+                <button type="button" class="prev-btn" aria-label="Previous step">Previous</button>
+                <button type="button" class="next-btn" aria-label="Next step">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Property Details -->
+            <div class="form-step" data-step="3">
+              <h3>Step 3: Property Details</h3>
+              <div class="form-group">
+                <label for="squareFootage">Square Footage <span>*</span></label>
+                <input type="range" id="squareFootage" name="squareFootage" min="0" max="10000" step="100"
+                  value="0"
+                  oninput="document.getElementById('squareFootageValue').innerText = this.value + ' sq ft';" required
+                  aria-required="true" />
+                <span id="squareFootageValue">0 sq ft</span>
+              </div>
+              <div class="form-group">
+                <label for="bedrooms">Number of Bedrooms <span>*</span></label>
+                <input type="range" id="bedrooms" name="bedrooms" min="0" max="10" step="1" value="0"
+                  oninput="document.getElementById('bedroomsValue').innerText = this.value;" required
+                  aria-required="true" />
+                <span id="bedroomsValue">0</span>
+              </div>
+              <div class="form-group">
+                <label for="bathrooms">Number of Bathrooms <span>*</span></label>
+                <input type="range" id="bathrooms" name="bathrooms" min="0" max="10" step="1" value="0"
+                  oninput="document.getElementById('bathroomsValue').innerText = this.value;" required
+                  aria-required="true" />
+                <span id="bathroomsValue">0</span>
+              </div>
+              <div class="form-group">
+                <label for="powderRooms">Number of Powder Rooms <span>*</span></label>
+                <input type="range" id="powderRooms" name="powderRooms" min="0" max="10" step="1" value="0"
+                  oninput="document.getElementById('powderRoomsValue').innerText = this.value;" required
+                  aria-required="true" />
+                <span id="powderRoomsValue">0</span>
+              </div>
+              <div class="form-navigation">
+                <button type="button" class="prev-btn" aria-label="Previous step">Previous</button>
+                <button type="button" class="next-btn" aria-label="Next step">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Additional Details -->
+            <div class="form-step" data-step="4">
+              <h3>Step 4: Additional Details</h3>
+              <div class="form-group">
+                <label for="address">
+                  Address <span>*</span>
+                </label>
+                <input type="text" id="address" name="address" placeholder="Enter your full address" required
+                  aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="date">Preferred Date <span>*</span></label>
+                <input type="date" id="date" name="date" required aria-required="true" />
+              </div>
+              <div class="form-group">
+                <label for="details">Additional Details</label>
+                <textarea id="details" name="details" rows="4"
+                  placeholder="Provide any additional details about your cleaning request"></textarea>
+              </div>
+              <div class="form-navigation">
+                <button type="button" class="prev-btn" aria-label="Previous step">Previous</button>
+                <button type="submit" class="submit-btn" aria-label="Submit quote request">Submit Quote
+                  Request</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

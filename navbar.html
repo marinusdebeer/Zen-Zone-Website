@@ -1,0 +1,59 @@
+<!-- navbar.html -->
+<header class="navbar">
+  <div class="logo-container">
+    <img src="/assets/moose_logo.png" alt="Zen Zone Cleaning Services Logo" class="company-logo" />
+    <span class="company-name">Zen Zone Cleaning</span>
+  </div>
+
+  <!-- Desktop Navigation Menu -->
+  <nav class="desktop-menu" aria-label="Primary Navigation">
+    <ul>
+      <li><a href="/index.html#home" class="nav-link">Home</a></li>
+      <li><a href="/index.html#reviews" class="nav-link">Reviews</a></li>
+      <li><a href="/index.html#services" class="nav-link">Services</a></li>
+      <li><a href="/index.html#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="/index.html#areas" class="nav-link">Areas</a></li>
+      <li><a href="/blogs.html" class="nav-link">Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-info">
+    <!-- These buttons will be hidden on mobile via CSS -->
+    <a href="tel:+17052425462" class="call-button desktop-only" aria-label="Call Zen Zone Cleaning Services">
+      <i class="fas fa-phone-alt" aria-hidden="true"></i> 705 242 5462
+    </a>
+    <button class="cta-button book-now desktop-only" aria-label="Book Now">
+      <i class="fas fa-book" aria-hidden="true"></i> Book Now
+    </button>
+    <!-- Menu Toggle for Mobile -->
+    <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu closed" aria-hidden="true">
+    <ul>
+      <li>
+        <a href="tel:+17052425462" class="call-button mobile-only" aria-label="Call Zen Zone Cleaning Services">
+          <i class="fas fa-phone-alt" aria-hidden="true"></i> 705 242 5462
+        </a>
+      </li>
+      <li>
+        <button class="cta-button book-now mobile-only" aria-label="Book Now">
+          <i class="fas fa-book" aria-hidden="true"></i> Book Now
+        </button>
+      </li>
+      <li><a href="/index.html#home">Home</a></li>
+      <li><a href="/index.html#reviews">Reviews</a></li>
+      <li><a href="/index.html#services">Services</a></li>
+      <li><a href="/index.html#gallery">Gallery</a></li>
+      <li><a href="/index.html#areas">Areas</a></li>
+      <li><a href="/blogs.html">Blog</a></li>
+      <!-- Add the buttons here for mobile -->
+    </ul>
+  </nav>
+</header>
+
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>

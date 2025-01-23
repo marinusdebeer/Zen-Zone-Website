@@ -25,6 +25,8 @@
 .company-logo {
   height: 40px; /* Reduced logo size for smaller screens */
   margin-right: 0.5rem;
+  /* If using background image */
+  /* background-image: url('/assets/moose_logo.png'); */
 }
 
 .company-name {
@@ -278,6 +280,3 @@
     display: none;
   }
 }
-
-/* Optional: Additional Styling for Navbar Links (if any) */
-/* Add your styles for other navbar links here */

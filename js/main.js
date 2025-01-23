@@ -1,36 +1,13 @@
 // main.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const mobileMenu = document.querySelector(".mobile-menu");
-  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+  initializeSmoothScroll();
+});
 
-  if (menuToggle && mobileMenu && mobileMenuOverlay) {
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.toggle("open");
-      mobileMenu.setAttribute("aria-hidden", !isOpen);
-      menuToggle.setAttribute("aria-expanded", isOpen);
-      mobileMenuOverlay.classList.toggle("active", isOpen);
-    });
-
-    // Close menu when clicking on the overlay
-    mobileMenuOverlay.addEventListener("click", () => {
-      mobileMenu.classList.remove("open");
-      mobileMenu.setAttribute("aria-hidden", "true");
-      menuToggle.setAttribute("aria-expanded", "false");
-      mobileMenuOverlay.classList.remove("active");
-    });
-
-    // Allow menu toggle via keyboard
-    menuToggle.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        menuToggle.click();
-      }
-    });
-  }
-
-  // Smooth Scroll for Anchor Links
+/**
+ * Initialize Smooth Scrolling for Anchor Links
+ */
+function initializeSmoothScroll() {
   const links = document.querySelectorAll('a[href^="#"]');
   const navbar = document.querySelector('.navbar'); // Adjust selector if different
 
@@ -55,13 +32,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // Close the mobile menu if it's open
-        if (mobileMenu.classList.contains("open")) {
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const menuToggle = document.querySelector(".menu-toggle");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+        if (mobileMenu && mobileMenu.classList.contains("open")) {
           mobileMenu.classList.remove("open");
           mobileMenu.setAttribute("aria-hidden", "true");
-          menuToggle.setAttribute("aria-expanded", "false");
-          mobileMenuOverlay.classList.remove("active");
+          if (menuToggle) {
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+          if (mobileMenuOverlay) {
+            mobileMenuOverlay.classList.remove("active");
+          }
+
+          // Release focus if trapped
+          releaseFocus();
         }
       }
     });
   });
-});
+}
+
+/**
+ * Release Focus and Return to Previously Focused Element
+ * (Reusing the function from navbar.js if possible)
+ */
+function releaseFocus() {
+  const mobileMenu = document.querySelector(".mobile-menu");
+  if (mobileMenu && mobileMenu._handleFocusTrap) {
+    mobileMenu.removeEventListener("keydown", mobileMenu._handleFocusTrap);
+    mobileMenu._handleFocusTrap = null;
+  }
+
+  // Assuming `focusedElementBeforeMenu` is accessible or redefine it
+  // For better encapsulation, consider handling focus trapping entirely within navbar.js
+}

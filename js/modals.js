@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadModals()
     .then(() => {
       setupModalEventListeners();
+      console.log("Modals loaded and event listeners set up.");
       // Dispatch the custom event after modals are loaded
       const modalsLoadedEvent = new Event("modalsLoaded");
       document.dispatchEvent(modalsLoadedEvent);
@@ -26,14 +27,14 @@ function loadModals() {
       const modalContainer = document.createElement("div");
       modalContainer.innerHTML = data;
       document.body.appendChild(modalContainer);
+      console.log("modals.html loaded into the DOM.");
     });
 }
 
 /**
- * Setup Event Listeners for Modal Interactions
+ * Setup Event Listeners for Modal Interactions using Event Delegation
  */
 function setupModalEventListeners() {
-
   // Function to open a modal
   window.openModal = function (modalId) {
     const modalBg = document.getElementById(modalId);
@@ -41,6 +42,7 @@ function setupModalEventListeners() {
       modalBg.style.display = "flex";
       document.body.classList.add("modal-open");
       trapFocus(modalBg);
+      console.log(`Modal "${modalId}" opened.`);
     } else {
       console.warn(`Modal with ID "${modalId}" not found.`);
     }
@@ -52,47 +54,62 @@ function setupModalEventListeners() {
       modalBg.style.display = "none";
       document.body.classList.remove("modal-open");
       releaseFocus();
+      console.log(`Modal "${modalBg.id}" closed.`);
     }
   };
 
-  // Setup open modal buttons (buttons with IDs starting with 'open' or class 'book-now')
-  const openModalButtons = document.querySelectorAll("[id^='open'], .book-now");
-  openModalButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+  // Event Listener for opening modals (Delegated)
+  document.addEventListener("click", (e) => {
+    const button = e.target.closest("[id^='open'], .book-now, .learn-more-btn, .learn-more-blog-btn, .cta-button.book-now");
+    if (button) {
       let modalId = "";
 
-      // Special handling for 'openModal' and 'openModal2' to open 'modalBg'
       if (button.id === "openModal" || button.id === "openModal2" || button.classList.contains("book-now")) {
         modalId = "modalBg";
-      } else {
-        // Remove 'open' prefix and lowercase the first character
-        const baseId = button.id.replace(/^open/, ""); // e.g., 'TermsModal'
-        modalId = baseId.charAt(0).toLowerCase() + baseId.slice(1); // e.g., 'termsModal'
+      } else if (button.classList.contains("learn-more-btn")) {
+        const service = button.getAttribute("data-service");
+        modalId = `serviceModal${service}`;
+      } else if (button.classList.contains("learn-more-blog-btn")) {
+        const blog = button.getAttribute("data-blog");
+        modalId = `blogModal${blog}`;
+      } else if (button.classList.contains("cta-button") && button.classList.contains("book-now")) {
+        // Handle 'Book Now' within service modals
+        const serviceModal = button.closest(".service-modal");
+        if (serviceModal) {
+          const serviceName = serviceModal.querySelector("h2").innerText;
+          closeModal(serviceModal);
+          modalId = "modalBg";
+          openModal(modalId);
+          const serviceSelect = document.getElementById("service");
+          if (serviceSelect) {
+            serviceSelect.value = serviceName;
+            console.log(`Service "${serviceName}" pre-filled in booking form.`);
+          }
+        }
       }
 
-      openModal(modalId);
-    });
+      if (modalId) {
+        e.preventDefault();
+        openModal(modalId);
+      }
+    }
   });
 
-  // Setup close modal buttons (elements with class 'modal-close')
-  const closeModalButtons = document.querySelectorAll(".modal-close");
-  closeModalButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const modalBg = button.closest(".modal-bg");
+  // Event Listener for closing modals (Delegated)
+  document.addEventListener("click", (e) => {
+    if (e.target.matches(".modal-close")) {
+      const modalBg = e.target.closest(".modal-bg");
       if (modalBg) {
         closeModal(modalBg);
       }
-    });
+    }
   });
 
   // Close modal when clicking outside the modal content
-  const modalBgs = document.querySelectorAll(".modal-bg");
-  modalBgs.forEach((modalBg) => {
-    modalBg.addEventListener("click", (e) => {
-      if (e.target === modalBg) {
-        closeModal(modalBg);
-      }
-    });
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal-bg")) {
+      closeModal(e.target);
+    }
   });
 
   // Close modal on Escape key press
@@ -105,131 +122,90 @@ function setupModalEventListeners() {
     }
   });
 
-  // Setup event listeners for "Learn More" service buttons
-  const learnMoreButtons = document.querySelectorAll(".learn-more-btn");
-  learnMoreButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const service = button.getAttribute("data-service");
-      const modalId = `serviceModal${service}`;
-      openModal(modalId);
-    });
-  });
-
-  // Setup event listeners for "Read More" blog buttons
-  const readMoreBlogButtons = document.querySelectorAll(".learn-more-blog-btn");
-  readMoreBlogButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const blog = button.getAttribute("data-blog");
-      const modalId = `blogModal${blog}`;
-      openModal(modalId);
-    });
-  });
-
-  // Setup event listeners for "Book Now" buttons within service modals
-  const bookNowButtons = document.querySelectorAll(".cta-button.book-now");
-  bookNowButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const serviceModal = button.closest(".service-modal");
-      if (serviceModal) {
-        // Get service name from the modal’s <h2>
-        const serviceName = serviceModal.querySelector("h2").innerText;
-        // Close the current service modal
-        closeModal(serviceModal);
-        // Open booking modal
-        openModal("modalBg");
-        // Pre-fill the service selection
-        const serviceSelect = document.getElementById("service");
-        if (serviceSelect) {
-          serviceSelect.value = serviceName;
-        }
-      }
-    });
-  });
-
-
-
   // Generate a unique ID for the user on page load
-const userId = localStorage.getItem("uniqueId") || `user-${Date.now()}`;
-localStorage.setItem("uniqueId", userId);
+  const userId = localStorage.getItem("uniqueId") || `user-${Date.now()}`;
+  localStorage.setItem("uniqueId", userId);
 
-// Debounce utility function
-function debounce(func, delay) {
-  let timeout;
-  return function (...args) {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(this, args), delay);
-  };
-}
-
-// Function to send data to Google Apps Script
-async function sendData(fieldId, action = null) {
-  const field = document.getElementById(fieldId);
-  let value;
-
-  if (action === "submitClicked") {
-    value = "Submitted"; // Special value for the submit button action
-  } else if (field.type === "range") {
-    value = field.value; // Get the slider's current value
-  } else {
-    value = field.value.trim(); // Get value for other input types
+  // Debounce utility function
+  function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), delay);
+    };
   }
 
-  if (!value) return;
+  // Function to send data to Google Apps Script
+  async function sendData(fieldId, action = null) {
+    const field = document.getElementById(fieldId);
+    let value;
 
-  const data = {
-    userId, // Include unique user ID
-    fieldId: action || fieldId, // If it's a submit action, send "submitClicked"
-    value, // The field's value
-  };
-
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbx5RXzUMFjXjxANpN1oOAj3H6YBjV6XzReF8SLCCVJqK54szwLS0JxHi-SyJE6zQqA0/exec", {
-      redirect: "follow",
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8", // Specified header
-      },
-      body: JSON.stringify(data), // Convert the object to a JSON string
-    });
-
-    if (response.ok) {
-      console.log(`Data sent successfully for ${fieldId}`);
+    if (action === "submitClicked") {
+      value = "Submitted"; // Special value for the submit button action
+    } else if (field.type === "range") {
+      value = field.value; // Get the slider's current value
     } else {
-      console.error(`Failed to send data for ${fieldId}:`, response.status);
+      value = field.value.trim(); // Get value for other input types
     }
-  } catch (error) {
-    console.error(`Error sending data for ${fieldId}:`, error);
+
+    if (!value) return;
+
+    const data = {
+      userId, // Include unique user ID
+      fieldId: action || fieldId, // If it's a submit action, send "submitClicked"
+      value, // The field's value
+    };
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbx5RXzUMFjXjxANpN1oOAj3H6YBjV6XzReF8SLCCVJqK54szwLS0JxHi-SyJE6zQqA0/exec", {
+        redirect: "follow",
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8", // Specified header
+        },
+        body: JSON.stringify(data), // Convert the object to a JSON string
+      });
+
+      if (response.ok) {
+        console.log(`Data sent successfully for ${fieldId}`);
+      } else {
+        console.error(`Failed to send data for ${fieldId}:`, response.status);
+      }
+    } catch (error) {
+      console.error(`Error sending data for ${fieldId}:`, error);
+    }
   }
-}
 
-// Add event listeners to form fields
-[
-  { id: "name", event: "blur" },
-  { id: "email", event: "blur" },
-  { id: "phone", event: "blur" },
-  { id: "service", event: "change" }, // For dropdowns
-  { id: "squareFootage", event: "input", debounce: true }, // For sliders
-  { id: "bedrooms", event: "input", debounce: true }, // For sliders
-  { id: "bathrooms", event: "input", debounce: true }, // For sliders
-  { id: "powderRooms", event: "input", debounce: true }, // For sliders
-  { id: "address", event: "blur" },
-  { id: "date", event: "blur" },
-  { id: "details", event: "blur" },
-].forEach(({ id, event, debounce: shouldDebounce }) => {
-  const field = document.getElementById(id);
-  if (field) {
-    const handler = shouldDebounce ? debounce(() => sendData(id), 300) : () => sendData(id);
-    field.addEventListener(event, handler);
-  }
-});
+  // Event Listener for form field interactions (Delegated)
+  document.addEventListener("input", (e) => {
+    const field = e.target;
+    const debounceFields = ["squareFootage", "bedrooms", "bathrooms", "powderRooms"];
+    if (debounceFields.includes(field.id) && (e.type === "input")) {
+      debounce(() => sendData(field.id), 300)();
+    }
+  });
 
-// Log when the user clicks the Submit button
-document.querySelector(".submit-btn").addEventListener("click", () => {
-  sendData("submit", "submitClicked");
-});
+  document.addEventListener("blur", (e) => {
+    const field = e.target;
+    const blurFields = ["name", "email", "phone", "address", "date", "details"];
+    if (blurFields.includes(field.id)) {
+      sendData(field.id);
+    }
+  }, true); // Use capture to catch the blur event
 
+  document.addEventListener("change", (e) => {
+    const field = e.target;
+    if (field.id === "service") {
+      sendData(field.id);
+    }
+  });
 
-
+  // Event Listener for Submit button (Delegated)
+  document.addEventListener("click", (e) => {
+    if (e.target.matches(".submit-btn")) {
+      sendData("submit", "submitClicked");
+    }
+  });
 }
 
 /**
