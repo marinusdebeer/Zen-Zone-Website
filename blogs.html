@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description"
+    content="Explore insightful articles, tips, and guides on maintaining a clean and healthy environment with Zen Zone Cleaning Services." />
+  <meta name="keywords"
+    content="cleaning tips, home cleaning, office cleaning, eco-friendly cleaning, cleaning guides, Zen Zone blog" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zen Zone Cleaning Services | Our Blog</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/blog.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/modals.css">
+  <link rel="stylesheet" href="/css/forms.css">
+  <link rel="stylesheet" href="/css/areas.css">
+
+  <!-- Leaflet CSS (if maps are needed) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    crossorigin="anonymous" />
+
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:title" content="Zen Zone Cleaning Services | Our Blog" />
+  <meta property="og:description"
+    content="Explore insightful articles, tips, and guides on maintaining a clean and healthy environment with Zen Zone Cleaning Services." />
+  <meta property="og:image" content="https://leads.zenzonecleaning.com/moose_logo.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:title" content="Zen Zone Cleaning Services | Our Blog">
+  <meta name="twitter:description"
+    content="Discover tips and guides on effective cleaning practices to keep your home and office spotless and healthy.">
+  <meta name="twitter:image" content="https://leads.zenzonecleaning.com/moose_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Tawk.to Script for Live Chat -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/65fafd4ea0c6737bd122e1cd/1hpe6qv15';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!-- End of Tawk.to Script -->
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+  <!-- MAIN CONTENT -->
+  <main id="blogs">
+    <section class="blog-section" id="blog">
+      <h2>Our Blog</h2>
+      <div class="blog-list">
+
+        <!-- Blog Entry 1 -->
+        <a href="/blogs/declutter-your-space-declutter-your-mind.html" class="blog-card" aria-label="Read more about Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity">
+          <div class="blog-entry">
+            <img src="/assets/deep.webp" alt="Declutter Your Space, Declutter Your Mind" class="blog-thumbnail"
+              loading="lazy" />
+            <h3>Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity</h3>
+            <p>Discover effective strategies to keep your home spotless with minimal effort.</p>
+            <span class="read-more-btn" aria-label="Read Declutter Your Space, Declutter Your Mind">Read More</span>
+          </div>
+        </a>
+
+        <!-- Blog Entry 2 -->
+        <a href="/blogs/eco-friendly-cleaning-solutions.html" class="blog-card" aria-label="Read more about Eco-Friendly Cleaning Solutions">
+          <div class="blog-entry">
+            <img src="/assets/construction.webp" alt="Eco-Friendly Cleaning Solutions" class="blog-thumbnail"
+              loading="lazy" />
+            <h3>Eco-Friendly Cleaning Solutions</h3>
+            <p>Learn about sustainable cleaning products that are safe for your home and the environment.</p>
+            <span class="read-more-btn" aria-label="Read Eco-Friendly Cleaning Solutions">Read More</span>
+          </div>
+        </a>
+
+        <!-- Blog Entry 3 -->
+        <a href="/blogs/how-to-prepare-your-home-for-cleaning-service.html" class="blog-card" aria-label="Read more about How to Prepare Your Home for a Cleaning Service">
+          <div class="blog-entry">
+            <img src="/assets/commercial.webp" alt="How to Prepare Your Home for a Cleaning Service" class="blog-thumbnail"
+              loading="lazy" />
+            <h3>How to Prepare Your Home for a Cleaning Service</h3>
+            <p>Ensure a smooth and efficient cleaning experience with our preparation tips.</p>
+            <span class="read-more-btn" aria-label="Read How to Prepare Your Home for a Cleaning Service">Read More</span>
+          </div>
+        </a>
+
+        <!-- Add more blog entries as needed -->
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <p>© 2025 Zen Zone Cleaning Services. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" id="openTermsModal">Terms of Service</a> •
+        <a href="#" id="openPrivacyModal">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- External JS -->
+  <script src="/js/modals.js" defer></script>
+  <script src="/js/bookingForm.js" defer></script>
+  <script src="/js/navbar.js" defer></script>
+  <script src="/js/main.js" defer></script>
+
+  <!-- Back to Top Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTopButton = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopButton.style.display = "flex";
+          backToTopButton.style.opacity = "1";
+        } else {
+          backToTopButton.style.opacity = "0";
+          setTimeout(() => {
+            backToTopButton.style.display = "none";
+          }, 300);
+        }
+      });
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
