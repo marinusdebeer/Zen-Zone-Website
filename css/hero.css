@@ -195,9 +195,10 @@
 /* Small Mobile Devices */
 @media (max-width: 480px) {
   .hero {
-    padding: 4rem 1rem;
-    /* padding-top: 100px; */
-    height: 115vh;
+    padding: 2rem 0rem;
+    /* padding-top: 170px; */
+    height: auto;
+    
   }
   
   .hero-title {
