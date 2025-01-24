@@ -154,7 +154,7 @@
 }
 
 .menu-toggle:focus {
-  outline: 3px solid var(--color-focus);
+  outline: 3px solid #fff;
 }
 
 /* Accessible Menu Toggle Icons */

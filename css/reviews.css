@@ -1,62 +1,35 @@
 /* reviews.css */
 
 /* REVIEWS SECTION */
-
 .reviews {
-  flex: 1;
-  width: 100%;
-  padding: 2rem;
+  padding: 2rem 2rem 0rem 2rem;
   background-color: #f9f9f9; /* Light background for contrast */
   box-sizing: border-box;
-  position: relative; /* For gradient overlays and navigation arrows */
+  position: relative; /* For gradient overlays */
+  border: 1px solid #dddddd; /* Subtle border for definition */
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  margin: 0rem 5rem;
 }
 
+/* Reviews Title */
 .reviews h2 {
   text-align: center;
   font-size: 2rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text); /* Consistent color using variable */
   margin-bottom: 2rem;
-}
-
-/* Reviews Card Styles */
-.reviews-card {
-  background: #ffffff; /* White background */
-  border: 1px solid #e0e0e0; /* Subtle border for definition */
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative; /* For positioning relative elements */
-}
-
-.reviews-card:hover,
-.reviews-card:focus-within {
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
-
-/* Reviews Card Focus State */
-.reviews-card:focus-within {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
-/* Reviews Title Styles */
-.reviews-card h2 {
-  font-size: 2.2rem;
-  color: var(--color-primary-text); /* Updated to use variable */
-  margin-bottom: 2rem;
-  text-align: center;
   font-weight: 700;
   position: relative;
 }
 
-.reviews-card h2 i {
+.reviews h2 i {
   margin-right: 0.5rem;
-  color: var(--color-primary); /* Updated to use variable */
+  color: var(--color-primary); /* Consistent color using variable */
   font-size: 1.2em;
 }
 
 /* Google Button Styles */
+
 /* Container */
 .google-button-container {
   text-align: center;
@@ -103,27 +76,30 @@
 .reviews-container {
   display: flex;
   flex-direction: row;
-  gap: 1.5rem; /* Space between cards */
+  gap: 5rem 1rem; /* Horizontal gap 1.5rem, vertical gap 1rem */
   overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling on small screens */
   scroll-behavior: smooth; /* Smooth scrolling */
-  padding: 0 1rem 1rem 1rem; /* Top, Right, Bottom, Left */
-  scroll-snap-type: x mandatory; /* Enables scroll snapping */
+  /* padding: 3rem; */
+  scroll-snap-type: x mandatory; /* Enables horizontal scroll snapping */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 
-/* Hide Scrollbars */
 .reviews-container::-webkit-scrollbar {
   display: none;
 }
 
 /* Individual Review Card Styles */
 .review {
-  flex: 0 0 300px; /* Fixed width for each card */
+  min-width: 300px;
+  max-width: 400px;
+  /* min-height: 900px; */
   background-color: #ffffff; /* White background for contrast */
   border: 1px solid #e0e0e0; /* Subtle border for definition */
   border-radius: 8px;
   padding: 1.5rem;
+  margin-bottom: 1.5rem;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -136,7 +112,7 @@
 .review:hover,
 .review:focus-within {
   transform: translateY(-5px);
-  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Review Focus State */
@@ -158,11 +134,11 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: var(--color-primary); /* Updated to use variable */
+  background-color: var(--color-primary); /* Consistent color using variable */
   border-radius: 50%; /* Circular shape */
   color: var(--color-white); /* Icon color */
   font-size: 1.5rem;
-  border: 2px solid var(--color-primary); /* Updated to use variable */
+  border: 2px solid var(--color-primary); /* Consistent color using variable */
   overflow: hidden;
   margin-right: 1rem;
   transition: transform 0.3s ease;
@@ -188,7 +164,7 @@
 
 .reviewer-info strong {
   font-size: 1.1rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text); /* Consistent color using variable */
   margin-bottom: 0.3rem;
   font-weight: 600;
 }
@@ -216,6 +192,7 @@
   margin-bottom: 0.8rem;
   position: relative;
   padding-left: 1rem;
+  transition: color 0.3s ease;
 }
 
 .review-text::before {
@@ -224,20 +201,25 @@
   position: absolute;
   left: 0;
   top: -0.2rem;
-  color: var(--color-primary); /* Updated to use variable */
+  color: var(--color-primary); /* Consistent color using variable */
+}
+
+.review:hover .review-text,
+.review:focus-within .review-text {
+  color: #333;
 }
 
 /* Review Service Styles */
 .review-service {
   font-size: 0.9rem;
-  color: var(--color-primary); /* Updated to use variable */
+  color: var(--color-primary); /* Consistent color using variable */
   font-weight: 500;
 }
 
 /* Navigation Arrows Styles */
 .reviews-nav {
   position: absolute;
-  top: 65%;
+  top: 50%;
   transform: translateY(-50%);
   background-color: rgba(107, 91, 149, 0.8); /* Semi-transparent purple */
   border: none;
@@ -268,17 +250,44 @@
   outline: none;
 }
 
-/* Focus State for Navigation Arrows */
 .reviews-nav:focus {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
 
 /* Responsive Adjustments for Navigation Arrows */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .reviews {
+    margin: 0px 5px;
+    padding: 20px 0px;
+  }
   .reviews-nav {
     width: 2rem;
     height: 2rem;
+  }
+  .reviews-nav.left {
+    left: 0.5rem;
+  }
+  .reviews-nav.right {
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-nav {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .reviews-nav.left {
+    left: 0.25rem;
+  }
+  .reviews-nav.right {
+    right: 0.25rem;
+  }
+
+  /* Hide navigation arrows on very small screens */
+  .reviews-nav {
+    display: none;
   }
 }
 
@@ -319,4 +328,68 @@
 .reviews::before,
 .reviews::after {
   z-index: 2;
+}
+
+
+
+/* Large Screens: Two Rows with Vertical Scrolling */
+@media (min-width: 1024px) {
+  /* Adjust Reviews Container for Grid Layout */
+  .reviews-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: auto;
+    gap: 0rem 1.5rem;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    height: calc(2 * 1.5rem + 2 * (300px + 1.5rem)); /* Adjust based on card height and gap */
+    scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+  }
+
+  /* Style the vertical scrollbar */
+  .reviews-container::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .reviews-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  /* Hide gradient overlays on large screens to prevent interference with vertical scrolling */
+  .reviews::before,
+  .reviews::after {
+    display: none;
+  }
+
+  /* Hide navigation arrows on large screens */
+  .reviews-nav {
+    display: none;
+  }
+}
+
+/* Additional Scrollability Indicators (Optional) */
+/* If you want to add subtle indicators like arrows within the gradient overlays */
+
+/* Optional: Add a small down arrow indicator on large screens */
+@media (min-width: 1024px) {
+  .reviews::after {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4rem;
+    background: linear-gradient(to bottom, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
+    width: 100%;
+  }
+
+  .reviews::after::before {
+    content: '↓'; /* Down arrow */
+    font-size: 1.5rem;
+    color: rgba(107, 91, 149, 0.8);
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

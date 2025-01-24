@@ -5,7 +5,7 @@
 =========================== */
 .gallery {
   padding: 4rem 0;                    /* Top and bottom spacing */
-  background-color: #f9f9f9;          /* Light background color */
+  /* background-color: #f9f9f9; */
   text-align: center;                 /* Center align text */
   overflow: hidden;                   /* Hide overflowing content */
 }

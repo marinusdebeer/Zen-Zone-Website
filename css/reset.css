@@ -54,7 +54,7 @@ q::before, q::after {
 /* Global Body Styles */
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   color: #333;
   line-height: 1.6;
   padding-top: var(--navbar-height); /* Dynamic padding-top based on navbar height */

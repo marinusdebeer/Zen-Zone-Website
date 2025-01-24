@@ -150,15 +150,6 @@
   outline-offset: 2px;
 }
 
-/* Focus Styles for Interactive Elements */
-a.nav-link:focus,
-.cta-button:focus,
-.call-button:focus,
-.menu-toggle:focus {
-  outline: 3px solid var(--color-focus); /* High-contrast color */
-  outline-offset: 2px;
-}
-
 /* Respect User’s Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
   * {
