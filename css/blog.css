@@ -333,7 +333,16 @@
 #backToTop i {
   font-size: 1.2rem;
 }
-
+@media(max-width: 768px){
+  .blog-section{
+    margin: 20px 50px;
+  }
+}
+@media(max-width: 468px){
+  .blog-section{
+    margin: 20px 10px;
+  }
+}
 /* ------------------------------
    Responsive Design
 ------------------------------ */
