@@ -96,7 +96,7 @@
 /* Secondary CTA Button */
 .secondary-cta {
   background-color: var(--color-secondary); /* Slightly darker for contrast */
-  color: #1a1a1a; /* Darker text for readability */
+  color: --color-white;
 }
 
 .secondary-cta:hover,

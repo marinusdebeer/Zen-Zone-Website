@@ -1,7 +1,10 @@
 // navbar.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  loadNavbar().then(initializeNavbar);
+  loadNavbar()
+    .then(initializeNavbar)
+    .then(initializeSmoothScrolling)
+    .then(initializeActiveSectionHighlighting);
 });
 
 /**
@@ -62,6 +65,102 @@ function initializeNavbar() {
       toggleMobileMenu();
     }
   });
+}
+
+/**
+ * Initialize Smooth Scrolling (Only on index.html)
+ */
+function initializeSmoothScrolling() {
+  // Check if the current page is index.html
+  const isIndexPage =
+    window.location.pathname === "/" ||
+    window.location.pathname === "/index.html";
+
+  if (!isIndexPage) return; // Exit if not on index.html
+
+  const navLinks = document.querySelectorAll('a.nav-link[href^="/index.html#"]');
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href").split("#")[1];
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        const navbarHeight = document.querySelector(".desktop-menu").offsetHeight;
+        const targetPosition =
+          targetSection.getBoundingClientRect().top +
+          window.pageYOffset -
+          navbarHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+
+        // Update the URL hash without causing a jump
+        history.pushState(null, null, `#${targetId}`);
+      }
+    });
+  });
+
+  // Handle page load with hash (smooth scroll if on index.html)
+  if (window.location.hash) {
+    const targetId = window.location.hash.substring(1);
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+      // Use a timeout to ensure the page has fully loaded
+      setTimeout(() => {
+        const navbarHeight = document.querySelector(".desktop-menu").offsetHeight;
+        const targetPosition =
+          targetSection.getBoundingClientRect().top +
+          window.pageYOffset -
+          navbarHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+      }, 100); // Adjust delay as necessary
+    }
+  }
+}
+
+/**
+ * Initialize Active Section Highlighting
+ */
+function initializeActiveSectionHighlighting() {
+  // Check if the current page is index.html
+  const isIndexPage =
+    window.location.pathname === "/" ||
+    window.location.pathname === "/index.html";
+
+  if (!isIndexPage) return; // Exit if not on index.html
+
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll('a.nav-link[href^="/index.html#"]');
+
+  window.addEventListener(
+    "scroll",
+    debounce(() => {
+      let current = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150; // Adjust as needed
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `/index.html#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    }, 100)
+  );
 }
 
 /**
@@ -155,4 +254,23 @@ function releaseFocus() {
     focusedElementBeforeMenu.focus();
     focusedElementBeforeMenu = null;
   }
+}
+
+/**
+ * Debounce Function to Optimize Scroll Event Listener
+ */
+function debounce(func, wait = 20, immediate = true) {
+  let timeout;
+  return function () {
+    const context = this,
+      args = arguments;
+    const later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
 }
