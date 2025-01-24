@@ -39,10 +39,8 @@
   text-align: center;
 }
 
-.areas-card h2 i {
+.areas-card h2 svg {
   margin-right: 0.75rem;
-  color: var(--color-primary); /* Updated to use variable */
-  font-size: 1.8em;
 }
 
 /* Flex Container for List and Map */
