@@ -30,7 +30,7 @@
   justify-content: center;
   background-color: #fff;
   overflow: hidden;
-  padding: 4rem 2rem; /* Added padding for spacing */
+  /* padding: 4rem 2rem; */
 }
 
 /* Background Image with Overlay */
@@ -165,7 +165,7 @@
 @media (max-width: 1024px) {
   .hero {
     min-height: 100vh;
-    padding: 3rem 1.5rem;
+    /* padding: 3rem 1.5rem; */
   }
   .hero-content {
     padding: 0 1.5rem;
@@ -200,7 +200,7 @@
 @media (max-width: 768px) {
   .hero {
     min-height: 100vh;
-    padding: var(--hero-padding-mobile);
+    /* padding: var(--hero-padding-mobile); */
   }
   .hero-content {
     flex-direction: column;
@@ -231,7 +231,7 @@
 /* Small Mobile Devices */
 @media (max-width: 480px) {
   .hero {
-    padding: var(--hero-padding-small-mobile);
+    /* padding: var(--hero-padding-small-mobile); */
   }
   
   .hero-title {

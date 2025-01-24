@@ -40,8 +40,9 @@
 .google-button {
   display: inline-flex;
   align-items: center;
-  background-color: #4285F4; /* Google Blue */
-  color: #fff;
+  /* background-color: #4285F4; */
+  background-color: #ffffff;
+  color: #000000;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 4px;
@@ -50,9 +51,10 @@
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  outline: 1px solid #dddddd;
 }
 
-.google-button i {
+.google-button svg {
   margin-right: 0.5rem;
   font-size: 1.2rem;
 }
@@ -60,10 +62,10 @@
 /* Hover Effect */
 .google-button:hover,
 .google-button:focus {
-  background-color: #357ae8;
+  background-color: #ffffff;
   transform: translateY(-2px);
-  color: #fff;
-  outline: none;
+  color: #000000;
+  outline: 1px solid #bbbbbb;
 }
 
 /* Focus State for Google Button */
@@ -134,11 +136,11 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: var(--color-primary); /* Consistent color using variable */
+  /* background-color: var(--color-primary); */
   border-radius: 50%; /* Circular shape */
   color: var(--color-white); /* Icon color */
   font-size: 1.5rem;
-  border: 2px solid var(--color-primary); /* Consistent color using variable */
+  /* border: 2px solid var(--color-primary); */
   overflow: hidden;
   margin-right: 1rem;
   transition: transform 0.3s ease;
