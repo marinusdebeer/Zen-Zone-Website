@@ -101,9 +101,26 @@
           </div> -->
         </div>
         <div class="hero-image-wrapper">
-          <img src="assets/hero.png"
-            alt="A pristine and inviting living room showcasing professional cleaning services." class="hero-image"
-            loading="lazy" />
+          <picture>
+            <!-- Load desktop image for screens larger than 768px -->
+            <source
+              srcset="assets/hero.png"
+              media="(min-width: 768px)"
+            />
+            <!-- Load mobile image for smaller screens -->
+            <source
+              srcset="/assets/hero.png"
+              media="(max-width: 767px)"
+              class="hero-image"
+            />
+            <!-- Fallback image if none of the media queries match -->
+            <img
+              src="assets/hero.png"
+              alt="A pristine and inviting living room showcasing professional cleaning services."
+              class="hero-image"
+              loading="lazy"
+            />
+          </picture>
         </div>
       </div>
     </section>

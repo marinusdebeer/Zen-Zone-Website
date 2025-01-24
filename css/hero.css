@@ -57,7 +57,7 @@
   flex-direction: row;
   align-items: center;
   gap: 2rem; /* Increased gap for better spacing */
-  max-width: 1200px; /* Limit maximum width for larger screens */
+  max-width: 1200px;
   width: 100%;
   padding: 0 2rem;
   animation: fadeIn 1s ease-out forwards;
@@ -140,7 +140,7 @@
 
 .hero-image {
   width: 100%;
-  max-width: 500px; /* Re-added max-width for better control */
+  max-width: 600px; /* Re-added max-width for better control */
   height: auto;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
