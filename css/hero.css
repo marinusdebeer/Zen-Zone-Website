@@ -22,7 +22,7 @@
 /* HERO SECTION */
 .hero {
   width: 100%;
-  min-height: 90vh; /* Changed from height to min-height */
+  min-height: 100vh; /* Changed from height to min-height */
   position: relative;
   display: flex;
   flex-direction: column; /* Vertical stacking */
@@ -199,7 +199,7 @@
 /* Mobile Devices */
 @media (max-width: 768px) {
   .hero {
-    min-height: auto; /* Allow height to adjust based on content */
+    min-height: 100vh;
     padding: var(--hero-padding-mobile);
   }
   .hero-content {
