@@ -16,6 +16,11 @@
   transition: height 0.3s ease;
 }
 
+.logo-link {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Keeps text color consistent */
+  display: inline-block; /* Ensures the link surrounds the div correctly */
+}
 /* Logo Container Styling */
 .logo-container {
   display: flex;

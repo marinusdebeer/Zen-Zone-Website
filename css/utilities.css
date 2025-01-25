@@ -3,7 +3,7 @@
   /* Navbar Heights */
   --navbar-height-desktop: 70px; /* Default navbar height for desktop */
   --navbar-height-tablet: 60px;  /* Adjusted for tablet */
-  --navbar-height-mobile: 50px;  /* Adjusted for mobile */
+  --navbar-height-mobile: 60px;  /* Adjusted for mobile */
 
   /* Primary Colors */
   --color-primary: #6b5b95; /* Purple */

@@ -49,6 +49,12 @@
   pointer-events: none;
 }
 
+/* Hide the phone number by default */
+.hero-phone {
+  display: none;
+}
+
+
 /* Hero Content Container */
 .hero-content {
   position: relative;
@@ -200,7 +206,7 @@
 @media (max-width: 768px) {
   .hero {
     min-height: 100vh;
-    /* padding: var(--hero-padding-mobile); */
+    padding: var(--hero-padding-mobile);
   }
   .hero-content {
     flex-direction: column;
@@ -246,5 +252,21 @@
     font-size: 0.9rem;
     padding: 0.7rem 1.5rem;
     max-width: 100%;
+  }
+}
+
+/* Phone CTA Button Specific Styles */
+.phone-cta {
+  display: none; /* Hidden by default */
+}
+
+.phone-number {
+  margin-left: 1rem;
+}
+
+/* Display the phone CTA only on screens smaller than 1008px */
+@media (max-width: 1007px) {
+  .phone-cta {
+    display: inline-flex; /* Makes the phone CTA visible */
   }
 }
