@@ -1,14 +1,11 @@
 /* hero.css */
 
-/* CSS Variables for Better Maintainability */
+/* CSS Variables Specific to the Hero Section */
 :root {
   --hero-background-overlay-opacity: 0.1;
-  --hero-title-font-size: 3rem;
-  --hero-title-font-size-tablet: 2.5rem;
-  --hero-title-font-size-mobile: 2.25rem;
-  --hero-subtitle-font-size: 1.2rem;
-  --hero-subtitle-font-size-mobile: 1.1rem;
-  --hero-padding-mobile: 2rem 1rem;
+  --hero-title-font-size: clamp(2.25rem, 5vw, 3rem);
+  --hero-subtitle-font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  --hero-padding: 2rem 1rem;
   --hero-padding-small-mobile: 2rem 0.5rem;
 }
 
@@ -22,15 +19,15 @@
 /* HERO SECTION */
 .hero {
   width: 100%;
-  min-height: 100vh; /* Changed from height to min-height */
+  min-height: 100dvh; /* Changed from height: 100dvh to min-height: 100dvh */
   position: relative;
   display: flex;
   flex-direction: column; /* Vertical stacking */
   align-items: center;
   justify-content: center;
-  background-color: #fff;
-  overflow: hidden;
-  /* padding: 4rem 2rem; */
+  background-color: var(--color-white); /* Using global white color */
+  /* Removed overflow: hidden to prevent content from being cut off */
+  overflow: visible;
 }
 
 /* Background Image with Overlay */
@@ -41,8 +38,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* Uncomment and set the background image as needed */
-  /* background: url('assets/hero-background.svg') no-repeat center center; */
+  /* Optimized Background Image */
+  /* 
+    Use modern formats like WebP or AVIF for better compression.
+    Example:
+    background: url('assets/hero-background.avif') no-repeat center center;
+  */
   background-size: cover;
   background-position: center;
   opacity: var(--hero-background-overlay-opacity);
@@ -53,7 +54,6 @@
 .hero-phone {
   display: none;
 }
-
 
 /* Hero Content Container */
 .hero-content {
@@ -66,13 +66,21 @@
   max-width: 1200px;
   width: 100%;
   padding: 0 2rem;
-  /* animation: fadeIn 1s ease-out forwards; */
+  /* Animation is now conditionally applied with prefers-reduced-motion */
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Respect users' motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content {
+    animation: none;
+  }
 }
 
 /* Textual Content */
 .hero-text {
   flex: 1;
-  color: var(--color-primary-text);
+  color: var(--color-primary-text); /* Using global primary text color */
 }
 
 .hero-title {
@@ -80,13 +88,15 @@
   font-weight: 800;
   margin-bottom: 1rem;
   line-height: 1.2;
-  color: var(--color-primary-text);
+  color: var(--color-primary-text); /* Using global primary text color */
   word-break: break-word; /* Prevent long words from overflowing */
+  /* Added padding or margin if necessary */
+  padding: 0 1rem;
 }
 
 .hero-subtitle {
   font-size: var(--hero-subtitle-font-size);
-  color: var(--color-secondary-text);
+  color: var(--color-secondary-text); /* Using global secondary text color */
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -97,6 +107,13 @@
   gap: 1rem;
   margin-top: 2rem;
   flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  justify-content: flex-start; /* Default alignment */
+}
+
+@media (max-width: 1024px) {
+  .cta-buttons {
+    justify-content: center;
+  }
 }
 
 .cta-button-hero {
@@ -105,35 +122,35 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-primary); /* Using global primary color */
+  color: var(--color-white); /* Using global white color */
   min-width: 180px; /* Ensure buttons have a minimum width */
 }
 
 .cta-button-hero:hover,
 .cta-button-hero:focus {
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-primary-hover); /* Using global primary hover color */
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(107, 91, 149, 0.3);
+  box-shadow: 0 6px 12px var(--color-shadow); /* Using global shadow color */
 }
 
 /* Secondary CTA Button */
 .secondary-cta {
-  background-color: var(--color-secondary);
-  color: var(--color-white);
+  background-color: var(--color-secondary); /* Using global secondary color */
+  color: var(--color-white); /* Using global white color */
 }
 
 .secondary-cta:hover,
 .secondary-cta:focus {
-  background-color: var(--color-secondary-hover);
+  background-color: var(--color-secondary-hover); /* Using global secondary hover color */
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(32, 33, 36, 0.1);
+  box-shadow: 0 6px 12px var(--color-shadow); /* Using global shadow color */
 }
 
 /* Image Wrapper */
@@ -149,7 +166,7 @@
   max-width: 600px; /* Re-added max-width for better control */
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px var(--color-shadow); /* Using global shadow color */
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -170,8 +187,7 @@
 /* Tablet Devices */
 @media (max-width: 1024px) {
   .hero {
-    min-height: 100vh;
-    /* padding: 3rem 1.5rem; */
+    min-height: 100dvh; /* Ensure min-height is consistent */
   }
   .hero-content {
     padding: 0 1.5rem;
@@ -180,15 +196,12 @@
     text-align: center;
   }
   .hero-title {
-    font-size: var(--hero-title-font-size-tablet);
+    font-size: clamp(2rem, 4vw, 2.5rem); /* Responsive scaling */
+    padding: 0 1rem; /* Ensure padding to prevent overflow */
   }
   
   .hero-subtitle {
-    font-size: var(--hero-subtitle-font-size);
-  }
-  
-  .cta-buttons {
-    justify-content: center;
+    font-size: var(--hero-subtitle-font-size); /* Consistent with global variable */
   }
   
   .cta-button-hero {
@@ -205,8 +218,8 @@
 /* Mobile Devices */
 @media (max-width: 768px) {
   .hero {
-    min-height: 100vh;
-    padding: var(--hero-padding-mobile);
+    min-height: 100dvh; /* Maintain min-height */
+    padding: var(--hero-padding); /* Using hero-specific padding variable */
   }
   .hero-content {
     flex-direction: column;
@@ -226,26 +239,24 @@
   }
   
   .hero-title {
-    font-size: var(--hero-title-font-size-mobile);
+    font-size: clamp(1.75rem, 4vw, 2.25rem); /* Responsive scaling */
+    padding: 0 1rem; /* Added padding */
   }
   
   .hero-subtitle {
-    font-size: var(--hero-subtitle-font-size-mobile);
+    font-size: var(--hero-subtitle-font-size); /* Consistent with global variable */
   }
 }
 
 /* Small Mobile Devices */
 @media (max-width: 480px) {
-  .hero {
-    /* padding: var(--hero-padding-small-mobile); */
-  }
-  
   .hero-title {
-    font-size: 1.9rem; /* Adjusted for better fit */
+    font-size: clamp(1.5rem, 5vw, 1.9rem); /* Adjusted for better fit */
+    padding: 0 0.5rem; /* Reduce padding for smaller screens */
   }
   
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 1rem; /* Fixed size for small screens */
   }
   
   .cta-button-hero {
