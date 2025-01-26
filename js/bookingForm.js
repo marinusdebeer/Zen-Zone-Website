@@ -8,15 +8,26 @@ document.addEventListener("modalsLoaded", () => {
  * Initialize Booking Form Functionality
  */
 function initBookingForm() {
+
+   // Event Listener for closing modals (Delegated)
+   document.addEventListener("click", (e) => {
+    if (e.target.matches(".booking-modal-close")) {
+      const modalBg = e.target.closest(".booking-modal-bg");
+      if (modalBg) {
+        closeModal(modalBg);
+      }
+    }
+  });
+  
   const bookingForm = document.getElementById("bookingForm");
   if (!bookingForm) {
     console.error("Booking form not found.");
     return;
   }
 
-  const formSteps = bookingForm.querySelectorAll(".form-step");
-  const progressBar = document.querySelector(".progress");
-  const submitButton = bookingForm.querySelector(".submit-btn");
+  const formSteps = bookingForm.querySelectorAll(".booking-form-step");
+  const progressBar = document.querySelector(".booking-progress");
+  const submitButton = bookingForm.querySelector(".booking-btn-submit");
 
   let currentStep = 1;
   const totalSteps = formSteps.length;
@@ -24,12 +35,25 @@ function initBookingForm() {
   // Initialize EmailJS
   emailjs.init("9CwBWUPI_pCtZXPr0");
 
+  // Generate a unique ID for the user on page load
+  const userId = localStorage.getItem("uniqueId") || `user-${Date.now()}`;
+  localStorage.setItem("uniqueId", userId);
+
+  // Debounce utility function
+  function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
   // Show the first step
   showFormStep(currentStep);
 
   // Event delegation for next and previous buttons
   bookingForm.addEventListener("click", (e) => {
-    if (e.target.classList.contains("next-btn")) {
+    if (e.target.classList.contains("booking-btn-next")) {
       e.preventDefault();
       if (validateFormStep(currentStep)) {
         currentStep++;
@@ -37,7 +61,7 @@ function initBookingForm() {
       }
     }
 
-    if (e.target.classList.contains("prev-btn")) {
+    if (e.target.classList.contains("booking-btn-prev")) {
       e.preventDefault();
       currentStep--;
       showFormStep(currentStep);
@@ -54,6 +78,9 @@ function initBookingForm() {
 
       // Send data via EmailJS
       sendBookingRequest(data);
+
+      // Send data to Google Apps Script for tracking
+      sendData("submit", "submitClicked");
     }
   });
 
@@ -62,13 +89,14 @@ function initBookingForm() {
    */
   function showFormStep(step) {
     formSteps.forEach((formStep, index) => {
-      formStep.classList.toggle("active", index + 1 === step);
+      formStep.classList.toggle("booking-form-step--active", index + 1 === step);
     });
 
     // Update progress bar
     const progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
-    if(progressBar)
+    if (progressBar) {
       progressBar.style.width = `${progressPercent}%`;
+    }
   }
 
   /**
@@ -97,7 +125,9 @@ function initBookingForm() {
     currentStep = 1;
     showFormStep(currentStep);
     bookingForm.reset();
-    progressBar.style.width = "0%";
+    if (progressBar) {
+      progressBar.style.width = "0%";
+    }
   }
 
   /**
@@ -112,7 +142,6 @@ function initBookingForm() {
     emailjs
       .send("service_156d2p8", "template_i7i7zz7", { ...data, message: constructAdminMessage(data) })
       .then(() => {
-
         // Prepare and send confirmation email to user
         const confirmationData = {
           to_name: data.name,
@@ -202,4 +231,76 @@ Additional Details: ${data.details || "None provided"}
       closeModal(statusModalBg);
     }, 5000);
   }
+
+  /**
+   * Send data to Google Apps Script for tracking
+   */
+  async function sendData(fieldId, action = null) {
+    const field = document.getElementById(fieldId);
+    let value;
+
+    if (action === "submitClicked") {
+      value = "Submitted"; // Special value for the submit button action
+    } else if (field && field.type === "range") {
+      value = field.value; // Get the slider's current value
+    } else if (field) {
+      value = field.value.trim(); // Get value for other input types
+    } else {
+      console.warn(`Field with ID "${fieldId}" not found.`);
+      return;
+    }
+
+    if (!value) return;
+
+    const data = {
+      userId, // Include unique user ID
+      fieldId: action || fieldId, // If it's a submit action, send "submitClicked"
+      value, // The field's value
+    };
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbx5RXzUMFjXjxANpN1oOAj3H6YBjV6XzReF8SLCCVJqK54szwLS0JxHi-SyJE6zQqA0/exec", {
+        redirect: "follow",
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8", // Specified header
+        },
+        body: JSON.stringify(data), // Convert the object to a JSON string
+      });
+
+      if (response.ok) {
+        console.log(`Data sent successfully for ${fieldId}`);
+      } else {
+        console.error(`Failed to send data for ${fieldId}:`, response.status);
+      }
+    } catch (error) {
+      console.error(`Error sending data for ${fieldId}:`, error);
+    }
+  }
+
+  // Add event listeners to form fields
+  [
+    { id: "name", event: "blur" },
+    { id: "email", event: "blur" },
+    { id: "phone", event: "blur" },
+    { id: "service", event: "change" }, // For dropdowns
+    { id: "squareFootage", event: "input", debounce: true }, // For sliders
+    { id: "bedrooms", event: "input", debounce: true }, // For sliders
+    { id: "bathrooms", event: "input", debounce: true }, // For sliders
+    { id: "powderRooms", event: "input", debounce: true }, // For sliders
+    { id: "address", event: "blur" },
+    { id: "date", event: "blur" },
+    { id: "details", event: "blur" },
+  ].forEach(({ id, event, debounce: shouldDebounce }) => {
+    const field = document.getElementById(id);
+    if (field) {
+      const handler = shouldDebounce ? debounce(() => sendData(id), 300) : () => sendData(id);
+      field.addEventListener(event, handler);
+    }
+  });
+
+  // Log when the user clicks the Submit button
+  submitButton.addEventListener("click", () => {
+    sendData("submit", "submitClicked");
+  });
 }
