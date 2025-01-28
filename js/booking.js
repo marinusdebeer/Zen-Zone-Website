@@ -253,7 +253,7 @@ const BookingForm = (() => {
    */
   const getHighestCompletedStep = () => {
     const progressSteps = Array.from(document.querySelectorAll(".booking-step"));
-    let highest = 1;
+    let highest = 0;
     progressSteps.forEach((stepElement) => {
       if (stepElement.classList.contains("completed")) {
         const stepNum = parseInt(stepElement.getAttribute("data-step"), 10);
@@ -362,7 +362,7 @@ const BookingForm = (() => {
     console.log(stepElement.classList.value);
     // Only append data if step is completed
     // if (stepElement.classList.contains("completed")) {
-      console.log(fieldValue);
+      // console.log(fieldValue);
       stepElement.querySelector(".step-summary").insertAdjacentHTML("beforeend", fieldValue);
     // }
   };
