@@ -34,7 +34,18 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-  line-height: 1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  line-height: 1.6;
+  padding-top: var(--navbar-height); /* Dynamic padding-top based on navbar height */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+main {
+  flex: 1;
 }
 
 ol, ul {
@@ -49,15 +60,6 @@ blockquote::before, blockquote::after,
 q::before, q::after {
   content: '';
   content: none;
-}
-
-/* Global Body Styles */
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #ffffff;
-  color: #333;
-  line-height: 1.6;
-  padding-top: var(--navbar-height); /* Dynamic padding-top based on navbar height */
 }
 
 /* Prevent background scroll when a modal is open */

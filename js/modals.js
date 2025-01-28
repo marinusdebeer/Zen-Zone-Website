@@ -42,6 +42,7 @@ function setupModalEventListeners() {
   // Function to open a modal
   window.openModal = function (modalId) {
     const modalBg = document.getElementById(modalId);
+    // console.log("opening modal", modalId);
     if (modalBg) {
       modalBg.style.display = "flex";
       modalBg.classList.add("active"); // Optional: Add active class for additional styling
@@ -66,7 +67,11 @@ function setupModalEventListeners() {
 
   // Event Listener for opening modals (Delegated)
   document.addEventListener("click", (e) => {
-    const button = e.target.closest("[id^='open'], .book-now, .learn-more-btn, .learn-more-blog-btn, .cta-button.book-now");
+    let classButtons = "[id^='open'], .learn-more-btn, .learn-more-blog-btn"
+    const MODAL_BOOKING_FORM = false;
+    if (MODAL_BOOKING_FORM)
+      classButtons += ", " + ".cta-button.book-now";
+    const button = e.target.closest(classButtons);
     if (button) {
       let modalId = "";
 
@@ -75,7 +80,7 @@ function setupModalEventListeners() {
         modalId = "termsModal";
       } else if (button.id === "openPrivacyModal") {
         modalId = "privacyModal";
-      } else if (button.id === "openModal" || button.id === "openModal2" || button.classList.contains("book-now")) {
+      } else if (button.id === "openModal" || button.classList.contains("book-now")) {
         modalId = "modalBg";
       } else if (button.classList.contains("learn-more-btn")) {
         const service = button.getAttribute("data-service");

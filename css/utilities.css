@@ -1,10 +1,41 @@
 /* utilities.css */
 :root {
+  /* -------------------------
+     Layout Dimensions
+  ------------------------- */
   /* Navbar Heights */
   --navbar-height-desktop: 70px; /* Default navbar height for desktop */
   --navbar-height-tablet: 60px;  /* Adjusted for tablet */
   --navbar-height-mobile: 60px;  /* Adjusted for mobile */
 
+  /* Gallery Specific Variables */
+  --gallery-animation-duration: 140s; /* Duration of the scroll animation */
+  --gallery-gap: 20px;               /* Space between images */
+  
+  /* Desktop Image Dimensions */
+  --gallery-item-width: 400px;       /* Width of each gallery item on desktop */
+  --gallery-item-height: 375px;      /* Height of each gallery item on desktop */
+  
+  /* Tablet (iPad) Image Dimensions */
+  --gallery-item-width-tablet: 350px; /* Width on tablets */
+  --gallery-item-height-tablet: 350px; /* Height on tablets */
+  
+  /* Mobile Image Dimensions */
+  --gallery-item-width-mobile: 400px; /* Width on mobile devices */
+  --gallery-item-height-mobile: 400px; /* Height on mobile devices */
+  
+  /* Number of Images per Container */
+  --images-per-container-desktop: 32; /* Number of images on desktop */
+  --images-per-container-tablet: 32;   /* Number of images on tablets */
+  --images-per-container-mobile: 32;    /* Number of images on mobile */
+  
+  /* Calculated Container and Track Widths */
+  --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1));
+  --gallery-track-width: calc(var(--gallery-container-width) * 2);
+
+  /* -------------------------
+     Color Palette
+  ------------------------- */
   /* Primary Colors */
   --color-primary: #6b5b95; /* Purple */
   --color-primary-hover: #574f8f;
@@ -30,32 +61,10 @@
   /* Focus Color */
   --color-focus: #ffbf47; /* High-contrast color for focus outlines */
 
-  /* -------------------------
-     Gallery Specific Variables
-  ------------------------- */
-  --gallery-animation-duration: 140s; /* Duration of the scroll animation */
-  --gallery-gap: 20px;               /* Space between images */
-
-  /* Desktop Image Dimensions */
-  --gallery-item-width: 400px;       /* Width of each gallery item on desktop */
-  --gallery-item-height: 375px;      /* Height of each gallery item on desktop */
-
-  /* Tablet (iPad) Image Dimensions */
-  --gallery-item-width-tablet: 350px; /* Width on tablets */
-  --gallery-item-height-tablet: 350px; /* Height on tablets */
-
-  /* Mobile Image Dimensions */
-  --gallery-item-width-mobile: 400px; /* Width on mobile devices */
-  --gallery-item-height-mobile: 400px; /* Height on mobile devices */
-
-  /* Number of Images per Container */
-  --images-per-container-desktop: 32; /* Number of images on desktop */
-  --images-per-container-tablet: 32;   /* Number of images on tablets */
-  --images-per-container-mobile: 32;    /* Number of images on mobile */
-
-  /* Calculated Container and Track Widths */
-  --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1));
-  --gallery-track-width: calc(var(--gallery-container-width) * 2);
+  /* Light and Gray Colors */
+  --color-light-green: #FAFFFA; /* Light Green Background */
+  --color-gray: #ccc; /* Gray for borders and backgrounds */
+  --color-light-gray: #F0F0F0; /* Light Gray for hover effects */
 }
 
 /* Responsive Navbar Heights */
@@ -110,6 +119,7 @@
 /* Modifier for Book Now Button */
 .cta-button.book-now {
   background-color: var(--color-primary);
+  text-decoration: none;
 }
 
 .cta-button.book-now:hover,
@@ -150,10 +160,20 @@
   outline-offset: 2px;
 }
 
+/* -------------------------
+   Motion Preferences
+------------------------- */
 /* Respect User’s Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* -------------------------
+   Error States
+------------------------- */
+.border-red-500 {
+  border-color: #f56565; /* Red color for errors */
 }
