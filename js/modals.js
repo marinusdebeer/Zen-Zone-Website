@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   loadModals()
     .then(() => {
       setupModalEventListeners();
-      console.log("Modals loaded and event listeners set up.");
       // Dispatch the custom event after modals are loaded
       const modalsLoadedEvent = new Event("modalsLoaded");
       document.dispatchEvent(modalsLoadedEvent);
@@ -31,7 +30,6 @@ function loadModals() {
       const modalContainer = document.createElement("div");
       modalContainer.innerHTML = modalsData + bookingModalData;
       document.body.appendChild(modalContainer);
-      console.log("modals.html and bookingModal.html loaded into the DOM.");
     });
 }
 
@@ -48,7 +46,6 @@ function setupModalEventListeners() {
       modalBg.classList.add("active"); // Optional: Add active class for additional styling
       document.body.classList.add("modal-open");
       trapFocus(modalBg);
-      console.log(`Modal "${modalId}" opened.`);
     } else {
       console.warn(`Modal with ID "${modalId}" not found.`);
     }
@@ -61,7 +58,6 @@ function setupModalEventListeners() {
       modalBg.classList.remove("active"); // Remove active class
       document.body.classList.remove("modal-open");
       releaseFocus();
-      console.log(`Modal "${modalBg.id}" closed.`);
     }
   };
 

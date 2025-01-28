@@ -13,8 +13,6 @@ const BookingForm = (() => {
   // Elements
   const bookingForm = document.getElementById("bookingForm");
   const formSteps = Array.from(document.querySelectorAll(".booking-form-step"));
-  const toast = document.getElementById("toast");
-  const toastBody = toast?.querySelector(".toast-body");
   const submitButton = bookingForm?.querySelector(".booking-btn-submit");
   const bookingFormTitle = document.getElementById("bookingFormTitle");
 
@@ -27,14 +25,11 @@ const BookingForm = (() => {
    * Initialize the BookingForm module
    */
   const init = () => {
-    // Display the first step
-    showFormStep(currentStep);
+    // Initialize Step Tracker
+    StepTracker.init(currentStep);
 
     // Attach Event Listeners
     attachEventListeners();
-
-    // Initialize Step Tracker Clickability
-    initializeStepTrackerClick();
 
     // Initialize Range Input Displays
     initializeRangeDisplays();
@@ -55,11 +50,11 @@ const BookingForm = (() => {
     // Handle blur and input events for each input to send data to Google Script
     const inputs = Array.from(bookingForm.querySelectorAll("input, select, textarea"));
     inputs.forEach((input) => {
-      // For range inputs, listen to 'input' events
+      // For range inputs, listen to 'input' events and use debounced tracking
       if (input.type === "range") {
-        input.addEventListener("input", handleSliderChange);
+        input.addEventListener("input", handleSliderChangeDebounced);
       } else {
-        // For other inputs, listen to 'blur' events
+        // For other inputs, listen to 'blur' events and send tracking data immediately
         input.addEventListener("blur", handleFieldBlur);
       }
     });
@@ -73,6 +68,17 @@ const BookingForm = (() => {
   };
 
   /**
+   * Debounced handler for slider input changes
+   * @param {Event} e 
+   */
+  const handleSliderChangeDebounced = (e) => {
+    const fieldId = e.target.id;
+    const value = e.target.value;
+    const processedFieldId = fieldId.replace("booking-", ""); // Remove "booking-" prefix
+    Tracking.sendTrackingDataDebounced(processedFieldId, value);
+  };
+
+  /**
    * Handle Next and Previous button clicks
    * @param {Event} e 
    */
@@ -82,7 +88,9 @@ const BookingForm = (() => {
       if (validateFormStep(currentStep)) {
         updateStepTracker(currentStep);
         currentStep++;
-        showFormStep(currentStep);
+        StepTracker.showFormStep(currentStep);
+        // Update StepTracker's clickable steps
+        StepTracker.updateClickableSteps(currentStep);
       }
     }
 
@@ -90,7 +98,9 @@ const BookingForm = (() => {
       e.preventDefault();
       currentStep--;
       if (currentStep < 1) currentStep = 1;
-      showFormStep(currentStep);
+      StepTracker.showFormStep(currentStep);
+      // Update StepTracker's clickable steps
+      StepTracker.updateClickableSteps(currentStep);
     }
   };
 
@@ -135,17 +145,6 @@ const BookingForm = (() => {
   };
 
   /**
-   * Handle slider input event to send data to Google Script
-   * @param {Event} e 
-   */
-  const handleSliderChange = (e) => {
-    const fieldId = e.target.id;
-    const value = e.target.value;
-    const processedFieldId = fieldId.replace("booking-", ""); // Remove "booking-" prefix
-    Tracking.sendTrackingData(processedFieldId, value);
-  };
-
-  /**
    * Validate all input fields in the current step
    * @param {number} step 
    * @returns {boolean}
@@ -172,95 +171,6 @@ const BookingForm = (() => {
     }
 
     return valid;
-  };
-
-  /**
-   * Show the specified form step
-   * @param {number} step 
-   */
-  const showFormStep = (step) => {
-    formSteps.forEach((formStep, index) => {
-      formStep.classList.toggle("booking-form-step--active", index + 1 === step);
-      formStep.setAttribute("aria-hidden", index + 1 !== step);
-    });
-
-    // Update main heading
-    const currentStepElement = document.querySelector(`.booking-step[data-step="${step}"]`);
-    if (currentStepElement) {
-      const stepLabel = currentStepElement.querySelector(".booking-step-label").textContent;
-      bookingFormTitle.textContent = stepLabel;
-    }
-
-    // Update step tracker UI
-    updateStepTrackerUI(step);
-
-    // Update clickable steps in the tracker
-    updateClickableSteps(step);
-  };
-
-  /**
-   * Update the step tracker UI based on the current step
-   * @param {number} step 
-   */
-  const updateStepTrackerUI = (step) => {
-    const progressSteps = Array.from(document.querySelectorAll(".booking-step"));
-    progressSteps.forEach((stepElement) => {
-      const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
-
-      if (stepNumber < step) {
-        stepElement.classList.add("completed");
-        stepElement.classList.remove("active", "incomplete");
-        stepElement.removeAttribute("aria-current");
-      } else if (stepNumber === step) {
-        stepElement.classList.add("active");
-        stepElement.classList.remove("completed", "incomplete");
-        stepElement.setAttribute("aria-current", "step");
-      } else {
-        stepElement.classList.add("incomplete");
-        stepElement.classList.remove("active", "completed");
-        stepElement.removeAttribute("aria-current");
-      }
-    });
-  };
-
-  /**
-   * Update which steps are clickable based on the highest completed step
-   * @param {number} step 
-   */
-  const updateClickableSteps = (step) => {
-    const progressSteps = Array.from(document.querySelectorAll(".booking-step"));
-    progressSteps.forEach((stepElement) => {
-      stepElement.classList.remove("clickable");
-      stepElement.setAttribute("aria-disabled", "true");
-    });
-
-    // Mark all completed steps as clickable
-    let highestCompleted = getHighestCompletedStep();
-    progressSteps.forEach((stepElement) => {
-      const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
-      if (stepNumber <= highestCompleted) {
-        stepElement.classList.add("clickable");
-        stepElement.setAttribute("aria-disabled", "false");
-      }
-    });
-  };
-
-  /**
-   * Get the highest completed step
-   * @returns {number}
-   */
-  const getHighestCompletedStep = () => {
-    const progressSteps = Array.from(document.querySelectorAll(".booking-step"));
-    let highest = 0;
-    progressSteps.forEach((stepElement) => {
-      if (stepElement.classList.contains("completed")) {
-        const stepNum = parseInt(stepElement.getAttribute("data-step"), 10);
-        if (stepNum > highest) {
-          highest = stepNum;
-        }
-      }
-    });
-    return highest;
   };
 
   /**
@@ -357,12 +267,9 @@ const BookingForm = (() => {
     // Remove existing data if any
     const existingStepValue = stepElement.querySelector(".step-summary .step-value");
     if (existingStepValue) existingStepValue.remove();
-    console.log(stepElement.classList.value);
+
     // Only append data if step is completed
-    // if (stepElement.classList.contains("completed")) {
-      // console.log(fieldValue);
-      stepElement.querySelector(".step-summary").insertAdjacentHTML("beforeend", fieldValue);
-    // }
+    stepElement.querySelector(".step-summary").insertAdjacentHTML("beforeend", fieldValue);// Do not change this line
   };
 
   /**
@@ -382,6 +289,8 @@ const BookingForm = (() => {
    * @param {boolean} isSuccess 
    */
   const showToast = (message, isSuccess) => {
+    const toast = document.getElementById("toast");
+    const toastBody = toast?.querySelector(".toast-body");
     if (!toast || !toastBody) return;
 
     toastBody.textContent = message;
@@ -400,43 +309,6 @@ const BookingForm = (() => {
         toast.hidden = true;
       }, 500);
     }, 5000);
-  };
-
-  /**
-   * Initialize click events for step tracker steps
-   */
-  const initializeStepTrackerClick = () => {
-    const progressSteps = Array.from(document.querySelectorAll(".booking-step"));
-    progressSteps.forEach((stepElement) => {
-      stepElement.addEventListener("click", () => {
-        const step = parseInt(stepElement.getAttribute("data-step"), 10);
-        if (canNavigateToStep(step)) {
-          currentStep = step;
-          showFormStep(currentStep);
-        }
-      });
-
-      // Keyboard navigation for accessibility
-      stepElement.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          stepElement.click();
-        }
-      });
-    });
-  };
-
-  /**
-   * Determine if user can navigate to a specific step
-   * @param {number} step 
-   * @returns {boolean}
-   */
-  const canNavigateToStep = (step) => {
-    const highestCompleted = getHighestCompletedStep();
-    if (step <= highestCompleted + 1) { // Allow navigating to completed steps and the immediate next step
-      return true;
-    }
-    return false;
   };
 
   /**
@@ -464,7 +336,7 @@ const BookingForm = (() => {
    */
   const resetForm = () => {
     currentStep = 1;
-    showFormStep(currentStep);
+    StepTracker.showFormStep(currentStep);
     bookingForm.reset();
 
     // Clear step tracker summaries and reset classes
@@ -487,7 +359,7 @@ const BookingForm = (() => {
     }
 
     // Update clickable steps
-    updateClickableSteps(currentStep);
+    StepTracker.updateClickableSteps(currentStep);
 
     // Reset main heading
     const firstStepLabel = document.querySelector(`.booking-step[data-step="1"] .booking-step-label`).textContent;
@@ -497,5 +369,13 @@ const BookingForm = (() => {
     initializeRangeDisplays();
   };
 
-  return { init, resetForm };
+  /**
+   * Expose a method to set the current step from StepTracker
+   * @param {number} step 
+   */
+  const setCurrentStep = (step) => {
+    currentStep = step;
+  };
+
+  return { init, resetForm, setCurrentStep };
 })();
