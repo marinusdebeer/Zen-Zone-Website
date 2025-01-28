@@ -20,7 +20,6 @@ const BookingForm = (() => {
 
   // State
   let currentStep = 1;
-  const totalSteps = formSteps.length;
   const userId = localStorage.getItem("uniqueId") || `user-${Date.now()}`;
   localStorage.setItem("uniqueId", userId); // Ensure it's stored for future reference
 
@@ -68,7 +67,7 @@ const BookingForm = (() => {
     // Handle submit button click to send tracking data
     if (submitButton) {
       submitButton.addEventListener("click", () => {
-        Tracking.sendTrackingData("submission", "Form Submitted");
+        Tracking.sendTrackingData("submitClicked", "Form Submitted");
       });
     }
   };
@@ -231,7 +230,6 @@ const BookingForm = (() => {
   const updateClickableSteps = (step) => {
     const progressSteps = Array.from(document.querySelectorAll(".booking-step"));
     progressSteps.forEach((stepElement) => {
-      const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
       stepElement.classList.remove("clickable");
       stepElement.setAttribute("aria-disabled", "true");
     });

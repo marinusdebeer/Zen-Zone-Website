@@ -218,80 +218,14 @@
   font-weight: 500;
 }
 
-/* Navigation Arrows Styles */
-.reviews-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(107, 91, 149, 0.8); /* Semi-transparent purple */
-  border: none;
-  color: #fff;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.reviews-nav.left {
-  left: 0.5rem;
-}
-
-.reviews-nav.right {
-  right: 0.5rem;
-}
-
-.reviews-nav:hover,
-.reviews-nav:focus {
-  background-color: rgba(94, 119, 76, 0.8); /* Changed color on hover/focus */
-  transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover/focus */
-  outline: none;
-}
-
-.reviews-nav:focus {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
 /* Responsive Adjustments for Navigation Arrows */
 @media (max-width: 768px) {
   .reviews {
     margin: 0px 5px;
     padding: 20px 0px;
   }
-  .reviews-nav {
-    width: 2rem;
-    height: 2rem;
-  }
-  .reviews-nav.left {
-    left: 0.5rem;
-  }
-  .reviews-nav.right {
-    right: 0.5rem;
-  }
 }
 
-@media (max-width: 480px) {
-  .reviews-nav {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-  .reviews-nav.left {
-    left: 0.25rem;
-  }
-  .reviews-nav.right {
-    right: 0.25rem;
-  }
-
-  /* Hide navigation arrows on very small screens */
-  .reviews-nav {
-    display: none;
-  }
-}
 
 /* Gradient Overlays for Scroll Indication */
 .reviews::before,
@@ -361,11 +295,6 @@
   /* Hide gradient overlays on large screens to prevent interference with vertical scrolling */
   .reviews::before,
   .reviews::after {
-    display: none;
-  }
-
-  /* Hide navigation arrows on large screens */
-  .reviews-nav {
     display: none;
   }
 }
