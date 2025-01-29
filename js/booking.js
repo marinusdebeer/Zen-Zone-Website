@@ -6,6 +6,7 @@
  * Contains helper functions used across other modules.
  */
 const Utilities = (() => {
+  const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
   /**
    * Sanitize HTML to prevent XSS attacks.
    * @param {string} str - The string to sanitize.
@@ -48,7 +49,7 @@ const Utilities = (() => {
     document.getElementById(hideId).style.display = "none";
   }
 
-  return { sanitizeHTML, debounce, getFormattedUserId, toggleVisibility };
+  return { sanitizeHTML, debounce, getFormattedUserId, toggleVisibility, deepCopy };
 })();
 
 /**
@@ -93,17 +94,19 @@ const Toast = (() => {
  * Handles sending tracking data with debouncing and retry mechanisms.
  */
 const Tracking = (() => {
-  const GOOGLE_SCRIPT_ID = "AKfycbwtPfxe2QNju3pQQIIa261KoPt_TNpe2zczZRXfk90kuPOFN_JWXq4BWuzBfcaVl0eU";
+  const GOOGLE_SCRIPT_ID = "AKfycbwtSQA6FCXIBMyQQw4NqP-YImC8NB22VahYx1gzUOr2SqI7k_vxfMPaeMWwOYMtxu0M";
   const DEBOUNCE_DELAY = 300; // milliseconds
 
   const sendData = (fieldId, value) => {
+    const hostname = window.location.hostname;
+    console.log(hostname);
 
     const userId = localStorage.getItem("userId") || Utilities.getFormattedUserId();
     localStorage.setItem("userId", userId); // Ensure it's stored for future reference
 
     let sessionId = localStorage.getItem("sessionId");
 
-    const data = { userId, sessionId, fieldId, value };
+    const data = { hostname, userId, sessionId, fieldId, value };
 
     fetch(`https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`, {
       method: "POST",
@@ -453,6 +456,15 @@ class BookingForm {
 
       // Update step tracker with final step's data
       this.updateFormData(this.currentStep);
+      console.log("Final Form Data:", this.formDataStore);
+      // Add loading state
+      const submitButton = document.querySelector(".booking-btn-submit");
+      submitButton.classList.add("loading");
+      submitButton.innerHTML = `<div class="spinner"></div> Submitting...`;
+      Tracking.sendData('submitClicked', "Submitted");
+
+      // this.resetForm(); // REMOVE this line when the code below is uncommented
+      // Toast.show("Your request has been submitted successfully. We will contact you shortly.", true);
 
       // Send data via EmailJS or your preferred email service
       Email.sendBookingRequest(this.formDataStore)
@@ -461,8 +473,10 @@ class BookingForm {
           this.resetForm();
           // Redirect to thank you page after a short delay
           setTimeout(() => {
+            submitButton.classList.remove("loading");
+            submitButton.innerHTML = "Submit Quote Request";
             window.location.href = "/thankyou.html";
-          }, 2000);
+          }, 1000);
         })
         .catch((error) => {
           Toast.show("Failed to submit your request. Please try again later.", false);
@@ -563,7 +577,7 @@ class BookingForm {
 
         // If hiding 'extras', remove any dynamically added inputs like window counts
         if (fieldName === "extras") {
-          this.removeExtrasCountInputs();
+          // this.removeExtrasCountInputs();
         }
       }
     });
@@ -648,10 +662,23 @@ class BookingForm {
    * @param {number} step - The completed step number.
    */
   updateFormData(step) {
+    console.log(Utilities.deepCopy(this.formDataStore));
     const currentFormStep = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
     if (!currentFormStep) return;
 
-    const fields = currentFormStep.querySelectorAll("[name]");
+    const isVisible = (element) => {
+      while (element) {
+        if (window.getComputedStyle(element).display === "none") {
+          return false; // Found a hidden parent or element itself is hidden
+        }
+        element = element.parentElement; // Move up the DOM tree
+      }
+      return true; // No hidden parent found
+    };
+    
+    const fields = Array.from(currentFormStep.querySelectorAll("[name]")).filter(isVisible);
+    
+    
     const data = {};
 
     fields.forEach((field) => {
@@ -677,6 +704,7 @@ class BookingForm {
 
     // Append step data to the tracker
     this.appendStepData(step, data);
+    console.log(Utilities.deepCopy(this.formDataStore));
 
     // Send tracking data
     this.sendTrackingData(data);
@@ -1029,7 +1057,7 @@ class BookingForm {
     });
 
     // Remove dynamically added count inputs
-    this.removeExtrasCountInputs();
+    // this.removeExtrasCountInputs();
 
     // Remove active class from option buttons
     const optionButtons = this.bookingForm.querySelectorAll(".booking-btn-option");

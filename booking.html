@@ -38,7 +38,7 @@
       <li class="booking-step incomplete clickable" data-step="3" aria-disabled="true" tabindex="0">
         <div class="step-header">
           <span class="booking-step-number">3.</span>
-          <span class="booking-step-label">Booking Type</span>
+          <span class="booking-step-label">Service Type</span>
         </div>
         <div class="step-summary" id="summary-step-3" aria-live="polite"></div>
       </li>
@@ -156,7 +156,7 @@
             </div>
             <!-- Optional: Error Message -->
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
-              Please select a booking type.
+              Please select a service type.
             </span>
           </div>
 
@@ -164,7 +164,7 @@
           <!-- Frequency (Recurring) -->
           <div class="booking-form-group" data-name="frequency" data-conditional-field="bookingType"
             data-conditional-value="Recurring" style="display: none;" aria-hidden="true">
-            <!-- <label>Frequency <span aria-hidden="true">*</span></label> -->
+            <h3 >Select Frequency</h3>
             <div class="booking-form-options">
               <input type="radio" id="frequency-weekly" name="frequency" value="Weekly" required>
               <label for="frequency-weekly" class="booking-btn-option">Weekly</label>
@@ -184,7 +184,7 @@
           <!-- Service Type (One-Time) -->
           <div class="booking-form-group" data-name="serviceType" data-conditional-field="bookingType"
             data-conditional-value="One-Time" style="display: none;" aria-hidden="true">
-            <!-- <label>Service Type <span aria-hidden="true">*</span></label> -->
+            <h3>Select Service Type</h3>
             <div class="booking-form-options">
               <input type="radio" id="service-standard" name="serviceType" value="Standard Cleaning" required>
               <label for="service-standard" class="booking-btn-option">Standard Cleaning</label>

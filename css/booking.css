@@ -38,6 +38,14 @@ body {
   transition: all 0.3s ease;
 }
 
+.booking-container h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
 /* -------------------------
    Step Tracker Styles
 ------------------------- */
@@ -156,6 +164,12 @@ body {
 .booking-form-step {
   display: none;
 }
+.booking-form-step label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
 
 .booking-form-step--active {
   display: block;
@@ -175,12 +189,6 @@ body {
 ------------------------- */
 .booking-form-group {
   margin-bottom: 1.5rem;
-}
-
-.booking-form-group label {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--color-primary-text);
 }
 
 .booking-form-group input,
@@ -379,7 +387,6 @@ body {
 
 .slider-container span {
   min-width: 30px;
-  text-align: center;
   font-weight: bold;
 }
 
@@ -423,6 +430,62 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+}
+
+/* Base styles for the submit button */
+.booking-btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Button hover effect */
+.booking-btn-submit:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Disabled state for submission */
+.booking-btn-submit.loading {
+  background-color: var(--color-gray);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Spinner animation */
+.booking-btn-submit .spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-white);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* Show the spinner when loading */
+.booking-btn-submit.loading .spinner {
+  display: inline-block;
+}
+
+/* Hide button text when loading */
+.booking-btn-submit.loading span {
+  display: none;
+}
+
+/* Keyframes for spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .booking-btn-next,
