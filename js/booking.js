@@ -1,296 +1,70 @@
 // booking.js
-
-document.addEventListener("DOMContentLoaded", () => {
-  BookingForm.init();
-});
+'use strict';
 
 /**
- * BookingForm Module
- * Handles step navigation, form validation, form submission,
- * toast notifications, and dynamic step summaries.
+ * Utilities Module
+ * Contains helper functions used across other modules.
  */
-const BookingForm = (() => {
-  // Elements
-  const bookingForm = document.getElementById("bookingForm");
-  const formSteps = Array.from(document.querySelectorAll(".booking-form-step"));
-  const submitButton = bookingForm?.querySelector(".booking-btn-submit");
-  const bookingFormTitle = document.getElementById("bookingFormTitle");
-
-  // State
-  let currentStep = 1;
-  const userId = localStorage.getItem("uniqueId") || `user-${Date.now()}`;
-  localStorage.setItem("uniqueId", userId); // Ensure it's stored for future reference
-
+const Utilities = (() => {
   /**
-   * Initialize the BookingForm module
-   */
-  const init = () => {
-    // Initialize Step Tracker
-    StepTracker.init(currentStep);
-
-    // Attach Event Listeners
-    attachEventListeners();
-
-    // Initialize Range Input Displays
-    initializeRangeDisplays();
-  };
-
-  /**
-   * Attach necessary event listeners to the form
-   */
-  const attachEventListeners = () => {
-    if (!bookingForm) return;
-
-    // Handle Next and Previous button clicks
-    bookingForm.addEventListener("click", handleButtonClick);
-
-    // Handle form submission
-    bookingForm.addEventListener("submit", handleFormSubmit);
-
-    // Handle blur and input events for each input to send data to Google Script
-    const inputs = Array.from(bookingForm.querySelectorAll("input, select, textarea"));
-    inputs.forEach((input) => {
-      // For range inputs, listen to 'input' events and use debounced tracking
-      if (input.type === "range") {
-        input.addEventListener("input", handleSliderChangeDebounced);
-      } else {
-        // For other inputs, listen to 'blur' events and send tracking data immediately
-        input.addEventListener("blur", handleFieldBlur);
-      }
-    });
-
-    // Handle submit button click to send tracking data
-    if (submitButton) {
-      submitButton.addEventListener("click", () => {
-        Tracking.sendTrackingData("submitClicked", "Form Submitted");
-      });
-    }
-  };
-
-  /**
-   * Debounced handler for slider input changes
-   * @param {Event} e 
-   */
-  const handleSliderChangeDebounced = (e) => {
-    const fieldId = e.target.id;
-    const value = e.target.value;
-    const processedFieldId = fieldId.replace("booking-", ""); // Remove "booking-" prefix
-    Tracking.sendTrackingDataDebounced(processedFieldId, value);
-  };
-
-  /**
-   * Handle Next and Previous button clicks
-   * @param {Event} e 
-   */
-  const handleButtonClick = (e) => {
-    if (e.target.classList.contains("booking-btn-next")) {
-      e.preventDefault();
-      if (validateFormStep(currentStep)) {
-        updateStepTracker(currentStep);
-        currentStep++;
-        StepTracker.showFormStep(currentStep);
-        // Update StepTracker's clickable steps
-        StepTracker.updateClickableSteps(currentStep);
-      }
-    }
-
-    if (e.target.classList.contains("booking-btn-prev")) {
-      e.preventDefault();
-      currentStep--;
-      if (currentStep < 1) currentStep = 1;
-      StepTracker.showFormStep(currentStep);
-      // Update StepTracker's clickable steps
-      StepTracker.updateClickableSteps(currentStep);
-    }
-  };
-
-  /**
-   * Handle form submission
-   * @param {Event} e 
-   */
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    if (validateFormStep(currentStep)) {
-      const formData = new FormData(bookingForm);
-      const data = Object.fromEntries(formData.entries());
-
-      // Update step tracker with last step's data
-      updateStepTracker(currentStep);
-
-      // Send data via EmailJS
-      Email.sendBookingRequest(data)
-        .then(() => {
-          showToast("Your request has been submitted successfully. We will contact you shortly.", true);
-          resetForm();
-          // Redirect to thank you page after a short delay
-          setTimeout(() => {
-            window.location.href = "/thankyou.html";
-          }, 2000);
-        })
-        .catch((error) => {
-          showToast("Failed to submit your request. Please try again later.", false);
-        });
-    }
-  };
-
-  /**
-   * Handle field blur event to send data to Google Script
-   * @param {Event} e 
-   */
-  const handleFieldBlur = (e) => {
-    const fieldId = e.target.id;
-    const value = e.target.value.trim();
-    const processedFieldId = fieldId.replace("booking-", ""); // Remove "booking-" prefix
-    Tracking.sendTrackingData(processedFieldId, value);
-  };
-
-  /**
-   * Validate all input fields in the current step
-   * @param {number} step 
-   * @returns {boolean}
-   */
-  const validateFormStep = (step) => {
-    const currentFormStep = formSteps[step - 1];
-    if (!currentFormStep) return true;
-
-    const inputs = Array.from(currentFormStep.querySelectorAll("input, select, textarea"));
-    let valid = true;
-
-    inputs.forEach((input) => {
-      if (!input.checkValidity()) {
-        valid = false;
-        input.classList.add("border-red-500"); // Example utility class for error
-        input.reportValidity();
-      } else {
-        input.classList.remove("border-red-500");
-      }
-    });
-
-    if (!valid) {
-      showToast("Please correct the errors on this step before proceeding.", false);
-    }
-
-    return valid;
-  };
-
-  /**
-   * Update the step tracker with data from completed steps
-   * @param {number} step 
-   */
-  const updateStepTracker = (step) => {
-    const data = {};
-
-    switch (step) {
-      case 1:
-        data.name = document.getElementById("booking-name").value.trim();
-        data.email = document.getElementById("booking-email").value.trim();
-        data.phone = document.getElementById("booking-phone").value.trim();
-        appendStepData(step, data);
-        break;
-      case 2:
-        data.service = document.getElementById("booking-service").value.trim();
-        appendStepData(step, data);
-        break;
-      case 3:
-        data.squareFootage = document.getElementById("booking-squareFootage").value;
-        data.bedrooms = document.getElementById("booking-bedrooms").value;
-        data.bathrooms = document.getElementById("booking-bathrooms").value;
-        data.powderRooms = document.getElementById("booking-powderRooms").value;
-        appendStepData(step, data);
-        break;
-      case 4:
-        data.address = document.getElementById("booking-address").value.trim();
-        data.date = document.getElementById("booking-date").value;
-        data.details = document.getElementById("booking-details").value.trim() || "N/A";
-        appendStepData(step, data);
-        break;
-      default:
-        break;
-    }
-
-    // Send tracking data for each field
-    Object.entries(data).forEach(([fieldId, value]) => {
-      Tracking.sendTrackingData(fieldId, value);
-    });
-  };
-
-  /**
-   * Append summarized data to the step tracker
-   * @param {number} step 
-   * @param {object} data 
-   */
-  const appendStepData = (step, data) => {
-    const stepElement = document.querySelector(`.booking-step[data-step="${step}"]`);
-    if (!stepElement) return;
-
-    let fieldValue = "";
-    switch (step) {
-      case 1:
-        fieldValue = `
-          <div class="step-value">
-            <strong>Full Name:</strong> ${sanitizeHTML(data.name)}<br>
-            <strong>Email:</strong> ${sanitizeHTML(data.email)}<br>
-            <strong>Phone:</strong> ${sanitizeHTML(data.phone)}
-          </div>
-        `;
-        break;
-      case 2:
-        fieldValue = `
-          <div class="step-value">
-            <strong>Service:</strong> ${sanitizeHTML(data.service)}
-          </div>
-        `;
-        break;
-      case 3:
-        fieldValue = `
-          <div class="step-value">
-            <strong>Square Footage:</strong> ${sanitizeHTML(data.squareFootage)} sq ft<br>
-            <strong>Bedrooms:</strong> ${sanitizeHTML(data.bedrooms)}<br>
-            <strong>Bathrooms:</strong> ${sanitizeHTML(data.bathrooms)}<br>
-            <strong>Powder Rooms:</strong> ${sanitizeHTML(data.powderRooms)}
-          </div>
-        `;
-        break;
-      case 4:
-        fieldValue = `
-          <div class="step-value">
-            <strong>Address:</strong> ${sanitizeHTML(data.address)}<br>
-            <strong>Preferred Date:</strong> ${sanitizeHTML(data.date)}<br>
-            <strong>Additional Details:</strong> ${sanitizeHTML(data.details)}
-          </div>
-        `;
-        break;
-      default:
-        break;
-    }
-
-    // Remove existing data if any
-    const existingStepValue = stepElement.querySelector(".step-summary .step-value");
-    if (existingStepValue) existingStepValue.remove();
-
-    // Only append data if step is completed
-    stepElement.querySelector(".step-summary").insertAdjacentHTML("beforeend", fieldValue);// Do not change this line
-  };
-
-  /**
-   * Sanitize HTML to prevent XSS
-   * @param {string} str 
-   * @returns {string}
+   * Sanitize HTML to prevent XSS attacks.
+   * @param {string} str - The string to sanitize.
+   * @returns {string} - The sanitized string.
    */
   const sanitizeHTML = (str) => {
-    const temp = document.createElement('div');
+    const temp = document.createElement("div");
     temp.textContent = str;
     return temp.innerHTML;
   };
 
   /**
-   * Show a toast notification
-   * @param {string} message 
-   * @param {boolean} isSuccess 
+   * Debounce function to limit the rate at which a function can fire.
+   * @param {Function} func - The function to debounce.
+   * @param {number} delay - The delay in milliseconds.
+   * @returns {Function} - A debounced version of the input function.
    */
-  const showToast = (message, isSuccess) => {
-    const toast = document.getElementById("toast");
-    const toastBody = toast?.querySelector(".toast-body");
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const getFormattedUserId = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+
+    return `user-${year}-${month}-${day}-${hours}:${minutes}:${seconds}`;
+  };
+
+  function toggleVisibility(showId, hideId) {
+    document.getElementById(showId).style.display = "block";
+    document.getElementById(hideId).style.display = "none";
+  }
+
+  return { sanitizeHTML, debounce, getFormattedUserId, toggleVisibility };
+})();
+
+/**
+ * Toast Module
+ * Manages the display of toast notifications.
+ */
+const Toast = (() => {
+  const toast = document.getElementById("toast");
+  const toastBody = toast?.querySelector(".toast-body");
+
+  /**
+   * Show a toast notification.
+   * @param {string} message - The message to display.
+   * @param {boolean} isSuccess - Determines the styling of the toast.
+   */
+  const show = (message, isSuccess) => {
     if (!toast || !toastBody) return;
 
     toastBody.textContent = message;
@@ -298,11 +72,11 @@ const BookingForm = (() => {
     toast.classList.add(isSuccess ? "success" : "error");
     toast.hidden = false;
 
-    // Trigger reflow to restart CSS animation
+    // Restart CSS animation
     void toast.offsetWidth;
     toast.classList.add("show");
 
-    // Automatically hide after 5 seconds
+    // Hide after 5 seconds
     setTimeout(() => {
       toast.classList.remove("show");
       setTimeout(() => {
@@ -311,38 +85,966 @@ const BookingForm = (() => {
     }, 5000);
   };
 
+  return { show };
+})();
+
+/**
+ * Tracking Module
+ * Handles sending tracking data with debouncing and retry mechanisms.
+ */
+const Tracking = (() => {
+  const GOOGLE_SCRIPT_ID = "AKfycbwtPfxe2QNju3pQQIIa261KoPt_TNpe2zczZRXfk90kuPOFN_JWXq4BWuzBfcaVl0eU";
+  const DEBOUNCE_DELAY = 300; // milliseconds
+
+  const sendData = (fieldId, value) => {
+
+    const userId = localStorage.getItem("userId") || Utilities.getFormattedUserId();
+    localStorage.setItem("userId", userId); // Ensure it's stored for future reference
+
+    let sessionId = localStorage.getItem("sessionId");
+
+    const data = { userId, sessionId, fieldId, value };
+
+    fetch(`https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8" // Do not change this line
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to send data for ${fieldId}: ${response.status}`);
+        }
+      })
+      .catch((error) => {
+        console.error(`Error sending data for ${fieldId}:`, error);
+      });
+  };
+
+  // Debounced version of sendData
+  const sendDataDebounced = Utilities.debounce(sendData, DEBOUNCE_DELAY);
+
+  return { sendData, sendDataDebounced };
+})();
+
+
+/**
+ * StepTracker Class
+ * Manages the step tracking UI and navigation.
+ */
+class StepTracker {
+  constructor(totalSteps) {
+    this.totalSteps = totalSteps;
+    this.progressSteps = Array.from(document.querySelectorAll(".booking-step"));
+  }
+
   /**
-   * Initialize range input displays
+   * Initialize the StepTracker.
+   * @param {number} initialStep - The starting step number.
    */
-  const initializeRangeDisplays = () => {
-    const rangeInputs = Array.from(document.querySelectorAll(".booking-form-step input[type='range']"));
+  init(initialStep = 1) {
+    this.showFormStep(initialStep);
+    this.initializeClickEvents();
+    this.updateClickableSteps(initialStep);
+  }
+
+  /**
+   * Show the specified form step in the step tracker UI.
+   * @param {number} step - The step number to show.
+   */
+  showFormStep(step) {
+    this.progressSteps.forEach((stepElement, index) => {
+      const stepNumber = index + 1;
+      const isActive = stepNumber === step;
+      stepElement.classList.toggle("active", isActive);
+      stepElement.classList.toggle("completed", stepNumber < step);
+      stepElement.classList.toggle("incomplete", stepNumber > step);
+      stepElement.setAttribute("aria-current", isActive ? "step" : "");
+      stepElement.setAttribute("aria-disabled", stepNumber > step);
+    });
+
+    // Update the main heading to match the current step's label
+    const bookingFormTitle = document.getElementById("bookingFormTitle");
+
+    // Ensure we get the correct step that is NOT hidden
+    const currentStepElement = this.progressSteps.find(s => {
+      const stepMatch = parseInt(s.getAttribute("data-step")) === step;
+      const isVisible = window.getComputedStyle(s).display !== "none"; // Check visibility
+      return stepMatch && isVisible;
+    });
+
+    if (currentStepElement && bookingFormTitle) {
+      const stepLabel = currentStepElement.querySelector(".booking-step-label").textContent;
+      bookingFormTitle.textContent = stepLabel;
+    }
+  }
+
+  /**
+   * Initialize click events for step tracker steps.
+   */
+  initializeClickEvents() {
+    this.progressSteps.forEach((stepElement) => {
+      stepElement.addEventListener("click", () => this.handleStepClick(stepElement));
+      stepElement.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          this.handleStepClick(stepElement);
+        }
+      });
+    });
+  }
+
+  /**
+   * Handle clicking on a step tracker step.
+   * @param {HTMLElement} stepElement - The clicked step element.
+   */
+  handleStepClick(stepElement) {
+    const step = parseInt(stepElement.getAttribute("data-step"), 10);
+    if (this.canNavigateToStep(step)) {
+      if (window.BookingFormInstance && typeof window.BookingFormInstance.goToStep === "function") {
+        window.BookingFormInstance.goToStep(step);
+      } else {
+        console.error("BookingFormInstance or goToStep method is not available.");
+      }
+    }
+  }
+
+  /**
+   * Determine if the user can navigate to a specific step.
+   * @param {number} step - The step number.
+   * @returns {boolean} - Whether navigation is allowed.
+   */
+  canNavigateToStep(step) {
+    const highestCompleted = this.getHighestCompletedStep();
+    return step <= highestCompleted + 1;
+  }
+
+  /**
+   * Get the highest completed step.
+   * @returns {number} - The highest completed step number.
+   */
+  getHighestCompletedStep() {
+    return this.progressSteps.reduce((highest, stepElement) => {
+      const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
+      return stepElement.classList.contains("completed") && stepNumber > highest ? stepNumber : highest;
+    }, 0);
+  }
+
+  /**
+   * Update which steps are clickable based on the highest completed step.
+   * @param {number} currentStep - The current active step.
+   */
+  updateClickableSteps(currentStep) {
+    this.progressSteps.forEach((stepElement) => {
+      const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
+      if (stepNumber <= currentStep) {
+        stepElement.classList.add("clickable");
+        stepElement.setAttribute("aria-disabled", "false");
+      } else {
+        stepElement.classList.remove("clickable");
+        stepElement.setAttribute("aria-disabled", "true");
+      }
+    });
+  }
+}
+
+/**
+ * BookingForm Class
+ * Handles form interactions, validation, navigation, and submission.
+ */
+class BookingForm {
+  constructor() {
+
+    const generateUUID = () => {
+      // RFC4122 version 4 compliant UUID
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        const r = (Math.random() * 16) | 0,
+          v = c === 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+    };
+    const sessionId = generateUUID();
+    localStorage.setItem("sessionId", sessionId);
+
+    this.bookingForm = document.getElementById("bookingForm");
+    this.currentStep = 1;
+    this.totalSteps = document.querySelectorAll(".booking-form-step").length;
+    this.formDataStore = {};
+    this.stepTracker = new StepTracker(this.totalSteps);
+    this.initialize();
+  }
+
+  /**
+   * Initialize the BookingForm.
+   */
+  initialize() {
+    if (!this.bookingForm) {
+      console.error("Booking form not found!");
+      Toast.show("Booking form failed to load. Please try again later.", false);
+      return;
+    }
+
+    this.stepTracker.init(this.currentStep);
+    this.showFormStep(this.currentStep); // Ensure the first step is visible
+    this.attachEventListeners();
+    this.initializeRangeDisplays();
+    this.initializeExtrasCountInputs();
+    // Handle window resize for responsive extras columns
+  }
+
+  /**
+   * Show the specified form step and hide others.
+   * @param {number} step - The step number to display.
+   */
+  showFormStep(step) {
+    const formSteps = this.bookingForm.querySelectorAll(".booking-form-step");
+    formSteps.forEach((stepElement) => {
+      const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
+      if (stepNumber === step) {
+        stepElement.classList.add("booking-form-step--active");
+        stepElement.setAttribute("aria-hidden", "false");
+      } else {
+        stepElement.classList.remove("booking-form-step--active");
+        stepElement.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    // Update the main heading to match the current step's label
+    const bookingFormTitle = document.getElementById("bookingFormTitle");
+    const currentStepElement = this.stepTracker.progressSteps.find(s => parseInt(s.getAttribute("data-step")) === step);
+    if (currentStepElement && bookingFormTitle) {
+      const stepLabel = currentStepElement.querySelector(".booking-step-label").textContent;
+      bookingFormTitle.textContent = stepLabel;
+    }
+  }
+
+  /**
+   * Attach necessary event listeners to the form.
+   */
+  attachEventListeners() {
+    // Handle Next and Previous button clicks
+    this.bookingForm.addEventListener("click", (e) => this.handleButtonClick(e));
+
+    // Handle form submission
+    this.bookingForm.addEventListener("submit", (e) => this.handleFormSubmit(e));
+
+    // Handle input changes for conditional logic and radio button selections
+    this.bookingForm.addEventListener("change", (e) => this.handleOptionChange(e));
+
+    // Handle blur and input events for each input to send data to Google Script
+    const inputs = Array.from(this.bookingForm.querySelectorAll("input, select, textarea"));
+    inputs.forEach((input) => {
+      if (input.type === "range") {
+        input.addEventListener("input", Utilities.debounce((e) => this.handleSliderChange(e), 300));
+      } else {
+        input.addEventListener("blur", (e) => this.handleFieldBlur(e));
+      }
+    });
+
+    // Handle click events on package labels to toggle active state
+    const packageLabels = this.bookingForm.querySelectorAll(".package-option");
+    packageLabels.forEach((label) => {
+      label.addEventListener("click", () => this.togglePackageOption(label));
+    });
+  }
+
+  /**
+   * Handle Next and Previous button clicks.
+   * @param {Event} e - The click event.
+   */
+  handleButtonClick(e) {
+    if (e.target.classList.contains("booking-btn-next")) {
+      e.preventDefault();
+      this.goToNextStep();
+    }
+
+    if (e.target.classList.contains("booking-btn-prev")) {
+      e.preventDefault();
+      this.goToPreviousStep();
+    }
+  }
+
+  /**
+   * Navigate to the next step after validation.
+   */
+  goToNextStep() {
+    if (this.validateFormStep(this.currentStep)) {
+      this.updateFormData(this.currentStep);
+      this.currentStep++;
+      this.showFormStep(this.currentStep); // Show the new step
+      this.stepTracker.showFormStep(this.currentStep);
+      this.stepTracker.updateClickableSteps(this.currentStep);
+
+      // If entering Step 5, display relevant sections based on bookingType
+      if (this.currentStep === 5) {
+        this.displayStep5Sections();
+      }
+    } else {
+      Toast.show("Please correct the errors on this step before proceeding.", false);
+    }
+  }
+
+  /**
+   * Navigate to the previous step.
+   */
+  goToPreviousStep() {
+    this.currentStep--;
+    if (this.currentStep < 1) this.currentStep = 1;
+    this.showFormStep(this.currentStep); // Show the new step
+    this.stepTracker.showFormStep(this.currentStep);
+    this.stepTracker.updateClickableSteps(this.currentStep);
+
+    // If re-entering Step 5, display relevant sections based on bookingType
+    if (this.currentStep === 5) {
+      this.displayStep5Sections();
+    }
+  }
+
+  /**
+   * Navigate directly to a specific step.
+   * @param {number} step - The step number to navigate to.
+   */
+  goToStep(step) {
+    if (step < 1 || step > this.totalSteps) return;
+    this.currentStep = step;
+    this.showFormStep(this.currentStep); // Show the new step
+    this.stepTracker.showFormStep(this.currentStep);
+    this.stepTracker.updateClickableSteps(this.currentStep);
+
+    // If entering Step 5, display relevant sections based on bookingType
+    if (this.currentStep === 5) {
+      this.displayStep5Sections();
+    }
+  }
+
+  /**
+   * Handle form submission.
+   * @param {Event} e - The submit event.
+   */
+  handleFormSubmit(e) {
+    e.preventDefault();
+    if (this.validateFormStep(this.currentStep)) {
+
+      const formData = new FormData(this.bookingForm);
+
+      const data = Object.fromEntries(formData.entries());
+
+      // Ensure `extras` is properly preserved before merging
+      let extras = Array.isArray(this.formDataStore.extras)
+        ? [...this.formDataStore.extras]  // Clone array
+        : (typeof this.formDataStore.extras === "string"
+          ? this.formDataStore.extras.split(", ").map(item => item.trim())  // Convert string to array
+          : []);  // Default to an empty array if undefined
+
+
+      // Merge objects using Object.assign()
+      Object.assign(this.formDataStore, data);
+
+      // Restore `extras` as an array first, then convert it to a string
+      this.formDataStore.extras = extras.join(", ");
+
+
+      // Specifically handle countable extras
+      this.handleCountableExtrasOnSubmit();
+
+      // Prepare extras as a single string for tracking
+      this.prepareExtrasForTracking();
+
+      // Update step tracker with final step's data
+      this.updateFormData(this.currentStep);
+
+      // Send data via EmailJS or your preferred email service
+      Email.sendBookingRequest(this.formDataStore)
+        .then(() => {
+          Toast.show("Your request has been submitted successfully. We will contact you shortly.", true);
+          this.resetForm();
+          // Redirect to thank you page after a short delay
+          setTimeout(() => {
+            window.location.href = "/thankyou.html";
+          }, 2000);
+        })
+        .catch((error) => {
+          Toast.show("Failed to submit your request. Please try again later.", false);
+          console.error("EmailJS Error:", error);
+        });
+    } else {
+      Toast.show("Please correct the errors on this step before submitting.", false);
+    }
+  }
+
+  /**
+   * Handle option changes for radio buttons and checkboxes.
+   * @param {Event} e - The change event.
+   */
+  handleOptionChange(e) {
+    const target = e.target;
+
+    if (target.type === "radio") {
+      const name = target.name;
+      const value = target.value;
+
+      // Set the value in the formDataStore
+      this.formDataStore[name] = value;
+
+      // Handle conditional display based on selection
+      this.handleConditionalDisplay(name, value);
+    }
+
+    if (target.type === "checkbox") {
+      this.handleCheckboxChange(target);
+    }
+  }
+
+  /**
+   * Handle checkbox changes for conditional fields.
+   * @param {HTMLElement} checkbox - The changed checkbox element.
+   */
+  handleCheckboxChange(checkbox) {
+    const fieldName = checkbox.name;
+    // Check if this.formDataStore[fieldName] is a string, then convert to array using commas as delimiters
+    if (typeof this.formDataStore[fieldName] === 'string') {
+      this.formDataStore[fieldName] = this.formDataStore[fieldName].split(', ').map(item => item.trim());
+    }
+    if (!this.formDataStore[fieldName]) {
+      this.formDataStore[fieldName] = [];
+    }
+
+    if (checkbox.checked) {
+      if (!this.formDataStore[fieldName].includes(checkbox.value)) {
+        this.formDataStore[fieldName].push(checkbox.value);
+      }
+    } else {
+      if (this.formDataStore[fieldName]) {
+        this.formDataStore[fieldName] = this.formDataStore[fieldName].filter((item) => item !== checkbox.value);
+      }
+    }
+  }
+
+
+  /**
+   * Handle conditional display of fields based on selection.
+   * @param {string} fieldName - The name of the field.
+   * @param {string|null} value - The selected value.
+   */
+  handleConditionalDisplay(fieldName, value) {
+    const conditionalFields = this.bookingForm.querySelectorAll(`[data-conditional-field="${fieldName}"]`);
+    conditionalFields.forEach((fieldWrapper) => {
+      const conditionalValue = fieldWrapper.getAttribute("data-conditional-value").trim().toLowerCase();
+      const selectedValue = value ? value.trim().toLowerCase() : "";
+
+      if (selectedValue === conditionalValue) {
+        fieldWrapper.style.display = "block";
+        fieldWrapper.setAttribute("aria-hidden", "false");
+        // Add 'required' attribute to inputs within the now-visible field group, except for 'extras'
+        const inputs = fieldWrapper.querySelectorAll("input, select, textarea");
+        inputs.forEach((input) => {
+          if (fieldName === "extras") {
+            input.removeAttribute("required");
+          } else if (input.dataset.required === "true") {
+            input.setAttribute("required", "required");
+          }
+        });
+      } else {
+        fieldWrapper.style.display = "none";
+        fieldWrapper.setAttribute("aria-hidden", "true");
+
+        // Clear the value if hiding
+        const inputs = fieldWrapper.querySelectorAll("input, select, textarea");
+        inputs.forEach((input) => {
+          if (input.type === "radio" || input.type === "checkbox") {
+            input.checked = false;
+          } else {
+            input.value = "";
+          }
+          // Remove 'required' attribute from inputs within the now-hidden field group
+          input.removeAttribute("required");
+        });
+
+        // If hiding 'extras', remove any dynamically added inputs like window counts
+        if (fieldName === "extras") {
+          this.removeExtrasCountInputs();
+        }
+      }
+    });
+
+    // If bookingType changes, update Step 5 sections accordingly
+    if (fieldName === "bookingType") {
+      this.displayStep5Sections();
+    }
+  }
+
+  /**
+   * Handle slider input changes.
+   * @param {Event} e - The input event.
+   */
+  handleSliderChange(e) {
+    const fieldId = e.target.id.replace("booking-", "");
+    const value = e.target.value.trim();
+    // Tracking.sendDataDebounced(fieldId, value);
+  }
+
+  /**
+   * Handle field blur event to send data to Google Script.
+   * @param {Event} e - The blur event.
+   */
+  handleFieldBlur(e) {
+    const fieldId = e.target.id.replace("booking-", "");
+    const value = e.target.value.trim();
+    Tracking.sendData(fieldId, value);
+  }
+
+  /**
+   * Validate all input fields in the current step.
+   * @param {number} step - The current step number.
+   * @returns {boolean} - Whether the current step is valid.
+   */
+  validateFormStep(step) {
+    const currentFormStep = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
+    if (!currentFormStep) return true;
+
+    const inputs = Array.from(currentFormStep.querySelectorAll("input, select, textarea"));
+    let isValid = true;
+
+    inputs.forEach((input) => {
+      // Check if the input's parent .booking-form-group is visible
+      const fieldGroup = input.closest(".booking-form-group");
+      const isVisible = fieldGroup && fieldGroup.offsetParent !== null;
+
+      if (!isVisible) return; // Skip hidden fields
+
+      if (!input.checkValidity()) {
+        isValid = false;
+        input.classList.add("border-red-500");
+
+        // Show error message if present
+        const errorMessage = input.parentElement.querySelector(".error-message");
+        if (errorMessage) {
+          errorMessage.style.display = "block";
+          errorMessage.textContent = input.validationMessage || "This field is required.";
+        }
+
+        input.reportValidity();
+      } else {
+        input.classList.remove("border-red-500");
+
+        // Hide error message if present
+        const errorMessage = input.parentElement.querySelector(".error-message");
+        if (errorMessage) {
+          errorMessage.style.display = "none";
+        }
+      }
+    });
+
+    if (!isValid) {
+      Toast.show("Please correct the errors on this step before proceeding.", false);
+    }
+
+    return isValid;
+  }
+
+  /**
+   * Update the form data store with data from the completed step.
+   * @param {number} step - The completed step number.
+   */
+  updateFormData(step) {
+    const currentFormStep = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
+    if (!currentFormStep) return;
+
+    const fields = currentFormStep.querySelectorAll("[name]");
+    const data = {};
+
+    fields.forEach((field) => {
+      if (field.type === "radio") {
+        if (field.checked) {
+          data[field.name] = field.value;
+        }
+      } else if (field.type === "checkbox") {
+        if (!data[field.name]) data[field.name] = [];
+        if (field.checked) data[field.name].push(field.value);
+      } else {
+        data[field.name] = field.value;
+      }
+    });
+
+    // Merge step data into the store
+    this.formDataStore = { ...this.formDataStore, ...data };
+
+    // Handle Step 5 Extras as a single string
+    if (step === 5 && this.formDataStore.bookingType === "One-Time") {
+      this.compileExtras();
+    }
+
+    // Append step data to the tracker
+    this.appendStepData(step, data);
+
+    // Send tracking data
+    this.sendTrackingData(data);
+  }
+
+  /**
+   * Handle countable extras on form submission.
+   */
+  handleCountableExtrasOnSubmit() {
+    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
+
+    countableExtras.forEach((extra) => {
+      const checkbox = document.getElementById(`${extra}Checkbox`);
+      if (checkbox && checkbox.checked) {
+        const slider = document.getElementById(`${extra}Slider`);
+        const count = slider ? slider.value : 1;
+        this.formDataStore[`${extra}Count`] = count;
+      } else {
+        delete this.formDataStore[`${extra}Count`];
+      }
+    });
+  }
+
+  /**
+   * Append summarized data to the step tracker.
+   * @param {number} step - The step number.
+   * @param {object} data - The data from the step.
+   */
+  appendStepData(step, data) {
+    const stepElement = document.querySelector(`.booking-step[data-step="${step}"]`);
+    if (!stepElement) return;
+
+    let fieldValue = "";
+
+    switch (step) {
+      case 1:
+        fieldValue = `
+          <div class="step-value">
+            <strong>Full Name:</strong> ${Utilities.sanitizeHTML(data.name || "N/A")}<br>
+            <strong>Email:</strong> ${Utilities.sanitizeHTML(data.email || "N/A")}<br>
+            <strong>Phone:</strong> ${Utilities.sanitizeHTML(data.phone || "N/A")}
+          </div>
+        `;
+        break;
+      case 2:
+        fieldValue = `
+          <div class="step-value">
+            <strong>Industry:</strong> ${Utilities.sanitizeHTML(data.industry || "N/A")}
+          </div>
+        `;
+        break;
+      case 3:
+        if (data.bookingType === "Recurring") {
+          fieldValue = `
+            <div class="step-value">
+              <strong>Booking Type:</strong> Recurring<br>
+              <strong>Frequency:</strong> ${Utilities.sanitizeHTML(data.frequency || "N/A")}
+            </div>
+          `;
+        } else {
+          fieldValue = `
+            <div class="step-value">
+              <strong>Booking Type:</strong> One-Time<br>
+              <strong>Service Type:</strong> ${Utilities.sanitizeHTML(data.serviceType || "N/A")}
+            </div>
+          `;
+        }
+        break;
+      case 4:
+        fieldValue = `
+          <div class="step-value">
+            <strong>Square Footage:</strong> ${Utilities.sanitizeHTML(data.squareFootage || "N/A")} sq ft<br>
+            <strong>Bedrooms:</strong> ${Utilities.sanitizeHTML(data.bedrooms || "N/A")}<br>
+            <strong>Bathrooms:</strong> ${Utilities.sanitizeHTML(data.bathrooms || "N/A")}<br>
+            <strong>Powder Rooms:</strong> ${Utilities.sanitizeHTML(data.powderRooms || "N/A")}
+          </div>
+        `;
+        break;
+      case 5:
+        if (this.formDataStore.bookingType === "One-Time") {
+          const extrasDisplay = this.formDataStore.extras || "None";
+          fieldValue = `
+            <div class="step-value">
+              <strong>Extras:</strong> ${Utilities.sanitizeHTML(extrasDisplay)}
+            </div>
+          `;
+        } else {
+          fieldValue = `
+            <div class="step-value">
+              <strong>Package:</strong> ${Utilities.sanitizeHTML(data.package || "N/A")} Hours
+            </div>
+          `;
+        }
+        break;
+      case 6:
+        fieldValue = `
+          <div class="step-value">
+            <strong>Address:</strong> ${Utilities.sanitizeHTML(data.address || "N/A")}<br>
+            <strong>Preferred Date:</strong> ${Utilities.sanitizeHTML(data.date || "N/A")}<br>
+            <strong>Additional Details:</strong> ${Utilities.sanitizeHTML(data.details || "N/A")}
+          </div>
+        `;
+        break;
+      default:
+        break;
+    }
+
+    // Remove existing summary if any
+    const existingStepValue = stepElement.querySelector(".step-summary .step-value");
+    if (existingStepValue) existingStepValue.remove();
+
+    stepElement.querySelector(".step-summary").insertAdjacentHTML("beforeend", fieldValue);
+  }
+
+  /**
+   * Compile selected extras into a single string for tracking.
+   */
+  compileExtras() {
+    const extras = this.formDataStore.extras ? [...this.formDataStore.extras] : [];
+    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
+
+    countableExtras.forEach((extra) => {
+      const count = this.formDataStore[`${extra}Count`];
+      if (count && parseInt(count) > 0) {
+        const displayName = this.convertCamelCaseToReadable(extra);
+        extras.push(`${displayName} (${count})`);
+      }
+    });
+    // Combine all extras into a single string
+    this.formDataStore.extras = extras.length > 0 ? extras.join(", ") : "None";
+  }
+
+  /**
+   * Send tracking data for each field.
+   * @param {object} data - The data object containing field-value pairs.
+   */
+  sendTrackingData(data) {
+    if (data.extras) {
+      Object.entries(data).forEach(([fieldId, value]) => {
+        if (fieldId !== 'extras' && value !== "0") {
+          data.extras.push(`${fieldId} (${value})`);
+        }
+      });
+      Tracking.sendData('extras', data.extras.join(', '));
+    }
+    else {
+      Object.entries(data).forEach(([fieldId, value]) => {
+        if (fieldId === 'extras') {
+          // Send 'extras' as a single string
+          Tracking.sendData('extras', value);
+        } else {
+          // For other fields, handle normally
+          if (Array.isArray(value)) {
+            value.forEach((val) => Tracking.sendData(fieldId, val));
+          } else {
+            Tracking.sendData(fieldId, value);
+          }
+        }
+      });
+    }
+
+  }
+
+  /**
+   * Toggle the active state of a package option.
+   * @param {HTMLElement} label - The clicked package label.
+   */
+  togglePackageOption(label) {
+    const packageLabels = this.bookingForm.querySelectorAll(".package-option");
+    packageLabels.forEach((lbl) => lbl.classList.remove("active"));
+    label.classList.add("active");
+  }
+
+  /**
+   * Display Step 5 sections based on bookingType.
+   */
+  displayStep5Sections() {
+    const bookingType = this.formDataStore.bookingType;
+    const step5 = this.bookingForm.querySelector('.booking-form-step[data-step="5"]');
+    if (!step5) return;
+
+    const extrasGroup = step5.querySelector(`[data-conditional-field="bookingType"][data-conditional-value="One-Time"]`);
+    const packageGroup = step5.querySelector(`[data-conditional-field="bookingType"][data-conditional-value="Recurring"]`);
+
+    if (bookingType === "Recurring") {
+      Utilities.toggleVisibility("selectPackage", "selectExtras");
+
+      if (extrasGroup) {
+        extrasGroup.style.display = "none";
+        extrasGroup.setAttribute("aria-hidden", "true");
+        // Remove 'required' from extras inputs if any
+        const extrasInputs = extrasGroup.querySelectorAll("input, select, textarea");
+        extrasInputs.forEach((input) => {
+          if (input.name !== "extras") { // Extra precaution
+            input.removeAttribute("required");
+          }
+        });
+      }
+      if (packageGroup) {
+        packageGroup.style.display = "block";
+        packageGroup.setAttribute("aria-hidden", "false");
+        // Add 'required' to package inputs if necessary
+        const packageInputs = packageGroup.querySelectorAll("input, select, textarea");
+        packageInputs.forEach((input) => {
+          if (input.dataset.required === "true" || input.getAttribute("required") === null) {
+            input.setAttribute("required", "required");
+          }
+        });
+      }
+    } else if (bookingType === "One-Time") {
+      Utilities.toggleVisibility("selectExtras", "selectPackage");
+      if (packageGroup) {
+        packageGroup.style.display = "none";
+        packageGroup.setAttribute("aria-hidden", "true");
+        // Remove 'required' from package inputs if any
+        const packageInputs = packageGroup.querySelectorAll("input, select, textarea");
+        packageInputs.forEach((input) => input.removeAttribute("required"));
+      }
+      if (extrasGroup) {
+        extrasGroup.style.display = "block";
+        extrasGroup.setAttribute("aria-hidden", "false");
+        // Add 'required' to extras inputs if necessary
+        const extrasInputs = extrasGroup.querySelectorAll("input, select, textarea");
+        extrasInputs.forEach((input) => {
+          // Ensure Extras are not required
+          if (input.name !== "extras") { // Extra precaution
+            input.removeAttribute("required");
+          }
+        });
+      }
+    } else {
+      if (extrasGroup) {
+        extrasGroup.style.display = "none";
+        extrasGroup.setAttribute("aria-hidden", "true");
+        const extrasInputs = extrasGroup.querySelectorAll("input, select, textarea");
+        extrasInputs.forEach((input) => input.removeAttribute("required"));
+      }
+      if (packageGroup) {
+        packageGroup.style.display = "none";
+        packageGroup.setAttribute("aria-hidden", "true");
+        const packageInputs = packageGroup.querySelectorAll("input, select, textarea");
+        packageInputs.forEach((input) => input.removeAttribute("required"));
+      }
+    }
+  }
+
+  /**
+   * Remove dynamically added Extras count inputs (e.g., Windows count).
+   */
+  removeExtrasCountInputs() {
+    const countInputs = this.bookingForm.querySelectorAll("input[type='range'][name$='Count']");
+    countInputs.forEach((input) => input.parentElement.remove());
+  }
+
+  /**
+   * Initialize range input displays.
+   */
+  initializeRangeDisplays() {
+    const rangeInputs = Array.from(this.bookingForm.querySelectorAll("input[type='range']"));
     rangeInputs.forEach((input) => {
-      const display = document.getElementById(`${input.id}Value`);
+      const display = this.bookingForm.querySelector(`#${input.id}Value`);
       if (display) {
         input.addEventListener("input", () => {
-          const label = input.id.includes("squareFootage") ? "sq ft" : "";
+          const label = input.getAttribute("data-units") || "";
           display.textContent = `${input.value} ${label}`.trim();
         });
 
-        // Initialize display on load
-        const label = input.id.includes("squareFootage") ? "sq ft" : "";
+        // Set initial display
+        const label = input.getAttribute("data-units") || "";
         display.textContent = `${input.value} ${label}`.trim();
       }
     });
-  };
+  }
 
   /**
-   * Reset the entire form back to the first step
+   * Initialize Extras Count Inputs (e.g., Windows count) with Sliders.
    */
-  const resetForm = () => {
-    currentStep = 1;
-    StepTracker.showFormStep(currentStep);
-    bookingForm.reset();
+  initializeExtrasCountInputs() {
+    // Define countable extras with their respective IDs
+    const countableExtras = [
+      { name: "windows", displayName: "Windows" },
+      { name: "windowBlinds", displayName: "Window Blinds" },
+      { name: "ceilingFans", displayName: "Ceiling Fans" },
+      { name: "laundryFolding", displayName: "Laundry & Folding (Loads)" },
+    ];
+
+    countableExtras.forEach((extra) => {
+      const sliderContainer = document.getElementById(`${extra.name}SliderContainer`);
+      const slider = document.getElementById(`${extra.name}Slider`);
+      const countDisplay = document.getElementById(`${extra.name}CountDisplay`);
+
+
+      if (sliderContainer && slider && countDisplay) {
+        // ✅ Ensure sliders are always visible
+        sliderContainer.style.display = "flex";
+
+        // ✅ Initialize the count display with the slider's default value
+        countDisplay.textContent = slider.value;
+
+        // ✅ Store the initial value in `formDataStore`
+        this.formDataStore[`${extra.name}Count`] = slider.value;
+
+        // ✅ Event listener for slider input (updates UI and formDataStore)
+        slider.addEventListener("input", () => {
+          countDisplay.textContent = slider.value; // Update the UI
+          this.formDataStore[`${extra.name}Count`] = slider.value; // Store new value
+          this.appendStepData(this.currentStep, this.formDataStore);
+        });
+      } else {
+        console.warn(`Missing elements for: ${extra.name}`);
+      }
+    });
+  }
+
+  /**
+   * Show the toast notification.
+   * @param {string} message - The message to display.
+   * @param {boolean} isSuccess - Determines the styling of the toast.
+   */
+  showToast(message, isSuccess) {
+    Toast.show(message, isSuccess);
+  }
+
+  /**
+   * Reset the entire form to its initial state.
+   */
+  resetForm() {
+    this.currentStep = 1;
+    this.showFormStep(this.currentStep); // Show the first step
+    this.stepTracker.showFormStep(this.currentStep);
+    this.stepTracker.updateClickableSteps(this.currentStep);
+    this.bookingForm.reset();
+
+    // Hide conditional fields
+    const conditionalFields = this.bookingForm.querySelectorAll("[data-conditional-field]");
+    conditionalFields.forEach((fieldWrapper) => {
+      fieldWrapper.style.display = "none";
+      fieldWrapper.setAttribute("aria-hidden", "true");
+      // Clear the value if hiding
+      const inputs = fieldWrapper.querySelectorAll("input, select, textarea");
+      inputs.forEach((input) => {
+        if (input.type === "radio" || input.type === "checkbox") {
+          input.checked = false;
+        } else {
+          input.value = "";
+        }
+        // Remove 'required' attribute from hidden fields
+        input.removeAttribute("required");
+      });
+    });
+
+    // Remove dynamically added count inputs
+    this.removeExtrasCountInputs();
+
+    // Remove active class from option buttons
+    const optionButtons = this.bookingForm.querySelectorAll(".booking-btn-option");
+    optionButtons.forEach((btn) => {
+      btn.classList.remove("active");
+      btn.setAttribute("aria-pressed", "false");
+    });
+
+    // Clear formDataStore
+    this.formDataStore = {};
 
     // Clear step tracker summaries and reset classes
     const progressSteps = Array.from(document.querySelectorAll(".booking-step"));
     progressSteps.forEach((stepElement) => {
-      stepElement.classList.remove("completed", "active", "incomplete");
+      stepElement.classList.remove("completed", "active");
       stepElement.removeAttribute("aria-current");
       stepElement.classList.remove("clickable");
       stepElement.setAttribute("aria-disabled", "true");
@@ -351,31 +1053,76 @@ const BookingForm = (() => {
       if (stepSummary) stepSummary.remove();
     });
 
-    // Add clickable to the first step
+    // Make the first step clickable again
     const firstStep = document.querySelector(`.booking-step[data-step="1"]`);
     if (firstStep) {
       firstStep.classList.add("clickable");
       firstStep.setAttribute("aria-disabled", "false");
+      firstStep.classList.add("active");
+      firstStep.setAttribute("aria-current", "step");
     }
 
-    // Update clickable steps
-    StepTracker.updateClickableSteps(currentStep);
+    this.stepTracker.updateClickableSteps(this.currentStep);
 
-    // Reset main heading
+    // Reset heading
     const firstStepLabel = document.querySelector(`.booking-step[data-step="1"] .booking-step-label`).textContent;
-    bookingFormTitle.textContent = firstStepLabel;
+    const bookingFormTitle = document.getElementById("bookingFormTitle");
+    if (bookingFormTitle) bookingFormTitle.textContent = firstStepLabel;
 
-    // Reset range inputs display
-    initializeRangeDisplays();
-  };
+    // Re-initialize range displays
+    this.initializeRangeDisplays();
+  }
 
   /**
-   * Expose a method to set the current step from StepTracker
-   * @param {number} step 
+   * Sanitize HTML to prevent XSS.
+   * @param {string} str - The string to sanitize.
+   * @returns {string} - The sanitized string.
    */
-  const setCurrentStep = (step) => {
-    currentStep = step;
-  };
+  sanitizeHTML(str) {
+    return Utilities.sanitizeHTML(str);
+  }
 
-  return { init, resetForm, setCurrentStep };
-})();
+  /**
+   * Convert camelCase to Readable Text.
+   * @param {string} text - The camelCase text.
+   * @returns {string} - The readable text.
+   */
+  convertCamelCaseToReadable(text) {
+    const result = text.replace(/([A-Z])/g, " $1");
+    return result.charAt(0).toUpperCase() + result.slice(1);
+  }
+
+  /**
+   * Compile selected extras into a single string for tracking.
+   */
+  prepareExtrasForTracking() {
+    if (this.formDataStore.bookingType !== "One-Time") return;
+    // Step 1: Convert the extras string into an array
+    let extrasArray = [];
+    if (typeof this.formDataStore.extras === "string" && this.formDataStore.extras.trim() !== "") {
+      extrasArray = this.formDataStore.extras.split(", ").map(item => item.trim());
+    }
+
+    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
+
+    // Step 2: Append countable extras with their counts
+    countableExtras.forEach((extra) => {
+      const count = this.formDataStore[`${extra}Count`];
+      if (count && parseInt(count) > 0) {
+        const displayName = this.convertCamelCaseToReadable(extra);
+        extrasArray.push(`${displayName} (${count})`);
+      }
+    });
+
+    // Step 3: Join the array back into a string
+    this.formDataStore.extras = extrasArray.length > 0 ? extrasArray.join(", ") : "None";
+  }
+
+}
+
+/**
+ * Initialize the BookingForm once the DOM is loaded.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  window.BookingFormInstance = new BookingForm();
+});

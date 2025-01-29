@@ -1,5 +1,3 @@
-// email.js
-
 const Email = (() => {
   // Configuration Constants
   const SERVICE_ID = "service_156d2p8"; // Replace with your actual EmailJS service ID
@@ -11,42 +9,60 @@ const Email = (() => {
   emailjs.init(USER_ID);
 
   /**
+   * Formats the booking request details into a structured message
+   */
+  const formatMessage = (data) => {
+    return `
+      Name: ${data.name}
+      Email: ${data.email}
+      Phone: ${data.phone}
+      Service: ${data.service || "N/A"}
+      Cleaning Type: ${data.industry || "N/A"}
+      Booking Type: ${data.bookingType || "N/A"}
+      Frequency: ${data.frequency || "N/A"}
+      Service Type: ${data.serviceType || "N/A"}
+      Square Footage: ${data.squareFootage || "N/A"}
+      Bedrooms: ${data.bedrooms || "N/A"}
+      Bathrooms: ${data.bathrooms || "N/A"}
+      Powder Rooms: ${data.powderRooms || "N/A"}
+      Extras: ${data.extras || "N/A"}
+      Package: ${data.package || "N/A"}
+      Address: ${data.address || "N/A"}
+      Preferred Date: ${data.date || "N/A"}
+      Additional Details: ${data.details || "N/A"}
+    `.trim();
+  };
+
+  /**
    * Send booking request emails via EmailJS
-   * @param {object} data - Form data collected from the booking form
-   * @returns {Promise} - Returns a promise that resolves when both emails are sent
+   * @returns {Promise} - Returns a promise to enable `.then()` chaining
    */
   const sendBookingRequest = (data) => {
+    console.log("Sending booking request:", data);
+    console.log(formatMessage(data));
     // Prepare the Admin Email Parameters
     const adminParams = {
-      to_email: "admin@zenzonecleaning.com", // Replace with your admin email
+      to_email: "admin@zenzonecleaning.com",
       from_name: data.name,
-      from_email: data.email,
-      phone: data.phone,
-      service: data.service,
-      square_footage: data.squareFootage,
-      bedrooms: data.bedrooms,
-      bathrooms: data.bathrooms,
-      powder_rooms: data.powderRooms,
-      address: data.address,
-      preferred_date: data.date,
-      additional_details: data.details || "N/A",
+      message: formatMessage(data),
     };
 
-    // Send Admin Email
-    return emailjs
-      .send(SERVICE_ID, FORM_TEMPLATE_ID, adminParams) // Send admin email
+    console.log("Admin email params:", adminParams);
+
+    // Return the promise chain
+    return emailjs.send(SERVICE_ID, FORM_TEMPLATE_ID, adminParams)
       .then(() => {
         // Prepare the User Confirmation Email Parameters
         const userParams = {
           to_email: data.email,
           from_name: "Zen Zone Cleaning Services",
-          service: data.service,
-          preferred_date: data.date,
-          address: data.address,
-          additional_details: data.details || "N/A",
+          to_name: data.name,
+          message: formatMessage(data),
         };
 
-        // Send User Confirmation Email
+        console.log("User email params:", userParams);
+
+        // Return second email send promise
         return emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, userParams);
       });
   };
