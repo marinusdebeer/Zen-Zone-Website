@@ -8,7 +8,7 @@
   position: relative; /* For gradient overlays */
   border: 1px solid var(--color-gray); /* Using global gray color */
   border-radius: 8px;
-  box-shadow: 0 6px 12px var(--color-shadow); /* Using global shadow color */
+  box-shadow: 0 1px 3px var(--color-shadow); /* Using global shadow color */
   margin: 0rem 5rem;
 }
 
@@ -96,7 +96,7 @@
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 6px 12px var(--color-shadow); /* Using global shadow color */
+  box-shadow: 0 2px 3px var(--color-shadow); /* Using global shadow color */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -108,7 +108,7 @@
 .review:hover,
 .review:focus-within {
   transform: translateY(-5px);
-  box-shadow: 0 12px 20px var(--color-shadow); /* Using global shadow color */
+  box-shadow: 0 6px 10px var(--color-shadow); /* Using global shadow color */
 }
 
 /* Review Focus State */

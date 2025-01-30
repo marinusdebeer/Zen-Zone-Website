@@ -309,7 +309,7 @@
           <div class="booking-form-group" data-name="extras" data-conditional-field="bookingType"
             data-conditional-value="One-Time" style="display: none;" aria-hidden="true">
             <!-- <label>Select Extras</label> -->
-            <div class="extras-container extras-columns-2">
+            <div class="extras-container">
               <!-- Non-Countable Extras -->
               <div class="extra-item">
                 <label class="custom-checkbox" for="extras-insideOven">
@@ -417,14 +417,14 @@
             <label for="booking-address">Address <span aria-hidden="true">*</span></label>
             <input type="text" id="booking-address" name="address" placeholder="Enter your full address" required
               autocomplete="street-address" />
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">
+            <span class="error-message" aria-live="polite" style="display: none;">
               Please enter your address.
             </span>
           </div>
           <div class="booking-form-group">
             <label for="booking-date">Preferred Date <span aria-hidden="true">*</span></label>
             <input type="date" id="booking-date" name="date" required autocomplete="bday" />
-            <span class="error-message" aria-live="polite">Please select a preferred date.</span>
+            <span class="error-message" aria-live="polite" style="display: none;">Please select a preferred date.</span>
           </div>
           
           <div class="booking-form-group">

@@ -259,14 +259,12 @@ class StepTracker {
     this.progressSteps.forEach((stepElement) => {
       const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
       const canNavigate = this.canNavigateToStep(stepNumber);
-      
+
       stepElement.classList.toggle("clickable", canNavigate);
       stepElement.setAttribute("aria-disabled", canNavigate ? "false" : "true");
     });
   }
 }
-
-
 
 
 /**
@@ -308,9 +306,98 @@ class BookingForm {
     this.stepTracker.init(this.currentStep);
     this.showFormStep(this.currentStep); // Ensure the first step is visible
     this.attachEventListeners();
-    this.initializeRangeDisplays();
+    // Initialize sliders' background on load
+    this.initializeSliderBackgrounds();
     this.initializeExtrasCountInputs();
-    // Handle window resize for responsive extras columns
+    this.initializeRangeDisplays();
+  }
+
+  /**
+ * Initialize or update slider values based on formDataStore.
+ */
+  initializeSliderValues() {
+    const countableExtras = [
+      "windows",
+      "windowBlinds",
+      "ceilingFans",
+      "laundryFolding"
+    ];
+
+    countableExtras.forEach((extra) => {
+      const slider = document.getElementById(`${extra}Slider`);
+      const display = document.getElementById(`${extra}CountDisplay`);
+      if (slider && display) {
+        // Retrieve stored value or default to 0
+        const storedValue = this.formDataStore[`${extra}Count`] || 0;
+        slider.value = storedValue;
+        display.textContent = `0 ${slider.getAttribute("data-units") || ""}`.trim();
+        this.updateSliderBackground(slider);
+      }
+    });
+  }
+
+
+  /**
+ * Update the slider's background gradient based on its current value.
+ * @param {HTMLInputElement} slider - The range input element.
+ */
+  updateSliderBackground(slider) {
+    const min = parseInt(slider.min, 10) || 0;
+    const max = parseInt(slider.max, 10) || 100;
+    const val = parseInt(slider.value, 10);
+
+    const percentage = ((val - min) * 100) / (max - min);
+
+    slider.style.backgroundImage = `linear-gradient(to right, var(--slider-fill-color) ${percentage}%, var(--slider-track-color) ${percentage}%)`;
+  }
+
+  /**
+   * Initialize all sliders' backgrounds on page load.
+   */
+  initializeSliderBackgrounds() {
+    const sliders = this.bookingForm.querySelectorAll("input[type='range']");
+    sliders.forEach((slider) => {
+      this.updateSliderBackground(slider);
+    });
+  }
+  /**
+ * Reset all Extras sliders to 0.
+ */
+  resetExtrasSliders() {
+    const countableExtras = [
+      "windows",
+      "windowBlinds",
+      "ceilingFans",
+      "laundryFolding"
+    ];
+
+    countableExtras.forEach((extra) => {
+      const slider = document.getElementById(`${extra}Slider`);
+      const display = document.getElementById(`${extra}CountDisplay`);
+      if (slider && display) {
+        slider.value = 0;
+        display.textContent = `0 ${slider.getAttribute("data-units") || ""}`.trim();
+        this.formDataStore[`${extra}Count`] = 0;
+        this.updateSliderBackground(slider);
+      }
+    });
+  }
+
+
+  /**
+   * Reset all Package selections (radio buttons) to default (unchecked).
+   */
+  resetPackageSelections() {
+    const packageInputs = this.bookingForm.querySelectorAll(`[data-conditional-field="bookingType"][data-conditional-value="Recurring"] input[type="radio"]`);
+    packageInputs.forEach((input) => {
+      input.checked = false;
+    });
+
+    // Optionally, remove any active classes from package labels
+    const packageLabels = this.bookingForm.querySelectorAll(`[data-conditional-field="bookingType"][data-conditional-value="Recurring"] label.booking-btn-option`);
+    packageLabels.forEach((label) => {
+      label.classList.remove("active");
+    });
   }
 
   /**
@@ -580,22 +667,26 @@ class BookingForm {
         fieldWrapper.style.display = "none";
         fieldWrapper.setAttribute("aria-hidden", "true");
 
-        // Clear the value if hiding
+        // Clear the value if hiding, including range inputs
         const inputs = fieldWrapper.querySelectorAll("input, select, textarea");
         inputs.forEach((input) => {
           if (input.type === "radio" || input.type === "checkbox") {
             input.checked = false;
+          } else if (input.type === "range") {
+            input.value = 0; // Reset sliders to 0
+            // Update the corresponding display span
+            const displaySpan = this.bookingForm.querySelector(`#${input.id}Value`);
+            if (displaySpan) {
+              displaySpan.textContent = `0 ${input.getAttribute("data-units") || ""}`.trim();
+            }
+            // Update the slider's background
+            this.updateSliderBackground(input);
           } else {
             input.value = "";
           }
           // Remove 'required' attribute from inputs within the now-hidden field group
           input.removeAttribute("required");
         });
-
-        // If hiding 'extras', remove any dynamically added inputs like window counts
-        if (fieldName === "extras") {
-          // this.removeExtrasCountInputs();
-        }
       }
     });
 
@@ -604,6 +695,8 @@ class BookingForm {
       this.displayStep5Sections();
     }
   }
+
+
 
   /**
    * Handle slider input changes.
@@ -684,7 +777,7 @@ class BookingForm {
     if (!currentFormStep) return;
 
     const fields = Array.from(currentFormStep.querySelectorAll("[name]")).filter(Utilities.isVisible);
-    
+
     const data = {};
 
     fields.forEach((field) => {
@@ -711,7 +804,7 @@ class BookingForm {
     // console.log(step, data);
     // Append step data to the tracker
     this.appendStepData(step, data);
-    
+
     // console.log(Utilities.deepCopy(this.formDataStore));
 
     // Send tracking data
@@ -892,6 +985,9 @@ class BookingForm {
   /**
    * Display Step 5 sections based on bookingType.
    */
+  /**
+   * Display Step 5 sections based on bookingType.
+   */
   displayStep5Sections() {
     const bookingType = this.formDataStore.bookingType;
     const step5 = this.bookingForm.querySelector('.booking-form-step[data-step="5"]');
@@ -909,10 +1005,15 @@ class BookingForm {
         // Remove 'required' from extras inputs if any
         const extrasInputs = extrasGroup.querySelectorAll("input, select, textarea");
         extrasInputs.forEach((input) => {
-          if (input.name !== "extras") { // Extra precaution
+          if (input.name === "extras") {
             input.removeAttribute("required");
+          } else if (input.dataset.required === "true") {
+            input.setAttribute("required", "required");
           }
         });
+
+        // **Reset Extras Sliders to 0**
+        this.resetExtrasSliders();
       }
       if (packageGroup) {
         packageGroup.style.display = "block";
@@ -933,6 +1034,9 @@ class BookingForm {
         // Remove 'required' from package inputs if any
         const packageInputs = packageGroup.querySelectorAll("input, select, textarea");
         packageInputs.forEach((input) => input.removeAttribute("required"));
+
+        // **Reset Package Selections**
+        this.resetPackageSelections();
       }
       if (extrasGroup) {
         extrasGroup.style.display = "block";
@@ -945,6 +1049,8 @@ class BookingForm {
             input.removeAttribute("required");
           }
         });
+        // **Initialize slider values based on formDataStore**
+        this.initializeSliderValues();
       }
     } else {
       if (extrasGroup) {
@@ -952,15 +1058,22 @@ class BookingForm {
         extrasGroup.setAttribute("aria-hidden", "true");
         const extrasInputs = extrasGroup.querySelectorAll("input, select, textarea");
         extrasInputs.forEach((input) => input.removeAttribute("required"));
+
+        // **Reset Extras Sliders to 0**
+        this.resetExtrasSliders();
       }
       if (packageGroup) {
         packageGroup.style.display = "none";
         packageGroup.setAttribute("aria-hidden", "true");
         const packageInputs = packageGroup.querySelectorAll("input, select, textarea");
         packageInputs.forEach((input) => input.removeAttribute("required"));
+
+        // **Reset Package Selections**
+        this.resetPackageSelections();
       }
     }
   }
+
 
   /**
    * Remove dynamically added Extras count inputs (e.g., Windows count).
@@ -970,25 +1083,31 @@ class BookingForm {
     countInputs.forEach((input) => input.parentElement.remove());
   }
 
-  /**
-   * Initialize range input displays.
-   */
-  initializeRangeDisplays() {
-    const rangeInputs = Array.from(this.bookingForm.querySelectorAll("input[type='range']"));
-    rangeInputs.forEach((input) => {
-      const display = this.bookingForm.querySelector(`#${input.id}Value`);
-      if (display) {
-        input.addEventListener("input", () => {
-          const label = input.getAttribute("data-units") || "";
-          display.textContent = `${input.value} ${label}`.trim();
-        });
+ /**
+ * Initialize range input displays and backgrounds.
+ */
+initializeRangeDisplays() {
+  const rangeInputs = Array.from(this.bookingForm.querySelectorAll("input[type='range']"));
+  rangeInputs.forEach((input) => {
+    const display = this.bookingForm.querySelector(`#${input.id}Value`);
+    if (display) {
+      const label = input.getAttribute("data-units") || "";
+      
+      // Set initial display
+      display.textContent = `${input.value} ${label}`.trim();
 
-        // Set initial display
-        const label = input.getAttribute("data-units") || "";
+      // Initialize slider background
+      this.updateSliderBackground(input);
+
+      // Add input event listener to update display and background dynamically
+      input.addEventListener("input", () => {
         display.textContent = `${input.value} ${label}`.trim();
-      }
-    });
-  }
+        this.updateSliderBackground(input);
+      });
+    }
+  });
+}
+
 
   /**
    * Initialize Extras Count Inputs (e.g., Windows count) with Sliders.
@@ -1007,7 +1126,6 @@ class BookingForm {
       const slider = document.getElementById(`${extra.name}Slider`);
       const countDisplay = document.getElementById(`${extra.name}CountDisplay`);
 
-
       if (sliderContainer && slider && countDisplay) {
         // ✅ Ensure sliders are always visible
         sliderContainer.style.display = "flex";
@@ -1015,20 +1133,25 @@ class BookingForm {
         // ✅ Initialize the count display with the slider's default value
         countDisplay.textContent = slider.value;
 
+        // ✅ Initialize the slider's background
+        this.updateSliderBackground(slider);
+
         // ✅ Store the initial value in `formDataStore`
-        this.formDataStore[`${extra.name}Count`] = slider.value;
+        this.formDataStore[`${extra.name}Count`] = parseInt(slider.value, 10);
 
         // ✅ Event listener for slider input (updates UI and formDataStore)
         slider.addEventListener("input", () => {
           countDisplay.textContent = slider.value; // Update the UI
-          this.formDataStore[`${extra.name}Count`] = slider.value; // Store new value
+          this.formDataStore[`${extra.name}Count`] = parseInt(slider.value, 10); // Store new value
           this.appendStepData(this.currentStep, this.formDataStore);
+          this.updateSliderBackground(slider); // Update background
         });
       } else {
         console.warn(`Missing elements for: ${extra.name}`);
       }
     });
   }
+
 
   /**
    * Show the toast notification.

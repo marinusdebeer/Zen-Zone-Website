@@ -29,36 +29,29 @@ function loadNavbar() {
  * Dark/Light Mode Toggle Function
  */
 function darkMode() {
-  const toggleSwitches = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
+  const sunIcon = document.querySelector(".icon.sun");
+  const moonIcon = document.querySelector(".icon.moon");
 
   // Retrieve the saved theme from localStorage or default to 'light'
   const savedTheme = localStorage.getItem("theme") || "light";
   document.documentElement.setAttribute("data-theme", savedTheme);
 
-  // Function to apply the theme and synchronize toggles
+  // Function to apply the theme
   const applyTheme = (theme) => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
-    
-    // Update all toggle switches based on the new theme
-    toggleSwitches.forEach(toggle => {
-      toggle.checked = theme === "dark";
-    });
+
+    // Show/hide icons based on theme
+    sunIcon.style.display = theme === "dark" ? "block" : "none";
+    moonIcon.style.display = theme === "dark" ? "none" : "block";
   };
 
-  // Initialize toggle switches based on the saved theme
-  toggleSwitches.forEach(toggle => {
-    toggle.checked = savedTheme === "dark";
+  // Apply the saved theme on page load
+  applyTheme(savedTheme);
 
-    // Add event listener to each toggle switch
-    toggle.addEventListener("change", function () {
-      if (this.checked) {
-        applyTheme("dark");
-      } else {
-        applyTheme("light");
-      }
-    });
-  });
+  // Add event listeners to toggle on icon click
+  sunIcon.addEventListener("click", () => applyTheme("light"));
+  moonIcon.addEventListener("click", () => applyTheme("dark"));
 }
 
 /**

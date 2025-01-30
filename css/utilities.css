@@ -49,6 +49,7 @@
 
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-red: rgb(130, 12, 12);
 
   /* Additional Colors */
   --color-secondary-text: #37474F; /* For subtitles and secondary text */
@@ -60,7 +61,7 @@
   --color-footer-link-hover: #78a265; /* Light Green on hover */
 
   /* Shadow Color */
-  --color-shadow: rgba(0, 0, 0, 0.2);
+  --color-shadow: rgba(0, 0, 0, 0.5);
 
   /* Focus Color */
   --color-focus: #ffbf47; /* High-contrast color for focus outlines */
@@ -77,23 +78,51 @@
   /* Background and Text for Light Mode */
   --color-bg: #ffffff; /* White background */
   --color-text: #2e3d2f; /* Dark text */
-    /* Read More Button */
+
+  /* Read More Button */
   --color-read-more-bg: var(--color-secondary);
   --color-read-more-hover-bg: var(--color-primary-text);
   --color-read-more-text: var(--color-white);
 
-  --slider-fill-color: #6b5b95; /* Color of the filled portion */
+  --slider-fill-color: var(--color-secondary); /* Color of the filled portion */
   --slider-track-color: #ccc;    /* Color of the unfilled portion */
-  --slider-thumb-color: #574f8f; /* Color of the slider thumb */
+  --slider-thumb-color: var(--color-secondary); /* Color of the slider thumb */
+
+  /* -------------------------
+     Additional Color Variables - Light Mode
+  ------------------------- */
+
+  /* Areas Section */
+  --color-secondary-background: #f0f0f0; /* Light gray background for areas */
+
+  /* Blog Section */
+  --color-blog-section-bg: #ffffff; /* White background for blog section */
+
+  /* Social Sharing */
+  --color-social-sharing-bg: var(--color-secondary); /* Light Green */
+  --color-social-sharing-hover-bg: var(--color-primary-text); /* Dark text color for contrast */
+
+  /* Booking Modal */
+  --color-modal-background: #ffffff; /* White background for modals */
+  --color-modal-close: var(--color-primary); /* Primary color for close button */
+
+  /* Booking Progress Bar */
+  --color-progress-bar-bg: #ddd; /* Light gray for progress bar background */
+  --color-progress-bar: var(--color-secondary); /* Light Green for progress bar */
+
+  /* Toast Notifications */
+  --color-toast-success: var(--color-secondary); /* Light Green for success messages */
+  --color-toast-error: var(--color-red); /* Red for error messages */
+  --color-error: #ff0000;
+  --color-labels: var(--color-tertiary);
 }
 
 /* -------------------------
    Color Palette - Dark Mode
 ------------------------- */
 [data-theme="dark"] {
-  /* -------------------------
-     Dark Mode Overrides
-  ------------------------- */
+  /* Existing Dark Mode Overrides */
+
   /* Background and Text */
   --color-bg: #1E1E1E; /* Dark background */
   --color-text: #EAEAEA; /* Light text */
@@ -103,7 +132,7 @@
   --color-primary-hover: #7A69B0; /* Slightly lighter for hover */
 
   --color-secondary: #78A265; /* Softer Green */
-  --color-secondary-hover:rgb(143, 193, 119); /* Slightly lighter for hover */
+  --color-secondary-hover: rgb(143, 193, 119); /* Slightly lighter for hover */
 
   --color-tertiary: #2e3d2f; /* Orange remains the same */
 
@@ -117,17 +146,17 @@
 
   /* Footer Specific Colors */
   --color-footer-background: var(--color-tertiary); /* Even darker footer */
-  --color-footer-link-hover: #78A265; /* Light Green on hover */
+  --color-footer-link-hover: #78a265; /* Light Green on hover */
 
   /* Shadow Color */
-  --color-shadow: rgba(255, 255, 255, 0.2); /* Light shadow for dark mode */
+  --color-shadow: rgba(255, 255, 255, 0.1); /* Light shadow for dark mode */
 
   /* Light and Gray Colors */
   --color-light-green: #1E1E1E; /* Dark Green Background */
   --color-gray: #444; /* Dark Gray for borders and backgrounds */
   --color-light-gray: #2C2C2C; /* Darker gray for hover effects */
 
-  /* Additional Variables for Other CSS Files */
+  /* Additional Color Variables for Dark Mode */
   /* Areas Section */
   --color-secondary-background: #2C2C2C; /* Darker background for areas */
 
@@ -148,12 +177,17 @@
 
   /* Toast Notifications */
   --color-toast-success: var(--color-secondary);
-  --color-toast-error: var(--color-primary);
+  --color-toast-error: var(--color-red);
 
   /* Read More Button */
   --color-read-more-bg: var(--color-tertiary);
   --color-read-more-hover-bg: var(--color-secondary);
   --color-read-more-text: var(--color-text);
+
+  --slider-fill-color: var(--color-secondary); /* Color of the filled portion */
+  --slider-track-color: #ccc;    /* Color of the unfilled portion */
+  --slider-thumb-color: var(--color-secondary); /* Color of the slider thumb */
+  --color-labels: var(--color-secondary);
 }
 
 /* -------------------------
@@ -366,5 +400,4 @@ select:focus {
   border-color: var(--color-secondary);
   box-shadow: 0 0 5px var(--color-secondary);
 }
-
 
