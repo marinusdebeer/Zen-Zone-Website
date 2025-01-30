@@ -6,6 +6,15 @@
  * Contains helper functions used across other modules.
  */
 const Utilities = (() => {
+  const isVisible = (element) => {
+    while (element) {
+      if (window.getComputedStyle(element).display === "none") {
+        return false; // Found a hidden parent or element itself is hidden
+      }
+      element = element.parentElement; // Move up the DOM tree
+    }
+    return true; // No hidden parent found
+  };
   const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
   /**
    * Sanitize HTML to prevent XSS attacks.
@@ -49,7 +58,7 @@ const Utilities = (() => {
     document.getElementById(hideId).style.display = "none";
   }
 
-  return { sanitizeHTML, debounce, getFormattedUserId, toggleVisibility, deepCopy };
+  return { sanitizeHTML, debounce, getFormattedUserId, toggleVisibility, deepCopy, isVisible };
 })();
 
 /**
@@ -99,8 +108,6 @@ const Tracking = (() => {
 
   const sendData = (fieldId, value) => {
     const hostname = window.location.hostname;
-    console.log(hostname);
-
     const userId = localStorage.getItem("userId") || Utilities.getFormattedUserId();
     localStorage.setItem("userId", userId); // Ensure it's stored for future reference
 
@@ -149,7 +156,7 @@ class StepTracker {
   init(initialStep = 1) {
     this.showFormStep(initialStep);
     this.initializeClickEvents();
-    this.updateClickableSteps(initialStep);
+    this.updateClickableSteps();
   }
 
   /**
@@ -159,27 +166,31 @@ class StepTracker {
   showFormStep(step) {
     this.progressSteps.forEach((stepElement, index) => {
       const stepNumber = index + 1;
-      const isActive = stepNumber === step;
-      stepElement.classList.toggle("active", isActive);
+      stepElement.classList.toggle("active", stepNumber === step);
       stepElement.classList.toggle("completed", stepNumber < step);
       stepElement.classList.toggle("incomplete", stepNumber > step);
-      stepElement.setAttribute("aria-current", isActive ? "step" : "");
+      stepElement.setAttribute("aria-current", stepNumber === step ? "step" : "");
       stepElement.setAttribute("aria-disabled", stepNumber > step);
     });
 
-    // Update the main heading to match the current step's label
     const bookingFormTitle = document.getElementById("bookingFormTitle");
+    if (!bookingFormTitle) {
+      console.warn("Element with ID 'bookingFormTitle' not found.");
+      return;
+    }
 
-    // Ensure we get the correct step that is NOT hidden
     const currentStepElement = this.progressSteps.find(s => {
       const stepMatch = parseInt(s.getAttribute("data-step")) === step;
-      const isVisible = window.getComputedStyle(s).display !== "none"; // Check visibility
-      return stepMatch && isVisible;
+      return stepMatch && window.getComputedStyle(s).display !== "none";
     });
 
-    if (currentStepElement && bookingFormTitle) {
-      const stepLabel = currentStepElement.querySelector(".booking-step-label").textContent;
-      bookingFormTitle.textContent = stepLabel;
+    if (currentStepElement) {
+      const stepLabel = currentStepElement.querySelector(".booking-step-label")?.textContent?.trim();
+      if (stepLabel) {
+        bookingFormTitle.textContent = stepLabel;
+      } else {
+        console.warn(`Step ${step} is missing a label.`);
+      }
     }
   }
 
@@ -205,22 +216,25 @@ class StepTracker {
   handleStepClick(stepElement) {
     const step = parseInt(stepElement.getAttribute("data-step"), 10);
     if (this.canNavigateToStep(step)) {
-      if (window.BookingFormInstance && typeof window.BookingFormInstance.goToStep === "function") {
+      if (window.BookingFormInstance?.goToStep) {
         window.BookingFormInstance.goToStep(step);
       } else {
-        console.error("BookingFormInstance or goToStep method is not available.");
+        console.warn("BookingFormInstance or goToStep method is not available. Consider implementing a fallback.");
       }
     }
   }
 
   /**
    * Determine if the user can navigate to a specific step.
+   * - Allows navigation to any **completed** step.
+   * - Allows navigation to the **next available step**.
+   * - Prevents skipping ahead to unfinished steps.
    * @param {number} step - The step number.
    * @returns {boolean} - Whether navigation is allowed.
    */
   canNavigateToStep(step) {
     const highestCompleted = this.getHighestCompletedStep();
-    return step <= highestCompleted + 1;
+    return step <= highestCompleted || step === highestCompleted + 1;
   }
 
   /**
@@ -228,29 +242,32 @@ class StepTracker {
    * @returns {number} - The highest completed step number.
    */
   getHighestCompletedStep() {
-    return this.progressSteps.reduce((highest, stepElement) => {
+    let highestCompleted = 0;
+    this.progressSteps.forEach((stepElement) => {
       const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
-      return stepElement.classList.contains("completed") && stepNumber > highest ? stepNumber : highest;
-    }, 0);
+      if (stepElement.classList.contains("completed") && stepNumber > highestCompleted) {
+        highestCompleted = stepNumber;
+      }
+    });
+    return highestCompleted;
   }
 
   /**
    * Update which steps are clickable based on the highest completed step.
-   * @param {number} currentStep - The current active step.
    */
-  updateClickableSteps(currentStep) {
+  updateClickableSteps() {
     this.progressSteps.forEach((stepElement) => {
       const stepNumber = parseInt(stepElement.getAttribute("data-step"), 10);
-      if (stepNumber <= currentStep) {
-        stepElement.classList.add("clickable");
-        stepElement.setAttribute("aria-disabled", "false");
-      } else {
-        stepElement.classList.remove("clickable");
-        stepElement.setAttribute("aria-disabled", "true");
-      }
+      const canNavigate = this.canNavigateToStep(stepNumber);
+      
+      stepElement.classList.toggle("clickable", canNavigate);
+      stepElement.setAttribute("aria-disabled", canNavigate ? "false" : "true");
     });
   }
 }
+
+
+
 
 /**
  * BookingForm Class
@@ -456,7 +473,7 @@ class BookingForm {
 
       // Update step tracker with final step's data
       this.updateFormData(this.currentStep);
-      console.log("Final Form Data:", this.formDataStore);
+      // console.log("Final Form Data:", this.formDataStore);
       // Add loading state
       const submitButton = document.querySelector(".booking-btn-submit");
       submitButton.classList.add("loading");
@@ -662,22 +679,11 @@ class BookingForm {
    * @param {number} step - The completed step number.
    */
   updateFormData(step) {
-    console.log(Utilities.deepCopy(this.formDataStore));
+    // console.log(Utilities.deepCopy(this.formDataStore));
     const currentFormStep = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
     if (!currentFormStep) return;
 
-    const isVisible = (element) => {
-      while (element) {
-        if (window.getComputedStyle(element).display === "none") {
-          return false; // Found a hidden parent or element itself is hidden
-        }
-        element = element.parentElement; // Move up the DOM tree
-      }
-      return true; // No hidden parent found
-    };
-    
-    const fields = Array.from(currentFormStep.querySelectorAll("[name]")).filter(isVisible);
-    
+    const fields = Array.from(currentFormStep.querySelectorAll("[name]")).filter(Utilities.isVisible);
     
     const data = {};
 
@@ -702,9 +708,11 @@ class BookingForm {
       this.compileExtras();
     }
 
+    // console.log(step, data);
     // Append step data to the tracker
     this.appendStepData(step, data);
-    console.log(Utilities.deepCopy(this.formDataStore));
+    
+    // console.log(Utilities.deepCopy(this.formDataStore));
 
     // Send tracking data
     this.sendTrackingData(data);
@@ -734,7 +742,10 @@ class BookingForm {
    * @param {object} data - The data from the step.
    */
   appendStepData(step, data) {
-    const stepElement = document.querySelector(`.booking-step[data-step="${step}"]`);
+
+    let stepElement = document.querySelectorAll(`.booking-step[data-step="${step}"]`);
+    stepElement = Array.from(stepElement).find(Utilities.isVisible);
+
     if (!stepElement) return;
 
     let fieldValue = "";

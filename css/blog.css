@@ -5,29 +5,30 @@
 ------------------------------ */
 .blog-section {
   padding: 60px 20px;
-  background-color: #f9f9f9;
+  background-color: var(--color-blog-section-bg); /* Replaced hard-coded color with variable */
   text-align: center;
   border-radius: 8px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-gray); /* Replaced hard-coded color with variable */
+  box-shadow: 0 4px 6px var(--color-shadow); /* Replaced rgba with variable */
   margin: 40px 80px;
 }
+
 .blog-section h2 {
   text-align: center;
   margin-bottom: 40px;
   font-size: 2.5rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
 }
 
-.featured-blogs{
+.featured-blogs {
   display: inline-block; /* Allows transform to work correctly */
   text-align: center;
   margin-bottom: 0px;
   margin-top: 0px;
   font-size: 2.5rem;
   text-decoration: none; /* Removes underline */
-  color: var(--color-primary-text); /* Uses variable for consistent theming */
-  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease; /* Smooth transitions for all effects */
+  color: var(--color-primary-text);
+  transition: transform 0.3s ease, text-shadow 0.3s ease; /* Smooth transitions for all effects */
 }
 
 .featured-blogs:hover {
@@ -35,8 +36,6 @@
   color: var(--color-primary-text); /* Ensures consistent hover color */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Adds subtle depth */
 }
-
-
 
 .blog-list {
   display: grid; /* Use grid for uniform card heights */
@@ -65,22 +64,24 @@
   color: inherit;        /* Inherit text color */
   display: block;        /* Make the entire area clickable */
   position: relative;    /* For potential pseudo-elements */
-  background-color: #ffffff;
-  box-shadow: 0px 5px 6px rgba(161, 161, 161, 0.3);
+  background-color: var(--color-modal-background); /* Uses modal background variable */
+  box-shadow: 0px 5px 6px rgba(161, 161, 161, 0.3); /* Replace with var(--color-shadow-light) if defined */
+  transition: box-shadow 0.3s ease;
 }
 
 .blog-card:focus {
-  outline: 3px solid var(--color-focus); /* Added focus outline */
+  outline: 3px solid var(--color-focus);
   outline-offset: 4px;
 }
 
 /* Each blog entry (the card content) */
 .blog-card .blog-entry {
   /* background-color: #fff; */
-  background-color: #ffffff;
+  background-color: var(--color-modal-background);
   padding: 20px;
   border-radius: 8px;
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 4px 6px var(--color-shadow); /* Replaced rgba with variable */
   display: flex;
   flex-direction: column;
   height: 100%; /* Ensures entries stretch to fill the container */
@@ -90,7 +91,7 @@
 .blog-card .blog-entry:hover,
 .blog-card .blog-entry:focus-within {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px var(--color-shadow); /* Replaced rgba with variable */
 }
 
 .blog-card .blog-entry:focus-within {
@@ -122,14 +123,14 @@
   text-overflow: ellipsis;
   margin-top: 20px;
   font-size: 1.8rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
   line-height: 1.4; /* Consistent line height */
 }
 
 /* Blog Description - Truncated to 3 lines */
 .post-description {
   margin: 15px 0;
-  color: #555;
+  color: var(--color-secondary-text); /* Replaced hard-coded color with variable */
   display: -webkit-box;
   -webkit-line-clamp: 3;    /* Limit to 3 lines */
   -webkit-box-orient: vertical;
@@ -148,7 +149,7 @@
 /* "Read More" Button */
 .read-more-btn {
   display: inline-block;
-  background-color: var(--color-secondary); /* Updated to use variable */
+  background-color: var(--color-read-more-bg); /* Uses read-more variable */
   color: var(--color-white);
   text-decoration: none;
   padding: 10px 20px;
@@ -160,13 +161,19 @@
 
 .blog-card:hover .read-more-btn,
 .blog-card:focus .read-more-btn {
-  background-color: var(--color-primary-text); /* Updated to use variable */
+  background-color: var(--color-read-more-hover-bg); /* Uses read-more hover variable */
+  color: var(--color-read-more-text);
 }
 
 .read-more-btn:hover,
 .read-more-btn:focus {
-  background-color: var(--color-primary-text); /* Updated to use variable */
+  background-color: var(--color-read-more-hover-bg); /* Uses read-more hover variable */
   outline: none;
+  color: var(--color-read-more-text);
+}
+
+.read-more-btn i {
+  font-size: 1.2rem;
 }
 
 /* ------------------------------
@@ -176,25 +183,25 @@
   max-width: 800px;
   margin: 60px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: var(--color-modal-background); /* Uses modal background variable */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--color-shadow); /* Replaced rgba with variable */
 }
 
 .blog-post h1 {
   font-size: 2.5rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
   margin-bottom: 10px;
 }
 
 .post-date {
-  color: #888;
+  color: var(--color-secondary-text); /* Replaced hard-coded color with variable */
   font-size: 0.9rem;
   margin-bottom: 20px;
 }
 
 .post-date-entry {
-  color: #888;
+  color: var(--color-secondary-text); /* Replaced hard-coded color with variable */
   font-size: 0.9rem;
   margin-bottom: 20px;
   height: 1px;
@@ -209,20 +216,20 @@
 
 .post-content h2 {
   font-size: 1.8rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
   margin-top: 30px;
   margin-bottom: 15px;
 }
 
 .post-content h4 {
   font-size: 1.5rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 .post-content p {
-  color: #333;
+  color: var(--color-primary-text); /* Replaced hard-coded color with variable */
   line-height: 1.6;
   margin-bottom: 15px;
 }
@@ -234,7 +241,7 @@
 }
 
 .post-content a {
-  color: var(--color-secondary); /* Updated to use variable */
+  color: var(--color-secondary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -242,7 +249,7 @@
 .post-content a:hover,
 .post-content a:focus {
   text-decoration: underline;
-  color: var(--color-secondary-hover); /* Updated to use variable */
+  color: var(--color-secondary-hover);
   outline: none;
 }
 
@@ -252,11 +259,11 @@
 .breadcrumb {
   font-size: 0.9rem;
   margin: 20px 0;
-  color: #555;
+  color: var(--color-secondary-text); /* Replaced hard-coded color with variable */
 }
 
 .breadcrumb a {
-  color: var(--color-secondary); /* Updated to use variable */
+  color: var(--color-secondary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -264,12 +271,12 @@
 .breadcrumb a:hover,
 .breadcrumb a:focus {
   text-decoration: underline;
-  color: var(--color-secondary-hover); /* Updated to use variable */
+  color: var(--color-secondary-hover);
   outline: none;
 }
 
 .breadcrumb span {
-  color: #999;
+  color: #999; /* You can replace this with a variable if desired, e.g., var(--color-secondary-text-light) */
 }
 
 /* ------------------------------
@@ -282,12 +289,12 @@
 .social-sharing p {
   margin-bottom: 10px;
   font-weight: bold;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
 }
 
 .social-sharing a {
-  color: var(--color-white); /* Updated to use variable */
-  background-color: var(--color-secondary); /* Updated to use variable */
+  color: var(--color-white);
+  background-color: var(--color-social-sharing-bg);
   padding: 10px 15px;
   border-radius: 4px;
   margin-right: 10px;
@@ -297,8 +304,7 @@
 
 .social-sharing a:hover,
 .social-sharing a:focus {
-  background-color: var(--color-primary-text); /* Updated to use variable */
-  outline: none;
+  background-color: var(--color-social-sharing-hover-bg);
 }
 
 .social-sharing a i {
@@ -312,7 +318,7 @@
   position: fixed;
   bottom: 40px;
   right: 40px;
-  background-color: var(--color-secondary); /* Updated to use variable */
+  background-color: var(--color-secondary);
   color: var(--color-white);
   border: none;
   padding: 15px;
@@ -327,12 +333,13 @@
 
 #backToTop:hover,
 #backToTop:focus {
-  background-color: var(--color-primary-text); /* Updated to use variable */
+  background-color: var(--color-primary-text);
 }
 
 #backToTop i {
   font-size: 1.2rem;
 }
+
 @media(max-width: 768px){
   .blog-section{
     margin: 20px 50px;

@@ -3,8 +3,9 @@
 /* -------------------------
    Base Styles
 ------------------------- */
+
 body {
-  background-color: var(--color-light-green);
+  background-color: var(--color-bg); /* Updated to use variable */
 }
 
 .booking-container {
@@ -15,7 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-light-green);
+  background-color: var(--color-bg); /* Updated to use variable */
   box-sizing: border-box;
 }
 
@@ -54,7 +55,7 @@ body {
   justify-content: space-between;
   width: 100%;
   padding: 0;
-  background-color: var(--color-light-green);
+  background-color: var(--color-bg); /* Updated to use variable */
   position: sticky;
   top: var(--navbar-height);
   height: 150px;
@@ -79,10 +80,9 @@ body {
   justify-content: flex-start;
   text-align: center;
   padding: 1rem 0;
-  background-color: var(--color-light-green);
-  border: 2px solid var(--color-primary);
+  background-color: var(--color-bg); /* Updated to use variable */
+  border: 2px solid var(--color-tertiary);
   cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
   height: 100%;
 }
@@ -94,7 +94,7 @@ body {
   right: 0;
   width: 2px;
   height: 100%;
-  background-color: var(--color-primary);
+  background-color: var(--color-tertiary);
 }
 
 .booking-step:last-child::after {
@@ -132,7 +132,7 @@ body {
 
 .booking-step.completed,
 .booking-step.active {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   color: var(--color-white);
   box-shadow: 0 4px 8px var(--color-shadow);
 }
@@ -142,14 +142,14 @@ body {
 }
 
 .booking-step.incomplete {
-  background-color: var(--color-light-green);
-  border: 2px solid var(--color-primary);
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-tertiary);
   color: var(--color-primary-text);
 }
 
 .booking-step.clickable:hover,
 .booking-step.active:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-secondary-hover);
   color: var(--color-white);
 }
 
@@ -164,6 +164,7 @@ body {
 .booking-form-step {
   display: none;
 }
+
 .booking-form-step label {
   display: block;
   margin-bottom: 0.5rem;
@@ -219,28 +220,89 @@ body {
   appearance: none;
   width: 100%;
   height: 8px;
-  background: var(--color-gray);
+  background: var(--slider-track-color);
   border-radius: 4px;
   outline: none;
   transition: background 0.3s;
+  background-image: linear-gradient(to right, var(--slider-fill-color) 0%, var(--slider-fill-color) 0%, var(--slider-track-color) 0%, var(--slider-track-color) 100%);
 }
 
-.booking-form-step input[type="range"]::-webkit-slider-thumb,
-.booking-form-step input[type="range"]::-moz-range-thumb {
+.booking-form-step input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 4px;
+  background: transparent; /* Show the gradient */
+}
+
+.booking-form-step input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
   height: 20px;
-  background: var(--color-primary);
+  background: var(--slider-thumb-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -6px; /* Align thumb vertically */
+  transition: background 0.3s;
+}
+
+.booking-form-step input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--color-primary-hover);
+}
+
+.booking-form-step input[type="range"]::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background: transparent; /* Show the gradient */
+}
+
+.booking-form-step input[type="range"]::-moz-range-progress {
+  background: var(--slider-fill-color);
+  height: 8px;
+  border-radius: 4px;
+}
+
+.booking-form-step input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--slider-thumb-color);
   border: none;
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-.booking-form-step input[type="range"]::-webkit-slider-thumb:hover,
 .booking-form-step input[type="range"]::-moz-range-thumb:hover {
   background: var(--color-primary-hover);
+}
+
+.booking-form-step input[type="range"]::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--slider-thumb-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.booking-form-step input[type="range"]::-ms-thumb:hover {
+  background: var(--color-primary-hover);
+}
+
+.booking-form-step input[type="range"]::-ms-fill-lower {
+  background: var(--slider-fill-color);
+  border-radius: 4px;
+}
+
+.booking-form-step input[type="range"]::-ms-fill-upper {
+  background: var(--slider-track-color);
+  border-radius: 4px;
+}
+
+/* Transition for the background gradient */
+.booking-form-step input[type="range"] {
+  transition: background 0.3s ease-in-out;
 }
 
 /* -------------------------
@@ -266,13 +328,13 @@ body {
   padding: 0.75rem 1.5rem;
   border: 2px solid var(--color-primary);
   border-radius: 6px;
-  background-color: var(--color-light-green);
+  background-color: var(--color-bg);
   color: var(--color-primary-text);
   cursor: pointer;
   text-align: center;
   user-select: none;
   margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .booking-form-options label.booking-btn-option:hover {
@@ -313,7 +375,7 @@ body {
   position: relative;
   height: 20px;
   width: 20px;
-  background-color: var(--color-light-green);
+  background-color: var(--color-bg);
   border: 2px solid var(--color-primary);
   border-radius: 4px;
   display: inline-block;
@@ -398,13 +460,13 @@ body {
   padding: 1rem;
   border: 2px solid var(--color-primary);
   border-radius: 8px;
-  background-color: var(--color-light-green);
+  background-color: var(--color-bg);
   color: var(--color-primary-text);
   cursor: pointer;
   text-align: center;
   user-select: none;
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .package-option:hover,
@@ -415,7 +477,7 @@ body {
 
 .package-option.active {
   transform: scale(1.02);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px var(--color-shadow);
 }
 
 .package-option:focus {
@@ -506,7 +568,7 @@ body {
 }
 
 .booking-btn-prev {
-  background-color: #ccc;
+  background-color: var(--color-gray);
   color: var(--color-primary-text);
 }
 
@@ -516,7 +578,7 @@ body {
 }
 
 .booking-btn-prev:hover {
-  background-color: #bbb;
+  background-color: var(--color-gray-hover, #bbb); /* Define --color-gray-hover if needed */
 }
 
 .booking-btn-next:focus,
@@ -548,11 +610,11 @@ body {
 }
 
 .toast.success {
-  background-color: var(--color-secondary);
+  background-color: var(--color-toast-success);
 }
 
 .toast.error {
-  background-color: var(--color-primary);
+  background-color: var(--color-toast-error);
 }
 
 /* -------------------------
@@ -567,7 +629,7 @@ body {
 ------------------------- */
 @media (max-width: 768px) {
   .booking-progress-tracker {
-    display: none;
+    display: none; /* Adjust based on previous recommendations */
     flex-direction: column;
     align-items: stretch;
     top: var(--navbar-height-tablet);
@@ -654,4 +716,13 @@ body {
   .extras-container {
     grid-template-columns: 1fr;
   }
+}
+
+/* -------------------------
+   Slider Filled Portion Colors
+------------------------- */
+
+/* Ensure the slider's filled portion starts with 0% fill on page load */
+.booking-form-step input[type="range"] {
+  background-image: linear-gradient(to right, var(--slider-fill-color) 0%, var(--slider-fill-color) 0%, var(--slider-track-color) 0%, var(--slider-track-color) 100%);
 }

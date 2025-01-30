@@ -3,7 +3,7 @@
 /* BOOKING FORM MODAL */
 .modal-header h2 {
   font-size: 1.8rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text); /* Using global primary text color */
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -14,7 +14,7 @@
 
 .progress-bar {
   width: 100%;
-  background-color: #ddd;
+  background-color: var(--color-progress-bar-bg); /* Using global progress bar background color */
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 2rem;
@@ -22,7 +22,7 @@
 
 .progress {
   height: 8px;
-  background-color: var(--color-primary); /* Updated to use variable */
+  background-color: var(--color-progress-bar); /* Using global progress bar color */
   width: 0%;
   transition: width 0.3s ease;
 }
@@ -46,7 +46,7 @@
 }
 
 .form-group label span {
-  color: #e63946; /* Red for required */
+  color: var(--color-error); /* Updated to use error color variable */
 }
 
 .form-group input,
@@ -54,7 +54,7 @@
 .form-group textarea {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-gray); /* Using global gray color */
   border-radius: 4px;
   font-size: 1rem;
 }
@@ -62,7 +62,7 @@
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--color-secondary); /* Updated to use variable */
+  border-color: var(--color-secondary); /* Using global secondary color */
   outline: none;
 }
 
@@ -71,7 +71,7 @@
   width: 100%;
   height: 8px;
   border-radius: 5px;
-  background: #ddd;
+  background: var(--color-progress-bar-bg); /* Using global progress bar background color */
   outline: none;
   margin-top: 0.5rem;
 }
@@ -82,26 +82,26 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--color-primary); /* Updated to use variable */
+  background: var(--color-progress-bar); /* Using global progress bar color */
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .form-group input[type="range"]::-webkit-slider-thumb:hover {
-  background: var(--color-primary-hover); /* Updated to use variable */
+  background: var(--color-progress-bar-hover); /* Define if needed */
 }
 
 .form-group input[type="range"]::-moz-range-thumb {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--color-primary); /* Updated to use variable */
+  background: var(--color-progress-bar); /* Using global progress bar color */
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .form-group input[type="range"]::-moz-range-thumb:hover {
-  background: var(--color-primary-hover); /* Updated to use variable */
+  background: var(--color-progress-bar-hover); /* Define if needed */
 }
 
 /* Navigation Buttons */
@@ -114,8 +114,8 @@
 .next-btn,
 .prev-btn,
 .submit-btn {
-  background-color: var(--color-primary); /* Updated to use variable */
-  color: var(--color-white);
+  background-color: var(--color-primary); /* Using global primary color */
+  color: var(--color-white); /* Using global white color */
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
@@ -128,21 +128,21 @@
 .next-btn:hover,
 .prev-btn:hover,
 .submit-btn:hover {
-  background-color: var(--color-primary-hover); /* Updated to use variable */
+  background-color: var(--color-primary-hover); /* Using global primary hover color */
 }
 
 .submit-btn {
-  background-color: var(--color-secondary); /* Updated to use variable */
+  background-color: var(--color-secondary); /* Using global secondary color */
 }
 
 .submit-btn:hover {
-  background-color: var(--color-secondary-hover); /* Updated to use variable */
+  background-color: var(--color-secondary-hover); /* Using global secondary hover color */
 }
 
 /* Accessibility Enhancements */
 .next-btn:focus,
 .prev-btn:focus,
 .submit-btn:focus {
-  outline: 3px solid var(--color-focus);
+  outline: 3px solid var(--color-focus); /* Using global focus color */
   outline-offset: 2px;
 }

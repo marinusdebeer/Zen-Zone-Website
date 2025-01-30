@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-light-green);
+  background-color: var(--color-light-green); /* Using global light green color */
   padding: 2rem;
   box-sizing: border-box;
 }
@@ -14,28 +14,28 @@
 .thankyou-content {
   text-align: center;
   max-width: 600px;
-  background-color: var(--color-white);
+  background-color: var(--color-bg); /* Updated to use variable */
   padding: 3rem 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px var(--color-shadow);
+  box-shadow: 0 4px 12px var(--color-shadow); /* Using global shadow color */
 }
 
 .thankyou-content h1 {
   font-size: 3rem;
-  color: var(--color-primary);
+  color: var(--color-primary); /* Using global primary color */
   margin-bottom: 1rem;
 }
 
 .thankyou-content p {
   font-size: 1.2rem;
-  color: var(--color-primary-text);
+  color: var(--color-primary-text); /* Using global primary text color */
   margin-bottom: 1.5rem;
 }
 
 .thankyou-content .cta-button {
   padding: 0.75rem 1.5rem;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-primary); /* Using global primary color */
+  color: var(--color-white); /* Using global white color */
   text-decoration: none;
   border-radius: 6px;
   font-size: 1rem;
@@ -44,12 +44,12 @@
 }
 
 .thankyou-content .cta-button:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-primary-hover); /* Using global primary hover color */
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--color-shadow);
+  box-shadow: 0 4px 8px var(--color-shadow); /* Using global shadow color */
 }
 
 .thankyou-content .cta-button:focus {
-  outline: 3px solid var(--color-focus);
+  outline: 3px solid var(--color-focus); /* Using global focus color */
   outline-offset: 2px;
 }

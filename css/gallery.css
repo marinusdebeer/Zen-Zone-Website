@@ -5,14 +5,14 @@
 =========================== */
 .gallery {
   padding: 4rem 0;                    /* Top and bottom spacing */
-  /* background-color: #f9f9f9; */
+  background-color: var(--color-bg);   /* Updated to use variable */
   text-align: center;                 /* Center align text */
   overflow: hidden;                   /* Hide overflowing content */
 }
 
 .gallery h2 {
   font-size: 2.5rem;                  /* Heading font size */
-  color: var(--color-primary-text);    /* Updated to use variable */
+  color: var(--color-primary-text);    /* Using global primary text color */
   margin-bottom: 2rem;                /* Spacing below heading */
   position: relative;
 }
@@ -22,7 +22,7 @@
   display: block;
   width: 80px;                        /* Underline width */
   height: 4px;                        /* Underline height */
-  background-color: var(--color-secondary); /* Updated to use variable */
+  background-color: var(--color-secondary); /* Using global secondary color */
   margin: 10px auto 0;                /* Spacing above and below underline */
   border-radius: 2px;                 /* Rounded corners for underline */
 }
@@ -75,9 +75,9 @@
   height: 100%;
   object-fit: cover;                  /* Ensure image covers container without distortion */
   display: block;
-  border-radius: 10px;                /* Rounded corners for images */
+  border-radius: 10px;
   cursor: pointer;                    /* Cursor changes to pointer on hover */
-  transition: transform 0.3s ease;    /* Smooth zoom effect */
+  transition: transform 0.3s ease;
 }
 
 .gallery-item:hover img,
@@ -91,21 +91,14 @@
 =========================== */
 @media (max-width: 768px) {
   /* Tablet (iPad) Adjustments */
-  :root {
-    /* These variables are already defined in utilities.css */
-    /* No need to redefine them here */
-    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-tablet) + var(--gallery-gap) * (var(--images-per-container-tablet) - 1));
-    --gallery-track-width: calc(var(--gallery-container-width) * 2);
-  }
+  /* Variables already defined in utilities.css */
+  /* No need to redefine them here */
 }
 
 @media (max-width: 480px) {
   /* Mobile Adjustments */
-  :root {
-    /* These variables are already defined in utilities.css */
-    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-mobile) + var(--gallery-gap) * (var(--images-per-container-mobile) - 1));
-    --gallery-track-width: calc(var(--gallery-container-width) * 2);
-  }
+  /* Variables already defined in utilities.css */
+  /* No need to redefine them here */
 }
 
 /* Accessibility Enhancements */

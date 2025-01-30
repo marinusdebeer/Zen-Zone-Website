@@ -3,13 +3,13 @@
 /* REFERRAL & GIFT CARDS SECTION */
 .referral {
   padding: 4rem 2rem;
-  background-color: #fff;
+  background-color: var(--color-bg); /* Updated to use variable */
   text-align: center;
 }
 
 .referral h2 {
   font-size: 2rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text); /* Using global primary text color */
   margin-bottom: 1.5rem;
 }
 
@@ -17,7 +17,7 @@
   max-width: 800px;
   margin: 0 auto 2rem auto;
   font-size: 1rem;
-  color: #555;
+  color: var(--color-primary-text); /* Updated to use variable */
 }
 
 .referral-buttons {
@@ -28,14 +28,33 @@
 
 /* Referral CTA Button */
 .referral-buttons .cta-button.referral-cta {
-  /* Inherits base styles from .cta-button */
-  /* Specific styles are already defined in utilities.css */
-  background-color: var(--color-primary); /* Ensured to use variable */
+  background-color: var(--color-primary); /* Using global primary color */
+  color: var(--color-white); /* Using global white color */
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .referral-buttons .cta-button.referral-cta:hover,
 .referral-buttons .cta-button.referral-cta:focus {
-  background-color: var(--color-primary-hover); /* Ensured to use variable */
+  background-color: var(--color-primary-hover); /* Using global primary hover color */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--color-shadow); /* Using global shadow color */
+  outline: none;
+}
+
+/* Focus State for Referral CTA Button */
+.referral-buttons .cta-button.referral-cta:focus {
+  outline: 3px solid var(--color-focus); /* Using global focus color */
+  outline-offset: 2px;
 }
 
 /* Accessibility Enhancements */

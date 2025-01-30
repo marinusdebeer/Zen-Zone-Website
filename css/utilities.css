@@ -1,4 +1,5 @@
 /* utilities.css */
+
 :root {
   /* -------------------------
      Layout Dimensions
@@ -9,32 +10,32 @@
   --navbar-height-mobile: 60px;  /* Adjusted for mobile */
 
   /* Gallery Specific Variables */
-  --gallery-animation-duration: 140s; /* Duration of the scroll animation */
+  --gallery-animation-duration: 140s; /* Adjusted duration of the scroll animation */
   --gallery-gap: 20px;               /* Space between images */
-  
+
   /* Desktop Image Dimensions */
   --gallery-item-width: 400px;       /* Width of each gallery item on desktop */
   --gallery-item-height: 375px;      /* Height of each gallery item on desktop */
-  
+
   /* Tablet (iPad) Image Dimensions */
   --gallery-item-width-tablet: 350px; /* Width on tablets */
   --gallery-item-height-tablet: 350px; /* Height on tablets */
-  
+
   /* Mobile Image Dimensions */
   --gallery-item-width-mobile: 400px; /* Width on mobile devices */
   --gallery-item-height-mobile: 400px; /* Height on mobile devices */
-  
+
   /* Number of Images per Container */
   --images-per-container-desktop: 32; /* Number of images on desktop */
   --images-per-container-tablet: 32;   /* Number of images on tablets */
   --images-per-container-mobile: 32;    /* Number of images on mobile */
-  
+
   /* Calculated Container and Track Widths */
   --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1));
   --gallery-track-width: calc(var(--gallery-container-width) * 2);
 
   /* -------------------------
-     Color Palette
+     Color Palette - Light Mode
   ------------------------- */
   /* Primary Colors */
   --color-primary: #6b5b95; /* Purple */
@@ -43,7 +44,8 @@
   --color-secondary: #78a265; /* Light Green */
   --color-secondary-hover: #5e774c;
 
-  --color-tertiary: #2e3d2f; /* Orange */
+  --color-tertiary: #2E3D2F;
+  --color-tertiary-hover: #1f2a1d;
 
   --color-white: #ffffff;
   --color-black: #000000;
@@ -53,8 +55,8 @@
   --color-primary-text: #2e3d2f;   /* For primary text */
 
   /* Footer Specific Colors */
-  --color-footer-background: #2e3d2f; /* Dark Green */
-  --color-footer-link: #ffffff;       /* White links in footer */
+  --color-footer-background: var(--color-tertiary); /* Dark Green */
+  --color-footer-link: var(--color-white);       /* White links in footer */
   --color-footer-link-hover: #78a265; /* Light Green on hover */
 
   /* Shadow Color */
@@ -67,28 +69,123 @@
   --color-light-green: #FAFFFA; /* Light Green Background */
   --color-gray: #ccc; /* Gray for borders and backgrounds */
   --color-light-gray: #F0F0F0; /* Light Gray for hover effects */
+
+  /* Input Fields */
+  --color-input-bg: #ffffff; /* Light mode input background */
+  --color-input-border: var(--color-gray); /* Light mode input border */
+
+  /* Background and Text for Light Mode */
+  --color-bg: #ffffff; /* White background */
+  --color-text: #2e3d2f; /* Dark text */
+    /* Read More Button */
+  --color-read-more-bg: var(--color-secondary);
+  --color-read-more-hover-bg: var(--color-primary-text);
+  --color-read-more-text: var(--color-white);
+
+  --slider-fill-color: #6b5b95; /* Color of the filled portion */
+  --slider-track-color: #ccc;    /* Color of the unfilled portion */
+  --slider-thumb-color: #574f8f; /* Color of the slider thumb */
 }
 
-/* Responsive Navbar Heights */
+/* -------------------------
+   Color Palette - Dark Mode
+------------------------- */
+[data-theme="dark"] {
+  /* -------------------------
+     Dark Mode Overrides
+  ------------------------- */
+  /* Background and Text */
+  --color-bg: #1E1E1E; /* Dark background */
+  --color-text: #EAEAEA; /* Light text */
+
+  /* Primary Colors */
+  --color-primary: #9C8AD6; /* Soft Purple */
+  --color-primary-hover: #7A69B0; /* Slightly lighter for hover */
+
+  --color-secondary: #78A265; /* Softer Green */
+  --color-secondary-hover:rgb(143, 193, 119); /* Slightly lighter for hover */
+
+  --color-tertiary: #2e3d2f; /* Orange remains the same */
+
+  /* Input Fields Override */
+  --color-input-bg: #333333; /* Dark mode input background */
+  --color-input-border: #444; /* Dark mode input border */
+
+  /* Additional Colors */
+  --color-secondary-text: #B0BEC5; /* Lighter gray for secondary text in dark mode */
+  --color-primary-text: #EAEAEA; /* Light text for primary text in dark mode */
+
+  /* Footer Specific Colors */
+  --color-footer-background: var(--color-tertiary); /* Even darker footer */
+  --color-footer-link-hover: #78A265; /* Light Green on hover */
+
+  /* Shadow Color */
+  --color-shadow: rgba(255, 255, 255, 0.2); /* Light shadow for dark mode */
+
+  /* Light and Gray Colors */
+  --color-light-green: #1E1E1E; /* Dark Green Background */
+  --color-gray: #444; /* Dark Gray for borders and backgrounds */
+  --color-light-gray: #2C2C2C; /* Darker gray for hover effects */
+
+  /* Additional Variables for Other CSS Files */
+  /* Areas Section */
+  --color-secondary-background: #2C2C2C; /* Darker background for areas */
+
+  /* Blog Section */
+  --color-blog-section-bg: #1A1A1A; /* Dark background for blog section */
+
+  /* Social Sharing */
+  --color-social-sharing-bg: var(--color-secondary); /* Softer Green */
+  --color-social-sharing-hover-bg: var(--color-primary-text); /* Light text color */
+
+  /* Booking Modal */
+  --color-modal-background: #2C2C2C; /* Darker background for modals */
+  --color-modal-close: var(--color-primary); /* Primary color for close button */
+
+  /* Booking Progress Bar */
+  --color-progress-bar-bg: #555; /* Darker gray for progress bar background */
+  --color-progress-bar: var(--color-secondary); /* Softer Green for progress bar */
+
+  /* Toast Notifications */
+  --color-toast-success: var(--color-secondary);
+  --color-toast-error: var(--color-primary);
+
+  /* Read More Button */
+  --color-read-more-bg: var(--color-tertiary);
+  --color-read-more-hover-bg: var(--color-secondary);
+  --color-read-more-text: var(--color-text);
+}
+
+/* -------------------------
+   Responsive Navbar Heights
+------------------------- */
 @media (max-width: 768px) {
   :root {
     --navbar-height: var(--navbar-height-tablet);
+    --gallery-container-width: calc(var(--gallery-item-width-tablet) * var(--images-per-container-tablet) + var(--gallery-gap) * (var(--images-per-container-tablet) - 1));
+    --gallery-track-width: calc(var(--gallery-container-width) * 2);
   }
 }
 
 @media (max-width: 480px) {
   :root {
     --navbar-height: var(--navbar-height-mobile);
+    --gallery-container-width: calc(var(--gallery-item-width-mobile) * var(--images-per-container-mobile) + var(--gallery-gap) * (var(--images-per-container-mobile) - 1));
+    --gallery-track-width: calc(var(--gallery-container-width) * 2);
   }
 }
 
 @media (min-width: 769px) {
   :root {
     --navbar-height: var(--navbar-height-desktop);
+    --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1));
+    --gallery-track-width: calc(var(--gallery-container-width) * 2);
   }
 }
 
-/* Base CTA Button */
+/* -------------------------
+   Base CTA Button
+------------------------- */
 .cta-button {
   display: flex;
   align-items: center;
@@ -152,6 +249,7 @@
 .button-link:hover,
 .button-link:focus {
   background-color: var(--color-primary-hover);
+  color: var(--color-white);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px var(--color-shadow);
   outline: none;
@@ -179,3 +277,94 @@
 .border-red-500 {
   border-color: #f56565; /* Red color for errors */
 }
+
+/* -------------------------
+   Dark Mode Accessible Elements
+------------------------- */
+/* Ensure text and backgrounds adapt in dark mode */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  /* transition: background-color 0.3s ease; */
+}
+
+/* Header and Footer */
+.header,
+.footer {
+  background-color: var(--color-footer-background);
+  color: var(--color-footer-link);
+  transition: background-color 0.3s ease;
+}
+
+.header a,
+.footer a {
+  color: var(--color-footer-link);
+  transition: color 0.3s ease;
+}
+
+.header a:hover,
+.footer a:hover {
+  color: var(--color-footer-link-hover);
+}
+
+/* Buttons */
+button,
+input[type="button"],
+input[type="submit"] {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background-color: var(--color-primary-hover);
+  transition: background-color 0.3s ease;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-primary-hover);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* -------------------------
+   Form Inputs (Light & Dark Mode)
+------------------------- */
+input,
+textarea,
+select {
+  background-color: var(--color-input-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-input-border);
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 5px var(--color-primary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 5px var(--color-secondary);
+}
+
+

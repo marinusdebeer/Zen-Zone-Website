@@ -35,8 +35,8 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  background-color: var(--color-bg); /* Updated to use variable */
+  color: var(--color-text); /* Using global text color variable */
   line-height: 1.6;
   padding-top: var(--navbar-height); /* Dynamic padding-top based on navbar height */
   min-height: 100vh;
@@ -44,6 +44,7 @@ body {
   flex-direction: column;
   margin: 0;
 }
+
 main {
   flex: 1;
 }
@@ -67,13 +68,13 @@ q::before, q::after {
   overflow: hidden;
 }
 
-/* Skip Navigation Link Styling (Moved from Previous Reset) */
+/* Skip Navigation Link Styling */
 .skip-link {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #000;
-  color: #fff;
+  background: var(--color-primary); /* Using global primary color */
+  color: var(--color-white); /* Using global white color */
   padding: 8px 16px;
   z-index: 100;
   transition: top 0.3s;
@@ -81,4 +82,6 @@ q::before, q::after {
 
 .skip-link:focus {
   top: 0;
+  outline: 3px solid var(--color-focus); /* Using global focus color */
+  outline-offset: 2px;
 }

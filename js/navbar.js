@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   loadNavbar()
     .then(initializeNavbar)
     .then(initializeSmoothScrolling)
-    .then(initializeActiveSectionHighlighting);
+    .then(initializeActiveSectionHighlighting)
+    .then(darkMode);
 });
 
 /**
@@ -22,6 +23,42 @@ function loadNavbar() {
       document.getElementById("navbar").innerHTML = html;
     })
     .catch((err) => console.error("Error loading navbar:", err));
+}
+
+/**
+ * Dark/Light Mode Toggle Function
+ */
+function darkMode() {
+  const toggleSwitches = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
+
+  // Retrieve the saved theme from localStorage or default to 'light'
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+
+  // Function to apply the theme and synchronize toggles
+  const applyTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    
+    // Update all toggle switches based on the new theme
+    toggleSwitches.forEach(toggle => {
+      toggle.checked = theme === "dark";
+    });
+  };
+
+  // Initialize toggle switches based on the saved theme
+  toggleSwitches.forEach(toggle => {
+    toggle.checked = savedTheme === "dark";
+
+    // Add event listener to each toggle switch
+    toggle.addEventListener("change", function () {
+      if (this.checked) {
+        applyTheme("dark");
+      } else {
+        applyTheme("light");
+      }
+    });
+  });
 }
 
 /**

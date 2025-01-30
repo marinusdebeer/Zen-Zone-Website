@@ -2,7 +2,9 @@
 
 /* CSS Variables Specific to the Hero Section */
 :root {
-  --hero-background-overlay-opacity: 0.1;
+  --hero-background-overlay-opacity: 0.3; /* Adjusted opacity for better visibility */
+  --hero-overlay-light: rgba(0, 0, 0, var(--hero-background-overlay-opacity)); /* Dark overlay for light mode */
+  --hero-overlay-dark: rgba(255, 255, 255, var(--hero-background-overlay-opacity)); /* Light overlay for dark mode */
   --hero-title-font-size: clamp(2.25rem, 5vw, 3rem);
   --hero-subtitle-font-size: clamp(1.1rem, 2.5vw, 1.2rem);
   --hero-padding: 2rem 1rem;
@@ -25,9 +27,8 @@
   flex-direction: column; /* Vertical stacking */
   align-items: center;
   justify-content: center;
-  background-color: var(--color-white); /* Using global white color */
-  /* Removed overflow: hidden to prevent content from being cut off */
-  overflow: visible;
+  background-color: var(--color-bg); /* Using global background color */
+  overflow: visible; /* Prevent content from being cut off */
 }
 
 /* Background Image with Overlay */
@@ -39,15 +40,20 @@
   width: 100%;
   height: 100%;
   /* Optimized Background Image */
-  /* 
-    Use modern formats like WebP or AVIF for better compression.
-    Example:
-    background: url('assets/hero-background.avif') no-repeat center center;
+  /* Use modern formats like WebP or AVIF for better compression */
+  /* Example:
+     background: url('assets/hero-background.avif') no-repeat center center;
   */
   background-size: cover;
   background-position: center;
+  background-image: url('assets/hero-background.jpg'); /* Replace with optimized format */
+  
+  /* Dynamic Overlay Based on Theme */
+  background-color: var(--color-bg);
+  mix-blend-mode: overlay;
+  
   opacity: var(--hero-background-overlay-opacity);
-  pointer-events: none;
+  pointer-events: none; /* Allows interactions to pass through */
 }
 
 /* Hide the phone number by default */
@@ -66,7 +72,6 @@
   max-width: 1200px;
   width: 100%;
   padding: 0 2rem;
-  /* Animation is now conditionally applied with prefers-reduced-motion */
   animation: fadeIn 1s ease-out forwards;
 }
 
@@ -90,7 +95,6 @@
   line-height: 1.2;
   color: var(--color-primary-text); /* Using global primary text color */
   word-break: break-word; /* Prevent long words from overflowing */
-  /* Added padding or margin if necessary */
   padding: 0 1rem;
 }
 
@@ -138,6 +142,8 @@
   background-color: var(--color-primary-hover); /* Using global primary hover color */
   transform: translateY(-3px);
   box-shadow: 0 6px 12px var(--color-shadow); /* Using global shadow color */
+  outline: none;
+  color: var(--color-white); /* Using global white color */
 }
 
 /* Secondary CTA Button */
@@ -151,6 +157,7 @@
   background-color: var(--color-secondary-hover); /* Using global secondary hover color */
   transform: translateY(-3px);
   box-shadow: 0 6px 12px var(--color-shadow); /* Using global shadow color */
+  outline: none;
 }
 
 /* Image Wrapper */
@@ -174,6 +181,7 @@
 .hero-image:hover,
 .hero-image:focus {
   transform: scale(1.02);
+  outline: none;
 }
 
 /* Fade-In Animation */
@@ -218,7 +226,6 @@
 /* Mobile Devices */
 @media (max-width: 768px) {
   .hero {
-    min-height: 100dvh; /* Maintain min-height */
     padding: var(--hero-padding); /* Using hero-specific padding variable */
   }
   .hero-content {

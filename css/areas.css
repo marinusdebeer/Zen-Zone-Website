@@ -3,24 +3,24 @@
 /* AREAS WE SERVE SECTION */
 .areas {
   padding: 4rem 2rem;
-  background-color: var(--color-secondary-background, #f0f4f8); /* Use variable if defined */
+  background-color: var(--color-secondary-background); /* Now uses variable */
   /* text-align: center; */ /* Commented out as per original */
 }
 
 .areas-card {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: var(--color-white); /* Updated to use variable */
+  background-color: var(--color-modal-background); /* Uses modal background variable for consistency */
   padding: 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 10px 25px var(--color-shadow); /* Replaced rgba with variable */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .areas-card:hover,
 .areas-card:focus-within {
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px var(--color-shadow); /* Replaced rgba with variable */
 }
 
 .areas-card:focus-within {
@@ -30,7 +30,7 @@
 
 .areas-card h2 {
   font-size: 2.5rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
   margin-bottom: 2rem;
   font-weight: 700;
   display: flex;
@@ -68,7 +68,7 @@
 
 .areas-list li {
   font-size: 1.2rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
   margin-bottom: 0.75rem;
   position: relative;
   padding-left: 1.25rem;
@@ -80,7 +80,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: var(--color-primary); /* Updated to use variable */
+  color: var(--color-primary);
   font-size: 1.2rem;
   top: 0;
 }
@@ -96,7 +96,7 @@
   height: 500px;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--color-shadow); /* Replaced rgba with variable */
 }
 
 /* Responsive Adjustments */

@@ -4,9 +4,9 @@
     <!-- Outer circle (Background) -->
     <circle cx="248" cy="256" r="248" fill="#4285F4" /> <!-- Google Blue -->
     <!-- Inner circle (Face) -->
-    <circle cx="248" cy="176" r="96" fill="#FFFFFF" /> <!-- White Face -->
+    <circle cx="248" cy="176" r="96" fill="var(--color-white)" /> <!-- White Face -->
     <!-- Shoulders -->
-    <path d="M120 384c40-48 104-72 128-72s88 24 128 72H120z" fill="#FFFFFF" /> <!-- White Shoulders -->
+    <path d="M120 384c40-48 104-72 128-72s88 24 128 72H120z" fill="var(--color-white)" /> <!-- White Shoulders -->
   </symbol>
 
 
@@ -20,7 +20,7 @@
 
   <!-- menu sprite -->
   <symbol id="menu-icon" viewBox="0 0 24 24">
-    <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" fill="#FFFFFF" />
+    <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" fill="var(--color-white)" />
   </symbol>
 
   <!-- comment sprite -->
