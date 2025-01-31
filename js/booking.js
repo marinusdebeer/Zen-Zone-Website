@@ -403,7 +403,7 @@ class BookingForm {
       bookingFormTitle.textContent = stepLabel;
     }
   }
-
+  
   /**
    * Attach necessary event listeners to the form.
    */

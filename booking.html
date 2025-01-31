@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/utilities.css">
   <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="css/modals.css">
+  <link rel="stylesheet" href="css/bookingModal.css">
   <link rel="stylesheet" href="/css/footer.css">
   <link rel="stylesheet" href="/css/booking.css">
 </head>
@@ -121,13 +123,13 @@
             <!-- <label>Select Industry <span aria-hidden="true">*</span></label> -->
             <div class="booking-form-options">
               <input type="radio" id="industry-home" name="industry" value="Home Cleaning" required>
-              <label for="industry-home" class="booking-btn-option">Home Cleaning</label>
+              <label for="industry-home" class="booking-btn-option industry">Home Cleaning</label>
 
               <input type="radio" id="industry-airbnb" name="industry" value="Airbnb Cleaning">
-              <label for="industry-airbnb" class="booking-btn-option">Airbnb Cleaning</label>
+              <label for="industry-airbnb" class="booking-btn-option industry">Airbnb Cleaning</label>
 
               <input type="radio" id="industry-office" name="industry" value="Office Cleaning">
-              <label for="industry-office" class="booking-btn-option">Office Cleaning</label>
+              <label for="industry-office" class="booking-btn-option industry">Office Cleaning</label>
             </div>
             <!-- Optional: Error Message -->
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
@@ -146,10 +148,11 @@
             <!-- <label>Booking Type <span aria-hidden="true">*</span></label> -->
             <div class="booking-form-options">
               <input type="radio" id="booking-type-one-time" name="bookingType" value="One-Time" required>
-              <label for="booking-type-one-time" class="booking-btn-option">One-Time Cleaning</label>
+              <label for="booking-type-one-time" class="booking-btn-option service">One-Time Cleaning    
+              </label>
 
               <input type="radio" id="booking-type-recurring" name="bookingType" value="Recurring">
-              <label for="booking-type-recurring" class="booking-btn-option">Recurring Cleaning</label>
+              <label for="booking-type-recurring" class="booking-btn-option service">Recurring Cleaning</label>
             </div>
             <!-- Optional: Error Message -->
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
@@ -164,13 +167,13 @@
             <h3>Select Frequency</h3>
             <div class="booking-form-options">
               <input type="radio" id="frequency-weekly" name="frequency" value="Weekly" required>
-              <label for="frequency-weekly" class="booking-btn-option">Weekly</label>
+              <label for="frequency-weekly" class="booking-btn-option service">Weekly</label>
 
               <input type="radio" id="frequency-biweekly" name="frequency" value="Bi-Weekly">
-              <label for="frequency-biweekly" class="booking-btn-option">Bi-Weekly</label>
+              <label for="frequency-biweekly" class="booking-btn-option service">Bi-Weekly</label>
 
               <input type="radio" id="frequency-every4weeks" name="frequency" value="Every 4 Weeks">
-              <label for="frequency-every4weeks" class="booking-btn-option">Every 4 Weeks</label>
+              <label for="frequency-every4weeks" class="booking-btn-option service">Every 4 Weeks</label>
             </div>
             <!-- Optional: Error Message -->
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
@@ -184,20 +187,93 @@
             <h3>Select Service Type</h3>
             <div class="booking-form-options">
               <input type="radio" id="service-standard" name="serviceType" value="Standard Cleaning" required>
-              <label for="service-standard" class="booking-btn-option">Standard Cleaning</label>
-
+              <label for="service-standard" class="booking-btn-option service">
+                Standard Cleaning
+                <div class="tooltip">
+                  <p><strong>Our Standard Cleaning Service</strong> ensures a thorough cleaning of all common areas,  
+                     including bedrooms, kitchens, and bathrooms.</p><br>
+            
+                  <p>We wipe and dust surfaces, sweep and mop floors and baseboards, and vacuum carpets.  
+                     Additionally, we clean mirrors, door handles, light switches, and kitchen cabinet fronts,  
+                     addressing even the finer details.</p><br>
+            
+                  <p>High-touch areas are given extra attention to reduce the spread of germs.  
+                     This service is ideal for maintaining a fresh, clean, and healthy living environment.</p>
+                </div>
+              </label>
+            
               <input type="radio" id="service-deep" name="serviceType" value="Deep Cleaning">
-              <label for="service-deep" class="booking-btn-option">Deep Cleaning</label>
-
-              <input type="radio" id="service-standard-move-in" name="serviceType"
-                value="Standard Move-In/Out Cleaning">
-              <label for="service-standard-move-in" class="booking-btn-option">Standard Move-In/Out Cleaning</label>
-
+              <label for="service-deep" class="booking-btn-option service">
+                Deep Cleaning
+                <div class="tooltip">
+                  <p><strong>Our Deep Cleaning Service</strong> is designed to give your home a fresh start by tackling  
+                     both visible and hidden dirt. We thoroughly clean all common areas, including bedrooms, kitchens,  
+                     and bathrooms.</p><br>
+            
+                  <p>This includes wiping and dusting surfaces, sweeping and mopping floors, vacuuming carpets, and  
+                     cleaning mirrors, door handles, and light switches.</p><br>
+            
+                  <p>We also focus on areas that are often overlooked, such as behind appliances (fridge, oven),  
+                     baseboards, door frames, interior windows, blinds, ceiling fans, light fixtures, wall spots,  
+                     and grout. High-touch areas are sanitized to reduce the spread of germs.</p><br>
+            
+                  <p>Our deep cleaning ensures your home is not only clean but also feels refreshed and comfortable,  
+                     making it an ideal choice for a detailed reset of your space.</p>
+                </div>
+              </label>
+            
+              <input type="radio" id="service-standard-move-in" name="serviceType" value="Standard Move-In/Out Cleaning">
+              <label for="service-standard-move-in" class="booking-btn-option service">
+                Standard Move-In/Out Cleaning
+                <div class="tooltip">
+                  <p><strong>Our Move-In/Out Standard Cleaning Service</strong> is perfect for homes that need a  
+                     general refresh during a move.</p><br>
+            
+                  <p>This service focuses on all common areas, bedrooms, kitchens, and bathrooms.  
+                     We wipe and dust surfaces, sweep and mop floors, vacuum carpets, and clean mirrors,  
+                     door handles, light switches, and kitchen cabinet fronts.</p><br>
+            
+                  <p>High-touch areas receive extra care to help reduce the spread of germs.  
+                     This service is ideal for homes in good condition that need a light touch-up  
+                     before moving out or settling into your new space.</p>
+                </div>
+              </label>
+            
               <input type="radio" id="service-deep-move-in" name="serviceType" value="Deep Move-In/Out Cleaning">
-              <label for="service-deep-move-in" class="booking-btn-option">Deep Move-In/Out Cleaning</label>
-
+              <label for="service-deep-move-in" class="booking-btn-option service">
+                Deep Move-In/Out Cleaning
+                <div class="tooltip">
+                  <p><strong>Our Move-In/Out Deep Cleaning Service</strong> is designed for a comprehensive and detailed  
+                     clean, ensuring every corner of your home is spotless and refreshed.</p><br>
+            
+                  <p>This service includes all tasks from our Standard Move-In/Out Cleaning Service,  
+                     plus cleaning behind appliances (such as the fridge and oven), baseboards,  
+                     door frames, interior windows, blinds, ceiling fans, light fixtures,  
+                     wall spots, and grout.</p><br>
+            
+                  <p>High-touch areas are sanitized to minimize the spread of germs.  
+                     This service is perfect for homes requiring a thorough reset, whether  
+                     you’re moving into a new space or leaving your old one in pristine condition.</p>
+                </div>
+              </label>
+            
               <input type="radio" id="service-post-construction" name="serviceType" value="Post Construction Cleaning">
-              <label for="service-post-construction" class="booking-btn-option">Post Construction Cleaning</label>
+              <label for="service-post-construction" class="booking-btn-option service">
+                Post-Construction Cleaning
+                <div class="tooltip">
+                  <p><strong>Our Post-Construction Cleaning Service</strong> is designed to handle the mess left behind  
+                     after construction or renovation projects.</p><br>
+            
+                  <p>We ensure your property is spotless, safe, and move-in ready by tackling dust,  
+                     debris, and residue with precision.</p><br>
+            
+                  <p>This service includes removing construction dust and debris, deep cleaning all surfaces,  
+                     windows, fixtures, and hard-to-reach areas.</p><br>
+            
+                  <p>Whether it’s a newly built space or a renovated one, our cleaning  
+                     ensures your property is polished, refreshed, and perfectly prepared for its next use.</p>
+                </div>
+              </label>
             </div>
             <!-- Optional: Error Message -->
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
@@ -453,6 +529,7 @@
 
   <!-- Other JS Files -->
   <script src="/js/navbar.js" defer></script>
+  <script src="js/modals.js" defer></script>
   <!-- <script src="/js/tracking.js" defer></script> -->
   <script src="/js/email.js" defer></script>
   <script src="/js/booking.js" defer></script>

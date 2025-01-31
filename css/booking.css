@@ -319,7 +319,7 @@ body {
   opacity: 0;
   width: 0;
   height: 0;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .booking-form-options label.booking-btn-option {
@@ -354,7 +354,7 @@ body {
 }
 
 .booking-form-options input[type="radio"]:focus + label.booking-btn-option {
-  outline: 3px solid var(--color-focus);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -650,6 +650,76 @@ body {
   white-space: nowrap; /* Prevents text from wrapping below the checkbox */
 }
 
+
+
+
+/* Ensure label is inline-block for better hover */
+.service {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.service .tooltip {
+  visibility: hidden;
+  width: 400px; 
+  background-color: var(--color-tertiary);
+  color: white;
+  text-align: left; 
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: normal;
+  white-space: normal;
+  word-wrap: break-word;
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 1000;
+}
+
+
+.service .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+
+.service:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+@media (max-width: 480px) {
+  .service .tooltip {
+    width: 70%;
+    bottom: auto;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .service .tooltip::after {
+    top: -12px; 
+    border-color: transparent transparent black transparent;
+  }
+}
+
+
+
+
 /* -------------------------
    Responsive Adjustments for Custom Checkbox
 ------------------------- */
@@ -716,11 +786,11 @@ body {
     padding: 0 0.5rem;
   }
 
-  .booking-form-options label.booking-btn-option {
+  .package-option{
     flex: 1 1 100%;
     padding: 0.5rem 1rem;
     font-size: 1.0rem;
-    max-width: 320px;
+    max-width: 250px;
   }
 
   .booking-form-options {
@@ -738,6 +808,17 @@ body {
 }
 
 @media (max-width: 580px) {
+  .service {
+    max-width: 320px;
+    min-width: 250px;
+  }
+  .industry {
+    max-width: 320px;
+    min-width: 250px;
+  }
+  .package-option {
+    max-width: 220px;
+  }
   .booking-form-options {
     justify-content: center;
   }
