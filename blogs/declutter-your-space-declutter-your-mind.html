@@ -78,8 +78,7 @@
     posthog.onFeatureFlags(() => {
       const userId = posthog.get_distinct_id();
       if (userId === '0194bd19-58dc-7531-96c9-aa11544a3415') {
-        console.log("PostHog tracking disabled for admin user.");
-        posthog.opt_out_capturing(); // Completely disables all tracking
+        // posthog.opt_out_capturing(); // Completely disables all tracking
       }
     });
   </script>
