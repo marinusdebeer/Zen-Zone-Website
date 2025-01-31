@@ -22,7 +22,7 @@
 
 .thankyou-content h1 {
   font-size: 3rem;
-  color: var(--color-primary); /* Using global primary color */
+  color: var(--color-secondary); /* Using global primary color */
   margin-bottom: 1rem;
 }
 

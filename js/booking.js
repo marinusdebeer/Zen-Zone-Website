@@ -521,31 +521,6 @@ class BookingForm {
     e.preventDefault();
     if (this.validateFormStep(this.currentStep)) {
 
-      const formData = new FormData(this.bookingForm);
-
-      const data = Object.fromEntries(formData.entries());
-
-
-      // Ensure `extras` is properly preserved before merging
-      let extras = Array.isArray(this.formDataStore.extras)
-        ? [...this.formDataStore.extras]  // Clone array
-        : (typeof this.formDataStore.extras === "string"
-          ? this.formDataStore.extras.split(", ").map(item => item.trim())  // Convert string to array
-          : []);  // Default to an empty array if undefined
-
-      // Merge objects using Object.assign()
-      Object.assign(this.formDataStore, data);
-
-      // Restore `extras` as an array first, then convert it to a string
-      this.formDataStore.extras = extras.join(", ");
-
-
-      // Specifically handle countable extras
-      this.handleCountableExtrasOnSubmit();
-
-      // Prepare extras as a single string for tracking
-      this.prepareExtrasForTracking();
-
       // Update step tracker with final step's data
       this.updateFormData(this.currentStep);
       // Add loading state
@@ -553,7 +528,7 @@ class BookingForm {
       submitButton.classList.add("loading");
       submitButton.innerHTML = `<div class="spinner"></div> Submitting...`;
       Tracking.sendData('submitClicked', "Submitted");
-
+      console.log("Form Data:", this.formDataStore);
       // this.resetForm(); // REMOVE this line when the code below is uncommented
       // Toast.show("Your request has been submitted successfully. We will contact you shortly.", true);
 
@@ -1196,31 +1171,6 @@ class BookingForm {
     });
   }
 
-  handleCountableExtrasOnSubmit() {
-    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
-
-    // Ensure `extras` is always an array
-    if (!Array.isArray(this.formDataStore.extras)) {
-      this.formDataStore.extras = [];
-    }
-
-    // Remove previous countable extras before adding new ones
-    this.formDataStore.extras = this.formDataStore.extras.filter(extra =>
-      !countableExtras.some(name => extra.startsWith(this.convertCamelCaseToReadable(name)))
-    );
-
-    countableExtras.forEach((extra) => {
-      const slider = document.getElementById(`${extra}Slider`);
-      if (slider) {
-        const count = parseInt(slider.value, 10);
-        if (count > 0) {
-          const displayName = this.convertCamelCaseToReadable(extra);
-          this.formDataStore.extras.push(`${displayName} (${count})`);
-        }
-      }
-    });
-  }
-
   compileExtras() {
     // Ensure extras is always an array and clean any prior countable extras
     this.formDataStore.extras = Array.isArray(this.formDataStore.extras)
@@ -1288,29 +1238,6 @@ class BookingForm {
         console.warn(`Missing elements for: ${extra.name}`);
       }
     });
-  }
-
-  prepareExtrasForTracking() {
-    if (this.formDataStore.bookingType !== "One-Time") return;
-    // Step 1: Convert the extras string into an array
-    let extrasArray = [];
-    if (typeof this.formDataStore.extras === "string" && this.formDataStore.extras.trim() !== "") {
-      extrasArray = this.formDataStore.extras.split(", ").map(item => item.trim());
-    }
-
-    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
-
-    // Step 2: Append countable extras with their counts
-    countableExtras.forEach((extra) => {
-      const count = this.formDataStore[`${extra}Count`];
-      if (count && parseInt(count) > 0) {
-        const displayName = this.convertCamelCaseToReadable(extra);
-        extrasArray.push(`${displayName} (${count})`);
-      }
-    });
-
-    // Step 3: Join the array back into a string
-    this.formDataStore.extras = extrasArray.length > 0 ? extrasArray.join(", ") : "None";
   }
 
 }

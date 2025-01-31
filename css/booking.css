@@ -124,6 +124,7 @@ body {
   margin-top: 0.5rem;
   font-size: 0.85rem;
   color: var(--color-white);
+  font-weight: 500;
   text-align: left;
   padding: 0 1rem;
   word-wrap: break-word;
@@ -167,7 +168,7 @@ body {
 
 .booking-form-step label {
   display: block;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   font-size: 1rem;
   font-weight: 500;
 }
@@ -325,7 +326,7 @@ body {
   display: inline-block;
   flex: 1 1 45%;
   padding: 0.75rem 1.5rem;
-  border: 2px solid var(--color-tertiary);
+  border: 2px solid var(--color-secondary);
   border-radius: 6px;
   /* max-width: 250px; */
   background-color: var(--color-bg);
@@ -338,17 +339,17 @@ body {
 }
 
 .booking-form-options label.booking-btn-option:hover {
-  background-color: var(--color-tertiary-hover);
+  background-color: var(--color-secondary-hover);
   color: var(--color-white);
 }
 
 .booking-form-options input[type="radio"]:checked + label.booking-btn-option {
-  background-color: var(--color-tertiary);
+  background-color: var(--color-secondary);
   color: var(--color-white);
   box-shadow: 0 4px 8px var(--color-shadow);
 }
 .booking-form-options input[type="radio"]:hover + label.booking-btn-option {
-  background-color: var(--color-tertiary-hover);
+  background-color: var(--color-secondary-hover);
   color: var(--color-white);
 }
 
@@ -369,13 +370,17 @@ body {
 .extra-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 0.5rem;
 }
 
 .extra-item.countable-extra {
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
+}
+.custom-label {
+  margin-bottom: 0px;
 }
 
 .slider-container {
@@ -714,8 +719,8 @@ body {
   .booking-form-options label.booking-btn-option {
     flex: 1 1 100%;
     padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    max-width: 250px;
+    font-size: 1.0rem;
+    max-width: 320px;
   }
 
   .booking-form-options {
@@ -759,12 +764,6 @@ body {
   .step-summary {
     font-size: 0.7rem;
     padding: 0 0.3rem;
-  }
-
-  .booking-form-options label.booking-btn-option {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    max-width: 250px;
   }
 
   .custom-checkbox .checkmark {

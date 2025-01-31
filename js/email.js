@@ -16,7 +16,6 @@ const Email = (() => {
       Name: ${data.name}
       Email: ${data.email}
       Phone: ${data.phone}
-      Service: ${data.service || "N/A"}
       Cleaning Type: ${data.industry || "N/A"}
       Booking Type: ${data.bookingType || "N/A"}
       Frequency: ${data.frequency || "N/A"}
@@ -38,16 +37,13 @@ const Email = (() => {
    * @returns {Promise} - Returns a promise to enable `.then()` chaining
    */
   const sendBookingRequest = (data) => {
-    console.log("Sending booking request:", data);
-    console.log(formatMessage(data));
     // Prepare the Admin Email Parameters
     const adminParams = {
       to_email: "admin@zenzonecleaning.com",
       from_name: data.name,
       message: formatMessage(data),
     };
-
-    console.log("Admin email params:", adminParams);
+    console.log("Admin email params:", adminParams, adminParams.message);
 
     // Return the promise chain
     return emailjs.send(SERVICE_ID, FORM_TEMPLATE_ID, adminParams)
@@ -59,8 +55,7 @@ const Email = (() => {
           to_name: data.name,
           message: formatMessage(data),
         };
-
-        console.log("User email params:", userParams);
+        console.log("User email params:", userParams, userParams.message);
 
         // Return second email send promise
         return emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, userParams);
