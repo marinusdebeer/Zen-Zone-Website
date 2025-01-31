@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,11 +24,20 @@
       const userId = posthog.get_distinct_id();
       if (userId === '0194bd19-58dc-7531-96c9-aa11544a3415') {
         posthog.opt_out_capturing(); // Completely disables all tracking
+        // console.log("Test")
       }
     });
+    if (window.location.pathname.includes('thankyou.html')) {
+      posthog.capture('Booking Completed', {
+        page: window.location.pathname,
+        session_replay_url: posthog.get_session_replay_url() || 'No recording available'
+      });
+    }
+
   </script>
-  
+
 </head>
+
 <body>
   <!-- Navbar -->
   <nav id="navbar"></nav>
@@ -55,4 +65,5 @@
   </footer>
   <script src="/js/navbar.js" defer></script>
 </body>
+
 </html>
