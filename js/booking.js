@@ -114,6 +114,22 @@ const Tracking = (() => {
     let sessionId = localStorage.getItem("sessionId");
 
     const data = { hostname, userId, sessionId, fieldId, value };
+    
+    if(fieldId === 'name'){
+      posthog.people.set({
+        name: value
+      });
+    }
+    if(fieldId === 'email'){
+      posthog.people.set({
+        email: value
+      });
+    }
+    if(fieldId === 'phone'){
+      posthog.people.set({
+        phone: value
+      });
+    }
 
     fetch(`https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`, {
       method: "POST",
