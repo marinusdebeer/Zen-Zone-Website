@@ -39,14 +39,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* Optimized Background Image */
-  /* Use modern formats like WebP or AVIF for better compression */
-  /* Example:
-     background: url('assets/hero-background.avif') no-repeat center center;
-  */
   background-size: cover;
   background-position: center;
-  background-image: url('assets/hero-background.jpg'); /* Replace with optimized format */
   
   /* Dynamic Overlay Based on Theme */
   background-color: var(--color-bg);
