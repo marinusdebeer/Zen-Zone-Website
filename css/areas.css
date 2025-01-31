@@ -3,8 +3,7 @@
 /* AREAS WE SERVE SECTION */
 .areas {
   padding: 4rem 2rem;
-  background-color: var(--color-secondary-background); /* Now uses variable */
-  /* text-align: center; */ /* Commented out as per original */
+  background-color: var(--color-bg); /* Now uses variable */
 }
 
 .areas-card {
@@ -13,7 +12,7 @@
   background-color: var(--color-modal-background); /* Uses modal background variable for consistency */
   padding: 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 10px 25px var(--color-shadow); /* Replaced rgba with variable */
+  box-shadow: 0 5px 10px var(--color-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

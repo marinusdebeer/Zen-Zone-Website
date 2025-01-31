@@ -360,28 +360,6 @@ class BookingForm {
       this.updateSliderBackground(slider);
     });
   }
-  /**
- * Reset all Extras sliders to 0.
- */
-  resetExtrasSliders() {
-    const countableExtras = [
-      "windows",
-      "windowBlinds",
-      "ceilingFans",
-      "laundryFolding"
-    ];
-
-    countableExtras.forEach((extra) => {
-      const slider = document.getElementById(`${extra}Slider`);
-      const display = document.getElementById(`${extra}CountDisplay`);
-      if (slider && display) {
-        slider.value = 0;
-        display.textContent = `0 ${slider.getAttribute("data-units") || ""}`.trim();
-        this.formDataStore[`${extra}Count`] = 0;
-        this.updateSliderBackground(slider);
-      }
-    });
-  }
 
 
   /**
@@ -454,6 +432,11 @@ class BookingForm {
     packageLabels.forEach((label) => {
       label.addEventListener("click", () => this.togglePackageOption(label));
     });
+
+    const extrasButtons = this.bookingForm.querySelectorAll(".extras-btn");
+    extrasButtons.forEach((button) => {
+      button.addEventListener("click", () => this.handleExtrasButtonClick(button));
+    });
   }
 
   /**
@@ -476,6 +459,7 @@ class BookingForm {
    * Navigate to the next step after validation.
    */
   goToNextStep() {
+
     if (this.validateFormStep(this.currentStep)) {
       this.updateFormData(this.currentStep);
       this.currentStep++;
@@ -490,12 +474,14 @@ class BookingForm {
     } else {
       Toast.show("Please correct the errors on this step before proceeding.", false);
     }
+
   }
 
   /**
    * Navigate to the previous step.
    */
   goToPreviousStep() {
+
     this.currentStep--;
     if (this.currentStep < 1) this.currentStep = 1;
     this.showFormStep(this.currentStep); // Show the new step
@@ -506,6 +492,8 @@ class BookingForm {
     if (this.currentStep === 5) {
       this.displayStep5Sections();
     }
+    this.initializeExtrasCountInputs();
+
   }
 
   /**
@@ -537,13 +525,13 @@ class BookingForm {
 
       const data = Object.fromEntries(formData.entries());
 
+
       // Ensure `extras` is properly preserved before merging
       let extras = Array.isArray(this.formDataStore.extras)
         ? [...this.formDataStore.extras]  // Clone array
         : (typeof this.formDataStore.extras === "string"
           ? this.formDataStore.extras.split(", ").map(item => item.trim())  // Convert string to array
           : []);  // Default to an empty array if undefined
-
 
       // Merge objects using Object.assign()
       Object.assign(this.formDataStore, data);
@@ -560,7 +548,6 @@ class BookingForm {
 
       // Update step tracker with final step's data
       this.updateFormData(this.currentStep);
-      // console.log("Final Form Data:", this.formDataStore);
       // Add loading state
       const submitButton = document.querySelector(".booking-btn-submit");
       submitButton.classList.add("loading");
@@ -578,7 +565,7 @@ class BookingForm {
           // Redirect to thank you page after a short delay
           setTimeout(() => {
             submitButton.classList.remove("loading");
-            submitButton.innerHTML = "Submit Quote Request";
+            submitButton.innerHTML = "Request Quote";
             window.location.href = "/thankyou.html";
           }, 1000);
         })
@@ -696,8 +683,6 @@ class BookingForm {
     }
   }
 
-
-
   /**
    * Handle slider input changes.
    * @param {Event} e - The input event.
@@ -772,12 +757,11 @@ class BookingForm {
    * @param {number} step - The completed step number.
    */
   updateFormData(step) {
-    // console.log(Utilities.deepCopy(this.formDataStore));
+
     const currentFormStep = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
     if (!currentFormStep) return;
 
     const fields = Array.from(currentFormStep.querySelectorAll("[name]")).filter(Utilities.isVisible);
-
     const data = {};
 
     fields.forEach((field) => {
@@ -793,40 +777,25 @@ class BookingForm {
       }
     });
 
+    const extras = Utilities.deepCopy(this.formDataStore);
+    // console.log("updateFormData", Utilities.deepCopy(data));
+
     // Merge step data into the store
     this.formDataStore = { ...this.formDataStore, ...data };
+    this.formDataStore.extras = extras.extras;
+    data.extras = extras.extras;
 
-    // Handle Step 5 Extras as a single string
+    // Handle Step 5 Extras
     if (step === 5 && this.formDataStore.bookingType === "One-Time") {
       this.compileExtras();
+      data.extras = this.formDataStore.extras.join(", ");
     }
 
-    // console.log(step, data);
     // Append step data to the tracker
     this.appendStepData(step, data);
 
-    // console.log(Utilities.deepCopy(this.formDataStore));
-
     // Send tracking data
     this.sendTrackingData(data);
-  }
-
-  /**
-   * Handle countable extras on form submission.
-   */
-  handleCountableExtrasOnSubmit() {
-    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
-
-    countableExtras.forEach((extra) => {
-      const checkbox = document.getElementById(`${extra}Checkbox`);
-      if (checkbox && checkbox.checked) {
-        const slider = document.getElementById(`${extra}Slider`);
-        const count = slider ? slider.value : 1;
-        this.formDataStore[`${extra}Count`] = count;
-      } else {
-        delete this.formDataStore[`${extra}Count`];
-      }
-    });
   }
 
   /**
@@ -892,7 +861,7 @@ class BookingForm {
           const extrasDisplay = this.formDataStore.extras || "None";
           fieldValue = `
             <div class="step-value">
-              <strong>Extras:</strong> ${Utilities.sanitizeHTML(extrasDisplay)}
+              <strong>Extras:</strong> ${Utilities.sanitizeHTML(extrasDisplay !== "None" ? extrasDisplay.join(", ") : '' || "None")}
             </div>
           `;
         } else {
@@ -924,52 +893,17 @@ class BookingForm {
   }
 
   /**
-   * Compile selected extras into a single string for tracking.
-   */
-  compileExtras() {
-    const extras = this.formDataStore.extras ? [...this.formDataStore.extras] : [];
-    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
-
-    countableExtras.forEach((extra) => {
-      const count = this.formDataStore[`${extra}Count`];
-      if (count && parseInt(count) > 0) {
-        const displayName = this.convertCamelCaseToReadable(extra);
-        extras.push(`${displayName} (${count})`);
-      }
-    });
-    // Combine all extras into a single string
-    this.formDataStore.extras = extras.length > 0 ? extras.join(", ") : "None";
-  }
-
-  /**
    * Send tracking data for each field.
    * @param {object} data - The data object containing field-value pairs.
    */
   sendTrackingData(data) {
-    if (data.extras) {
-      Object.entries(data).forEach(([fieldId, value]) => {
-        if (fieldId !== 'extras' && value !== "0") {
-          data.extras.push(`${fieldId} (${value})`);
-        }
-      });
-      Tracking.sendData('extras', data.extras.join(', '));
-    }
-    else {
-      Object.entries(data).forEach(([fieldId, value]) => {
-        if (fieldId === 'extras') {
-          // Send 'extras' as a single string
-          Tracking.sendData('extras', value);
-        } else {
-          // For other fields, handle normally
-          if (Array.isArray(value)) {
-            value.forEach((val) => Tracking.sendData(fieldId, val));
-          } else {
-            Tracking.sendData(fieldId, value);
-          }
-        }
-      });
-    }
-
+    Object.entries(data).forEach(([fieldId, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((val) => Tracking.sendData(fieldId, val));
+      } else {
+        Tracking.sendData(fieldId, value);
+      }
+    });
   }
 
   /**
@@ -1074,80 +1008,27 @@ class BookingForm {
     }
   }
 
-
   /**
-   * Remove dynamically added Extras count inputs (e.g., Windows count).
-   */
-  removeExtrasCountInputs() {
-    const countInputs = this.bookingForm.querySelectorAll("input[type='range'][name$='Count']");
-    countInputs.forEach((input) => input.parentElement.remove());
-  }
+  * Initialize range input displays and backgrounds.
+  */
+  initializeRangeDisplays() {
+    const rangeInputs = Array.from(this.bookingForm.querySelectorAll("input[type='range']"));
+    rangeInputs.forEach((input) => {
+      const display = this.bookingForm.querySelector(`#${input.id}Value`);
+      if (display) {
+        const label = input.getAttribute("data-units") || "";
 
- /**
- * Initialize range input displays and backgrounds.
- */
-initializeRangeDisplays() {
-  const rangeInputs = Array.from(this.bookingForm.querySelectorAll("input[type='range']"));
-  rangeInputs.forEach((input) => {
-    const display = this.bookingForm.querySelector(`#${input.id}Value`);
-    if (display) {
-      const label = input.getAttribute("data-units") || "";
-      
-      // Set initial display
-      display.textContent = `${input.value} ${label}`.trim();
-
-      // Initialize slider background
-      this.updateSliderBackground(input);
-
-      // Add input event listener to update display and background dynamically
-      input.addEventListener("input", () => {
+        // Set initial display
         display.textContent = `${input.value} ${label}`.trim();
+
+        // Initialize slider background
         this.updateSliderBackground(input);
-      });
-    }
-  });
-}
 
-
-  /**
-   * Initialize Extras Count Inputs (e.g., Windows count) with Sliders.
-   */
-  initializeExtrasCountInputs() {
-    // Define countable extras with their respective IDs
-    const countableExtras = [
-      { name: "windows", displayName: "Windows" },
-      { name: "windowBlinds", displayName: "Window Blinds" },
-      { name: "ceilingFans", displayName: "Ceiling Fans" },
-      { name: "laundryFolding", displayName: "Laundry & Folding (Loads)" },
-    ];
-
-    countableExtras.forEach((extra) => {
-      const sliderContainer = document.getElementById(`${extra.name}SliderContainer`);
-      const slider = document.getElementById(`${extra.name}Slider`);
-      const countDisplay = document.getElementById(`${extra.name}CountDisplay`);
-
-      if (sliderContainer && slider && countDisplay) {
-        // ✅ Ensure sliders are always visible
-        sliderContainer.style.display = "flex";
-
-        // ✅ Initialize the count display with the slider's default value
-        countDisplay.textContent = slider.value;
-
-        // ✅ Initialize the slider's background
-        this.updateSliderBackground(slider);
-
-        // ✅ Store the initial value in `formDataStore`
-        this.formDataStore[`${extra.name}Count`] = parseInt(slider.value, 10);
-
-        // ✅ Event listener for slider input (updates UI and formDataStore)
-        slider.addEventListener("input", () => {
-          countDisplay.textContent = slider.value; // Update the UI
-          this.formDataStore[`${extra.name}Count`] = parseInt(slider.value, 10); // Store new value
-          this.appendStepData(this.currentStep, this.formDataStore);
-          this.updateSliderBackground(slider); // Update background
+        // Add input event listener to update display and background dynamically
+        input.addEventListener("input", () => {
+          display.textContent = `${input.value} ${label}`.trim();
+          this.updateSliderBackground(input);
         });
-      } else {
-        console.warn(`Missing elements for: ${extra.name}`);
       }
     });
   }
@@ -1254,9 +1135,161 @@ initializeRangeDisplays() {
     return result.charAt(0).toUpperCase() + result.slice(1);
   }
 
-  /**
-   * Compile selected extras into a single string for tracking.
-   */
+
+
+
+
+
+
+
+
+
+
+
+  handleExtrasButtonClick(button) {
+    const value = button.getAttribute("data-value");
+    const isPressed = button.getAttribute("aria-pressed") === "true";
+
+    if (isPressed) {
+      // Deselect the button
+      button.setAttribute("aria-pressed", "false");
+      button.classList.remove("active"); // Optional: if you have additional styles
+      // Remove the value from formDataStore.extras
+      if (Array.isArray(this.formDataStore.extras)) {
+        this.formDataStore.extras = this.formDataStore.extras.filter(item => item !== value);
+      }
+    } else {
+      // Select the button
+      button.setAttribute("aria-pressed", "true");
+      button.classList.add("active"); // Optional: if you have additional styles
+      // Add the value to formDataStore.extras
+      if (!Array.isArray(this.formDataStore.extras)) {
+        this.formDataStore.extras = [];
+      }
+      this.formDataStore.extras.push(value);
+    }
+
+    // Update the step summary
+    this.appendStepData(this.currentStep, { extras: this.formDataStore.extras });
+
+    // Optional: Send tracking data
+    Tracking.sendData('extras', this.formDataStore.extras.join(', '));
+  }
+
+  resetExtrasSliders() {
+    const countableExtras = [
+      "windows",
+      "windowBlinds",
+      "ceilingFans",
+      "laundryFolding"
+    ];
+
+    countableExtras.forEach((extra) => {
+      const slider = document.getElementById(`${extra}Slider`);
+      const display = document.getElementById(`${extra}CountDisplay`);
+      if (slider && display) {
+        slider.value = 0;
+        display.textContent = `0 ${slider.getAttribute("data-units") || ""}`.trim();
+        this.formDataStore[`${extra}Count`] = 0;
+        this.updateSliderBackground(slider);
+      }
+    });
+  }
+
+  handleCountableExtrasOnSubmit() {
+    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
+
+    // Ensure `extras` is always an array
+    if (!Array.isArray(this.formDataStore.extras)) {
+      this.formDataStore.extras = [];
+    }
+
+    // Remove previous countable extras before adding new ones
+    this.formDataStore.extras = this.formDataStore.extras.filter(extra =>
+      !countableExtras.some(name => extra.startsWith(this.convertCamelCaseToReadable(name)))
+    );
+
+    countableExtras.forEach((extra) => {
+      const slider = document.getElementById(`${extra}Slider`);
+      if (slider) {
+        const count = parseInt(slider.value, 10);
+        if (count > 0) {
+          const displayName = this.convertCamelCaseToReadable(extra);
+          this.formDataStore.extras.push(`${displayName} (${count})`);
+        }
+      }
+    });
+  }
+
+  compileExtras() {
+    // Ensure extras is always an array and clean any prior countable extras
+    this.formDataStore.extras = Array.isArray(this.formDataStore.extras)
+      ? this.formDataStore.extras.filter(extra => !extra.match(/\(\d+\)$/)) // Remove prior countable extras
+      : typeof this.formDataStore.extras === "string"
+        ? this.formDataStore.extras.split(", ").map(item => item.trim()).filter(extra => !extra.match(/\(\d+\)$/))
+        : [];
+
+    const countableExtras = ["windows", "windowBlinds", "ceilingFans", "laundryFolding"];
+
+    countableExtras.forEach((extra) => {
+      const count = this.formDataStore[`${extra}Count`];
+      if (count && parseInt(count) > 0) {
+        const displayName = this.convertCamelCaseToReadable(extra);
+        this.formDataStore.extras.push(`${displayName} (${count})`);
+      }
+    });
+
+    // Ensure extras remains an array
+    if (!Array.isArray(this.formDataStore.extras)) {
+      this.formDataStore.extras = [];
+    }
+  }
+
+  removeExtrasCountInputs() {
+    const countInputs = this.bookingForm.querySelectorAll("input[type='range'][name$='Count']");
+    countInputs.forEach((input) => input.parentElement.remove());
+  }
+
+  initializeExtrasCountInputs() {
+    // Define countable extras with their respective IDs
+    const countableExtras = [
+      { name: "windows", displayName: "Windows" },
+      { name: "windowBlinds", displayName: "Window Blinds" },
+      { name: "ceilingFans", displayName: "Ceiling Fans" },
+      { name: "laundryFolding", displayName: "Laundry & Folding (Loads)" },
+    ];
+
+    countableExtras.forEach((extra) => {
+      const sliderContainer = document.getElementById(`${extra.name}SliderContainer`);
+      const slider = document.getElementById(`${extra.name}Slider`);
+      const countDisplay = document.getElementById(`${extra.name}CountDisplay`);
+
+      if (sliderContainer && slider && countDisplay) {
+        // ✅ Ensure sliders are always visible
+        sliderContainer.style.display = "flex";
+
+        // ✅ Initialize the count display with the slider's default value
+        countDisplay.textContent = slider.value;
+
+        // ✅ Initialize the slider's background
+        this.updateSliderBackground(slider);
+
+        // ✅ Store the initial value in `formDataStore`
+        this.formDataStore[`${extra.name}Count`] = parseInt(slider.value, 10);
+
+        // ✅ Event listener for slider input (updates UI and formDataStore)
+        slider.addEventListener("input", () => {
+          countDisplay.textContent = slider.value; // Update the UI
+          this.formDataStore[`${extra.name}Count`] = parseInt(slider.value, 10); // Store new value
+          this.appendStepData(this.currentStep, this.formDataStore);
+          this.updateSliderBackground(slider); // Update background
+        });
+      } else {
+        console.warn(`Missing elements for: ${extra.name}`);
+      }
+    });
+  }
+
   prepareExtrasForTracking() {
     if (this.formDataStore.bookingType !== "One-Time") return;
     // Step 1: Convert the extras string into an array

@@ -170,7 +170,7 @@ function initBookingForm() {
       .finally(() => {
         // Re-enable submit button
         submitButton.disabled = false;
-        submitButton.textContent = "Submit Quote Request";
+        submitButton.textContent = "Request Quote";
       });
   }
 

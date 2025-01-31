@@ -128,8 +128,8 @@
   --color-text: #EAEAEA; /* Light text */
 
   /* Primary Colors */
-  --color-primary: #9C8AD6; /* Soft Purple */
-  --color-primary-hover: #7A69B0; /* Slightly lighter for hover */
+  --color-primary: #6b5b95; /* Soft Purple */
+  --color-primary-hover: #574f8f; /* Slightly lighter for hover */
 
   --color-secondary: #78A265; /* Softer Green */
   --color-secondary-hover: rgb(143, 193, 119); /* Slightly lighter for hover */

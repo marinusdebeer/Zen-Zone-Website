@@ -51,14 +51,15 @@
       </li>
 
 
-      <li id="selectExtras" class="booking-step incomplete clickable" data-step="5" aria-disabled="true" tabindex="0" style="display: none;">
+      <li id="selectExtras" class="booking-step incomplete clickable" data-step="5" aria-disabled="true" tabindex="0"
+        style="display: none;">
         <div class="step-header">
           <span class="booking-step-number">5.</span>
           <span class="booking-step-label">Select Extras</span>
         </div>
         <div class="step-summary" id="summary-step-5" aria-live="polite"></div>
       </li>
-      <li id="selectPackage" class="booking-step incomplete clickable" data-step="5" aria-disabled="true" tabindex="0" >
+      <li id="selectPackage" class="booking-step incomplete clickable" data-step="5" aria-disabled="true" tabindex="0">
         <div class="step-header">
           <span class="booking-step-number">5.</span>
           <span class="booking-step-label">Select Package</span>
@@ -95,8 +96,7 @@
           </div>
           <div class="booking-form-group">
             <label for="booking-email">Email Address <span aria-hidden="true">*</span></label>
-            <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email"
-               />
+            <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email" />
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
               Please enter a valid email address.
             </span>
@@ -104,8 +104,8 @@
           <div class="booking-form-group">
             <label for="booking-phone">Phone Number <span aria-hidden="true">*</span></label>
             <input type="tel" id="booking-phone" name="phone" placeholder="Enter your phone number"
-              pattern="^\+?\d{10,15}$" title="Please enter a valid phone number (10 to 15 digits)." autocomplete="tel"
-               />
+              pattern="^\+?\d{10,15}$" title="Please enter a valid phone number (10 to 15 digits)."
+              autocomplete="tel" />
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
               Please enter a valid phone number.
             </span>
@@ -128,9 +128,6 @@
 
               <input type="radio" id="industry-office" name="industry" value="Office Cleaning">
               <label for="industry-office" class="booking-btn-option">Office Cleaning</label>
-
-              <input type="radio" id="industry-commercial" name="industry" value="Commercial Cleaning">
-              <label for="industry-commercial" class="booking-btn-option">Commercial Cleaning</label>
             </div>
             <!-- Optional: Error Message -->
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
@@ -164,7 +161,7 @@
           <!-- Frequency (Recurring) -->
           <div class="booking-form-group" data-name="frequency" data-conditional-field="bookingType"
             data-conditional-value="Recurring" style="display: none;" aria-hidden="true">
-            <h3 >Select Frequency</h3>
+            <h3>Select Frequency</h3>
             <div class="booking-form-options">
               <input type="radio" id="frequency-weekly" name="frequency" value="Weekly" required>
               <label for="frequency-weekly" class="booking-btn-option">Weekly</label>
@@ -310,56 +307,48 @@
             data-conditional-value="One-Time" style="display: none;" aria-hidden="true">
             <!-- <label>Select Extras</label> -->
             <div class="extras-container">
-              <!-- Non-Countable Extras -->
+
+              <!-- Non-Countable Extras as Buttons -->
               <div class="extra-item">
-                <label class="custom-checkbox" for="extras-insideOven">
-                  <input type="checkbox" id="extras-insideOven" name="extras" value="Inside Oven" />
-                  <span class="checkmark"></span>
+                <button type="button" class="extras-btn" data-value="Inside Oven" aria-pressed="false">
                   Inside Oven
-                </label>
+                </button>
               </div>
+
               <div class="extra-item">
-                <label class="custom-checkbox" for="extras-behindStove">
-                  <input type="checkbox" id="extras-behindStove" name="extras" value="Behind Stove" />
-                  <span class="checkmark"></span>
+                <button type="button" class="extras-btn" data-value="Behind Stove" aria-pressed="false">
                   Behind Stove
-                </label>
+                </button>
               </div>
+
               <div class="extra-item">
-                <label class="custom-checkbox" for="extras-insideKitchenCabinets">
-                  <input type="checkbox" id="extras-insideKitchenCabinets" name="extras"
-                    value="Inside Kitchen Cabinets" />
-                  <span class="checkmark"></span>
+                <button type="button" class="extras-btn" data-value="Inside Kitchen Cabinets" aria-pressed="false">
                   Inside Kitchen Cabinets
-                </label>
+                </button>
               </div>
+
               <div class="extra-item">
-                <label class="custom-checkbox" for="extras-wallSpotCleaning">
-                  <input type="checkbox" id="extras-wallSpotCleaning" name="extras" value="Wall Spot Cleaning" />
-                  <span class="checkmark"></span>
+                <button type="button" class="extras-btn" data-value="Wall Spot Cleaning" aria-pressed="false">
                   Wall Spot Cleaning
-                </label>
+                </button>
               </div>
+
               <div class="extra-item">
-                <label class="custom-checkbox" for="extras-doorsAndDoorFrames">
-                  <input type="checkbox" id="extras-doorsAndDoorFrames" name="extras" value="Doors and Door Frames" />
-                  <span class="checkmark"></span>
-                  Doors and Door Frames
-                </label>
+                <button type="button" class="extras-btn" data-value="Doors and Door Frames" aria-pressed="false">
+                  Doors & Door Frames
+                </button>
               </div>
+
               <div class="extra-item">
-                <label class="custom-checkbox" for="extras-baseboards">
-                  <input type="checkbox" id="extras-baseboards" name="extras" value="Baseboards" />
-                  <span class="checkmark"></span>
+                <button type="button" class="extras-btn" data-value="Baseboards" aria-pressed="false">
                   Baseboards
-                </label>
+                </button>
               </div>
+
               <div class="extra-item">
-                <label class="custom-checkbox" for="extras-greenCleaning">
-                  <input type="checkbox" id="extras-greenCleaning" name="extras" value="Green Cleaning" />
-                  <span class="checkmark"></span>
+                <button type="button" class="extras-btn" data-value="Green Cleaning" aria-pressed="false">
                   Green Cleaning
-                </label>
+                </button>
               </div>
 
               <!-- Countable Extras -->
@@ -426,7 +415,7 @@
             <input type="date" id="booking-date" name="date" required autocomplete="bday" />
             <span class="error-message" aria-live="polite" style="display: none;">Please select a preferred date.</span>
           </div>
-          
+
           <div class="booking-form-group">
             <label for="booking-details">Additional Details</label>
             <textarea id="booking-details" name="details" rows="4"
@@ -434,7 +423,7 @@
           </div>
           <div class="booking-form-nav">
             <button type="button" class="booking-btn-prev">Previous</button>
-            <button type="submit" class="booking-btn-submit">Submit Quote Request</button>
+            <button type="submit" class="booking-btn-submit">Request Quote</button>
           </div>
         </div>
       </form>
