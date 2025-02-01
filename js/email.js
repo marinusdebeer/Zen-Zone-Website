@@ -43,7 +43,7 @@ const Email = (() => {
       from_name: data.name,
       message: formatMessage(data),
     };
-    console.log("Admin email params:", adminParams, adminParams.message);
+    // console.log("Admin email params:", adminParams, adminParams.message);
 
     // Return the promise chain
     return emailjs.send(SERVICE_ID, FORM_TEMPLATE_ID, adminParams)
@@ -55,7 +55,7 @@ const Email = (() => {
           to_name: data.name,
           message: formatMessage(data),
         };
-        console.log("User email params:", userParams, userParams.message);
+        // console.log("User email params:", userParams, userParams.message);
 
         // Return second email send promise
         return emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, userParams);

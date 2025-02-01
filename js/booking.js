@@ -453,6 +453,13 @@ class BookingForm {
     extrasButtons.forEach((button) => {
       button.addEventListener("click", () => this.handleExtrasButtonClick(button));
     });
+
+    // Prevent form submission when Enter is pressed in an input field (except textareas)
+  this.bookingForm.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && e.target.tagName.toLowerCase() !== "textarea") {
+      e.preventDefault();
+    }
+  });
   }
 
   /**
