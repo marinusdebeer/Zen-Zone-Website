@@ -8,7 +8,6 @@
   justify-content: center;
   background-color: var(--color-light-green); /* Using global light green color */
   padding: 2rem;
-  box-sizing: border-box;
 }
 
 .thankyou-content {

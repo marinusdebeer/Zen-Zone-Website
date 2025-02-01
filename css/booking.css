@@ -5,9 +5,11 @@
 ------------------------- */
 
 body {
-  background-color: var(--color-bg); /* Updated to use variable */
+  background-color: var(--color-bg);
 }
-
+.navbar {
+  box-shadow: none;
+}
 .booking-container {
   width: 100%;
   max-width: 600px;
@@ -16,8 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-bg); /* Updated to use variable */
-  box-sizing: border-box;
+  background-color: var(--color-bg);
 }
 
 .booking-form-wrapper {
@@ -55,12 +56,11 @@ body {
   justify-content: space-between;
   width: 100%;
   padding: 0;
-  background-color: var(--color-bg); /* Updated to use variable */
+  background-color: var(--color-tertiary);
   position: sticky;
   top: var(--navbar-height);
   height: 150px;
-  z-index: 1500;
-  box-sizing: border-box;
+  /* z-index: 1500; */
 }
 
 .booking-progress-tracker ol {
@@ -79,15 +79,17 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   text-align: center;
-  padding: 1rem 0;
-  background-color: var(--color-bg); /* Updated to use variable */
-  border: 2px solid var(--color-tertiary);
+
+  /* border-radius: 18px; */
+  padding: 0.5rem 0;
+  margin: 3px;
+  /* background-color: var(--color-bg); */
+  /* border: 2px solid var(--color-tertiary); */
   cursor: pointer;
-  box-sizing: border-box;
-  height: 100%;
+  /* height: 100%; */
 }
 
-.booking-step:not(:last-child)::after {
+/* .booking-step:not(:last-child)::after {
   content: '';
   position: absolute;
   top: 0;
@@ -95,7 +97,7 @@ body {
   width: 2px;
   height: 100%;
   background-color: var(--color-tertiary);
-}
+} */
 
 .booking-step:last-child::after {
   display: none;
@@ -135,7 +137,7 @@ body {
 .booking-step.active {
   background-color: var(--color-secondary);
   color: var(--color-white);
-  box-shadow: 0 4px 8px var(--color-shadow);
+  /* box-shadow: 0 4px 8px var(--color-shadow); */
 }
 
 .booking-step.active {
@@ -144,7 +146,7 @@ body {
 
 .booking-step.incomplete {
   background-color: var(--color-bg);
-  border: 2px solid var(--color-tertiary);
+  /* border: 2px solid var(--color-tertiary); */
   color: var(--color-primary-text);
 }
 
@@ -202,7 +204,6 @@ body {
   border: 1px solid var(--color-gray);
   border-radius: 4px;
   font-size: 1rem;
-  box-sizing: border-box;
 }
 
 .booking-form-group input[type="checkbox"] {
@@ -762,7 +763,7 @@ body {
 ------------------------- */
 @media (max-width: 768px) {
   .booking-progress-tracker {
-    display: none; /* Adjust based on previous recommendations */
+    display: none;
     flex-direction: column;
     align-items: stretch;
     top: var(--navbar-height-tablet);

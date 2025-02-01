@@ -7,7 +7,6 @@
   <title>Zen Zone Cleaning Services - Booking Form</title>
 
   <!-- Link to External CSS -->
-  <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/utilities.css">
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="css/modals.css">
@@ -21,12 +20,21 @@
       disable_session_recording: window.location.hostname === 'localhost',
       person_profiles: 'always' // or 'always' to create profiles for anonymous users as well
     })
+
     posthog.onFeatureFlags(() => {
       const userId = posthog.get_distinct_id();
-      if (userId === '0194bd19-58dc-7531-96c9-aa11544a3415') {
-        // posthog.opt_out_capturing(); // Completely disables all tracking
+      if (userId === "0194bd19-58dc-7531-96c9-aa11544a3415") {
+        posthog.stopSessionRecording(); // Stops recording for this session
       }
     });
+
+    // Differentiate between sites
+    posthog.register({ site_domain: window.location.hostname });
+
+    posthog.identify(posthog.get_distinct_id(), {
+      site_domain: window.location.hostname
+    });
+
   </script>
 
   <!-- Google tag (gtag.js) -->
@@ -46,7 +54,7 @@
 
   <!-- Step Tracker -->
   <nav class="booking-progress-tracker" aria-label="Booking Progress">
-    <ol class="booking-steps">
+    <ol>
       <li class="booking-step active clickable" data-step="1" aria-current="step" aria-disabled="false" tabindex="0">
         <div class="step-header">
           <span class="booking-step-number">1.</span>
@@ -115,14 +123,16 @@
         <div class="booking-form-step booking-form-step--active" data-step="1" aria-hidden="false">
           <div class="booking-form-group">
             <label for="booking-name">Full Name</label>
-            <input type="text" id="booking-name" name="name" placeholder="Enter your full name" autocomplete="name" required/>
+            <input type="text" id="booking-name" name="name" placeholder="Enter your full name" autocomplete="name"
+              required />
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
               Please enter your full name.
             </span>
           </div>
           <div class="booking-form-group">
             <label for="booking-email">Email Address <span aria-hidden="true">*</span></label>
-            <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email" required/>
+            <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email"
+              required />
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
               Please enter a valid email address.
             </span>
@@ -130,8 +140,8 @@
           <div class="booking-form-group">
             <label for="booking-phone">Phone Number <span aria-hidden="true">*</span></label>
             <input type="tel" id="booking-phone" name="phone" placeholder="Enter your phone number"
-              pattern="^\+?\d{10,15}$" title="Please enter a valid phone number (10 to 15 digits)."
-              autocomplete="tel" required/>
+              pattern="^\+?\d{10,15}$" title="Please enter a valid phone number (10 to 15 digits)." autocomplete="tel"
+              required />
             <span class="error-message" aria-live="polite" style="color: red; display: none;">
               Please enter a valid phone number.
             </span>

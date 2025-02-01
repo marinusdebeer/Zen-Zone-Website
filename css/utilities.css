@@ -1,198 +1,122 @@
-/* utilities.css */
+/* ============================================
+   utilities.css: Combined Reset & Utility Styles
+============================================ */
 
+/* -------------------------
+   CSS VARIABLES (Defined at the Top)
+------------------------- */
 :root {
-  /* -------------------------
-     Layout Dimensions
-  ------------------------- */
-  /* Navbar Heights */
-  --navbar-height-desktop: 70px; /* Default navbar height for desktop */
-  --navbar-height-tablet: 60px;  /* Adjusted for tablet */
-  --navbar-height-mobile: 60px;  /* Adjusted for mobile */
+  /* Layout Dimensions */
+  --navbar-height-desktop: 70px;
+  --navbar-height-tablet: 60px;
+  --navbar-height-mobile: 60px;
 
   /* Gallery Specific Variables */
-  --gallery-animation-duration: 140s; /* Adjusted duration of the scroll animation */
-  --gallery-gap: 20px;               /* Space between images */
-
-  /* Desktop Image Dimensions */
-  --gallery-item-width: 400px;       /* Width of each gallery item on desktop */
-  --gallery-item-height: 375px;      /* Height of each gallery item on desktop */
-
-  /* Tablet (iPad) Image Dimensions */
-  --gallery-item-width-tablet: 350px; /* Width on tablets */
-  --gallery-item-height-tablet: 350px; /* Height on tablets */
-
-  /* Mobile Image Dimensions */
-  --gallery-item-width-mobile: 400px; /* Width on mobile devices */
-  --gallery-item-height-mobile: 400px; /* Height on mobile devices */
-
-  /* Number of Images per Container */
-  --images-per-container-desktop: 32; /* Number of images on desktop */
-  --images-per-container-tablet: 32;   /* Number of images on tablets */
-  --images-per-container-mobile: 32;    /* Number of images on mobile */
-
-  /* Calculated Container and Track Widths */
+  --gallery-animation-duration: 140s;
+  --gallery-gap: 20px;
+  --gallery-item-width: 400px;
+  --gallery-item-height: 375px;
+  --gallery-item-width-tablet: 350px;
+  --gallery-item-height-tablet: 350px;
+  --gallery-item-width-mobile: 400px;
+  --gallery-item-height-mobile: 400px;
+  --images-per-container-desktop: 32;
+  --images-per-container-tablet: 32;
+  --images-per-container-mobile: 32;
   --gallery-container-width: calc(var(--gallery-item-width) * var(--images-per-container-desktop) + var(--gallery-gap) * (var(--images-per-container-desktop) - 1));
   --gallery-track-width: calc(var(--gallery-container-width) * 2);
 
-  /* -------------------------
-     Color Palette - Light Mode
-  ------------------------- */
-  /* Primary Colors */
-  --color-primary: #6b5b95; /* Purple */
+  --hero-background-overlay-opacity: 0.3;
+  --hero-overlay-light: rgba(0, 0, 0, var(--hero-background-overlay-opacity));
+  --hero-overlay-dark: rgba(255, 255, 255, var(--hero-background-overlay-opacity));
+  --hero-title-font-size: clamp(2.25rem, 5vw, 3rem);
+  --hero-subtitle-font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  --hero-padding: 2rem 1rem;
+  --hero-padding-small-mobile: 2rem 0.5rem;
+
+  /* Color Palette - Light Mode */
+  --color-primary: #6b5b95;
   --color-primary-hover: #574f8f;
-
-  --color-secondary: #78a265; /* Light Green */
+  --color-secondary: #78a265;
   --color-secondary-hover: #5e774c;
-
   --color-tertiary: #2E3D2F;
   --color-tertiary-hover: #1f2a1d;
-
   --color-white: #ffffff;
   --color-black: #000000;
   --color-red: rgb(130, 12, 12);
-
-  /* Additional Colors */
-  --color-secondary-text: #37474F; /* For subtitles and secondary text */
-  --color-primary-text: #2e3d2f;   /* For primary text */
-
-  /* Footer Specific Colors */
-  --color-footer-background: var(--color-tertiary); /* Dark Green */
-  --color-footer-link: var(--color-white);       /* White links in footer */
-  --color-footer-link-hover: #78a265; /* Light Green on hover */
-
-  /* Shadow Color */
+  --color-secondary-text: #37474F;
+  --color-primary-text: #2e3d2f;
+  --color-footer-background: var(--color-tertiary);
+  --color-footer-link: var(--color-white);
+  --color-footer-link-hover: #78a265;
   --color-shadow: rgba(0, 0, 0, 0.5);
-
-  /* Focus Color */
-  --color-focus: #ffbf47; /* High-contrast color for focus outlines */
-
-  /* Light and Gray Colors */
-  --color-light-green: #FAFFFA; /* Light Green Background */
-  --color-gray: #ccc; /* Gray for borders and backgrounds */
-  --color-light-gray: #F0F0F0; /* Light Gray for hover effects */
-
-  /* Input Fields */
-  --color-input-bg: #ffffff; /* Light mode input background */
-  --color-input-border: var(--color-gray); /* Light mode input border */
-
-  /* Background and Text for Light Mode */
-  --color-bg: #ffffff; /* White background */
-  --color-text: #2e3d2f; /* Dark text */
-
-  /* Read More Button */
+  --color-focus: #ffbf47;
+  --color-light-green: #FAFFFA;
+  --color-gray: #ccc;
+  --color-light-gray: #F0F0F0;
+  --color-input-bg: #ffffff;
+  --color-input-border: var(--color-gray);
+  --color-bg: #ffffff;
+  --color-text: #2e3d2f;
   --color-read-more-bg: var(--color-secondary);
   --color-read-more-hover-bg: var(--color-primary-text);
   --color-read-more-text: var(--color-white);
-
-  --slider-fill-color: var(--color-secondary); /* Color of the filled portion */
-  --slider-track-color: #ccc;    /* Color of the unfilled portion */
-  --slider-thumb-color: var(--color-secondary); /* Color of the slider thumb */
-
-  /* -------------------------
-     Additional Color Variables - Light Mode
-  ------------------------- */
-
-  /* Areas Section */
-  --color-secondary-background: #f0f0f0; /* Light gray background for areas */
-
-  /* Blog Section */
-  --color-blog-section-bg: #ffffff; /* White background for blog section */
-
-  /* Social Sharing */
-  --color-social-sharing-bg: var(--color-secondary); /* Light Green */
-  --color-social-sharing-hover-bg: var(--color-primary-text); /* Dark text color for contrast */
-
-  /* Booking Modal */
-  --color-modal-background: #ffffff; /* White background for modals */
-  --color-modal-close: var(--color-primary); /* Primary color for close button */
-
-  /* Booking Progress Bar */
-  --color-progress-bar-bg: #ddd; /* Light gray for progress bar background */
-  --color-progress-bar: var(--color-secondary); /* Light Green for progress bar */
-
-  /* Toast Notifications */
-  --color-toast-success: var(--color-secondary); /* Light Green for success messages */
-  --color-toast-error: var(--color-red); /* Red for error messages */
+  --slider-fill-color: var(--color-secondary);
+  --slider-track-color: #ccc;
+  --slider-thumb-color: var(--color-secondary);
+  --color-secondary-background: #f0f0f0;
+  --color-blog-section-bg: #ffffff;
+  --color-social-sharing-bg: var(--color-secondary);
+  --color-social-sharing-hover-bg: var(--color-primary-text);
+  --color-modal-background: #ffffff;
+  --color-modal-close: var(--color-primary);
+  --color-progress-bar-bg: #ddd;
+  --color-progress-bar: var(--color-secondary);
+  --color-toast-success: var(--color-secondary);
+  --color-toast-error: var(--color-red);
   --color-error: #ff0000;
   --color-labels: var(--color-tertiary);
 }
 
-/* -------------------------
-   Color Palette - Dark Mode
-------------------------- */
+/* Dark Mode Overrides */
 [data-theme="dark"] {
-  /* Existing Dark Mode Overrides */
-
-  /* Background and Text */
-  --color-bg: #1E1E1E; /* Dark background */
-  --color-text: #EAEAEA; /* Light text */
-
-  /* Primary Colors */
-  --color-primary: #6b5b95; /* Soft Purple */
-  --color-primary-hover: #574f8f; /* Slightly lighter for hover */
-
-  --color-secondary: #78A265; /* Softer Green */
-  --color-secondary-hover: rgb(143, 193, 119); /* Slightly lighter for hover */
-
-  --color-tertiary: #2e3d2f; /* Orange remains the same */
-
-  /* Input Fields Override */
-  --color-input-bg: #333333; /* Dark mode input background */
-  --color-input-border: #444; /* Dark mode input border */
-
-  /* Additional Colors */
-  --color-secondary-text: #B0BEC5; /* Lighter gray for secondary text in dark mode */
-  --color-primary-text: #EAEAEA; /* Light text for primary text in dark mode */
-
-  /* Footer Specific Colors */
-  --color-footer-background: var(--color-tertiary); /* Even darker footer */
-  --color-footer-link-hover: #78a265; /* Light Green on hover */
-
-  /* Shadow Color */
-  --color-shadow: rgba(255, 255, 255, 0.1); /* Light shadow for dark mode */
-
-  /* Light and Gray Colors */
-  --color-light-green: #1E1E1E; /* Dark Green Background */
-  --color-gray: #444; /* Dark Gray for borders and backgrounds */
-  --color-light-gray: #2C2C2C; /* Darker gray for hover effects */
-
-  /* Additional Color Variables for Dark Mode */
-  /* Areas Section */
-  --color-secondary-background: #2C2C2C; /* Darker background for areas */
-
-  /* Blog Section */
-  --color-blog-section-bg: #1A1A1A; /* Dark background for blog section */
-
-  /* Social Sharing */
-  --color-social-sharing-bg: var(--color-secondary); /* Softer Green */
-  --color-social-sharing-hover-bg: var(--color-primary-text); /* Light text color */
-
-  /* Booking Modal */
-  --color-modal-background: #2C2C2C; /* Darker background for modals */
-  --color-modal-close: var(--color-primary); /* Primary color for close button */
-
-  /* Booking Progress Bar */
-  --color-progress-bar-bg: #555; /* Darker gray for progress bar background */
-  --color-progress-bar: var(--color-secondary); /* Softer Green for progress bar */
-
-  /* Toast Notifications */
+  --color-bg:rgb(22, 22, 22);
+  --color-text: #EAEAEA;
+  --color-primary: #6b5b95;
+  --color-primary-hover: #574f8f;
+  --color-secondary: #78A265;
+  --color-secondary-hover: rgb(143, 193, 119);
+  --color-tertiary: #2e3d2f;
+  --color-input-bg: #333333;
+  --color-input-border: #444;
+  --color-secondary-text: #B0BEC5;
+  --color-primary-text: #EAEAEA;
+  --color-footer-background: var(--color-tertiary);
+  --color-footer-link-hover: #78a265;
+  --color-shadow: rgba(255, 255, 255, 0.1);
+  --color-light-green: #1E1E1E;
+  --color-gray: #444;
+  --color-light-gray: #2C2C2C;
+  --color-secondary-background: #2C2C2C;
+  --color-blog-section-bg: #1A1A1A;
+  --color-social-sharing-bg: var(--color-secondary);
+  --color-social-sharing-hover-bg: var(--color-primary-text);
+  --color-modal-background: #2C2C2C;
+  --color-modal-close: var(--color-primary);
+  --color-progress-bar-bg: #555;
+  --color-progress-bar: var(--color-secondary);
   --color-toast-success: var(--color-secondary);
   --color-toast-error: var(--color-red);
-
-  /* Read More Button */
   --color-read-more-bg: var(--color-tertiary);
   --color-read-more-hover-bg: var(--color-secondary);
   --color-read-more-text: var(--color-text);
-
-  --slider-fill-color: var(--color-secondary); /* Color of the filled portion */
-  --slider-track-color: #ccc;    /* Color of the unfilled portion */
-  --slider-thumb-color: var(--color-secondary); /* Color of the slider thumb */
+  --slider-fill-color: var(--color-secondary);
+  --slider-track-color: #ccc;
+  --slider-thumb-color: var(--color-secondary);
   --color-labels: var(--color-secondary);
 }
 
-/* -------------------------
-   Responsive Navbar Heights
-------------------------- */
+/* Responsive Navbar & Gallery Dimensions */
 @media (max-width: 768px) {
   :root {
     --navbar-height: var(--navbar-height-tablet);
@@ -218,8 +142,100 @@
 }
 
 /* -------------------------
-   Base CTA Button
+   RESET & GLOBAL STYLES
 ------------------------- */
+
+/* Universal Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 Display Role Reset */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Base Body & Layout */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--color-text);
+  line-height: 1.6;
+  background-color: var(--color-bg);
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote::before, blockquote::after,
+q::before, q::after {
+  content: '';
+  content: none;
+}
+
+/* Modal & Skip Link */
+.modal-open {
+  overflow: hidden;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* -------------------------
+   UTILITY & COMPONENT STYLES
+------------------------- */
+
+/* CTA Buttons */
 .cta-button {
   display: flex;
   align-items: center;
@@ -239,7 +255,7 @@
   outline-offset: 2px;
 }
 
-/* Modifier for Call Button */
+/* Modifier: Call Button */
 .cta-button.call-button {
   background-color: var(--color-secondary);
 }
@@ -249,7 +265,7 @@
   background-color: var(--color-secondary-hover);
 }
 
-/* Modifier for Book Now Button */
+/* Modifier: Book Now Button */
 .cta-button.book-now {
   background-color: var(--color-primary);
   text-decoration: none;
@@ -260,13 +276,13 @@
   background-color: var(--color-primary-hover);
 }
 
-/* Common Hover Effects */
+/* Common Hover Effect for Buttons */
 .cta-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px var(--color-shadow);
 }
 
-/* Accessible Links Styled as Buttons */
+/* Accessible Button Links */
 .button-link {
   display: inline-flex;
   align-items: center;
@@ -294,10 +310,7 @@
   outline-offset: 2px;
 }
 
-/* -------------------------
-   Motion Preferences
-------------------------- */
-/* Respect User’s Motion Preferences */
+/* Motion Preferences: Reduce Animations if Requested */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
@@ -305,24 +318,12 @@
   }
 }
 
-/* -------------------------
-   Error States
-------------------------- */
+/* Error States */
 .border-red-500 {
-  border-color: #f56565; /* Red color for errors */
+  border-color: #f56565;
 }
 
-/* -------------------------
-   Dark Mode Accessible Elements
-------------------------- */
-/* Ensure text and backgrounds adapt in dark mode */
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  /* transition: background-color 0.3s ease; */
-}
-
-/* Header and Footer */
+/* Header & Footer Styling */
 .header,
 .footer {
   background-color: var(--color-footer-background);
@@ -341,7 +342,7 @@ body {
   color: var(--color-footer-link-hover);
 }
 
-/* Buttons */
+/* Button Elements */
 button,
 input[type="button"],
 input[type="submit"] {
@@ -354,10 +355,9 @@ button:hover,
 input[type="button"]:hover,
 input[type="submit"]:hover {
   background-color: var(--color-primary-hover);
-  transition: background-color 0.3s ease;
 }
 
-/* Links */
+/* Link Elements */
 a {
   color: var(--color-primary);
   text-decoration: none;
@@ -368,12 +368,9 @@ a:hover,
 a:focus {
   color: var(--color-primary-hover);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-/* -------------------------
-   Form Inputs (Light & Dark Mode)
-------------------------- */
+/* Form Elements */
 input,
 textarea,
 select {
@@ -391,7 +388,6 @@ select:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 5px var(--color-primary);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 [data-theme="dark"] input:focus,
@@ -400,4 +396,3 @@ select:focus {
   border-color: var(--color-secondary);
   box-shadow: 0 0 5px var(--color-secondary);
 }
-

@@ -137,7 +137,6 @@
   border: 1px solid var(--color-gray);
   border-radius: 4px;
   font-size: 1rem;
-  box-sizing: border-box;
 }
 
 .booking-form-group input[type="range"] {

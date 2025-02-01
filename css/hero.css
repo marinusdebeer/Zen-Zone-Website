@@ -1,22 +1,5 @@
 /* hero.css */
 
-/* CSS Variables Specific to the Hero Section */
-:root {
-  --hero-background-overlay-opacity: 0.3; /* Adjusted opacity for better visibility */
-  --hero-overlay-light: rgba(0, 0, 0, var(--hero-background-overlay-opacity)); /* Dark overlay for light mode */
-  --hero-overlay-dark: rgba(255, 255, 255, var(--hero-background-overlay-opacity)); /* Light overlay for dark mode */
-  --hero-title-font-size: clamp(2.25rem, 5vw, 3rem);
-  --hero-subtitle-font-size: clamp(1.1rem, 2.5vw, 1.2rem);
-  --hero-padding: 2rem 1rem;
-  --hero-padding-small-mobile: 2rem 0.5rem;
-}
-
-/* Ensure Box Sizing Includes Padding and Border */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 /* HERO SECTION */
 .hero {
@@ -27,28 +10,10 @@
   flex-direction: column; /* Vertical stacking */
   align-items: center;
   justify-content: center;
-  background-color: var(--color-bg); /* Using global background color */
+  background-color: var(--color-bg);
   overflow: visible; /* Prevent content from being cut off */
 }
 
-/* Background Image with Overlay */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  
-  /* Dynamic Overlay Based on Theme */
-  background-color: var(--color-bg);
-  mix-blend-mode: overlay;
-  
-  opacity: var(--hero-background-overlay-opacity);
-  pointer-events: none; /* Allows interactions to pass through */
-}
 
 /* Hide the phone number by default */
 .hero-phone {

@@ -12,7 +12,6 @@
 
   <link rel="icon" href="/assets/thumbnails/moose_logo.png" type="image/x-icon">
   <!-- External CSS -->
-  <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/utilities.css">
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/blog.css">
@@ -75,11 +74,19 @@
       disable_session_recording: window.location.hostname === 'localhost',
       person_profiles: 'always' // or 'always' to create profiles for anonymous users as well
     })
+    
     posthog.onFeatureFlags(() => {
       const userId = posthog.get_distinct_id();
-      if (userId === '0194bd19-58dc-7531-96c9-aa11544a3415') {
-        // posthog.opt_out_capturing(); // Completely disables all tracking
+      if (userId === "0194bd19-58dc-7531-96c9-aa11544a3415") {
+        posthog.stopSessionRecording(); // Stops recording for this session
       }
+    });
+
+    // Differentiate between sites
+    posthog.register({ site_domain: window.location.hostname });
+
+    posthog.identify(posthog.get_distinct_id(), {
+      site_domain: window.location.hostname
     });
   </script>
   
