@@ -9,8 +9,6 @@
   <!-- Link to External CSS -->
   <link rel="stylesheet" href="/css/utilities.css">
   <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="css/modals.css">
-  <link rel="stylesheet" href="css/bookingModal.css">
   <link rel="stylesheet" href="/css/footer.css">
   <link rel="stylesheet" href="/css/booking.css">
   <script>
@@ -124,8 +122,8 @@
           <div class="booking-form-group">
             <label for="booking-name">Full Name</label>
             <input type="text" id="booking-name" name="name" placeholder="Enter your full name" autocomplete="name"
-              required />
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">
+              required oninvalid="'Enter User Name Here'"/>
+            <span class="error-message" aria-live="polite" style="display: none;">
               Please enter your full name.
             </span>
           </div>
@@ -133,7 +131,7 @@
             <label for="booking-email">Email Address <span aria-hidden="true">*</span></label>
             <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email"
               required />
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">
+            <span class="error-message" aria-live="polite" style="display: none;">
               Please enter a valid email address.
             </span>
           </div>
@@ -142,7 +140,7 @@
             <input type="tel" id="booking-phone" name="phone" placeholder="Enter your phone number"
               pattern="^\+?\d{10,15}$" title="Please enter a valid phone number (10 to 15 digits)." autocomplete="tel"
               required />
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">
+            <span class="error-message" aria-live="polite" style="display: none;">
               Please enter a valid phone number.
             </span>
           </div>
@@ -203,10 +201,10 @@
               <input type="radio" id="frequency-weekly" name="frequency" value="Weekly" required>
               <label for="frequency-weekly" class="booking-btn-option service">Weekly</label>
 
-              <input type="radio" id="frequency-biweekly" name="frequency" value="Bi-Weekly">
+              <input type="radio" id="frequency-biweekly" name="frequency" value="Bi-Weekly" required>
               <label for="frequency-biweekly" class="booking-btn-option service">Bi-Weekly</label>
 
-              <input type="radio" id="frequency-every4weeks" name="frequency" value="Every 4 Weeks">
+              <input type="radio" id="frequency-every4weeks" name="frequency" value="Every 4 Weeks" required>
               <label for="frequency-every4weeks" class="booking-btn-option service">Every 4 Weeks</label>
             </div>
             <!-- Optional: Error Message -->
@@ -564,7 +562,6 @@
 
   <!-- Other JS Files -->
   <script src="/js/navbar.js" defer></script>
-  <script src="js/modals.js" defer></script>
   <!-- <script src="/js/tracking.js" defer></script> -->
   <script src="/js/email.js" defer></script>
   <script src="/js/booking.js" defer></script>

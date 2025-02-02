@@ -39,8 +39,6 @@
   <link rel="stylesheet" href="css/reviews.css">
   <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/modals.css">
-  <link rel="stylesheet" href="css/bookingModal.css">
   <link rel="stylesheet" href="css/areas.css">
 
   <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style"
@@ -143,6 +141,7 @@
     gtag('js', new Date());
     gtag('config', 'G-8H1891ZW72');
   </script>
+
 </head>
 
 
@@ -990,112 +989,194 @@
       </div>
     </section>
 
-    <!-- SERVICES SECTION WITH HERO TILES -->
-    <section class="services" id="services">
-      <h2>Our Cleaning Services</h2>
-      <div class="services-hero-tiles">
-        <div class="service-tile">
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services" aria-label="Our Cleaning Services">
+      <div class="services-content">
+        <h2>Our Cleaning Services</h2>
+        <div class="services-hero-tiles">
+          <div class="service-tile">
+            <h3>Deep Cleaning</h3>
+            <p class="truncate">
+              Our Deep Cleaning Service is designed to give your home a fresh start by tackling both the visible and
+              hidden dirt. We thoroughly clean all common areas…
+            </p>
+            <a href="#tooltip-DeepCleaning" class="learn-more-btn" aria-label="Learn more about Deep Cleaning">Learn
+              More</a>
+          </div>
+          <div class="service-tile">
+            <h3>Standard Cleaning</h3>
+            <p class="truncate">
+              Our Standard Cleaning Service ensures a thorough cleaning of all common areas, including bedrooms,
+              kitchens, and bathrooms. We wipe and dust surfaces…
+            </p>
+            <a href="#tooltip-StandardCleaning" class="learn-more-btn"
+              aria-label="Learn more about Standard Cleaning">Learn More</a>
+          </div>
+          <div class="service-tile">
+            <h3>Post-Construction Cleaning</h3>
+            <p class="truncate">
+              Our Post-Construction Cleaning Service handles the mess left behind after construction or renovation
+              projects. We ensure your property is spotless…
+            </p>
+            <a href="#tooltip-PostConstructionCleaning" class="learn-more-btn"
+              aria-label="Learn more about Post-Construction Cleaning">Learn More</a>
+          </div>
+          <div class="service-tile">
+            <h3>Standard Moving Cleaning</h3>
+            <p class="truncate">
+              Our Move-In/Out Standard Cleaning Service is perfect for homes that need a general refresh during a move.
+              We focus on cleaning all common areas…
+            </p>
+            <a href="#tooltip-MoveInCleaning" class="learn-more-btn"
+              aria-label="Learn more about Standard Moving Cleaning">Learn More</a>
+          </div>
+          <div class="service-tile">
+            <h3>Deep Moving Cleaning</h3>
+            <p class="truncate">
+              Our Move-In/Out Deep Cleaning Service provides a comprehensive, detailed clean ensuring every corner of
+              your home is spotless…
+            </p>
+            <a href="#tooltip-MoveOutCleaning" class="learn-more-btn"
+              aria-label="Learn more about Deep Moving Cleaning">Learn More</a>
+          </div>
+          <div class="service-tile">
+            <h3>Airbnb Cleaning</h3>
+            <p class="truncate">
+              Enhance guest satisfaction with our fast and efficient cleaning services for seamless Airbnb turnovers…
+            </p>
+            <a href="#tooltip-AirbnbCleaning" class="learn-more-btn" aria-label="Learn more about Airbnb Cleaning">Learn
+              More</a>
+          </div>
+          <div class="service-tile">
+            <h3>Office Cleaning</h3>
+            <p class="truncate">
+              Boost productivity and maintain a professional image with our comprehensive office cleaning services…
+            </p>
+            <a href="#tooltip-OfficeCleaning" class="learn-more-btn" aria-label="Learn more about Office Cleaning">Learn
+              More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOLTIP MODALS -->
+      <!-- Deep Cleaning Tooltip -->
+      <div id="tooltip-DeepCleaning" class="tooltip">
+        <div class="tooltip-content">
           <h3>Deep Cleaning</h3>
           <p>
             Our Deep Cleaning Service is designed to give your home a fresh start by tackling both the visible and
             hidden dirt. We thoroughly clean all common areas, including bedrooms, kitchens, and bathrooms. This
             includes wiping and dusting surfaces, sweeping and mopping floors, vacuuming carpets, and cleaning mirrors,
             door handles, and light switches.
-
-            We also focus on the areas that are often overlooked or hard to reach. This includes cleaning behind
-            appliances (like the fridge and oven), baseboards, door frames, interior windows, blinds, ceiling fans,
-            light fixtures, wall spots, and grout. High-touch areas are sanitized to help reduce the spread of germs.
-
-            Our deep cleaning ensures your home is not only clean but also feels refreshed and comfortable, making it an
-            ideal choice for a detailed reset of your space.
           </p>
-          <button class="learn-more-btn" data-service="DeepCleaning" aria-label="Learn more about Deep Cleaning">
-            Learn More
-          </button>
+          <p>
+            We also focus on areas that are often overlooked or hard to reach, such as cleaning behind appliances,
+            baseboards, door frames, interior windows, blinds, ceiling fans, light fixtures, wall spots, and grout.
+            High-touch areas are sanitized to help reduce the spread of germs.
+          </p>
+          <a href="#services" class="tooltip-close" aria-label="Close Deep Cleaning details">Close</a>
         </div>
-        <div class="service-tile">
+      </div>
+
+      <!-- Standard Cleaning Tooltip -->
+      <div id="tooltip-StandardCleaning" class="tooltip">
+        <div class="tooltip-content">
           <h3>Standard Cleaning</h3>
           <p>
             Our Standard Cleaning Service ensures a thorough cleaning of all common areas, including bedrooms, kitchens,
-            and bathrooms. We wipe and dust surfaces, sweep and mop floors and baseboards, and vacuum carpets.
-            Additionally, we clean mirrors, door handles, light switches, and kitchen cabinet fronts, addressing even
-            the finer details. High-touch areas are given extra attention to reduce the spread of germs. This service is
-            ideal for maintaining a fresh, clean, and healthy living environment.
+            and bathrooms. We wipe and dust surfaces, sweep and mop floors and baseboards, vacuum carpets, and clean
+            mirrors, door handles, light switches, and kitchen cabinet fronts.
           </p>
-          <button class="learn-more-btn" data-service="StandardCleaning"
-            aria-label="Learn more about Standard Cleaning">
-            Learn More
-          </button>
+          <p>
+            High-touch areas receive extra attention to reduce the spread of germs, making this service ideal for
+            maintaining a fresh, clean, and healthy living environment.
+          </p>
+          <a href="#services" class="tooltip-close" aria-label="Close Standard Cleaning details">Close</a>
         </div>
-        <div class="service-tile">
+      </div>
+
+      <!-- Post-Construction Cleaning Tooltip -->
+      <div id="tooltip-PostConstructionCleaning" class="tooltip">
+        <div class="tooltip-content">
           <h3>Post-Construction Cleaning</h3>
           <p>
-            Our Post-Construction Cleaning Service is designed to handle the mess left behind after construction or
-            renovation projects. We ensure your property is spotless, safe, and move-in ready by tackling dust, debris,
-            and residue with precision.
-
-            This service includes removing construction dust and debris, deep cleaning all surfaces, windows, fixtures,
-            and hard-to-reach areas. Whether it’s a newly built space or a renovated one, our cleaning ensures your
-            property is polished, refreshed, and perfectly prepared for its next use.
+            Our Post-Construction Cleaning Service handles the mess left behind after construction or renovation
+            projects. We ensure your property is spotless, safe, and move-in ready by tackling dust, debris, and residue
+            with precision.
           </p>
-          <button class="learn-more-btn" data-service="PostConstructionCleaning"
-            aria-label="Learn more about Post-Construction Cleaning">
-            Learn More
-          </button>
+          <p>
+            This service includes removing construction dust and debris, deep cleaning all surfaces, windows, fixtures,
+            and hard-to-reach areas.
+          </p>
+          <a href="#services" class="tooltip-close" aria-label="Close Post-Construction Cleaning details">Close</a>
         </div>
-        <div class="service-tile">
+      </div>
+
+      <!-- Standard Moving Cleaning Tooltip -->
+      <div id="tooltip-MoveInCleaning" class="tooltip">
+        <div class="tooltip-content">
           <h3>Standard Moving Cleaning</h3>
           <p>
-            Our Move-In/Out Standard Cleaning Service is perfect for homes that need a general refresh during a move.
-            This service focuses on all common areas, bedrooms, kitchens, and bathrooms. We wipe and dust surfaces,
-            sweep and mop floors, vacuum carpets, and clean mirrors, door handles, light switches, and kitchen cabinet
-            fronts. High-touch areas receive extra care to help reduce the spread of germs. This service is ideal for
-            homes in good condition that need a light touch-up before moving out or settling into your new space.
+            Our Move-In/Out Standard Cleaning Service is perfect for homes that need a general refresh during a move. We
+            clean all common areas, including bedrooms, kitchens, and bathrooms, ensuring surfaces, floors, and fixtures
+            are spotless.
           </p>
-          <button class="learn-more-btn" data-service="MoveInCleaning" aria-label="Learn more about Move-In Cleaning">
-            Learn More
-          </button>
+          <p>
+            High-touch areas receive extra care to reduce the spread of germs, making it ideal for preparing a home for
+            new occupants.
+          </p>
+          <a href="#services" class="tooltip-close" aria-label="Close Standard Moving Cleaning details">Close</a>
         </div>
-        <div class="service-tile">
+      </div>
+
+      <!-- Deep Moving Cleaning Tooltip -->
+      <div id="tooltip-MoveOutCleaning" class="tooltip">
+        <div class="tooltip-content">
           <h3>Deep Moving Cleaning</h3>
           <p>
-            Our Move-In/Out Deep Cleaning Service is designed for a comprehensive and detailed clean, ensuring every
-            corner of your home is spotless and refreshed. This service includes all the tasks in our Moving Standard
-            Cleaning Service, plus cleaning behind appliances (such as the fridge and oven), baseboards, door frames,
-            interior windows, blinds, ceiling fans, light fixtures, wall spots, and grout. High-touch areas are
-            sanitized to minimize the spread of germs. This service is perfect for homes requiring a thorough reset,
-            whether you’re moving into a new space or leaving your old one in pristine condition.
+            Our Move-In/Out Deep Cleaning Service provides a comprehensive, detailed clean to ensure every corner of
+            your home is spotless. In addition to standard cleaning tasks, we clean behind appliances, baseboards, door
+            frames, interior windows, blinds, ceiling fans, light fixtures, and grout.
           </p>
-          <button class="learn-more-btn" data-service="MoveOutCleaning" aria-label="Learn more about Move-Out Cleaning">
-            Learn More
-          </button>
+          <p>
+            High-touch areas are sanitized to minimize the spread of germs, making this service perfect for a thorough
+            reset during a move.
+          </p>
+          <a href="#services" class="tooltip-close" aria-label="Close Deep Moving Cleaning details">Close</a>
         </div>
-        <div class="service-tile">
+      </div>
+
+      <!-- Airbnb Cleaning Tooltip -->
+      <div id="tooltip-AirbnbCleaning" class="tooltip">
+        <div class="tooltip-content">
           <h3>Airbnb Cleaning</h3>
           <p>
-            Enhance guest satisfaction with our fast and efficient cleaning for
-            seamless Airbnb turnovers.
+            Enhance guest satisfaction with our fast and efficient cleaning services for seamless Airbnb turnovers. We
+            ensure your property is guest-ready, with a quick yet thorough clean covering all common areas.
           </p>
-          <button class="learn-more-btn" data-service="AirbnbCleaning" aria-label="Learn more about Airbnb Cleaning">
-            Learn More
-          </button>
+          <a href="#services" class="tooltip-close" aria-label="Close Airbnb Cleaning details">Close</a>
         </div>
-        <div class="service-tile">
+      </div>
+
+      <!-- Office Cleaning Tooltip -->
+      <div id="tooltip-OfficeCleaning" class="tooltip">
+        <div class="tooltip-content">
           <h3>Office Cleaning</h3>
           <p>
-            Boost productivity and maintain a professional image with our
-            comprehensive office cleaning services.
+            Boost productivity and maintain a professional image with our comprehensive office cleaning services. We
+            clean workspaces, break rooms, restrooms, and common areas to ensure your office remains healthy and
+            inviting.
           </p>
-          <button class="learn-more-btn" data-service="OfficeCleaning" aria-label="Learn more about Office Cleaning">
-            Learn More
-          </button>
+          <a href="#services" class="tooltip-close" aria-label="Close Office Cleaning details">Close</a>
         </div>
       </div>
     </section>
 
+
+
     <!-- GALLERY SECTION -->
     <section class="gallery" id="gallery" aria-label="Gallery of Our Cleaning Work">
-      <h2>Our Cleaning Gallery</h2>
+      <h2>Gallery</h2>
       <div class="gallery-track">
         <!-- Original Gallery Container -->
         <div class="gallery-container">
@@ -1359,7 +1440,7 @@
               alt="10 Common Cleaning Mistakes Homeowners Make and How to Avoid Them" class="blog-thumbnail"
               loading="lazy" />
             <h3>10 Common Cleaning Mistakes Homeowners Make and How to Avoid Them</h3>
-            <p class="post-date-entry">Published on January 10, 2025</p>
+            <p class="post-date-entry">Published on January 25, 2025</p>
             <p class="post-description">Learn how to avoid the top cleaning mistakes that can leave your home less
               spotless and save you time and effort.</p>
             <span class="read-more-btn"
@@ -1372,11 +1453,11 @@
         <a href="/blogs/declutter-your-space-declutter-your-mind.html" class="blog-card"
           aria-label="Read more about Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity">
           <div class="blog-entry">
-            <img src="/assets/thumbnails/deep.webp"
+            <img src="/assets/thumbnails/standard.webp"
               alt="Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity"
               class="blog-thumbnail" loading="lazy" />
             <h3>Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity</h3>
-            <p class="post-date-entry">Published on January 22, 2025</p>
+            <p class="post-date-entry">Published on January 10, 2025</p>
             <p class="post-description">Discover effective strategies to keep your space clutter-free and boost your
               mental clarity.</p>
             <span class="read-more-btn"
@@ -1390,10 +1471,11 @@
         <a href="/blogs/office-cleaning-frequency.html" class="blog-card"
           aria-label="Read more about How Often Should You Get Your Office Professionally Cleaned?">
           <div class="blog-entry">
-            <img src="/assets/thumbnails/deep.webp" alt="How Often Should You Get Your Office Professionally Cleaned?"
-              class="blog-thumbnail" loading="lazy" />
+            <img src="/assets/thumbnails/commercial.webp"
+              alt="How Often Should You Get Your Office Professionally Cleaned?" class="blog-thumbnail"
+              loading="lazy" />
             <h3>How Often Should You Get Your Office Professionally Cleaned?</h3>
-            <p class="post-date-entry">Published on January 10, 2025</p>
+            <p class="post-date-entry">Published on December 27, 2024</p>
             <p class="post-description">Learn how frequently your office should be cleaned to maintain a healthy,
               productive work environment.</p>
             <span class="read-more-btn"
@@ -1469,11 +1551,8 @@
 
 
   <!-- JavaScript Files (Order Matters) -->
-  <script src="js/modals.js" defer></script>
   <script src="js/reviews.js" defer></script>
-  <script src="js/bookingForm.js" defer></script>
   <script src="js/navbar.js" defer></script>
-  <script src="js/main.js" defer></script>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

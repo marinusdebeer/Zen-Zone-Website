@@ -1,16 +1,20 @@
-/* services.css */
-
-/* SERVICES SECTION */
+/* Services Section */
 .services {
   padding: 4rem 2rem;
-  background-color: var(--color-bg); /* Updated to use variable */
+  background-color: var(--color-bg);
+  position: relative;
 }
 
 .services h2 {
   text-align: center;
-  font-size: 2rem;
-  color: var(--color-primary-text); /* Using global primary text color */
+  font-size: 3rem;
+  color: var(--color-primary-text);
   margin-bottom: 3rem;
+  font-weight: 500;
+}
+
+.services-content {
+  /* Optional: if you need additional styling for the content wrapper */
 }
 
 .services-hero-tiles {
@@ -19,60 +23,54 @@
   gap: 2rem;
 }
 
-/* Service Tile Styles */
 .service-tile {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--color-bg); /* Updated to use variable */
-  border: 1px solid var(--color-gray); /* Updated to use variable */
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-gray);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 350px;
+  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  min-height: 350px; /* Ensure consistent height across tiles */
 }
 
 .service-tile:hover,
 .service-tile:focus-within {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px var(--color-shadow); /* Using global shadow color */
+  box-shadow: 0 8px 16px var(--color-shadow);
 }
 
-/* Service Tile Focus State */
-.service-tile:focus-within {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
-/* Service Tile Titles */
 .service-tile h3 {
   font-size: 1.5rem;
-  color: var(--color-primary-text); /* Using global primary text color */
+  color: var(--color-secondary);
   margin-bottom: 1rem;
 }
 
-/* Service Tile Descriptions */
 .service-tile p {
   font-size: 1rem;
-  color: var(--color-primary-text); /* Updated to use variable */
+  color: var(--color-primary-text);
   margin-bottom: 1.5rem;
-  flex-grow: 1; /* Push the button to the bottom */
+  flex-grow: 1;
+  overflow: hidden;
 }
 
-/* Learn More Button */
+.truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .learn-more-btn {
-  background-color: var(--color-secondary); /* Using global secondary color */
-  color: var(--color-white); /* Using global white color */
+  background-color: var(--color-secondary);
+  color: var(--color-white);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -81,16 +79,60 @@
 
 .learn-more-btn:hover,
 .learn-more-btn:focus {
-  background-color: var(--color-secondary-hover); /* Using global secondary hover color */
+  background-color: var(--color-secondary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px var(--color-shadow); /* Using global shadow color */
+  box-shadow: 0 4px 8px var(--color-shadow);
   outline: none;
+  color: var(--color-white);
 }
 
-/* Focus State for Learn More Button */
-.learn-more-btn:focus {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
+/* Tooltip Modal */
+.tooltip {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background: var(--color-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px var(--color-shadow);
+  z-index: 3000;
+  display: none;
+  pointer-events: auto;
+}
+
+.tooltip:target {
+  display: block;
+}
+
+
+/* Tooltip Content */
+.tooltip-content {
+  text-align: left;
+  color: var(--color-text);
+  font-size: 18px;
+}
+.tooltip-content h3 {
+  font-size: 34px;
+  color: var(--color-secondary)
+}
+
+.tooltip-close {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.tooltip-close:hover,
+.tooltip-close:focus {
+  background: var(--color-secondary-hover);
 }
 
 /* Responsive Adjustments */
@@ -98,21 +140,17 @@
   .services {
     padding: 3rem 1.5rem;
   }
-
   .services h2 {
     font-size: 1.8rem;
     margin-bottom: 2.5rem;
   }
-
   .service-tile {
     padding: 1.5rem;
     min-height: 300px;
   }
-
   .service-tile h3 {
     font-size: 1.3rem;
   }
-
   .learn-more-btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
@@ -123,21 +161,17 @@
   .services {
     padding: 2rem 1rem;
   }
-
   .services h2 {
     font-size: 1.6rem;
     margin-bottom: 2rem;
   }
-
   .service-tile {
     padding: 1rem;
     min-height: 250px;
   }
-
   .service-tile h3 {
     font-size: 1.2rem;
   }
-
   .learn-more-btn {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;

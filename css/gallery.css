@@ -1,118 +1,92 @@
-/* gallery.css */
-
-/* ===========================
-   Gallery Section Styling
-=========================== */
 .gallery {
-  padding: 4rem 0;                    /* Top and bottom spacing */
-  background-color: var(--color-bg);   /* Updated to use variable */
-  text-align: center;                 /* Center align text */
-  overflow: hidden;                   /* Hide overflowing content */
-}
-
-.gallery h2 {
-  font-size: 2.5rem;                  /* Heading font size */
-  color: var(--color-primary-text);    /* Using global primary text color */
-  margin-bottom: 2rem;                /* Spacing below heading */
+  padding: 4rem 0;
+  background-color: var(--color-bg);
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar: hidden;
   position: relative;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer/Edge */
+}
+.gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+.gallery h2 {
+  font-size: 2.5rem;
+  color: var(--color-primary-text);
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background-color: var(--color-bg);
+  padding: 0.5rem 0;
 }
 
 .gallery h2::after {
   content: "";
   display: block;
-  width: 80px;                        /* Underline width */
-  height: 4px;                        /* Underline height */
-  background-color: var(--color-secondary); /* Using global secondary color */
-  margin: 10px auto 0;                /* Spacing above and below underline */
-  border-radius: 2px;                 /* Rounded corners for underline */
+  width: 80px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
-/* ===========================
-   Gallery Track for Animation
-=========================== */
 .gallery-track {
-  display: flex;                      /* Flex layout */
-  width: var(--gallery-track-width);  /* Total width for duplicated containers */
-  animation: scroll-loop var(--gallery-animation-duration) linear infinite; /* Scroll animation */
-  align-items: center;                /* Vertically center items */
+  display: flex;
+  gap: var(--gallery-gap);
+  animation: scroll-loop var(--gallery-animation-duration) linear infinite;
 }
 
 .gallery-track:hover {
-  animation-play-state: paused;       /* Pause animation on hover */
+  animation-play-state: paused;
 }
 
-@keyframes scroll-loop {
-  0% {
-    transform: translateX(0);         /* Start position */
-  }
-  100% {
-    transform: translateX(-50%);      /* End position: move left by half the track's width (one container) */
-  }
-}
-
-/* ===========================
-   Gallery Container Styling
-=========================== */
 .gallery-container {
-  display: flex;                      /* Flex layout */
-  gap: var(--gallery-gap);            /* Space between items */
-  width: var(--gallery-container-width); /* Width of one container */
-  flex-shrink: 0;                     /* Prevent shrinking */
+  display: flex;
+  gap: var(--gallery-gap);
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 
-/* ===========================
-   Gallery Item Styling
-=========================== */
 .gallery-item {
-  flex: 0 0 var(--gallery-item-width); /* Fixed width for each image */
+  flex: 0 0 var(--gallery-item-width);
   position: relative;
-  overflow: hidden;                   /* Hide overflowing image parts */
-  height: var(--gallery-item-height); /* Fixed height to maintain consistency */
+  overflow: hidden;
+  height: var(--gallery-item-height);
+  scroll-snap-align: start;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;                  /* Ensure image covers container without distortion */
-  display: block;
+  object-fit: cover;
   border-radius: 10px;
-  cursor: pointer;                    /* Cursor changes to pointer on hover */
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 .gallery-item:hover img,
 .gallery-item:focus img {
-  transform: scale(1.05);              /* Slight zoom on hover/focus */
+  transform: scale(1.05);
   outline: none;
 }
 
-/* ===========================
-   Responsive Design
-=========================== */
-@media (max-width: 768px) {
-  /* Tablet (iPad) Adjustments */
-  /* Variables already defined in utilities.css */
-  /* No need to redefine them here */
-}
-
-@media (max-width: 480px) {
-  /* Mobile Adjustments */
-  /* Variables already defined in utilities.css */
-  /* No need to redefine them here */
-}
-
-/* Accessibility Enhancements */
-
-/* Make gallery items focusable if they have interactions (e.g., open modal) */
-/* If gallery items are purely decorative, no need to make them focusable */
-
-.gallery-item {
-  /* If interactive, uncomment the following line */
-  /* tabindex="0" */
-}
-
-/* Optional: Add focus styles if gallery items are focusable */
 .gallery-item:focus {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
+}
+
+@keyframes scroll-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }

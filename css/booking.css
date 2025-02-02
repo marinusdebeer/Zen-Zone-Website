@@ -1,12 +1,6 @@
 /* booking.css */
 
-/* -------------------------
-   Base Styles
-------------------------- */
-
-body {
-  background-color: var(--color-bg);
-}
+/* Base Styles */
 .navbar {
   box-shadow: none;
 }
@@ -18,9 +12,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-bg);
+  background: var(--color-bg);
 }
-
 .booking-form-wrapper {
   width: 80%;
   max-width: 1000px;
@@ -29,40 +22,33 @@ body {
   justify-content: center;
 }
 
-/* -------------------------
-   Headings
-------------------------- */
-.booking-container h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-  color: var(--color-labels);
-  transition: all 0.3s ease;
-}
-
+/* Headings */
+.booking-container h2,
 .booking-container h3 {
   text-align: center;
+  transition: all 0.3s ease;
+  color: var(--color-labels);
+}
+.booking-container h2 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+.booking-container h3 {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
-  color: var(--color-labels);
-  transition: all 0.3s ease;
 }
 
-/* -------------------------
-   Step Tracker Styles
-------------------------- */
+/* Step Tracker */
 .booking-progress-tracker {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 0;
-  background-color: var(--color-tertiary);
+  background: var(--color-tertiary);
   position: sticky;
   top: var(--navbar-height);
   height: 150px;
-  /* z-index: 1500; */
 }
-
 .booking-progress-tracker ol {
   display: flex;
   list-style: none;
@@ -70,39 +56,20 @@ body {
   padding: 0;
   width: 100%;
 }
-
 .booking-step {
   flex: 1;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-align: center;
-
-  /* border-radius: 18px; */
+  align-items: center;
   padding: 0.5rem 0;
   margin: 3px;
-  /* background-color: var(--color-bg); */
-  /* border: 2px solid var(--color-tertiary); */
   cursor: pointer;
-  /* height: 100%; */
+  text-align: center;
 }
-
-/* .booking-step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background-color: var(--color-tertiary);
-} */
-
 .booking-step:last-child::after {
   display: none;
 }
-
 .step-header {
   display: flex;
   align-items: center;
@@ -110,18 +77,15 @@ body {
   width: 100%;
   padding: 0 1rem;
 }
-
 .booking-step-number {
   font-size: 1.2rem;
   font-weight: bold;
   margin-right: 0.5rem;
 }
-
 .booking-step-label {
   font-size: 1rem;
   font-weight: 500;
 }
-
 .step-summary {
   margin-top: 0.5rem;
   font-size: 0.85rem;
@@ -132,49 +96,37 @@ body {
   word-wrap: break-word;
   width: 100%;
 }
-
 .booking-step.completed,
 .booking-step.active {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: var(--color-white);
-  /* box-shadow: 0 4px 8px var(--color-shadow); */
 }
-
 .booking-step.active {
   box-shadow: 0 6px 12px var(--color-shadow);
 }
-
 .booking-step.incomplete {
-  background-color: var(--color-bg);
-  /* border: 2px solid var(--color-tertiary); */
+  background: var(--color-bg);
   color: var(--color-primary-text);
 }
-
 .booking-step.clickable:hover,
 .booking-step.active:hover {
-  background-color: var(--color-secondary-hover);
+  background: var(--color-secondary-hover);
   color: var(--color-white);
 }
-
 .booking-step:focus {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
 
-/* -------------------------
-   Form Step Styles
-------------------------- */
+/* Form Steps */
 .booking-form-step {
   display: none;
 }
-
 .booking-form-step label {
   display: block;
-  /* margin-bottom: 0.5rem; */
   font-size: 1rem;
   font-weight: 500;
 }
-
 .booking-form-step--active {
   display: block;
   width: 100%;
@@ -182,19 +134,15 @@ body {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* -------------------------
-   Form Group Styles
-------------------------- */
+/* Form Group */
 .booking-form-group {
   margin-bottom: 1.5rem;
 }
-
 .booking-form-group input,
 .booking-form-group select,
 .booking-form-group textarea,
@@ -205,36 +153,26 @@ body {
   border-radius: 4px;
   font-size: 1rem;
 }
-
-.booking-form-group input[type="checkbox"] {
-  /* Customized via .custom-checkbox */
-}
-
 .booking-form-group input[type="range"] {
   padding: 0;
   margin-top: 0.5rem;
   cursor: pointer;
 }
 
-/* Range Slider Customization */
+/* Range Slider */
 .booking-form-step input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 12px;
-  background-color: var(--slider-track-color); /* Fallback color */
+  background: var(--slider-track-color);
   border-radius: 4px;
   outline: none;
-  /* transition: background 0.3s; */
+  transition: background 0.3s ease-in-out;
 }
-
-.booking-form-step input[type="range"]::-webkit-slider-runnable-track {
-  height: 8px;
-  border-radius: 4px;
-  background: transparent; /* Show the gradient */
-}
-
-.booking-form-step input[type="range"]::-webkit-slider-thumb {
+.booking-form-step input[type="range"]::-webkit-slider-thumb,
+.booking-form-step input[type="range"]::-moz-range-thumb,
+.booking-form-step input[type="range"]::-ms-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
@@ -243,147 +181,85 @@ body {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -6px; /* Align thumb vertically */
   transition: background 0.3s;
 }
-
-.booking-form-step input[type="range"]::-webkit-slider-thumb:hover {
+.booking-form-step input[type="range"]::-webkit-slider-thumb:hover,
+.booking-form-step input[type="range"]::-moz-range-thumb:hover,
+.booking-form-step input[type="range"]::-ms-thumb:hover {
   background: var(--color-secondary-hover);
 }
-
-.booking-form-step input[type="range"]::-moz-range-track {
+.booking-form-step input[type="range"]::-moz-range-track,
+.booking-form-step input[type="range"]::-ms-fill-lower,
+.booking-form-step input[type="range"]::-ms-fill-upper {
   height: 8px;
   border-radius: 4px;
-  background: transparent; /* Show the gradient */
+  background: transparent;
 }
-
 .booking-form-step input[type="range"]::-moz-range-progress {
   background: var(--slider-fill-color);
   height: 8px;
   border-radius: 4px;
 }
 
-.booking-form-step input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: var(--slider-thumb-color);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.booking-form-step input[type="range"]::-moz-range-thumb:hover {
-  background: var(--color-primary-hover);
-}
-
-.booking-form-step input[type="range"]::-ms-thumb {
-  width: 20px;
-  height: 20px;
-  background: var(--slider-thumb-color);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.booking-form-step input[type="range"]::-ms-thumb:hover {
-  background: var(--color-primary-hover);
-}
-
-.booking-form-step input[type="range"]::-ms-fill-lower {
-  background: var(--slider-fill-color);
-  border-radius: 4px;
-}
-
-.booking-form-step input[type="range"]::-ms-fill-upper {
-  background: var(--slider-track-color);
-  border-radius: 4px;
-}
-
-/* Transition for the background gradient */
-.booking-form-step input[type="range"] {
-  transition: background 0.3s ease-in-out;
-}
-
-/* -------------------------
-   Radio Buttons Styled as Buttons
-------------------------- */
+/* Radio Buttons as Buttons */
 .booking-form-options {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
-
 .booking-form-options input[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
-  /* pointer-events: none; */
 }
-
 .booking-form-options label.booking-btn-option {
   display: inline-block;
   flex: 1 1 45%;
   padding: 0.75rem 1.5rem;
   border: 2px solid var(--color-secondary);
   border-radius: 6px;
-  /* max-width: 250px; */
-  background-color: var(--color-bg);
+  background: var(--color-bg);
   color: var(--color-primary-text);
   cursor: pointer;
   text-align: center;
   user-select: none;
   margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
 }
-
-.booking-form-options label.booking-btn-option:hover {
-  background-color: var(--color-secondary-hover);
-  color: var(--color-white);
-}
-
+.booking-form-options label.booking-btn-option:hover,
 .booking-form-options input[type="radio"]:checked + label.booking-btn-option {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: var(--color-white);
   box-shadow: 0 4px 8px var(--color-shadow);
 }
-.booking-form-options input[type="radio"]:hover + label.booking-btn-option {
-  background-color: var(--color-secondary-hover);
-  color: var(--color-white);
-}
-
+.booking-form-options input[type="radio"]:hover + label.booking-btn-option,
 .booking-form-options input[type="radio"]:focus + label.booking-btn-option {
+  background: var(--color-secondary-hover);
+  color: var(--color-white);
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
-/* -------------------------
-   Extras Container
-------------------------- */
+/* Extras Container */
 .extras-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
-
 .extra-item {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
 }
-
 .extra-item.countable-extra {
   flex-direction: column;
-  align-items: center;
   width: 100%;
 }
 .custom-label {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
-
 .slider-container {
   display: flex;
   align-items: center;
@@ -391,115 +267,49 @@ body {
   margin-top: 10px;
   width: 100%;
 }
-
 .slider-container input[type="range"] {
   flex: 1;
   cursor: pointer;
 }
-
 .slider-container span {
   min-width: 30px;
   font-weight: bold;
 }
 
-/* -------------------------
-   Package Options
-------------------------- */
+/* Package Options */
 .package-option {
   display: block;
   padding: 1rem;
   border: 2px solid var(--color-primary);
   border-radius: 8px;
-  background-color: var(--color-bg);
+  background: var(--color-bg);
   color: var(--color-primary-text);
   cursor: pointer;
   text-align: center;
   user-select: none;
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
-
 .package-option:hover,
 .package-option.active {
-  background-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
   color: var(--color-white);
 }
-
 .package-option.active {
   transform: scale(1.02);
   box-shadow: 0 4px 8px var(--color-shadow);
 }
-
 .package-option:focus {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
 
-/* -------------------------
-   Form Navigation Styles
-------------------------- */
+/* Form Navigation */
 .booking-form-nav {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
-
-/* Base styles for the submit button */
-.booking-btn-submit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  position: relative;
-}
-
-/* Button hover effect */
-.booking-btn-submit:hover {
-  background-color: var(--color-primary-hover);
-}
-
-/* Disabled state for submission */
-.booking-btn-submit.loading {
-  background-color: var(--color-gray);
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* Spinner animation */
-.booking-btn-submit .spinner {
-  display: none;
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--color-white);
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-}
-
-/* Show the spinner when loading */
-.booking-btn-submit.loading .spinner {
-  display: inline-block;
-}
-
-/* Hide button text when loading */
-.booking-btn-submit.loading span {
-  display: none;
-}
-
-/* Keyframes for spinner animation */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 .booking-btn-next,
 .booking-btn-prev,
 .booking-btn-submit {
@@ -508,29 +318,24 @@ body {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
-
 .booking-btn-next,
 .booking-btn-submit {
-  background-color: var(--color-primary);
+  background: var(--color-primary);
   color: var(--color-white);
 }
-
 .booking-btn-prev {
-  background-color: var(--color-gray);
+  background: var(--color-gray);
   color: var(--color-primary-text);
 }
-
 .booking-btn-next:hover,
 .booking-btn-submit:hover {
-  background-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
 }
-
 .booking-btn-prev:hover {
-  background-color: var(--color-light-gray); /* Define --color-gray-hover if needed */
+  background: var(--color-light-gray);
 }
-
 .booking-btn-next:focus,
 .booking-btn-prev:focus,
 .booking-btn-submit:focus {
@@ -538,9 +343,7 @@ body {
   outline-offset: 2px;
 }
 
-/* -------------------------
-   Toast Notification
-------------------------- */
+/* Toast Notification */
 .toast {
   position: fixed;
   top: 20px;
@@ -548,71 +351,57 @@ body {
   padding: 1rem 1.5rem;
   border-radius: 6px;
   box-shadow: 0 4px 8px var(--color-shadow);
-  background-color: var(--color-primary-text);
+  background: var(--color-primary-text);
   color: var(--color-white);
   z-index: 3000;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-
 .toast.show {
   opacity: 1;
 }
-
 .toast.success {
-  background-color: var(--color-toast-success);
+  background: var(--color-toast-success);
 }
-
 .toast.error {
-  background-color: var(--color-toast-error);
+  background: var(--color-toast-error);
 }
 
-/* -------------------------
-   Error States
-------------------------- */
+/* Error States */
 .border-red-500 {
-  border-color: var(--color-error); /* Red color for errors */
+  border-color: var(--color-error);
 }
-
 .error-message {
   color: var(--color-error);
 }
 
-/* -------------------------
-   Custom Checkbox Styles for Extras
-------------------------- */
-/* This block should only appear once in your CSS */
+/* Custom Checkbox */
 .custom-checkbox {
   display: flex;
-  align-items: center; /* Vertically center the items */
+  align-items: center;
   margin-bottom: 0.5rem;
   cursor: pointer;
   user-select: none;
   font-size: 1rem;
   color: var(--color-secondary-text);
-  position: relative; /* Creates a positioning context */
-}
-
-.custom-checkbox input[type="checkbox"] {
-  /* Visually hide the checkbox but keep it in the document flow */
-  opacity: 0;
-  width: 30px; /* Matches the checkmark size */
-  height: 30px;
-  margin-right: 10px; /* Space between checkbox and label */
-  position: relative; /* Allows the checkmark to overlay correctly */
-}
-
-.custom-checkbox .checkmark {
   position: relative;
+}
+.custom-checkbox input[type="checkbox"] {
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  position: relative;
+}
+.custom-checkbox .checkmark {
   height: 30px;
   width: 30px;
-  background-color: var(--color-bg);
+  background: var(--color-bg);
   border: 2px solid var(--color-secondary);
   border-radius: 4px;
-  transition: background-color 0.3s, border-color 0.3s;
-  flex-shrink: 0; /* Prevents shrinking */
+  transition: background 0.3s, border-color 0.3s;
+  flex-shrink: 0;
 }
-
 .custom-checkbox .checkmark::after {
   content: "";
   position: absolute;
@@ -625,142 +414,80 @@ body {
   border-width: 0 3px 3px 0;
   transform: translateY(-50%) rotate(45deg);
 }
-
 .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   border-color: var(--color-secondary);
 }
-
 .custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
   display: block;
 }
-
 .custom-checkbox:hover .checkmark {
-  background-color: var(--color-secondary-hover);
+  background: var(--color-secondary-hover);
 }
-
 .custom-checkbox input[type="checkbox"]:focus + .checkmark {
   box-shadow: 0 0 0 3px var(--color-tertiary-hover);
 }
-
 .custom-checkbox span.label-text {
-  /* Ensures the label text is vertically centered */
   font-size: 1rem;
   display: flex;
   align-items: center;
-  white-space: nowrap; /* Prevents text from wrapping below the checkbox */
+  white-space: nowrap;
 }
 
-
-
-
-/* Ensure label is inline-block for better hover */
+/* Tooltip for Service */
 .service {
   position: relative;
   display: inline-block;
   cursor: pointer;
-}
 
+}
 .service .tooltip {
   visibility: hidden;
-  width: 400px; 
-  background-color: var(--color-tertiary);
-  color: white;
-  text-align: left; 
+  width: 400px;
+  background: var(--color-tertiary);
+  color: #fff;
+  text-align: left;
   padding: 10px;
   border-radius: 6px;
   font-size: 14px;
   line-height: 1.4;
-  font-weight: normal;
-  white-space: normal;
-  word-wrap: break-word;
   position: absolute;
   bottom: 120%;
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 8px;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+  transition: opacity 0.3s, transform 0.2s;
   z-index: 1000;
 }
-
-
 .service .tooltip::after {
   content: '';
   position: absolute;
-  top: 100%; 
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   border-width: 6px;
   border-style: solid;
   border-color: black transparent transparent transparent;
 }
-
-
 .service:hover .tooltip {
   visibility: visible;
   opacity: 1;
   transform: translateX(-50%) translateY(-5px);
 }
-
 @media (max-width: 480px) {
   .service .tooltip {
-    width: 70%;
-    bottom: auto;
-    top: 110%;
-    left: 50%;
+    width: 100%;
+    /* top: 110%; */
     transform: translateX(-50%);
   }
-
   .service .tooltip::after {
-    top: -12px; 
+    top: -12px;
     border-color: transparent transparent black transparent;
   }
 }
 
-
-
-
-/* -------------------------
-   Responsive Adjustments for Custom Checkbox
-------------------------- */
-@media (max-width: 768px) {
-  .custom-checkbox input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px; /* Adjusted space */
-  }
-
-  .custom-checkbox .checkmark {
-    height: 18px;
-    width: 18px;
-  }
-
-  .custom-checkbox span.label-text {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 580px) {
-  .custom-checkbox input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin-right: 6px; /* Adjusted space */
-  }
-
-  .custom-checkbox .checkmark {
-    height: 16px;
-    width: 16px;
-  }
-
-  .custom-checkbox span.label-text {
-    font-size: 0.9rem;
-  }
-}
-
-/* -------------------------
-   Responsive Design
-------------------------- */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .booking-progress-tracker {
     display: none;
@@ -770,49 +497,37 @@ body {
     height: auto;
     padding: 10px 0;
   }
-
   .booking-step {
-    border-right: none;
     border-bottom: 2px solid var(--color-primary);
     min-height: 80px;
   }
-
   .booking-container {
     padding-top: calc(var(--navbar-height-tablet) + 20px);
     padding-bottom: 80px;
   }
-
   .step-summary {
     font-size: 0.75rem;
     padding: 0 0.5rem;
   }
-
-  .package-option{
+  .package-option {
     flex: 1 1 100%;
     padding: 0.5rem 1rem;
-    font-size: 1.0rem;
+    font-size: 1rem;
     max-width: 250px;
   }
-
   .booking-form-options {
     gap: 0.5rem;
   }
-
   .custom-checkbox .checkmark {
     height: 18px;
     width: 18px;
   }
-
   .custom-checkbox {
     font-size: 0.95rem;
   }
 }
-
 @media (max-width: 580px) {
-  .service {
-    max-width: 320px;
-    min-width: 250px;
-  }
+  .service,
   .industry {
     max-width: 320px;
     min-width: 250px;
@@ -827,78 +542,60 @@ body {
     padding-top: calc(var(--navbar-height-mobile) + 20px);
     padding-bottom: 60px;
   }
-
   .booking-container h2 {
     font-size: 1.8rem;
   }
-
   .booking-step-label {
     font-size: 0.9rem;
   }
-
   .booking-btn-next,
   .booking-btn-prev,
   .booking-btn-submit {
     width: 100%;
     padding: 0.75rem;
   }
-
   .step-summary {
     font-size: 0.7rem;
     padding: 0 0.3rem;
   }
-
   .custom-checkbox .checkmark {
     height: 16px;
     width: 16px;
   }
-
   .custom-checkbox {
     font-size: 0.9rem;
   }
-
   .extras-container {
     grid-template-columns: 1fr;
   }
 }
-/* -------------------------
-   Extras Buttons Styles
-------------------------- */
+
+/* Extras Buttons */
 .extras-btn {
   padding: 0.75rem 1.5rem;
   border: 2px solid var(--color-secondary);
   border-radius: 6px;
-  background-color: var(--color-bg);
+  background: var(--color-bg);
   color: var(--color-primary-text);
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
   font-size: 1rem;
   width: 250px;
   text-align: center;
 }
-
 .extras-btn:hover,
 .extras-btn:focus {
-  background-color: var(--color-secondary-hover);
+  background: var(--color-secondary-hover);
   color: var(--color-white);
   transform: translateY(-2px);
   outline: none;
 }
-
 .extras-btn[aria-pressed="true"] {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: var(--color-white);
   box-shadow: 0 4px 8px var(--color-shadow);
 }
-
-.extras-btn[aria-pressed="false"] {
-  background-color: var(--color-bg);
-  color: var(--color-primary-text);
-}
-
-/* Focus State for Accessibility */
 .extras-btn:focus {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
-

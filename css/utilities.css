@@ -12,7 +12,7 @@
   --navbar-height-mobile: 60px;
 
   /* Gallery Specific Variables */
-  --gallery-animation-duration: 140s;
+  --gallery-animation-duration: 7s;
   --gallery-gap: 20px;
   --gallery-item-width: 400px;
   --gallery-item-height: 375px;
@@ -93,7 +93,7 @@
   --color-primary-text: #EAEAEA;
   --color-footer-background: var(--color-tertiary);
   --color-footer-link-hover: #78a265;
-  --color-shadow: rgba(255, 255, 255, 0.1);
+  --color-shadow: rgba(255, 255, 255, 0.3);
   --color-light-green: #1E1E1E;
   --color-gray: #444;
   --color-light-gray: #2C2C2C;
@@ -339,7 +339,7 @@ q::before, q::after {
 
 .header a:hover,
 .footer a:hover {
-  color: var(--color-footer-link-hover);
+  color: var(--color-white);
 }
 
 /* Button Elements */
@@ -366,7 +366,7 @@ a {
 
 a:hover,
 a:focus {
-  color: var(--color-primary-hover);
+  color: var(--color-white);
   text-decoration: none;
 }
 
