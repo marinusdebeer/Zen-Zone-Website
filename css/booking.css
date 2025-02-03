@@ -78,13 +78,15 @@
   padding: 0 1rem;
 }
 .booking-step-number {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   margin-right: 0.5rem;
+  /* color: var(--color-primary); */
 }
 .booking-step-label {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: bold;
+  /* color: var(--color-primary); */
 }
 .step-summary {
   margin-top: 0.5rem;
