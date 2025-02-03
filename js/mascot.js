@@ -87,18 +87,14 @@ function hedgehog() {
     );
   }
 
-  // Returns an array of candidate targets (input, button, a, or radio inputs' labels)
-  // that are visible and in the lower 80% of the viewport.
+  // Returns candidate targets (inputs, buttons, a tags).
+  // For hidden radio inputs, returns their associated label if visible.
+  // Also ensures that the element is fully within the viewport horizontally
+  // and is in the lower 80% of the viewport.
   function getCandidateTargets() {
-    // Query inputs, buttons, and anchors.
     const elems = Array.from(document.querySelectorAll("input, button, a"));
     const candidates = elems.map(el => {
-      // For radio inputs that are hidden (per CSS), try to return their associated label.
-      if (
-        el.tagName.toLowerCase() === "input" &&
-        el.type === "radio" &&
-        !isVisible(el)
-      ) {
+      if (el.tagName.toLowerCase() === "input" && el.type === "radio" && !isVisible(el)) {
         const label = document.querySelector(`label[for="${el.id}"]`);
         return label && isVisible(label) ? label : null;
       }
@@ -106,7 +102,11 @@ function hedgehog() {
     }).filter(el => el !== null);
     return candidates.filter(el => {
       const rect = el.getBoundingClientRect();
-      return rect.top >= window.innerHeight * 0.2;
+      return (
+        rect.top >= window.innerHeight * 0.2 &&
+        rect.left >= 0 &&
+        rect.right <= window.innerWidth
+      );
     });
   }
 
@@ -140,7 +140,6 @@ function hedgehog() {
       return;
     }
     targetElem = candidates[randomBetween(0, candidates.length - 1)];
-
     const rect = targetElem.getBoundingClientRect();
     const targetRect = {
       left: rect.left + window.scrollX,
@@ -148,20 +147,15 @@ function hedgehog() {
       width: rect.width,
       height: rect.height
     };
-
     const hedgehogWidth = 80;
     const hedgehogHeight = 80;
-    // Compute landing coordinates so that the hedgehog’s bottom aligns with the target’s top.
     const landingX = targetRect.left + targetRect.width / 2 - hedgehogWidth / 2;
     const landingY = targetRect.top - hedgehogHeight;
-
     jumpFrom = { x: currentX, y: currentY };
     jumpTo = { x: landingX, y: landingY };
 
-    // Compute initial vertical velocity (v0y) so that the apex is JUMP_EXTRA_HEIGHT above the target.
     const v0yAbs = Math.sqrt(2 * GRAVITY * (jumpFrom.y - jumpTo.y + JUMP_EXTRA_HEIGHT));
     v0y = -v0yAbs;
-    // Solve for total flight time T using: jumpTo.y = jumpFrom.y + v0y * T + 0.5 * GRAVITY * T².
     const a = 0.5 * GRAVITY;
     const b = v0y;
     const c = jumpFrom.y - jumpTo.y;
@@ -176,7 +170,6 @@ function hedgehog() {
     }
     jumpTime = T;
     v0x = (jumpTo.x - jumpFrom.x) / T;
-
     state = "jumping";
     jumpStartTime = null;
     stopJumpScheduler();
@@ -210,7 +203,7 @@ function hedgehog() {
   }
 
   // =============================================================================
-  // Click-to-Pause / Resume
+  // Click-to-Pause / Resume Logic
   // =============================================================================
   function togglePause() {
     isPaused = !isPaused;
@@ -315,7 +308,6 @@ function hedgehog() {
   // =============================================================================
   function init() {
     injectCSS();
-
     hedgehogElem = document.createElement("div");
     hedgehogElem.id = "hedgehog";
     hedgehogElem.classList.add("walking");
@@ -339,5 +331,6 @@ function hedgehog() {
     init();
   }
 }
+
 
 hedgehog();
