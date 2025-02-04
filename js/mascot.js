@@ -19,7 +19,7 @@ function hedgehog() {
   const GRAVITY = 2000     // Gravity (px/s²)
   const TIP_DISPLAY_DURATION = 4000
   const BOTTOM_OFFSET = 0 // Offset from the bottom of the viewport
-  const MAX_TIPS_REQUESTS = 2
+  const MAX_TIPS_REQUESTS = 20
 
   // =============================================================================
   // Global State
