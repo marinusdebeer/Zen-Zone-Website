@@ -119,7 +119,7 @@ class StepTracker {
     const title = document.getElementById('bookingFormTitle');
     const cur = this.progressSteps.find(
       s => parseInt(s.getAttribute('data-step'), 10) === step &&
-           getComputedStyle(s).display !== 'none'
+        getComputedStyle(s).display !== 'none'
     );
     if (cur && title) {
       const label = cur.querySelector('.booking-step-label')?.textContent?.trim();
@@ -191,8 +191,8 @@ class BookingForm {
 
   updateSliderBackground(slider) {
     const min = +slider.min || 0,
-          max = +slider.max || 100,
-          val = +slider.value;
+      max = +slider.max || 100,
+      val = +slider.value;
     const pct = ((val - min) * 100) / (max - min);
     slider.style.backgroundImage = `linear-gradient(to right, var(--slider-fill-color) ${pct}%, var(--slider-track-color) ${pct}%)`;
   }
@@ -392,6 +392,19 @@ class BookingForm {
     if (!valid) Toast.show('Please correct the errors on this step before proceeding.', false);
     return valid;
   }
+  updateSessionStorage(key, newData) {
+    // Retrieve existing data from sessionStorage
+    let existingData = sessionStorage.getItem(key);
+
+    // Parse the data if it exists, otherwise initialize as an empty object
+    let dataObject = existingData ? JSON.parse(existingData) : {};
+
+    // Merge the new data into the existing object
+    Object.assign(dataObject, newData);
+
+    // Save the updated object back to sessionStorage
+    sessionStorage.setItem(key, JSON.stringify(dataObject));
+  }
 
   updateFormData(step) {
     const stepEl = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
@@ -416,6 +429,9 @@ class BookingForm {
       if (Array.isArray(val)) val.forEach(v => Tracking.sendData(fid, v));
       else Tracking.sendData(fid, val);
     });
+
+    this.updateSessionStorage('meta-data', data);
+
   }
 
   appendStepData(step, data) {
@@ -638,8 +654,8 @@ class BookingForm {
     ];
     extras.forEach(item => {
       const container = document.getElementById(`${item.name}SliderContainer`),
-            slider = document.getElementById(`${item.name}Slider`),
-            disp = document.getElementById(`${item.name}CountDisplay`);
+        slider = document.getElementById(`${item.name}Slider`),
+        disp = document.getElementById(`${item.name}CountDisplay`);
       if (container && slider && disp) {
         container.style.display = 'flex';
         disp.textContent = slider.value;

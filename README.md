@@ -14,3 +14,4 @@ services make align the headings, text and button. Also move it to before review
 Give all titles on home page a purple underline
 in the navbar underline the navigation based on where they are on the page
 Blogs remove readmore button
+the mascot can give helpful hints now and then
