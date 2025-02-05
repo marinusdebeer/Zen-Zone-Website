@@ -9,7 +9,7 @@ function hedgehog() {
   const HEDGEHOG_SIZE = 80
   // Set to 0 by default so you can easily tweak later.
   const JUMP_EXTRA_HEIGHT = 80
-  const MIN_JUMP_DELAY = 1000
+  const MIN_JUMP_DELAY = 2000
   const MAX_JUMP_DELAY = 6000
   const MAX_JUMPS = 3
   // Reduced tip delay range: tip will happen soon after the third jump.
@@ -17,7 +17,7 @@ function hedgehog() {
   const TIP_DELAY_MAX = 4000
   const SPEED = 80         // Walking speed (px/s)
   const GRAVITY = 2000     // Gravity (px/s²)
-  const TIP_DISPLAY_DURATION = 4000
+  const TIP_DISPLAY_DURATION = 7000
   const BOTTOM_OFFSET = 0 // Offset from the bottom of the viewport
   const MAX_TIPS_REQUESTS = 20
 
@@ -479,7 +479,8 @@ function hedgehog() {
         position: absolute;
         width: ${HEDGEHOG_SIZE}px;
         height: ${HEDGEHOG_SIZE}px;
-        background-image: url('https://us.posthog.com/static/hedgehog/sprites/skins/default/walk.png');
+        background-image: url('/assets/walk.png');
+        // background-image: url('https://us.posthog.com/static/hedgehog/sprites/skins/default/walk.png');
         background-size: 800% auto;
         z-index: 2000;
       }
@@ -551,4 +552,6 @@ function hedgehog() {
   }
 }
 
-hedgehog()
+if (window.innerWidth > 768) {
+  hedgehog()
+}

@@ -166,10 +166,10 @@
           </p>
           <!-- CTA Buttons -->
           <div class="cta-buttons">
-            <a href="/booking.html" class="cta-button-hero cta-button book-now" aria-label="Get your free quote">
+            <a href="/booking.html" class="cta-button book-now" aria-label="Get your free quote">
               Get Your Free Quote
             </a>
-            <a href="#services" class="cta-button-hero secondary-cta" aria-label="Explore our services">
+            <a href="#services" class="cta-button call-button" aria-label="Explore our services">
               Explore Our Services
             </a>
 
@@ -1558,26 +1558,25 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
-      // Initialize the map and set its view to Hillsdale, Ontario
-      const map = L.map("map").setView([44.5856, -79.7691], 9); // Hillsdale coordinates
+      const map = L.map("map").setView([44.5856, -79.7691], 9);
 
       // Add OpenStreetMap tiles
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
+        // attribution: "&copy; OpenStreetMap contributors",
       }).addTo(map);
 
       // Add a circle centered at Hillsdale
       L.circle([44.5856, -79.7691], {
-        color: "#2E3D2F",           // Circle border color (Deep Green)
-        fillColor: "#78A265",      // Circle fill color (Vibrant Green)
+        color: 'var(--color-secondary)',           // Circle border color (Deep Green)
+        fillColor: 'var(--color-secondary)',      // Circle fill color (Vibrant Green)
         fillOpacity: 0.3,           // Opacity of the circle
         radius: 45000,             // Radius in meters (15 km)
       }).addTo(map);
       // Add a label to the map
-      const label = L.marker([44.5856, -79.7691])
-        .addTo(map)
-        .bindPopup("Areas we serve")
-        .openPopup();
+      // const label = L.marker([44.5856, -79.7691])
+      //   .addTo(map)
+      //   .bindPopup("Areas we serve")
+      //   .openPopup();
     });
   </script>
 

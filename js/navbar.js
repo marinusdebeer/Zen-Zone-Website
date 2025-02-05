@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(initializeNavbar)
     .then(initializeSmoothScrolling)
     .then(initializeActiveSectionHighlighting)
-    .then(darkMode);
+    .then(darkMode)
+    .then(toggleTheme);
 
 });
 
@@ -31,7 +32,35 @@ function loadNavbar() {
 
 
 
+function toggleTheme() {
+  if (localStorage.getItem("theme-toggle") === "true") {
+    document.getElementById("theme-select").style.display = "inline-block";
+  }
+  const themeSelect = document.getElementById('theme-select');
+  const root = document.documentElement;
+  
+  if (localStorage.getItem('colorTheme')) {
+    const savedTheme = localStorage.getItem('colorTheme');
+    themeSelect.value = savedTheme;
+    if (savedTheme !== 'default') {
+      root.setAttribute('data-color-theme', savedTheme);
+    } else {
+      root.removeAttribute('data-color-theme');
+    }
+  }
+  
+  themeSelect.addEventListener('change', () => {
+    const selectedTheme = themeSelect.value;
+    if (selectedTheme === 'default') {
+      root.removeAttribute('data-color-theme');
+    } else {
+      root.setAttribute('data-color-theme', selectedTheme);
+    }
+    localStorage.setItem('colorTheme', selectedTheme);
+  });
+  
 
+}
 
 
 
