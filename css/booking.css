@@ -4,6 +4,12 @@
 .navbar {
   box-shadow: none;
 }
+.grecaptcha-badge {
+  /* left: 0 !important; */
+  /* right: auto !important; */
+  bottom: 170px !important;
+}
+
 .booking-container {
   width: 100%;
   max-width: 600px;
