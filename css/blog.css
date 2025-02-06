@@ -13,12 +13,6 @@
   margin: 40px 80px;
 }
 
-.blog-section h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-  color: var(--color-primary-text);
-}
 
 .featured-blogs {
   display: inline-block; /* Allows transform to work correctly */
@@ -53,6 +47,11 @@
 }
 
 @media (min-width: 1024px) {
+  .blog-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1124px) {
   .blog-list {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -214,33 +213,6 @@
   margin-bottom: 20px;
 }
 
-.post-content h2 {
-  font-size: 1.8rem;
-  color: var(--color-secondary);
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.post-content h3 {
-  font-size: 1.8rem;
-  color: var(--color-secondary);
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.post-content h4 {
-  font-size: 1.5rem;
-  color: var(--color-secondary);
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.post-content p {
-  color: var(--color-primary-text); /* Replaced hard-coded color with variable */
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
 .post-content ul,
 .post-content ol {
   margin-left: 20px;
@@ -356,7 +328,11 @@
   font-size: 1.2rem;
 }
 
-@media(max-width: 768px){
+@media(max-width: 820px){
+  .blog-post {
+    margin: 20px;
+  }
+
   .blog-section{
     margin: 20px 50px;
   }
@@ -366,22 +342,7 @@
     margin: 20px 10px;
   }
 }
-/* ------------------------------
-   Responsive Design
------------------------------- */
-@media (min-width: 768px) {
-  .blog-post {
-    padding: 40px;
-  }
-}
 
-@media (min-width: 1024px) {
-  /* Further styles if needed */
-}
-
-/* ------------------------------
-   Focus Styles for Accessibility
------------------------------- */
 .blog-card:focus .blog-entry {
   outline: 3px solid var(--color-focus);
   outline-offset: 4px;

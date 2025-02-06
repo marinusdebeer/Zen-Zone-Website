@@ -27,21 +27,6 @@
   outline-offset: 2px;
 }
 
-.areas-card h2 {
-  font-size: 2.5rem;
-  color: var(--color-primary-text);
-  margin-bottom: 2rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.areas-card h2 svg {
-  margin-right: 0.75rem;
-}
-
 /* Flex Container for List and Map */
 .areas-content {
   display: flex;
@@ -106,9 +91,6 @@
 }
 
 @media (max-width: 1024px) {
-  .areas-card h2 {
-    font-size: 2.2rem;
-  }
 
   .areas-list li {
     font-size: 1.1rem;
@@ -134,9 +116,6 @@
 }
 
 @media (max-width: 600px) {
-  .areas-card h2 {
-    font-size: 2rem;
-  }
 
   .areas-list li {
     font-size: 1rem;
@@ -159,10 +138,6 @@
 
   .areas-card {
     padding: 1.5rem;
-  }
-
-  .areas-card h2 {
-    font-size: 1.8rem;
   }
 
   .areas-list li {

@@ -3,27 +3,19 @@ function hedgehog() {
     sessionStorage.removeItem("meta-data");
   });
 
-  // =============================================================================
-  // Adjustable Constants
-  // =============================================================================
   const HEDGEHOG_SIZE = 80
-  // Set to 0 by default so you can easily tweak later.
   const JUMP_EXTRA_HEIGHT = 80
   const MIN_JUMP_DELAY = 2000
   const MAX_JUMP_DELAY = 6000
   const MAX_JUMPS = 3
-  // Reduced tip delay range: tip will happen soon after the third jump.
   const TIP_DELAY_MIN = 2000
   const TIP_DELAY_MAX = 4000
-  const SPEED = 80         // Walking speed (px/s)
-  const GRAVITY = 2000     // Gravity (px/s²)
+  const SPEED = 80
+  const GRAVITY = 2000
   const TIP_DISPLAY_DURATION = 7000
-  const BOTTOM_OFFSET = 0 // Offset from the bottom of the viewport
+  const BOTTOM_OFFSET = 0
   const MAX_TIPS_REQUESTS = 20
 
-  // =============================================================================
-  // Global State
-  // =============================================================================
   // States: "walking", "jumping", or "fallingOff"
   let state = "walking"
   let isPaused = false
@@ -33,10 +25,8 @@ function hedgehog() {
   let direction = 1  // 1 = right, -1 = left
   let lastTimestamp = null
 
-  // Scheduler timer for jump events (no separate tip timer; tip is scheduled only after MAX_JUMPS jumps)
   let jumpSchedulerTimer = null
 
-  // Jump-related variables
   let jumpFrom = null
   let jumpTo = null
   let jumpStartTime = null
@@ -44,14 +34,11 @@ function hedgehog() {
   let v0x = 0
   let v0y = 0
 
-  // Falling-off variables
   let fallStartTime = null
   let vFall = 0
 
-  // Tip-related variables
   let nextTip = null
   let tipHistory = []
-  // New variables to limit API calls to 10 tip events and cycle through stored tips.
   let tipsFetchedCount = 0;
   let tipIndex = 0;
 
@@ -82,10 +69,6 @@ function hedgehog() {
     )
   }
 
-  // Candidate targets: visible inputs, buttons, and links.
-  // Also filter out elements that are too high (top less than 20% of viewport),
-  // elements inside a navbar or mobile menu,
-  // and those whose horizontal center is too close to the hedgehog’s current X.
   function getCandidateTargets() {
     return Array.from(document.querySelectorAll("input, button, a")).flatMap(el => {
       let rect = el.getBoundingClientRect();
@@ -116,24 +99,16 @@ function hedgehog() {
     });
   }
 
-
-
-  // Calculate the "floor" Y coordinate.
   function getFloorY() {
     return window.scrollY + window.innerHeight - HEDGEHOG_SIZE - BOTTOM_OFFSET
   }
 
-  // Clear the jump scheduler timer.
   function stopJumpScheduler() {
     if (jumpSchedulerTimer) {
       clearTimeout(jumpSchedulerTimer)
       jumpSchedulerTimer = null
     }
   }
-
-  // =============================================================================
-  // GPT Tip Fetching
-  // =============================================================================
 
   async function askGPT() {
     const GOOGLE_SCRIPT_ID =
@@ -213,13 +188,6 @@ function hedgehog() {
     }
   }
 
-
-  // =============================================================================
-  // Scheduling: Jump and Tip Events
-  // =============================================================================
-
-  // Schedule a jump event if state is "walking" and jumpCount is less than MAX_JUMPS.
-  // If jumpCount is exactly MAX_JUMPS, schedule a tip event instead.
   function startJumpScheduler() {
     stopJumpScheduler()
     if (isPaused) return
@@ -239,10 +207,6 @@ function hedgehog() {
     }
   }
 
-  // =============================================================================
-  // Tip Event
-  // =============================================================================
-
   function showCleaningTip() {
     if (state !== "walking") {
       startJumpScheduler();
@@ -255,7 +219,7 @@ function hedgehog() {
   
     let tipText;
     if (tipsFetchedCount < MAX_TIPS_REQUESTS) {
-      tipText = nextTip || "Loading tip...";
+      tipText = nextTip || "For a quick and streak-free shine on mirrors and glass, use a microfiber cloth with a mix of vinegar and water (1:1 ratio). Buff dry with a clean, dry cloth for a crystal-clear finish! 🚿✨";
       tipsFetchedCount++;
       tipHistory.push(tipText);
       askGPT().then(response => {
@@ -290,11 +254,6 @@ function hedgehog() {
       startJumpScheduler();
     }, TIP_DISPLAY_DURATION);
   }
-  
-
-  // =============================================================================
-  // Jump Logic
-  // =============================================================================
 
   function initiateJump() {
     const candidates = getCandidateTargets()
@@ -345,13 +304,7 @@ function hedgehog() {
     jumpStartTime = null
   }
 
-  // =============================================================================
-  // Main Animation Loop
-  // =============================================================================
-
   function animate(timestamp) {
-    // console.log("animate")
-    // If paused, simply update lastTimestamp and skip state updates.
     if (isPaused) {
       lastTimestamp = timestamp
       window.requestAnimationFrame(animate)
@@ -449,10 +402,6 @@ function hedgehog() {
     window.requestAnimationFrame(animate)
   }
 
-  // =============================================================================
-  // Pause / Resume
-  // =============================================================================
-
   function togglePause() {
     isPaused = !isPaused
     if (isPaused) {
@@ -467,10 +416,6 @@ function hedgehog() {
       startJumpScheduler()
     }
   }
-
-  // =============================================================================
-  // Inject CSS
-  // =============================================================================
 
   function injectCSS() {
     const style = document.createElement("style")
@@ -494,7 +439,7 @@ function hedgehog() {
       .cleaning-tooltip {
         position: absolute;
         padding: 8px 12px;
-        background: #444;
+        background: var(--color-secondary);
         color: #fff;
         border-radius: 8px;
         font-size: 14px;
@@ -502,7 +447,7 @@ function hedgehog() {
         pointer-events: none;
         opacity: 0;
         transition: opacity 0.3s ease;
-        max-width: 400px;
+        width: 300px;
         text-align: center;
       }
       .cleaning-tooltip:after {
@@ -513,15 +458,11 @@ function hedgehog() {
         transform: translateX(-50%);
         border-width: 12px;
         border-style: solid;
-        border-color: #444 transparent transparent transparent;
+        border-color: var(--color-secondary) transparent transparent transparent;
       }
     `
     document.head.appendChild(style)
   }
-
-  // =============================================================================
-  // Initialization
-  // =============================================================================
 
   function init() {
     injectCSS()

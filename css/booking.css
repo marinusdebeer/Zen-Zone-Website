@@ -22,22 +22,6 @@
   justify-content: center;
 }
 
-/* Headings */
-.booking-container h2,
-.booking-container h3 {
-  text-align: center;
-  transition: all 0.3s ease;
-  color: var(--color-labels);
-}
-.booking-container h2 {
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-}
-.booking-container h3 {
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-}
-
 /* Step Tracker */
 .booking-progress-tracker {
   display: flex;
@@ -144,6 +128,10 @@
 /* Form Group */
 .booking-form-group {
   margin-bottom: 1.5rem;
+}
+.booking-form-group label {
+  margin-bottom: 0.5rem;
+  font-size: 20px;
 }
 .booking-form-group input,
 .booking-form-group select,
@@ -491,6 +479,9 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+  .booking-form-group label {
+    font-size: 18px;
+  }
   .booking-progress-tracker {
     display: none;
     flex-direction: column;

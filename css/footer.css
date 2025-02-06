@@ -4,8 +4,9 @@
 .footer {
   background-color: var(--color-footer-background); /* Updated to use footer-specific variable */
   color: var(--color-white);
-  padding: 1.5rem 2rem;
+  padding: 1rem 0rem;
   text-align: center;
+  /* height: var(--footer-height); */
 }
 
 .footer-container {
@@ -21,7 +22,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .footer-links a {
@@ -48,6 +49,7 @@
 .footer p {
   font-size: 0.9rem;
   margin-bottom: 0;
+  color: var(--color-white);
 }
 
 /* Responsive Adjustments */
