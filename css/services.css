@@ -1,3 +1,5 @@
+/* services.css */
+
 /* Services Section */
 .services {
   padding: 4rem 2rem;
@@ -5,35 +7,33 @@
   position: relative;
 }
 
-
-.services-content {
-  /* Optional: if you need additional styling for the content wrapper */
+.services .services-content {
+  /* Optional: additional styling */
 }
 
-.services-hero-tiles {
+.services .services-hero-tiles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   gap: 2rem;
 }
 
-.service-tile {
+.services .service-tile {
   background-color: var(--color-bg);
   border: 1px solid var(--color-gray);
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
-  /* min-height: 350px; */
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
 
-.service-tile:hover,
-.service-tile:focus-within {
+.services .service-tile:hover,
+.services .service-tile:focus-within {
   transform: scale(1.05);
   box-shadow: 0 8px 16px var(--color-shadow);
 }
 
-.service-tile p {
+.services .service-tile p {
   font-size: 1rem;
   color: var(--color-primary-text);
   margin-bottom: 1.5rem;
@@ -42,7 +42,7 @@
   text-align: center;
 }
 
-.truncate {
+.services .truncate {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -50,7 +50,7 @@
   height: 100px;
 }
 
-.learn-more-btn {
+.services .learn-more-btn {
   background-color: var(--color-secondary);
   color: var(--color-white);
   border: none;
@@ -66,8 +66,8 @@
   justify-content: center;
 }
 
-.learn-more-btn:hover,
-.learn-more-btn:focus {
+.services .learn-more-btn:hover,
+.services .learn-more-btn:focus {
   background-color: var(--color-secondary-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px var(--color-shadow);
@@ -75,53 +75,105 @@
   color: var(--color-white);
 }
 
-/* Tooltip Modal */
-.tooltip {
+/* Modal (tooltip) Styles */
+.services .tooltip {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 600px;
-  background: var(--color-bg);
+  background: var(--color-modal-background);
+  color: var(--color-white);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 8px 16px var(--color-shadow);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
   z-index: 3000;
   display: none;
-  pointer-events: auto;
+  animation: fadeInModal 0.3s ease-out;
 }
 
-.tooltip:target {
+.services .tooltip.open {
   display: block;
 }
 
-
-/* Tooltip Content */
-.tooltip-content {
-  text-align: left;
+.services .tooltip h3 {
   color: var(--color-text);
-  font-size: 18px;
-}
-.tooltip-content h3 {
-  font-size: 34px;
-  color: var(--color-secondary)
+  font-weight: bold;
 }
 
-.tooltip-close {
+.services .tooltip p {
+  color: var(--color-text);
+}
+
+/* Backdrop overlay */
+.services .tooltip::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: auto;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Fade-in animation */
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Close Button Styling */
+.services .tooltip-close {
   display: inline-block;
-  margin-top: 1rem;
   padding: 0.5rem 1rem;
   background: var(--color-secondary);
-  color: var(--color-white);
   text-decoration: none;
   border-radius: 4px;
-  transition: background 0.3s;
+  transition: transform 0.3s;
 }
 
-.tooltip-close:hover,
-.tooltip-close:focus {
-  background: var(--color-secondary-hover);
+.services .tooltip-close:hover,
+.services .tooltip-close:focus {
+  transform: scale(1.3);
+}
+
+.services .tooltip-close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-error);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.services .tooltip-close-icon:hover,
+.services .tooltip-close-icon:focus {
+  color: var(--color-error);
+}
+
+/* Mobile adjustments for modal */
+@media (max-width: 480px) {
+  .services .tooltip {
+    padding: 1rem;
+    width: 95%;
+    max-width: 95%;
+  }
 }
 
 /* Responsive Adjustments */
@@ -133,21 +185,21 @@
     font-size: 1.8rem;
     margin-bottom: 2.5rem;
   }
-  .service-tile {
+  .services .service-tile {
     padding: 1.5rem;
     min-height: 300px;
   }
-  .service-tile h3 {
+  .services .service-tile h3 {
     font-size: 1.7rem;
   }
-  .learn-more-btn {
+  .services .learn-more-btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
-  .services-hero-tiles {
+  .services .services-hero-tiles {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
   .services {
@@ -157,14 +209,14 @@
     font-size: 1.6rem;
     margin-bottom: 2rem;
   }
-  .service-tile {
+  .services .service-tile {
     padding: 1rem;
     min-height: 250px;
   }
-  .service-tile h3 {
+  .services .service-tile h3 {
     font-size: 1.7rem;
   }
-  .learn-more-btn {
+  .services .learn-more-btn {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }

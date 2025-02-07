@@ -1,29 +1,25 @@
+/* Gallery Section CSS for Auto‑Scrolling (CSS‑Only) */
+
+/* Outer Gallery Container */
 .gallery {
-  padding: 4rem 0;
+  padding: 1rem 0;
   background-color: var(--color-bg);
   text-align: center;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  scrollbar: hidden;
+  overflow: hidden; /* Hide overflow so the auto scroll is seamless */
   position: relative;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer/Edge */
-}
-.gallery::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
 }
 
-/* Make the heading sticky so it stays fixed while scrolling */
+/* Sticky Gallery Heading */
 .gallery h2 {
+  position: -webkit-sticky;
   position: sticky;
   left: 50%;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   z-index: 2;
   background-color: var(--color-bg);
   margin: 0;
-  padding: 1rem 0; /* Adjust spacing as needed */
+  padding: 1rem 0;
 }
 
 .gallery h2::after {
@@ -36,9 +32,12 @@
   border-radius: 2px;
 }
 
+/* Gallery Track: Contains Two Identical Containers */
 .gallery-track {
   display: flex;
   gap: var(--gallery-gap);
+  /* Ensure the track’s width spans both containers */
+  width: var(--gallery-track-width);
   animation: scroll-loop var(--gallery-animation-duration) linear infinite;
 }
 
@@ -46,19 +45,21 @@
   animation-play-state: paused;
 }
 
+/* Each Container of Gallery Items */
 .gallery-container {
   display: flex;
   gap: var(--gallery-gap);
   flex-shrink: 0;
-  scroll-snap-align: start;
+  /* Use the pre‑defined container width */
+  width: var(--gallery-container-width);
 }
 
+/* Individual Gallery Items */
 .gallery-item {
   flex: 0 0 var(--gallery-item-width);
   position: relative;
   overflow: hidden;
   height: var(--gallery-item-height);
-  scroll-snap-align: start;
 }
 
 .gallery-item img {
@@ -81,6 +82,7 @@
   outline-offset: 2px;
 }
 
+/* Auto‑Scroll Animation: Moves the entire track from 0% to –50% (i.e. one container’s width) */
 @keyframes scroll-loop {
   0% {
     transform: translateX(0);

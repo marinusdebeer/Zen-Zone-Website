@@ -13,6 +13,7 @@
   justify-content: center;
   overflow: hidden;
   color: var(--color-white);
+  margin-bottom: 30px;
 }
 
 /* Mobile-specific background image override */
