@@ -119,7 +119,7 @@ class StepTracker {
     const title = document.getElementById('bookingFormTitle');
     const cur = this.progressSteps.find(
       s => parseInt(s.getAttribute('data-step'), 10) === step &&
-        getComputedStyle(s).display !== 'none'
+           getComputedStyle(s).display !== 'none'
     );
     if (cur && title) {
       const label = cur.querySelector('.booking-step-label')?.textContent?.trim();
@@ -149,6 +149,11 @@ class StepTracker {
 
   updateClickableSteps() {
     this.progressSteps.forEach(s => {
+      if (!Utilities.isVisible(s)) {
+        s.classList.remove('clickable');
+        s.setAttribute('aria-disabled', 'true');
+        return;
+      }
       const sn = parseInt(s.getAttribute('data-step'), 10);
       const can = this.canNavigateToStep(sn);
       s.classList.toggle('clickable', can);
@@ -191,8 +196,8 @@ class BookingForm {
 
   updateSliderBackground(slider) {
     const min = +slider.min || 0,
-      max = +slider.max || 100,
-      val = +slider.value;
+          max = +slider.max || 100,
+          val = +slider.value;
     const pct = ((val - min) * 100) / (max - min);
     slider.style.backgroundImage = `linear-gradient(to right, var(--slider-fill-color) ${pct}%, var(--slider-track-color) ${pct}%)`;
   }
@@ -205,6 +210,7 @@ class BookingForm {
 
   showFormStep(step) {
     this.bookingForm.querySelectorAll('.booking-form-step').forEach(el => {
+      el.style.display = ''; // allow CSS to control display via active class
       const sn = parseInt(el.getAttribute('data-step'), 10);
       el.classList.toggle('booking-form-step--active', sn === step);
       el.setAttribute('aria-hidden', sn === step ? 'false' : 'true');
@@ -223,9 +229,7 @@ class BookingForm {
     this.bookingForm.addEventListener('submit', e => this.handleFormSubmit(e));
     this.bookingForm.addEventListener('change', e => this.handleOptionChange(e));
     Array.from(this.bookingForm.querySelectorAll('input, select, textarea')).forEach(input => {
-      if (input.type === 'range') {
-        input.addEventListener('input', Utilities.debounce(e => this.handleSliderChange(e), 300));
-      } else {
+      if (input.type !== 'range') {
         input.addEventListener('blur', e => this.handleFieldBlur(e));
       }
     });
@@ -251,35 +255,72 @@ class BookingForm {
     }
   }
 
+  toggleStepVisibility(stepNumber, visible) {
+    const formStep = document.querySelector(`.booking-form-step[data-step="${stepNumber}"]`);
+    if (formStep) {
+      formStep.style.display = visible ? '' : 'none';
+      formStep.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    }
+    const trackerStep = document.querySelector(`.booking-step[data-step="${stepNumber}"]`);
+    if (trackerStep) {
+      trackerStep.style.display = visible ? '' : 'none';
+    }
+    this.stepTracker.updateClickableSteps();
+  }
+
   goToNextStep() {
-    if (this.validateFormStep(this.currentStep)) {
-      this.updateFormData(this.currentStep);
-      this.currentStep++;
-      this.showFormStep(this.currentStep);
-      this.stepTracker.showFormStep(this.currentStep);
-      this.stepTracker.updateClickableSteps();
-      if (this.currentStep === 5) this.displayStep5Sections();
-    } else {
+    if (!this.validateFormStep(this.currentStep)) {
       Toast.show('Please correct the errors on this step before proceeding.', false);
+      return;
+    }
+    this.updateFormData(this.currentStep);
+    const industry = (this.formDataStore.industry || '').toLowerCase();
+    // Custom step skipping logic:
+    if (this.currentStep === 2 && industry === 'airbnb cleaning') {
+      this.currentStep = 4;
+    } else if (this.currentStep === 4 && (industry === 'office cleaning' || industry === 'airbnb cleaning')) {
+      this.currentStep = 6;
+    } else {
+      this.currentStep++;
+    }
+    this.showFormStep(this.currentStep);
+    this.stepTracker.showFormStep(this.currentStep);
+    this.stepTracker.updateClickableSteps();
+    if (this.currentStep === 5) {
+      this.displayStep5Sections();
     }
   }
 
   goToPreviousStep() {
-    this.currentStep = Math.max(1, this.currentStep - 1);
+    const industry = (this.formDataStore.industry || '').toLowerCase();
+    if (this.currentStep === 6 && (industry === 'office cleaning' || industry === 'airbnb cleaning')) {
+      this.currentStep = 4;
+    } else if (this.currentStep === 4 && industry === 'airbnb cleaning') {
+      this.currentStep = 2;
+    } else {
+      this.currentStep = Math.max(1, this.currentStep - 1);
+    }
     this.showFormStep(this.currentStep);
     this.stepTracker.showFormStep(this.currentStep);
     this.stepTracker.updateClickableSteps();
-    if (this.currentStep === 5) this.displayStep5Sections();
+    if (this.currentStep === 5) {
+      this.displayStep5Sections();
+    }
     this.initializeExtrasCountInputs();
   }
 
   goToStep(step) {
+    const industry = (this.formDataStore.industry || '').toLowerCase();
+    // Prevent direct navigation to Step 5 if Office Cleaning
+    if (step === 5 && industry === 'office cleaning') return;
     if (step < 1 || step > this.totalSteps) return;
     this.currentStep = step;
     this.showFormStep(this.currentStep);
     this.stepTracker.showFormStep(this.currentStep);
     this.stepTracker.updateClickableSteps();
-    if (this.currentStep === 5) this.displayStep5Sections();
+    if (this.currentStep === 5) {
+      this.displayStep5Sections();
+    }
   }
 
   handleFormSubmit(e) {
@@ -324,23 +365,31 @@ class BookingForm {
     const name = cb.name;
     this.formDataStore[name] = this.formDataStore[name] || [];
     if (cb.checked) {
-      if (!this.formDataStore[name].includes(cb.value))
+      if (!this.formDataStore[name].includes(cb.value)) {
         this.formDataStore[name].push(cb.value);
+      }
     } else {
       this.formDataStore[name] = this.formDataStore[name].filter(item => item !== cb.value);
     }
   }
 
+  // This function handles conditional display for fields based on selection.
   handleConditionalDisplay(field, value) {
+    // Query conditional fields by data attribute.
     const fields = this.bookingForm.querySelectorAll(`[data-conditional-field="${field}"]`);
     fields.forEach(wrapper => {
+      const parentStep = wrapper.closest('.booking-form-step');
+      if (parentStep && !parentStep.classList.contains('booking-form-step--active')) return;
       const cond = wrapper.getAttribute('data-conditional-value').trim().toLowerCase();
       if ((value || '').trim().toLowerCase() === cond) {
         wrapper.style.display = 'block';
         wrapper.setAttribute('aria-hidden', 'false');
         wrapper.querySelectorAll('input, select, textarea').forEach(input => {
-          if (field === 'extras') input.removeAttribute('required');
-          else if (input.dataset.required === 'true') input.setAttribute('required', 'required');
+          if (field === 'extras') {
+            input.removeAttribute('required');
+          } else if (input.dataset.required === 'true') {
+            input.setAttribute('required', 'required');
+          }
         });
       } else {
         wrapper.style.display = 'none';
@@ -357,11 +406,37 @@ class BookingForm {
         });
       }
     });
-    if (field === 'bookingType') this.displayStep5Sections();
-  }
 
-  handleSliderChange(e) {
-    // Additional tracking can be added here if needed.
+    // When industry changes, update Step 3 and 5 visibility as needed.
+    if (field === 'industry') {
+      this.toggleStepVisibility(3, true);
+      this.toggleStepVisibility(5, true);
+      if (value === 'Office Cleaning') {
+        this.toggleStepVisibility(5, false);
+      } else if (value === "Airbnb Cleaning") {
+        this.toggleStepVisibility(3, false);
+        this.toggleStepVisibility(5, false);
+      }
+
+      // --- New logic for Step 4 fields ---
+      const residentialFields = this.bookingForm.querySelector('#residentialFields');
+      const officeFields = this.bookingForm.querySelector('#officeFields');
+      if (value === 'Office Cleaning') {
+        if (residentialFields) residentialFields.style.display = 'none';
+        if (officeFields) {
+          officeFields.style.display = 'block';
+          const officeInput = officeFields.querySelector('input[name="offices"]');
+          if (officeInput) officeInput.setAttribute('required', 'required');
+        }
+      } else {
+        if (residentialFields) residentialFields.style.display = 'block';
+        if (officeFields) {
+          officeFields.style.display = 'none';
+          const officeInput = officeFields.querySelector('input[name="offices"]');
+          if (officeInput) officeInput.removeAttribute('required');
+        }
+      }
+    }
   }
 
   handleFieldBlur(e) {
@@ -378,10 +453,7 @@ class BookingForm {
         valid = false;
         input.classList.add('border-red-500');
         const err = input.parentElement.querySelector('.error-message');
-        if (err) {
-          err.style.display = 'block';
-          // err.textContent = input.validationMessage || 'This field is required.';
-        }
+        if (err) err.style.display = 'block';
         input.reportValidity();
       } else {
         input.classList.remove('border-red-500');
@@ -392,17 +464,11 @@ class BookingForm {
     if (!valid) Toast.show('Please correct the errors on this step before proceeding.', false);
     return valid;
   }
+
   updateSessionStorage(key, newData) {
-    // Retrieve existing data from sessionStorage
     let existingData = sessionStorage.getItem(key);
-
-    // Parse the data if it exists, otherwise initialize as an empty object
     let dataObject = existingData ? JSON.parse(existingData) : {};
-
-    // Merge the new data into the existing object
     Object.assign(dataObject, newData);
-
-    // Save the updated object back to sessionStorage
     sessionStorage.setItem(key, JSON.stringify(dataObject));
   }
 
@@ -417,8 +483,11 @@ class BookingForm {
       } else if (f.type === 'checkbox') {
         data[f.name] = data[f.name] || [];
         if (f.checked) data[f.name].push(f.value);
-      } else data[f.name] = f.value;
+      } else {
+        data[f.name] = f.value;
+      }
     });
+    // Merge into our formDataStore (keeping extras if any)
     this.formDataStore = { ...this.formDataStore, ...data, extras: this.formDataStore.extras };
     if (step === 5 && this.formDataStore.bookingType === 'One-Time') {
       this.compileExtras();
@@ -426,16 +495,16 @@ class BookingForm {
     }
     this.appendStepData(step, data);
     Object.entries(data).forEach(([fid, val]) => {
+      console.log(fid, val)
       if (Array.isArray(val)) val.forEach(v => Tracking.sendData(fid, v));
       else Tracking.sendData(fid, val);
     });
-
     this.updateSessionStorage('meta-data', data);
-
   }
 
   appendStepData(step, data) {
-    const stepEl = Array.from(document.querySelectorAll(`.booking-step[data-step="${step}"]`)).find(Utilities.isVisible);
+    const stepEl = Array.from(document.querySelectorAll(`.booking-step[data-step="${step}"]`))
+      .find(Utilities.isVisible);
     if (!stepEl) return;
     let html = '';
     switch (step) {
@@ -461,12 +530,20 @@ class BookingForm {
           </div>`;
         break;
       case 4:
-        html = `<div class="step-value">
-          <strong>Square Footage:</strong> ${Utilities.sanitizeHTML(data.squareFootage || 'N/A')} sq ft<br>
-          <strong>Bedrooms:</strong> ${Utilities.sanitizeHTML(data.bedrooms || 'N/A')}<br>
-          <strong>Bathrooms:</strong> ${Utilities.sanitizeHTML(data.bathrooms || 'N/A')}<br>
-          <strong>Powder Rooms:</strong> ${Utilities.sanitizeHTML(data.powderRooms || 'N/A')}
-        </div>`;
+        if ((this.formDataStore.industry || '').toLowerCase() === 'office cleaning') {
+          html = `<div class="step-value">
+            <strong>Square Footage:</strong> ${Utilities.sanitizeHTML(data.squareFootage || 'N/A')} sq ft<br>
+            <strong>Bathrooms:</strong> ${Utilities.sanitizeHTML(data.bathrooms || 'N/A')}<br>
+            <strong>Offices:</strong> ${Utilities.sanitizeHTML(data.offices || 'N/A')}
+          </div>`;
+        } else {
+          html = `<div class="step-value">
+            <strong>Square Footage:</strong> ${Utilities.sanitizeHTML(data.squareFootage || 'N/A')} sq ft<br>
+            <strong>Bedrooms:</strong> ${Utilities.sanitizeHTML(data.bedrooms || 'N/A')}<br>
+            <strong>Bathrooms:</strong> ${Utilities.sanitizeHTML(data.bathrooms || 'N/A')}<br>
+            <strong>Powder Rooms:</strong> ${Utilities.sanitizeHTML(data.powderRooms || 'N/A')}
+          </div>`;
+        }
         break;
       case 5:
         html = this.formDataStore.bookingType === 'One-Time'
@@ -495,12 +572,16 @@ class BookingForm {
 
   displayStep5Sections() {
     const type = this.formDataStore.bookingType;
+    const trackerStep = document.getElementById('step5');
     const step5 = this.bookingForm.querySelector('.booking-form-step[data-step="5"]');
-    if (!step5) return;
-    const extrasGroup = step5.querySelector('[data-conditional-field="bookingType"][data-conditional-value="One-Time"]');
+    if (!trackerStep || !step5) return;
+    const labelEl = trackerStep.querySelector('.booking-step-label');
+    labelEl.textContent = type === 'Recurring' ? 'Select Package' : (type === 'One-Time' ? 'Select Extras' : 'Step 5');
+
     const packageGroup = step5.querySelector('[data-conditional-field="bookingType"][data-conditional-value="Recurring"]');
+    const extrasGroup = step5.querySelector('[data-conditional-field="bookingType"][data-conditional-value="One-Time"]');
+
     if (type === 'Recurring') {
-      Utilities.toggleVisibility('selectPackage', 'selectExtras');
       if (extrasGroup) {
         extrasGroup.style.display = 'none';
         extrasGroup.setAttribute('aria-hidden', 'true');
@@ -513,7 +594,6 @@ class BookingForm {
         packageGroup.querySelectorAll('input, select, textarea').forEach(i => i.setAttribute('required', 'required'));
       }
     } else if (type === 'One-Time') {
-      Utilities.toggleVisibility('selectExtras', 'selectPackage');
       if (packageGroup) {
         packageGroup.style.display = 'none';
         packageGroup.setAttribute('aria-hidden', 'true');
@@ -526,17 +606,17 @@ class BookingForm {
         this.initializeSliderValues();
       }
     } else {
-      if (extrasGroup) {
-        extrasGroup.style.display = 'none';
-        extrasGroup.setAttribute('aria-hidden', 'true');
-        extrasGroup.querySelectorAll('input, select, textarea').forEach(i => i.removeAttribute('required'));
-        this.resetExtrasSliders();
-      }
       if (packageGroup) {
         packageGroup.style.display = 'none';
         packageGroup.setAttribute('aria-hidden', 'true');
         packageGroup.querySelectorAll('input, select, textarea').forEach(i => i.removeAttribute('required'));
         this.resetPackageSelections();
+      }
+      if (extrasGroup) {
+        extrasGroup.style.display = 'none';
+        extrasGroup.setAttribute('aria-hidden', 'true');
+        extrasGroup.querySelectorAll('input, select, textarea').forEach(i => i.removeAttribute('required'));
+        this.resetExtrasSliders();
       }
     }
   }
@@ -654,8 +734,8 @@ class BookingForm {
     ];
     extras.forEach(item => {
       const container = document.getElementById(`${item.name}SliderContainer`),
-        slider = document.getElementById(`${item.name}Slider`),
-        disp = document.getElementById(`${item.name}CountDisplay`);
+            slider = document.getElementById(`${item.name}Slider`),
+            disp = document.getElementById(`${item.name}CountDisplay`);
       if (container && slider && disp) {
         container.style.display = 'flex';
         disp.textContent = slider.value;

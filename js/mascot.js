@@ -125,7 +125,7 @@ const frameRateLimiter = createFrameRateLimiter(FPS);
   }
 
   function getFloorY() {
-    return window.scrollY + window.innerHeight - HEDGEHOG_SIZE - BOTTOM_OFFSET;
+    return window.innerHeight - HEDGEHOG_SIZE - BOTTOM_OFFSET;
   }
 
   function stopJumpScheduler() {
@@ -296,8 +296,8 @@ const frameRateLimiter = createFrameRateLimiter(FPS);
     const floorY = getFloorY();
 
     // Calculate desired landing point.
-    let landingX = rect.left + window.scrollX + rect.width / 2 - HEDGEHOG_SIZE / 2;
-    let landingY = rect.top + window.scrollY - HEDGEHOG_SIZE;
+    let landingX = rect.left + rect.width / 2 - HEDGEHOG_SIZE / 2;
+    let landingY = rect.top - HEDGEHOG_SIZE;
 
     landingX = Math.max(0, Math.min(landingX, pageWidth - HEDGEHOG_SIZE));
     landingY = Math.max(0, Math.min(landingY, floorY));
@@ -344,7 +344,7 @@ const frameRateLimiter = createFrameRateLimiter(FPS);
     const delta = (timestamp - lastTimestamp) / 1000;
     lastTimestamp = timestamp;
 
-    const pageWidth = document.documentElement.scrollWidth;
+    const pageWidth = window.innerWidth;
     const floorY = getFloorY();
 
     if (state === "walking") {
@@ -452,7 +452,7 @@ const frameRateLimiter = createFrameRateLimiter(FPS);
     const style = document.createElement("style");
     style.innerHTML = `
       #hedgehog {
-        position: absolute;
+        position: fixed;
         width: ${HEDGEHOG_SIZE}px;
         height: ${HEDGEHOG_SIZE}px;
         background-image: url('/assets/walk.png');

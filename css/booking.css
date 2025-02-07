@@ -29,6 +29,7 @@
 }
 
 /* Step Tracker */
+/* Updated for the consolidated step 5 element (#step5) and dynamic label (#step5Label) */
 .booking-progress-tracker {
   display: flex;
   justify-content: space-between;
@@ -71,12 +72,10 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-right: 0.5rem;
-  /* color: var(--color-primary); */
 }
 .booking-step-label {
   font-size: 1.1rem;
   font-weight: bold;
-  /* color: var(--color-primary); */
 }
 .step-summary {
   margin-top: 0.5rem;
@@ -435,13 +434,11 @@
   position: relative;
   display: inline-block;
   cursor: pointer;
-
 }
 .service .tooltip {
   visibility: hidden;
   width: 400px;
   background: var(--color-tertiary);
-  color: #fff;
   text-align: left;
   padding: 10px;
   border-radius: 6px;
@@ -456,6 +453,9 @@
   transition: opacity 0.3s, transform 0.2s;
   z-index: 1000;
 }
+.service .tooltip p {
+  color: var(--color-white);
+}
 .service .tooltip::after {
   content: '';
   position: absolute;
@@ -466,7 +466,9 @@
   border-style: solid;
   border-color: black transparent transparent transparent;
 }
-.service:hover .tooltip {
+/* Show tooltip on both hover and focus */
+.service:hover .tooltip,
+.service:focus .tooltip {
   visibility: visible;
   opacity: 1;
   transform: translateX(-50%) translateY(-5px);
@@ -474,7 +476,6 @@
 @media (max-width: 480px) {
   .service .tooltip {
     width: 100%;
-    /* top: 110%; */
     transform: translateX(-50%);
   }
   .service .tooltip::after {
