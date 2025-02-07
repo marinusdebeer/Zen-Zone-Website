@@ -38,6 +38,38 @@
   z-index: 1;
 }
 
+/* CTA Buttons in the Hero Section */
+.hero .cta-button {
+  /* Base shadow for all devices */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Hover and focus states (affects desktop and devices supporting hover) */
+.hero .cta-button:hover,
+.hero .cta-button:focus {
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* Active state (when button is tapped or clicked) */
+.hero .cta-button:active {
+  transform: translateY(1px); /* A small push back */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .hero .cta-button {
+    /* Increase the shadow for mobile to make the buttons stand out more */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+    /* Ensure padding and font-size are maintained for touch targets */
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+
 /* Hero Content Container */
 .hero-content {
   position: relative;
