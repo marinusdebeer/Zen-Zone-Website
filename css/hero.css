@@ -1,216 +1,123 @@
-/* hero.css */
-
-
 /* HERO SECTION */
 .hero {
-  width: 100%;
-  min-height: 100dvh; /* Changed from height: 100dvh to min-height: 100dvh */
   position: relative;
+  width: 100%;
+  min-height: 100vh; /* Full viewport height */
+  /* background-image: url('/assets/hero.jpg'); */
+  background-image: url('/assets/portfolio/11.JPG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
-  flex-direction: column; /* Vertical stacking */
   align-items: center;
   justify-content: center;
-  background-color: var(--color-bg);
-  overflow: visible; /* Prevent content from being cut off */
+  overflow: hidden;
+  color: var(--color-white);
 }
 
+/* Mobile-specific background image override */
+@media (max-width: 768px) {
+  .hero {
+    background-image: url('/assets/portfolio/11.JPG');
+  }
+}
 
-/* Hide the phone number by default */
-.hero-phone {
-  display: none;
+/* Gradient Overlay for improved contrast and depth */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.3)
+  );
+  z-index: 1;
 }
 
 /* Hero Content Container */
 .hero-content {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2rem; /* Increased gap for better spacing */
+  text-align: center; /* Ensure container alignment */
+  padding: var(--hero-padding);
   max-width: 1200px;
-  width: 100%;
-  padding: 0 2rem;
+  width: 90%;
   animation: fadeIn 1s ease-out forwards;
-}
-
-/* Respect users' motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .hero-content {
-    animation: none;
-  }
-}
-
-/* Textual Content */
-.hero-text {
-  flex: 1;
-  color: var(--color-primary-text); /* Using global primary text color */
-}
-
-.hero-title {
-  font-size: var(--hero-title-font-size);
-  font-weight: 800;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-  color: var(--color-primary-text); /* Using global primary text color */
-  word-break: break-word; /* Prevent long words from overflowing */
-  padding: 0 1rem;
-}
-
-.hero-subtitle {
-  font-size: var(--hero-subtitle-font-size);
-  color: var(--color-secondary-text); /* Using global secondary text color */
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-/* CTA Buttons */
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-  justify-content: flex-start; /* Default alignment */
-}
-.cta-buttons .cta-button {
-  width: 200px;
-}
-.cta-buttons .call-button {
-  display: none;
-}
-
-@media (max-width: 1024px) {
-  .cta-buttons {
-    justify-content: center;
-  }
-  .cta-buttons .call-button {
-    display: block;
-  }
-}
-
-/* Secondary CTA Button */
-.secondary-cta {
-  background-color: var(--color-secondary); /* Using global secondary color */
-  color: var(--color-white); /* Using global white color */
-}
-
-.secondary-cta:hover,
-.secondary-cta:focus {
-  background-color: var(--color-secondary-hover); /* Using global secondary hover color */
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px var(--color-shadow); /* Using global shadow color */
-  outline: none;
-}
-
-/* Image Wrapper */
-.hero-image-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 600px; /* Re-added max-width for better control */
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px var(--color-shadow); /* Using global shadow color */
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.hero-image:hover,
-.hero-image:focus {
-  transform: scale(1.02);
-  outline: none;
 }
 
 /* Fade-In Animation */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* RESPONSIVE ADJUSTMENTS */
-
-/* Tablet Devices */
-@media (max-width: 1024px) {
-  .hero {
-    min-height: 100dvh; /* Ensure min-height is consistent */
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  .hero-content {
-    padding: 0 1.5rem;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-title {
-    font-size: clamp(2rem, 4vw, 2.5rem); /* Responsive scaling */
-    padding: 0 1rem; /* Ensure padding to prevent overflow */
-  }
-  
-  .hero-subtitle {
-    font-size: var(--hero-subtitle-font-size); /* Consistent with global variable */
-  }
-  
-  .hero-image-wrapper {
-    margin-top: 2rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Mobile Devices */
+/* Hero Header Container */
+.hero-header {
+  margin-bottom: 1.5rem;
+}
+
+/* Override text colors, shadows, and alignment in the hero section */
+.hero h1,
+.hero h2,
+.hero p,
+.hero header {
+  color: var(--color-white);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+  text-align: center; /* Override any justified text from global styles */
+}
+
+/* Hero Title */
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+/* Hero Tagline (if you decide to add one) */
+/*
+.hero-tagline {
+  font-size: clamp(1.75rem, 4vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-white);
+}
+*/
+
+/* Hero Subtitle */
+.hero-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  margin-bottom: 2rem;
+}
+
+/* CTA Buttons Container */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .hero {
-    padding: var(--hero-padding); /* Using hero-specific padding variable */
-  }
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-  }
-  
-  
   .hero-title {
-    font-size: clamp(1.75rem, 4vw, 2.25rem); /* Responsive scaling */
-    padding: 0 1rem; /* Added padding */
+    font-size: 2.5rem;
   }
-  
+  /* If you add a hero-tagline, you can adjust its size here as well */
   .hero-subtitle {
-    font-size: var(--hero-subtitle-font-size); /* Consistent with global variable */
+    font-size: 1.25rem;
   }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: clamp(1.5rem, 5vw, 1.9rem); /* Adjusted for better fit */
-    padding: 0 0.5rem; /* Reduce padding for smaller screens */
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem; /* Fixed size for small screens */
-  }
-
-}
-
-/* Phone CTA Button Specific Styles */
-.phone-cta {
-  display: none; /* Hidden by default */
-}
-
-.phone-number {
-  margin-left: 1rem;
-}
-
-/* Display the phone CTA only on screens smaller than 1008px */
-@media (max-width: 1007px) {
-  .phone-cta {
-    display: inline-flex; /* Makes the phone CTA visible */
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
   }
 }
