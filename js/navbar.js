@@ -143,23 +143,32 @@ function initializeNavbar() {
  * Initialize Smooth Scrolling (Only on index.html)
  */
 function initializeSmoothScrolling() {
-  // Check if the current page is index.html
+  // Determine if we’re on the index page
   const isIndexPage =
     window.location.pathname === "/" ||
     window.location.pathname === "/index.html";
 
-  if (!isIndexPage) return; // Exit if not on index.html
-
-  const navLinks = document.querySelectorAll('a.nav-link[href^="/index.html#"]');
+  // Select all nav links that point to sections using a hash, e.g. "/#services"
+  const navLinks = document.querySelectorAll('a[href^="/#"]');
 
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href").split("#")[1];
-      const targetSection = document.getElementById(targetId);
+      // If we're on the index page, intercept the click and do smooth scrolling
+      if (isIndexPage) {
+        e.preventDefault();
 
-      if (targetSection) {
-        const navbarHeight = document.querySelector(".desktop-menu").offsetHeight;
+        const targetId = this.getAttribute("href").split("#")[1];
+        const targetSection = document.getElementById(targetId);
+        if (!targetSection) return;
+
+        // If a mobile menu is open, close it first
+        const mobileMenu = document.querySelector(".mobile-menu");
+        if (mobileMenu && mobileMenu.classList.contains("open")) {
+          closeMobileMenu();
+        }
+
+        // Calculate the target scroll position (account for navbar height)
+        const navbarHeight = document.querySelector(".navbar").offsetHeight;
         const targetPosition =
           targetSection.getBoundingClientRect().top +
           window.pageYOffset -
@@ -170,34 +179,34 @@ function initializeSmoothScrolling() {
           behavior: "smooth",
         });
 
-        // Update the URL hash without causing a jump
+        // Update the URL hash without jumping
         history.pushState(null, null, `#${targetId}`);
       }
+      // Else: if not on the index page, do nothing so that the browser navigates normally.
     });
   });
 
-  // Handle page load with hash (smooth scroll if on index.html)
-  if (window.location.hash) {
+  // On page load, if we're on the index page and there's a hash, scroll smoothly to that section.
+  if (isIndexPage && window.location.hash) {
     const targetId = window.location.hash.substring(1);
     const targetSection = document.getElementById(targetId);
-
     if (targetSection) {
-      // Use a timeout to ensure the page has fully loaded
       setTimeout(() => {
-        const navbarHeight = document.querySelector(".desktop-menu").offsetHeight;
+        const navbarHeight = document.querySelector(".navbar").offsetHeight;
         const targetPosition =
           targetSection.getBoundingClientRect().top +
           window.pageYOffset -
           navbarHeight;
-
         window.scrollTo({
           top: targetPosition,
           behavior: "smooth",
         });
-      }, 100); // Adjust delay as necessary
+      }, 100); // Adjust the delay if necessary
     }
   }
 }
+
+
 
 /**
  * Initialize Active Section Highlighting

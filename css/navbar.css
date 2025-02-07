@@ -125,7 +125,7 @@
   top: var(--navbar-height);
   right: 0;
   width: 80%;
-  max-width: 300px;
+  max-width: 250px;
   height: 100%;
   background-color: var(--color-footer-background);
   box-shadow: -2px 0 8px var(--color-shadow);
@@ -143,8 +143,9 @@
   padding: 1rem;
 }
 
-.mobile-menu li {
-  margin-bottom: 1rem;
+.mobile-menu li a {
+  margin-bottom: 0.5rem;
+  padding: 1rem;
 }
 
 .mobile-menu a,
