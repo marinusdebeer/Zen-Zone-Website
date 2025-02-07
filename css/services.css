@@ -13,7 +13,7 @@
 
 .services .services-hero-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
   gap: 2rem;
 }
 
@@ -32,7 +32,9 @@
   transform: scale(1.05);
   box-shadow: 0 8px 16px var(--color-shadow);
 }
-
+.services .service-tile h3 {
+  font-size: 1.4rem;
+}
 .services .service-tile p {
   font-size: 1rem;
   color: var(--color-primary-text);
@@ -190,7 +192,7 @@
     min-height: 300px;
   }
   .services .service-tile h3 {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
   }
   .services .learn-more-btn {
     padding: 0.6rem 1.2rem;
@@ -199,9 +201,6 @@
 }
 
 @media (max-width: 480px) {
-  .services .services-hero-tiles {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
   .services {
     padding: 2rem 1rem;
   }
@@ -214,7 +213,7 @@
     min-height: 250px;
   }
   .services .service-tile h3 {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
   }
   .services .learn-more-btn {
     padding: 0.5rem 1rem;

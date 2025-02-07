@@ -9,7 +9,7 @@
 .areas-card {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: var(--color-modal-background); /* Uses modal background variable for consistency */
+  /* background-color: var(--color-modal-background); */
   padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 5px 10px var(--color-shadow);

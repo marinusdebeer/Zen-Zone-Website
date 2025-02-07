@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  function openModal(modalId) {
-    const modal = document.getElementById(modalId);
+  function openModal(id) {
+    const modal = document.getElementById(id);
     if (modal) {
       modal.classList.add('open');
       document.body.classList.add('modal-open');
@@ -62,7 +62,27 @@ document.addEventListener('DOMContentLoaded', () => {
     track.style.animationDelay = `-${fraction * duration}s`;
   }
 
-  gallery.addEventListener('wheel', disableAutoScroll);
-  gallery.addEventListener('touchstart', disableAutoScroll);
-  gallery.addEventListener('mousedown', disableAutoScroll);
+  gallery.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      disableAutoScroll();
+    }
+  });
+
+  let touchStartX = null, touchStartY = null;
+  gallery.addEventListener('touchstart', e => {
+    const touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  });
+  gallery.addEventListener('touchmove', e => {
+    if (touchStartX === null || touchStartY === null) return;
+    const touch = e.touches[0];
+    if (Math.abs(touch.clientX - touchStartX) > Math.abs(touch.clientY - touchStartY)) {
+      disableAutoScroll();
+    }
+  });
+
+  gallery.addEventListener('mousedown', e => {
+    disableAutoScroll();
+  });
 });
