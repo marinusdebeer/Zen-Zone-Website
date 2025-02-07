@@ -48,18 +48,21 @@
       justify-content: center;
       color: #fff;
     }
+
     /* Tablet: Use medium image */
     @media (max-width: 768px) {
       .hero {
         background-image: url('/assets/hero_medium.avif');
       }
     }
+
     /* Mobile: Use small image */
     @media (max-width: 480px) {
       .hero {
         background-image: url('/assets/hero_small.avif');
       }
     }
+
     .hero::before {
       content: "";
       position: absolute;
@@ -67,9 +70,10 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
       z-index: 1;
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
@@ -79,12 +83,20 @@
       width: 90%;
       animation: fadeIn 1s ease-out forwards;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
-  
+
 
   <!-- External CSS -->
   <link rel="stylesheet" href="css/utilities.css">
@@ -174,13 +186,6 @@
         </div>
       </div>
     </section>
-
-
-
-
-
-    <!-- <iframe src="/booking.html" width="800" height="1000" frameborder="3" allowfullscreen title="DESCRIPTION_OF_IFRAME">
-    </iframe> -->
 
     <!-- REVIEWS SECTION -->
     <section class="reviews" id="reviews" aria-label="Client Reviews">
@@ -974,7 +979,6 @@
     </section>
 
     <!-- SERVICES SECTION -->
-    <!-- Services Section HTML -->
     <section class="services" id="services" aria-label="Our Cleaning Services">
       <div class="services-content">
         <h2>Our Cleaning Services</h2>
@@ -1043,7 +1047,6 @@
         </div>
       </div>
 
-      <!-- Modal Tooltips -->
       <!-- Deep Cleaning Modal -->
       <div id="tooltip-DeepCleaning" class="tooltip">
         <button type="button" class="tooltip-close tooltip-close-icon" aria-label="Close modal">
@@ -1069,6 +1072,7 @@
             are sanitized
             to help reduce the spread of germs.
           </p>
+          <a href="/booking.html" class="cta-button book-now" aria-label="Get Your Free Quote">Get Free Quote</a>
         </div>
       </div>
 
@@ -1094,6 +1098,7 @@
             maintaining a fresh, clean,
             and healthy living environment.
           </p>
+          <a href="/booking.html" class="cta-button book-now" aria-label="Get Your Free Quote">Get Free Quote</a>
         </div>
       </div>
 
@@ -1117,6 +1122,7 @@
             This service includes removing construction dust and debris, deep cleaning all surfaces, windows, fixtures,
             and hard-to-reach areas.
           </p>
+          <a href="/booking.html" class="cta-button book-now" aria-label="Get Your Free Quote">Get Free Quote</a>
         </div>
       </div>
 
@@ -1139,6 +1145,7 @@
             High-touch areas receive extra care to reduce the spread of germs, making it ideal for preparing a home for
             new occupants.
           </p>
+          <a href="/booking.html" class="cta-button book-now" aria-label="Get Your Free Quote">Get Free Quote</a>
         </div>
       </div>
 
@@ -1163,6 +1170,7 @@
             High-touch areas are sanitized to minimize the spread of germs, making this service perfect for a thorough
             reset during a move.
           </p>
+          <a href="/booking.html" class="cta-button book-now" aria-label="Get Your Free Quote">Get Free Quote</a>
         </div>
       </div>
 
@@ -1177,9 +1185,19 @@
         <div class="tooltip-content">
           <h3>Airbnb Cleaning</h3>
           <p>
-            Enhance guest satisfaction with our fast and efficient cleaning services for seamless Airbnb turnovers.
-            We ensure your property is guest-ready, with a quick yet thorough clean covering all common areas.
+            Our Airbnb Cleaning Service is designed to prepare your property for guests by delivering a fast, efficient,
+            and thorough cleaning.
+            We ensure that every area—from living spaces and kitchens to bathrooms—is meticulously cleaned and
+            sanitized, creating a welcoming environment
+            that encourages positive guest reviews.
           </p>
+          <p>
+            The service includes dusting, vacuuming, mopping, and disinfecting high-touch surfaces. Additionally, we
+            manage laundry services by washing, drying,
+            and ironing linens and towels so that all bedding and guest supplies are fresh and guest-ready for a
+            seamless turnover.
+          </p>
+          <a href="/booking.html" class="cta-button book-now" aria-label="Get Your Free Quote">Get Free Quote</a>
         </div>
       </div>
 
@@ -1194,12 +1212,22 @@
         <div class="tooltip-content">
           <h3>Office Cleaning</h3>
           <p>
-            Boost productivity and maintain a professional image with our comprehensive office cleaning services.
-            We clean workspaces, break rooms, restrooms, and common areas to ensure your office remains healthy and
-            inviting.
+            Our Office Cleaning Service is designed to maintain a healthy, professional workspace by ensuring that all
+            areas are thoroughly cleaned and disinfected.
+            We focus on high-traffic spaces such as workstations, meeting rooms, break areas, and restrooms to promote a
+            productive and inviting environment.
           </p>
+          <p>
+            The service includes dusting, vacuuming, mopping, and sanitizing surfaces including desks, countertops, and
+            common equipment.
+            Our comprehensive approach not only enhances the professional image of your office but also contributes to
+            employee well-being by reducing allergens and germs.
+          </p>
+          <a href="/booking.html" class="cta-button book-now" aria-label="Get Your Free Quote">Get Free Quote</a>
         </div>
       </div>
+
+
     </section>
 
 
