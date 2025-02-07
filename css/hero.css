@@ -76,13 +76,25 @@
   justify-content: center;
 }
 
-/* Responsive Adjustments for text and buttons */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
   }
   .hero-subtitle {
     font-size: 1.25rem;
+  }
+  .cta-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.0rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
   }
   .cta-button {
     font-size: 1rem;
