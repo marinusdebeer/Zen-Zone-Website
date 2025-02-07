@@ -38,13 +38,14 @@
     .hero {
       position: relative;
       width: 100%;
-      min-height: 100vh;
+      height: calc(100vh - var(--navbar-height));
+      /* min-height: 100vh; */
       /* Default: Desktop version */
       background-image: url('/assets/hero_large.avif');
       background-size: cover;
       background-position: center;
       display: flex;
-      align-items: center;
+      /* align-items: center; */
       justify-content: center;
       color: #fff;
     }
@@ -80,6 +81,7 @@
       text-align: center;
       padding: 2rem 1rem;
       max-width: 1200px;
+      top: 30%;
       width: 90%;
       animation: fadeIn 1s ease-out forwards;
     }
