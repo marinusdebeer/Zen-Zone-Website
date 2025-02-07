@@ -19,7 +19,7 @@
 /* Mobile-specific background image override */
 @media (max-width: 768px) {
   .hero {
-    background-image: url('/assets/portfolio/11.JPG');
+    /* background-image: url('/assets/portfolio/11.JPG'); */
   }
 }
 
