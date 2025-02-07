@@ -1,96 +1,42 @@
-/* HERO SECTION */
+/* Non‑Critical Hero Section Styles */
+
+/* Additional styling for the hero container (non‑critical properties only) */
 .hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh; /* Full viewport height */
-  /* background-image: url('/assets/hero.jpg'); */
-  background-image: url('/assets/portfolio/11.JPG');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  color: var(--color-white);
+  /* Critical properties have been inlined in the head */
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
-/* Mobile-specific background image override */
+/* Mobile‑specific adjustments (if needed) */
 @media (max-width: 768px) {
   .hero {
-    /* background-image: url('/assets/portfolio/11.JPG'); */
+    /* Additional non‑critical overrides can be added here */
   }
-}
-
-/* Gradient Overlay for improved contrast and depth */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.3)
-  );
-  z-index: 1;
 }
 
 /* CTA Buttons in the Hero Section */
 .hero .cta-button {
-  /* Base shadow for all devices */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* Hover and focus states (affects desktop and devices supporting hover) */
 .hero .cta-button:hover,
 .hero .cta-button:focus {
-  transform: translateY(-2px); /* Slight lift effect */
+  transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
 }
 
-/* Active state (when button is tapped or clicked) */
 .hero .cta-button:active {
-  transform: translateY(1px); /* A small push back */
+  transform: translateY(1px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
 }
 
-/* Mobile-specific adjustments */
+/* Mobile‑specific adjustments for CTA buttons */
 @media (max-width: 768px) {
   .hero .cta-button {
-    /* Increase the shadow for mobile to make the buttons stand out more */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
-    /* Ensure padding and font-size are maintained for touch targets */
     font-size: 1rem;
     padding: 0.75rem 1.5rem;
-  }
-}
-
-
-/* Hero Content Container */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center; /* Ensure container alignment */
-  padding: var(--hero-padding);
-  max-width: 1200px;
-  width: 90%;
-  animation: fadeIn 1s ease-out forwards;
-}
-
-/* Fade-In Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -99,14 +45,14 @@
   margin-bottom: 1.5rem;
 }
 
-/* Override text colors, shadows, and alignment in the hero section */
+/* Text styling for Hero Section elements */
 .hero h1,
 .hero h2,
 .hero p,
 .hero header {
   color: var(--color-white);
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-  text-align: center; /* Override any justified text from global styles */
+  text-align: center;
 }
 
 /* Hero Title */
@@ -115,16 +61,6 @@
   font-weight: 900;
   margin-bottom: 0.5rem;
 }
-
-/* Hero Tagline (if you decide to add one) */
-/*
-.hero-tagline {
-  font-size: clamp(1.75rem, 4vw, 2rem);
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--color-white);
-}
-*/
 
 /* Hero Subtitle */
 .hero-subtitle {
@@ -140,12 +76,11 @@
   justify-content: center;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for text and buttons */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
   }
-  /* If you add a hero-tagline, you can adjust its size here as well */
   .hero-subtitle {
     font-size: 1.25rem;
   }

@@ -32,16 +32,71 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 
+
+  <style>
+    /* Critical CSS for the Hero Section using responsive AVIF images */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      /* Default: Desktop version */
+      background-image: url('/assets/hero_large.avif');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    /* Tablet: Use medium image */
+    @media (max-width: 768px) {
+      .hero {
+        background-image: url('/assets/hero_medium.avif');
+      }
+    }
+    /* Mobile: Use small image */
+    @media (max-width: 480px) {
+      .hero {
+        background-image: url('/assets/hero_small.avif');
+      }
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      width: 90%;
+      animation: fadeIn 1s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  
+
   <!-- External CSS -->
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/hero.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/services.css">
   <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="css/reviews.css">
   <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/areas.css">
+
 
   <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style"
     onload="this.onload=null;this.rel='stylesheet'" />
