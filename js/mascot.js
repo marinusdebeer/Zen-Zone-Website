@@ -543,13 +543,15 @@ function hedgehog() {
   }
 }
 
+let hasRun = false;
 if (window.innerWidth > 768) {
   // Ensure flags are loaded before usage.
   // You'll only need to call this on the code for when the first time a user visits.
   posthog.onFeatureFlags(function () {
     // feature flags should be available at this point
-    if (posthog.isFeatureEnabled('MascotWalkingShowingTips')) {
+    if (!hasRun && posthog.isFeatureEnabled('MascotWalkingShowingTips')) {
       hedgehog();
+      hasRun = true;
     }
   })
 }
