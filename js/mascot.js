@@ -548,7 +548,7 @@ if (window.innerWidth > 768) {
   // You'll only need to call this on the code for when the first time a user visits.
   posthog.onFeatureFlags(function () {
     // feature flags should be available at this point
-    if (posthog.isFeatureEnabled('Mascot Walking Around Booking Form')) {
+    if (posthog.isFeatureEnabled('MascotWalkingShowingTips')) {
       hedgehog();
     }
   })
