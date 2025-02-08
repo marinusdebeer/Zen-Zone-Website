@@ -60,19 +60,19 @@ function hedgehog() {
  * @param {number} fps - Desired frames per second.
  * @returns {function} - A function that accepts the current timestamp and returns true if enough time has passed.
  */
-function createFrameRateLimiter(fps) {
-  const minInterval = 1000 / fps;
-  let lastTimestamp = null;
-  return function(timestamp) {
-    if (lastTimestamp === null || timestamp - lastTimestamp >= minInterval) {
-      lastTimestamp = timestamp;
-      return true;
-    }
-    return false;
-  };
-}
+  function createFrameRateLimiter(fps) {
+    const minInterval = 1000 / fps;
+    let lastTimestamp = null;
+    return function (timestamp) {
+      if (lastTimestamp === null || timestamp - lastTimestamp >= minInterval) {
+        lastTimestamp = timestamp;
+        return true;
+      }
+      return false;
+    };
+  }
 
-const frameRateLimiter = createFrameRateLimiter(FPS);
+  const frameRateLimiter = createFrameRateLimiter(FPS);
 
   // When a user key is pressed, mark that we're under manual control for 3 seconds.
   function activateUserControl() {
@@ -265,7 +265,7 @@ const frameRateLimiter = createFrameRateLimiter(FPS);
     const arrowOffset = hedgehogCenter - tooltipRect.left;
     // Set a CSS variable on the tooltip for the arrow position.
     tooltip.style.setProperty("--arrow-offset", arrowOffset + "px");
-    
+
     requestAnimationFrame(() => {
       tooltip.style.opacity = "1";
     });
@@ -327,7 +327,7 @@ const frameRateLimiter = createFrameRateLimiter(FPS);
   }
 
   function animate(timestamp) {
-     // Throttle updates to the desired frame rate.
+    // Throttle updates to the desired frame rate.
     if (!frameRateLimiter(timestamp)) {
       window.requestAnimationFrame(animate);
       return;
@@ -528,7 +528,7 @@ const frameRateLimiter = createFrameRateLimiter(FPS);
       nextTip = response;
     });
 
-    if(localStorage.getItem('mascot') === "true"){
+    if (localStorage.getItem('mascot') === "true") {
       setupControls();
     }
 
@@ -544,5 +544,12 @@ const frameRateLimiter = createFrameRateLimiter(FPS);
 }
 
 if (window.innerWidth > 768) {
-  hedgehog();
+  // Ensure flags are loaded before usage.
+  // You'll only need to call this on the code for when the first time a user visits.
+  posthog.onFeatureFlags(function () {
+    // feature flags should be available at this point
+    if (posthog.isFeatureEnabled('Mascot Walking Around Booking Form')) {
+      hedgehog();
+    }
+  })
 }
