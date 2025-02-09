@@ -43,6 +43,7 @@
   background-color: var(--color-bg-hover);
   transform: translateY(-2px);
   outline: 1px solid var(--color-gray-hover, #bbbbbb);
+  color: var(--color-text);
 }
 .google-button:focus {
   outline: 3px solid var(--color-focus);
