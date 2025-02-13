@@ -149,7 +149,7 @@
 @media (max-width: 768px) {
   .reviews { margin: 0 5px; padding: 20px 0; }
 }
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .reviews-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -162,4 +162,4 @@
   }
   .reviews-container::-webkit-scrollbar { width: 8px; }
   .reviews-container::-webkit-scrollbar-thumb { border-radius: 4px; }
-}
+} */

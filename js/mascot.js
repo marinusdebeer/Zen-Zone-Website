@@ -138,45 +138,46 @@ function hedgehog() {
   async function askGPT() {
     const GOOGLE_SCRIPT_ID =
       "AKfycbzhjU72OnZLMUVP9cbt2pxMzrOkDBlf-mqn-rjfiowGrQkQLiB8aG2aCsSuH7ieRNuo";
-    let recaptchaToken = await new Promise((resolve, reject) => {
-      grecaptcha.ready(() => {
-        grecaptcha.execute("6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C", { action: "askGPT" })
-          .then(token => resolve(token))
-          .catch(err => reject(err));
+    if (window.location.hostname !== 'localhost') {
+      let recaptchaToken = await new Promise((resolve, reject) => {
+        grecaptcha.ready(() => {
+          grecaptcha.execute("6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C", { action: "askGPT" })
+            .then(token => resolve(token))
+            .catch(err => reject(err));
+        });
       });
-    });
 
-    function formatMetadata(obj, prefix = "") {
-      return Object.entries(obj)
-        .map(([key, value]) => {
-          const fullKey = prefix ? `${prefix}.${key}` : key;
-          if (typeof value === "object" && value !== null) {
-            return formatMetadata(value, fullKey);
-          } else {
-            return `- ${fullKey}: ${value}`;
-          }
-        })
-        .flat()
-        .join("\n");
-    }
-
-    let metaDataStr = "No user data available yet";
-    try {
-      const storedData = sessionStorage.getItem("meta-data");
-      if (storedData) {
-        const metaData = JSON.parse(storedData);
-        metaDataStr = formatMetadata(metaData);
+      function formatMetadata(obj, prefix = "") {
+        return Object.entries(obj)
+          .map(([key, value]) => {
+            const fullKey = prefix ? `${prefix}.${key}` : key;
+            if (typeof value === "object" && value !== null) {
+              return formatMetadata(value, fullKey);
+            } else {
+              return `- ${fullKey}: ${value}`;
+            }
+          })
+          .flat()
+          .join("\n");
       }
-    } catch (error) {
-      console.error("Failed to parse sessionStorage meta-data:", error);
-    }
 
-    const tipHistoryStr =
-      tipHistory.length > 0
-        ? tipHistory.slice(-10).map((tip, index) => `${index + 1}. ${tip}`).join("\n")
-        : "No previous tips.";
+      let metaDataStr = "No user data available yet";
+      try {
+        const storedData = sessionStorage.getItem("meta-data");
+        if (storedData) {
+          const metaData = JSON.parse(storedData);
+          metaDataStr = formatMetadata(metaData);
+        }
+      } catch (error) {
+        console.error("Failed to parse sessionStorage meta-data:", error);
+      }
 
-    const fullPrompt = `
+      const tipHistoryStr =
+        tipHistory.length > 0
+          ? tipHistory.slice(-10).map((tip, index) => `${index + 1}. ${tip}`).join("\n")
+          : "No previous tips.";
+
+      const fullPrompt = `
   ### USER-DATA ###
   ${metaDataStr}
   
@@ -184,25 +185,27 @@ function hedgehog() {
   ${tipHistoryStr}
     `.trim();
 
-    try {
-      const response = await fetch(
-        `https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({
-            prompt: fullPrompt,
-            "g-recaptcha-response": recaptchaToken,
-          }),
-        }
-      );
+      try {
+        const response = await fetch(
+          `https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({
+              prompt: fullPrompt,
+              "g-recaptcha-response": recaptchaToken,
+            }),
+          }
+        );
 
-      const responseText = await response.text();
-      const data = JSON.parse(responseText);
-      return data.response;
-    } catch (error) {
-      console.error("Error fetching tip:", error);
-      return "An error occurred.";
+        const responseText = await response.text();
+        const data = JSON.parse(responseText);
+        return data.response;
+      } catch (error) {
+        console.error("Error fetching tip:", error);
+        return "An error occurred.";
+      }
+    } else {
     }
   }
 
