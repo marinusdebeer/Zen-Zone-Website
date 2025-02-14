@@ -112,8 +112,33 @@
   </symbol>
 
   <symbol id="icon-divider" viewBox="0 0 1440 320">
-  <path fill="#ffffff" d="M0,192L80,186.7C160,181,320,171,480,176C640,181,800,203,960,213.3C1120,224,1280,224,1360,224L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
-</symbol>
+    <path fill="#ffffff"
+      d="M0,192L80,186.7C160,181,320,171,480,176C640,181,800,203,960,213.3C1120,224,1280,224,1360,224L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
+    </path>
+  </symbol>
 
+  <!-- Moon -->
+  <symbol id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+  </symbol>
+
+  <!-- Sun -->
+  <symbol id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none" />
+    <g stroke="currentColor" stroke-width="2">
+      <line x1="12" y1="1" x2="12" y2="3" />
+      <line x1="12" y1="21" x2="12" y2="23" />
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+      <line x1="1" y1="12" x2="3" y2="12" />
+      <line x1="21" y1="12" x2="23" y2="12" />
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+    </g>
+  </symbol>
+  <symbol id="menu-icon" viewBox="0 0 24 24">
+    <!-- Your menu icon path here -->
+    <path d="M3 12h18M3 6h18M3 18h18" />
+  </symbol>
 
 </svg>
