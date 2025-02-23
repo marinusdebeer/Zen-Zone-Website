@@ -80,7 +80,7 @@
   --color-secondary: #78A265;
   --color-secondary-hover: rgb(143, 193, 119);
   --color-tertiary: #2e3d2f;
-  --color-tertiary-hover: #37474F;
+  --color-tertiary-hover:rgb(28, 44, 30);
   --color-quaternary: #1E1E1E;
   --color-quaternary-hover: #2A2A2A;
   --color-secondary-text: #B0BEC5;
@@ -162,12 +162,12 @@
 
 /* theme2 dark mode */
 :root[data-color-theme="theme2"][data-theme="dark"] {
-  --color-primary: #60A5FA;
-  --color-primary-hover: #93C5FD;
-  --color-secondary: #FCD34D;
-  --color-secondary-hover: #FBBF24;
-  --color-tertiary: #34D399;
-  --color-tertiary-hover: #2BD4A1;
+  --color-primary: #3B82F6;
+  --color-primary-hover: rgb(25, 90, 200);
+  --color-secondary: #FFD700;
+  --color-secondary-hover: rgb(220, 180, 0);
+  --color-tertiary: #4CAF50;
+  --color-tertiary-hover: rgb(40, 150, 40);
   --color-quaternary: #1F2937;
   --color-quaternary-hover: #1F2937;
   --color-secondary-text: #B0BEC5;
@@ -202,6 +202,97 @@
   --color-toast-error: var(--color-error);
   --color-labels: var(--color-tertiary);
 }
+
+
+
+/* theme3 light mode */
+:root[data-color-theme="theme3"]:not([data-theme="dark"]) {
+  --color-primary: #DFCD17;
+  --color-primary-hover:rgb(215, 197, 0);
+  --color-secondary: #61C6DE;
+  --color-secondary-hover:rgb(39, 185, 221);
+  --color-tertiary: #267988;
+  --color-tertiary-hover:rgb(3, 110, 129);
+
+  --color-quaternary: #FAFFFA;
+  --color-quaternary-hover: #FAFFFA;
+  --color-secondary-text: #37474F;
+  --color-primary-text: #2e3d2f;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-focus: #ffbf47;
+  --color-light-green: #FAFFFA;
+  --color-gray: #ccc;
+  --color-light-gray: #F0F0F0;
+  --color-input-bg: #ffffff;
+  --color-bg: #FAFFFA;
+  --color-text: #2e3d2f;
+  --color-modal-background: #ffffff;
+  --color-blog-section-bg: #ffffff;
+  --slider-track-color: #ccc;
+  --color-error: #ff0000;
+
+  --color-input-border: var(--color-gray);
+  --color-footer-background: var(--color-tertiary);
+  --color-footer-link: var(--color-white);
+  --color-footer-link-hover: var(--color-secondary-hover);
+  --color-read-more-bg: var(--color-secondary);
+  --color-read-more-hover-bg: var(--color-secondary-hover);
+  --color-read-more-text: var(--color-white);
+  --slider-fill-color: var(--color-secondary);
+  --slider-thumb-color: var(--color-secondary);
+  --color-social-sharing-bg: var(--color-secondary);
+  --color-social-sharing-hover-bg: var(--color-secondary-hover);
+  --color-modal-close: var(--color-primary);
+  --color-progress-bar: var(--color-secondary);
+  --color-toast-success: var(--color-secondary);
+  --color-toast-error: var(--color-error);
+  --color-labels: var(--color-tertiary);
+}
+
+/* theme3 dark mode */
+:root[data-color-theme="theme3"][data-theme="dark"] {
+  --color-primary: #DFCD17;
+  --color-primary-hover:rgb(215, 197, 0);
+  --color-secondary: #61C6DE;
+  --color-secondary-hover:rgb(39, 185, 221);
+  --color-tertiary: #267988;
+  --color-tertiary-hover:rgb(3, 110, 129);
+
+  --color-quaternary: #1F2937;
+  --color-quaternary-hover: #1F2937;
+  --color-secondary-text: #B0BEC5;
+  --color-primary-text: #EAEAEA;
+  --color-shadow: rgba(255, 255, 255, 0.3);
+  --color-focus: #ffbf47;
+  --color-light-green: #1E2937;
+  --color-gray: #444;
+  --color-light-gray: #777;
+  --color-input-bg: #222222;
+  --color-bg: #121212;
+  --color-text: #EAEAEA;
+  --color-modal-background: #1E1E1E;
+  --color-blog-section-bg: #1E1E1E;
+  --slider-track-color: #555;
+  --color-error: #ff4d4d;
+
+  --color-input-border: var(--color-gray);
+  --color-footer-background: var(--color-tertiary);
+  --color-footer-link: var(--color-white);
+  --color-footer-link-hover: var(--color-secondary-hover);
+  --color-read-more-bg: var(--color-secondary);
+  --color-read-more-hover-bg: var(--color-secondary-hover);
+  --color-read-more-text: var(--color-white);
+  --slider-fill-color: var(--color-secondary);
+  --slider-thumb-color: var(--color-secondary);
+  --color-social-sharing-bg: var(--color-secondary);
+  --color-social-sharing-hover-bg: var(--color-secondary-hover);
+  --color-modal-close: var(--color-primary);
+  --color-progress-bar: var(--color-secondary);
+  --color-toast-success: var(--color-secondary);
+  --color-toast-error: var(--color-error);
+  --color-labels: var(--color-tertiary);
+}
+
 
 @media (max-width: 768px) {
   :root {

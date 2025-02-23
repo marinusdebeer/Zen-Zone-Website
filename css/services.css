@@ -6,6 +6,19 @@
   background-color: var(--color-bg);
   position: relative;
 }
+.services .cta-button.book-now {
+  background-color: var(--color-tertiary);
+  text-decoration: none;
+}
+/* .services .cta-button.book-now:hover {
+  background-color: var(--color-tertiary-hover);
+  text-decoration: none;
+} */
+
+.services .cta-button.book-now::after {
+  background-color: var(--color-tertiary-hover);
+  color: var(--color-white)
+}
 
 .services .services-content {
   /* Optional: additional styling */

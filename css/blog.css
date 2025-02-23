@@ -337,3 +337,8 @@
 .blog-post .breadcrumb span {
   margin-right: 5px;
 }
+li strong {
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+}
