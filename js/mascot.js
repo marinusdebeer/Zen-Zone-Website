@@ -56,10 +56,10 @@ function hedgehog() {
   let manualDirection = 0; // -1 (left), 0 (none), 1 (right)
 
   /**
- * Creates a frame rate limiter that allows updates only at the specified FPS.
- * @param {number} fps - Desired frames per second.
- * @returns {function} - A function that accepts the current timestamp and returns true if enough time has passed.
- */
+   * Creates a frame rate limiter that allows updates only at the specified FPS.
+   * @param {number} fps - Desired frames per second.
+   * @returns {function} - A function that accepts the current timestamp and returns true if enough time has passed.
+   */
   function createFrameRateLimiter(fps) {
     const minInterval = 1000 / fps;
     let lastTimestamp = null;
@@ -74,8 +74,14 @@ function hedgehog() {
 
   const frameRateLimiter = createFrameRateLimiter(FPS);
 
-  // When a user key is pressed, mark that we're under manual control for 3 seconds.
+  // Only set up controls if the "userControl" flag is true in localStorage.
+  if (localStorage.getItem("userControl") === "true") {
+    setupControls();
+  }
+
   function activateUserControl() {
+    // Only activate manual control if the flag is enabled.
+    if (localStorage.getItem("userControl") !== "true") return;
     userControlActive = true;
     if (userControlTimer) clearTimeout(userControlTimer);
     userControlTimer = setTimeout(() => {
@@ -101,27 +107,30 @@ function hedgehog() {
   }
 
   function getCandidateTargets() {
-    return Array.from(document.querySelectorAll("input, button, a")).flatMap(el => {
-      let rect = el.getBoundingClientRect();
-      let targetEl = el;
+    return Array.from(document.querySelectorAll("input, button, a")).flatMap(
+      (el) => {
+        let rect = el.getBoundingClientRect();
+        let targetEl = el;
 
-      if (el.tagName === "INPUT" && (rect.width === 0 || rect.height === 0)) {
-        const label = document.querySelector(`label[for="${el.id}"]`);
-        if (label) {
-          const labelRect = label.getBoundingClientRect();
-          if (labelRect.width > 0 && labelRect.height > 0) {
-            rect = labelRect;
-            targetEl = label;
+        if (el.tagName === "INPUT" && (rect.width === 0 || rect.height === 0)) {
+          const label = document.querySelector(`label[for="${el.id}"]`);
+          if (label) {
+            const labelRect = label.getBoundingClientRect();
+            if (labelRect.width > 0 && labelRect.height > 0) {
+              rect = labelRect;
+              targetEl = label;
+            }
           }
         }
+
+        if (!isVisible(targetEl) || rect.width === 0 || rect.height === 0)
+          return [];
+        if (rect.top < window.innerHeight * 0.2) return [];
+        if (targetEl.closest(".navbar, .mobile-menu")) return [];
+
+        return [targetEl];
       }
-
-      if (!isVisible(targetEl) || rect.width === 0 || rect.height === 0) return [];
-      if (rect.top < window.innerHeight * 0.2) return [];
-      if (targetEl.closest(".navbar, .mobile-menu")) return [];
-
-      return [targetEl];
-    });
+    );
   }
 
   function getFloorY() {
@@ -138,12 +147,15 @@ function hedgehog() {
   async function askGPT() {
     const GOOGLE_SCRIPT_ID =
       "AKfycbzhjU72OnZLMUVP9cbt2pxMzrOkDBlf-mqn-rjfiowGrQkQLiB8aG2aCsSuH7ieRNuo";
-    if (window.location.hostname !== 'localhost') {
+    if (window.location.hostname !== "localhost") {
       let recaptchaToken = await new Promise((resolve, reject) => {
         grecaptcha.ready(() => {
-          grecaptcha.execute("6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C", { action: "askGPT" })
-            .then(token => resolve(token))
-            .catch(err => reject(err));
+          grecaptcha
+            .execute("6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C", {
+              action: "askGPT",
+            })
+            .then((token) => resolve(token))
+            .catch((err) => reject(err));
         });
       });
 
@@ -174,7 +186,10 @@ function hedgehog() {
 
       const tipHistoryStr =
         tipHistory.length > 0
-          ? tipHistory.slice(-10).map((tip, index) => `${index + 1}. ${tip}`).join("\n")
+          ? tipHistory
+              .slice(-10)
+              .map((tip, index) => `${index + 1}. ${tip}`)
+              .join("\n")
           : "No previous tips.";
 
       const fullPrompt = `
@@ -239,10 +254,12 @@ function hedgehog() {
 
     let tipText;
     if (tipsFetchedCount < MAX_TIPS_REQUESTS) {
-      tipText = nextTip || "For a quick and streak-free shine on mirrors and glass, use a microfiber cloth with a mix of vinegar and water (1:1 ratio). Buff dry with a clean, dry cloth for a crystal-clear finish! 🚿✨";
+      tipText =
+        nextTip ||
+        "For a quick and streak-free shine on mirrors and glass, use a microfiber cloth with a mix of vinegar and water (1:1 ratio). Buff dry with a clean, dry cloth for a crystal-clear finish! 🚿✨";
       tipsFetchedCount++;
       tipHistory.push(tipText);
-      askGPT().then(response => {
+      askGPT().then((response) => {
         nextTip = response;
       });
     } else {
@@ -258,7 +275,7 @@ function hedgehog() {
     const desiredLeft = hedgehogRect.left + hedgehogRect.width / 2 - 150; // Center tooltip over hedgehog
     // Then set the tooltip’s left with a clamped value:
     tooltip.style.left = `clamp(10px, ${desiredLeft}px, calc(100vw - 310px))`;
-    tooltip.style.bottom = (window.innerHeight - hedgehogRect.top + 10) + "px";
+    tooltip.style.bottom = window.innerHeight - hedgehogRect.top + 10 + "px";
     // tooltip.style.transform = "translateX(-50%)";
 
     const tooltipRect = tooltip.getBoundingClientRect();
@@ -308,7 +325,9 @@ function hedgehog() {
     jumpFrom = { x: currentX, y: currentY };
     jumpTo = { x: landingX, y: landingY };
 
-    v0y = -Math.sqrt(2 * GRAVITY * (Math.max(jumpFrom.y - jumpTo.y, 0) + JUMP_EXTRA_HEIGHT));
+    v0y = -Math.sqrt(
+      2 * GRAVITY * (Math.max(jumpFrom.y - jumpTo.y, 0) + JUMP_EXTRA_HEIGHT)
+    );
 
     const a = 0.5 * GRAVITY;
     const b = v0y;
@@ -365,7 +384,10 @@ function hedgehog() {
           const targetRect = currentTarget.getBoundingClientRect();
           const targetLeft = targetRect.left + window.scrollX;
           const targetRight = targetRect.right + window.scrollX;
-          if (currentX + HEDGEHOG_SIZE - 20 <= targetLeft || currentX >= targetRight - 20) {
+          if (
+            currentX + HEDGEHOG_SIZE - 20 <= targetLeft ||
+            currentX >= targetRight - 20
+          ) {
             state = "fallingOff";
             fallStartTime = null;
             vFall = 0;
@@ -421,12 +443,16 @@ function hedgehog() {
 
     hedgehogElem.style.left = currentX + "px";
     hedgehogElem.style.top = currentY + "px";
-    hedgehogElem.style.transform = direction === -1 ? "scaleX(-1)" : "scaleX(1)";
+    hedgehogElem.style.transform =
+      direction === -1 ? "scaleX(-1)" : "scaleX(1)";
     window.requestAnimationFrame(animate);
   }
 
   // Keyboard controls: arrow keys for direction, space to jump, and "t" to show a tip.
   function setupControls() {
+    // Double-check the flag here (optional, but adds an extra layer of safety)
+    if (localStorage.getItem("userControl") !== "true") return;
+
     window.addEventListener("keydown", (e) => {
       activateUserControl();
       if (e.key === "ArrowLeft") {
@@ -527,11 +553,11 @@ function hedgehog() {
     hedgehogElem.style.top = currentY + "px";
     state = "walking";
 
-    askGPT().then(response => {
+    askGPT().then((response) => {
       nextTip = response;
     });
 
-    if (localStorage.getItem('mascot') === "true") {
+    if (localStorage.getItem("mascot") === "true") {
       setupControls();
     }
 
@@ -552,9 +578,9 @@ if (window.innerWidth > 768) {
   // You'll only need to call this on the code for when the first time a user visits.
   posthog.onFeatureFlags(function () {
     // feature flags should be available at this point
-    if (!hasRun && posthog.isFeatureEnabled('MascotWalkingShowingTips')) {
+    if (!hasRun && posthog.isFeatureEnabled("MascotWalkingShowingTips")) {
       hedgehog();
       hasRun = true;
     }
-  })
+  });
 }
