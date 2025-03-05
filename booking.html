@@ -14,7 +14,7 @@
   <link rel="icon" href="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png" type="image/x-icon" />
   <link rel="apple-touch-icon" href="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png" />
 
-  <title>Zen Zone Cleaning Booking Form</title>
+  <title>Cleaning Booking</title>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Zen Zone Cleaning Services" />
@@ -90,8 +90,9 @@
   <!-- Navbar -->
   <nav id="navbar"></nav>
 
-  <!-- Step Tracker -->
-  <nav class="booking-progress-tracker" aria-label="Booking Progress">
+  <iframe src="https://zenzonecleaningservices.bookingkoala.com/booknow?embed=true" style="border:none;height:1000px" width="100%" scrolling="no"></iframe><script src="https://zenzonecleaningservices.bookingkoala.com/resources/embed.js" defer></script>
+
+  <!-- <nav class="booking-progress-tracker" aria-label="Booking Progress">
     <ol>
       <li class="booking-step active clickable" data-step="1" aria-current="step" aria-disabled="false" tabindex="0">
         <div class="step-header">
@@ -131,13 +132,12 @@
       </li>
     </ol>
   </nav>
-  <!-- End of Step Tracker -->
 
   <main class="booking-container">
     <h2 id="bookingFormTitle">Personal Information</h2>
     <div class="booking-form-wrapper">
       <form id="bookingForm" novalidate>
-        <!-- Step 1: Personal Information -->
+
         <div class="booking-form-step booking-form-step--active" data-step="1" aria-hidden="false">
           <div class="booking-form-group">
             <label for="booking-name">Full Name <span aria-hidden="true">*</span></label>
@@ -163,7 +163,6 @@
           </div>
         </div>
 
-        <!-- Step 2: Select Industry -->
         <div class="booking-form-step" data-step="2" aria-hidden="true">
           <div class="booking-form-group" data-name="industry" data-required="true">
             <div class="booking-form-options">
@@ -183,7 +182,6 @@
           </div>
         </div>
 
-        <!-- Step 3: Booking Type -->
         <div class="booking-form-step" data-step="3" aria-hidden="true">
           <div class="booking-form-group" data-name="bookingType" data-required="true">
             <div class="booking-form-options">
@@ -195,7 +193,7 @@
             <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select a service
               type.</span>
           </div>
-          <!-- Conditional Field: Frequency (Recurring) -->
+
           <div class="booking-form-group" data-name="frequency" data-conditional-field="bookingType"
             data-conditional-value="Recurring" style="display: none;" aria-hidden="true">
             <h3>Select Frequency</h3>
@@ -212,7 +210,7 @@
             <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select a
               frequency.</span>
           </div>
-          <!-- Conditional Field: Service Type (One-Time) -->
+
           <div class="booking-form-group" data-name="serviceType" data-conditional-field="bookingType"
             data-conditional-value="One-Time" style="display: none;" aria-hidden="true">
             <h3>Select Service Type</h3>
@@ -292,7 +290,6 @@
           </div>
         </div>
 
-        <!-- Step 4: Property Details -->
         <div class="booking-form-step" data-step="4" aria-hidden="true">
           <div class="booking-form-group">
             <label for="booking-squareFootage">Square Footage <span aria-hidden="true">*</span></label>
@@ -309,7 +306,7 @@
             <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select the number
               of bathrooms.</span>
           </div>
-          <!-- Residential Fields (for Home & Airbnb) -->
+
           <div id="residentialFields">
             <div class="booking-form-group">
               <label for="booking-bedrooms">Number of Bedrooms <span aria-hidden="true">*</span></label>
@@ -327,7 +324,6 @@
                 of powder rooms.</span>
             </div>
           </div>
-          <!-- Office Fields (for Office Cleaning; hidden by default) -->
           <div id="officeFields" style="display: none;">
             <div class="booking-form-group">
               <label for="booking-offices">Number of Offices <span aria-hidden="true">*</span></label>
@@ -343,9 +339,7 @@
           </div>
         </div>
 
-        <!-- Step 5: Services/Packages / Extras -->
         <div class="booking-form-step" data-step="5" aria-hidden="true">
-          <!-- Conditional Field: Package (Recurring) -->
           <div class="booking-form-group" data-name="package" data-conditional-field="bookingType"
             data-conditional-value="Recurring" style="display: none;" aria-hidden="true">
             <div class="booking-form-options">
@@ -368,7 +362,7 @@
             <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select a cleaning
               package.</span>
           </div>
-          <!-- Conditional Field: Extras (One-Time) -->
+
           <div class="booking-form-group" data-name="extras" data-conditional-field="bookingType"
             data-conditional-value="One-Time" style="display: none;" aria-hidden="true">
             <div class="extras-container">
@@ -400,7 +394,7 @@
                 <button type="button" class="extras-btn" data-value="Green Cleaning" aria-pressed="false">Green
                   Cleaning</button>
               </div>
-              <!-- Countable Extras -->
+
               <div class="extra-item countable-extra">
                 <label class="custom-label">Windows</label>
                 <div class="slider-container" id="windowsSliderContainer">
@@ -437,7 +431,6 @@
           </div>
         </div>
 
-        <!-- Step 6: Additional Details -->
         <div class="booking-form-step" data-step="6" aria-hidden="true">
           <div class="booking-form-group">
             <label for="booking-address">Full Address <span aria-hidden="true">*</span></label>
@@ -462,9 +455,8 @@
         </div>
       </form>
     </div>
-  </main>
+  </main> -->
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-logo">
@@ -479,17 +471,15 @@
     </div>
   </footer>
 
-  <!-- Toast Notification -->
   <div id="toast" class="toast" role="alert" aria-live="polite" aria-atomic="true" hidden>
     <div class="toast-body"></div>
   </div>
 
-  <!-- Include External JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script> -->
   <!-- Other JS Files -->
   <script src="/js/navbar.js" defer></script>
-  <script src="/js/email.js" defer></script>
-  <script src="/js/booking.js" defer></script>
+  <!-- <script src="/js/email.js" defer></script> -->
+  <!-- <script src="/js/booking.js" defer></script> -->
 
   <!-- PostHog Analytics -->
   <script>
@@ -532,7 +522,7 @@
   </script>
 
   <script src="https://www.google.com/recaptcha/api.js?render=6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C"></script>
-  <script src="js/mascot.js"></script>
+  <!-- <script src="js/mascot.js"></script> -->
 
   <!-- Tawk.to Chat -->
   <script type="text/javascript">

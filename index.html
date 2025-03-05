@@ -1,1568 +1,2359 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Professional cleaning services in Barrie, Orillia, and beyond. Book today for spotless homes and offices!"
+    />
+    <meta
+      name="keywords"
+      content="house cleaning, cleaning services, Barrie, Orillia, surrounding areas, home cleaning"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Zen Zone Cleaning Services" />
+    <link rel="canonical" href="https://zenzonecleaning.ca" />
+    <link
+      rel="icon"
+      href="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="description"
-    content="Professional cleaning services in Barrie, Orillia, and beyond. Book today for spotless homes and offices!" />
-  <meta name="keywords"
-    content="house cleaning, cleaning services, Barrie, Orillia, surrounding areas, home cleaning" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Zen Zone Cleaning Services" />
-  <link rel="canonical" href="https://zenzonecleaning.ca" />
-  <link rel="icon" href="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png" />
+    <title>
+      House Cleaning Services in Barrie & Orillia | Zen Zone Cleaning
+    </title>
 
-  <title>House Cleaning Services in Barrie & Orillia | Zen Zone Cleaning</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Zen Zone Cleaning Services" />
+    <meta
+      property="og:description"
+      content="Trusted and professional house cleaning services in Barrie, Orillia, and surrounding areas. Book your cleaning today!"
+    />
+    <meta
+      property="og:image"
+      content="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png"
+    />
+    <meta property="og:type" content="website" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Zen Zone Cleaning Services" />
-  <meta property="og:description"
-    content="Trusted and professional house cleaning services in Barrie, Orillia, and surrounding areas. Book your cleaning today!" />
-  <meta property="og:image" content="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png" />
-  <meta property="og:type" content="website" />
+    <!-- Twitter -->
+    <meta name="twitter:title" content="Zen Zone Cleaning Services" />
+    <meta
+      name="twitter:description"
+      content="Fast, reliable house cleaning services in Barrie & Orillia. Let us keep your home spotless."
+    />
+    <meta
+      name="twitter:image"
+      content="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Twitter -->
-  <meta name="twitter:title" content="Zen Zone Cleaning Services">
-  <meta name="twitter:description"
-    content="Fast, reliable house cleaning services in Barrie & Orillia. Let us keep your home spotless." />
-  <meta name="twitter:image" content="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
-
-  <style>
-    /* Critical CSS for the Hero Section using responsive AVIF images */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: calc(100vh - var(--navbar-height));
-      /* min-height: 100vh; */
-      /* Default: Desktop version */
-      background-image: url('/assets/hero_large.avif');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      /* align-items: center; */
-      justify-content: center;
-      color: #fff;
-    }
-
-    /* Tablet: Use medium image */
-    @media (max-width: 768px) {
+    <style>
+      /* Critical CSS for the Hero Section using responsive AVIF images */
       .hero {
-        background-image: url('/assets/hero_medium.avif');
-      }
-    }
-
-    /* Mobile: Use small image */
-    @media (max-width: 480px) {
-      .hero {
-        background-image: url('/assets/hero_small.avif');
-      }
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 2rem 1rem;
-      max-width: 1200px;
-      top: 30%;
-      width: 90%;
-      animation: fadeIn 1s ease-out forwards;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
+        position: relative;
+        width: 100%;
+        height: calc(100vh - var(--navbar-height));
+        /* min-height: 100vh; */
+        /* Default: Desktop version */
+        background-image: url("/assets/hero_large.avif");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        color: #fff;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      /* Tablet: Use medium image */
+      @media (max-width: 768px) {
+        .hero {
+          background-image: url("/assets/hero_medium.avif");
+        }
       }
-    }
 
-    @media (max-width: 480px) {
+      /* Mobile: Use small image */
+      @media (max-width: 480px) {
+        .hero {
+          background-image: url("/assets/hero_small.avif");
+        }
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.2)
+        );
+        z-index: 1;
+      }
+
       .hero-content {
-        top: 20%;
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 2rem 1rem;
+        max-width: 1200px;
+        top: 30%;
+        width: 90%;
+        animation: fadeIn 1s ease-out forwards;
       }
-    }
-  </style>
 
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="css/utilities.css">
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/hero.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="css/about-us.css">
-  <link rel="stylesheet" href="css/services.css">
-  <link rel="stylesheet" href="css/blog.css">
-  <link rel="stylesheet" href="css/reviews.css">
-  <link rel="stylesheet" href="css/gallery.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/areas.css">
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
+      @media (max-width: 480px) {
+        .hero-content {
+          top: 20%;
+        }
+      }
+    </style>
 
-  <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style"
-    onload="this.onload=null;this.rel='stylesheet'" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="css/hero.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link rel="stylesheet" href="css/about-us.css" />
+    <link rel="stylesheet" href="css/services.css" />
+    <link rel="stylesheet" href="css/blog.css" />
+    <link rel="stylesheet" href="css/reviews.css" />
+    <link rel="stylesheet" href="css/gallery.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/areas.css" />
 
-  <!-- Structured Data for Local Business -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Zen Zone Cleaning Services",
-    "description": "Fast, reliable, and professional house cleaning services for Barrie, Orillia, and surrounding areas.",
-    "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Servicing Barrie, Orillia, and surrounding areas",
-      "addressLocality": "Orillia",
-      "addressRegion": "ON",
-      "postalCode": "",
-      "addressCountry": "CA"
-    },
-    "telephone": "+17052425462",
-    "url": "https://zenzonecleaning.ca",
-    "areaServed": ["Barrie", "Orillia", "Surrounding Areas"],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 44.6085,
-      "longitude": -79.4202
-    },
-    "openingHours": ["Mo-Sun 09:00-18:00"]
-  }
-  </script>
+    <link
+      rel="preload"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
 
-  <!-- Structured Data for Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Zen Zone Cleaning Services",
-    "url": "https://zenzonecleaning.ca",
-    "logo": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "telephone": "+17052425462",
-      "contactType": "customer service",
-      "areaServed": "CA",
-      "availableLanguage": ["English"]
-    }]
-  }
-  </script>
-</head>
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Zen Zone Cleaning Services",
+        "description": "Fast, reliable, and professional house cleaning services for Barrie, Orillia, and surrounding areas.",
+        "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Servicing Barrie, Orillia, and surrounding areas",
+          "addressLocality": "Orillia",
+          "addressRegion": "ON",
+          "postalCode": "",
+          "addressCountry": "CA"
+        },
+        "telephone": "+17052425462",
+        "url": "https://zenzonecleaning.ca",
+        "areaServed": ["Barrie", "Orillia", "Surrounding Areas"],
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 44.6085,
+          "longitude": -79.4202
+        },
+        "openingHours": ["Mo-Sun 09:00-18:00"]
+      }
+    </script>
 
-<body>
-  <!-- NAVBAR -->
-  <div id="navbar"></div>
+    <!-- Structured Data for Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Zen Zone Cleaning Services",
+        "url": "https://zenzonecleaning.ca",
+        "logo": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+17052425462",
+            "contactType": "customer service",
+            "areaServed": "CA",
+            "availableLanguage": ["English"]
+          }
+        ]
+      }
+    </script>
+  </head>
 
-  <main id="home">
+  <body>
+    <!-- NAVBAR -->
+    <div id="navbar"></div>
 
-    <section class="hero" role="banner">
-      <div class="hero-content">
-        <div class="hero-text">
-          <header class="hero-header">
-            <h1 class="hero-title">Professional Cleaning Services</h1>
-            <p class="hero-subtitle">
-              Serving Barrie, Orillia and Surrounding Areas
-            </p>
-          </header>
-          <div class="cta-buttons">
-            <a href="/booking.html" class="cta-button book-now" aria-label="Request Quote">
-              Request Quote
-            </a>
-            <a href="tel:7052425462" class="cta-button call-button" aria-label="Call us at 705-242-5462">
-              <span class="phone-number">705-242-5462</span>
-            </a>
+    <main id="home">
+      <section class="hero" role="banner">
+        <div class="hero-content">
+          <div class="hero-text">
+            <header class="hero-header">
+              <h1 class="hero-title">Professional Cleaning Services</h1>
+              <p class="hero-subtitle">
+                Serving Barrie, Orillia and Surrounding Areas
+              </p>
+            </header>
+            <div class="cta-buttons">
+              <a
+                href="/booking.html"
+                class="cta-button book-now"
+                aria-label="Request Quote"
+              >
+                Request Quote
+              </a>
+              <a
+                href="tel:7052425462"
+                class="cta-button call-button"
+                aria-label="Call us at 705-242-5462"
+              >
+                <span class="phone-number">705-242-5462</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- <section class="about-us" id="about-us">
-      <div class="about-us-content">
+      <section id="about-us">
         <h2>About Us</h2>
         <p>
-          Zen Zone Cleaning Services was created with one primary goal: to make life easier for our clients by providing reliable, high-quality cleaning services. Founders <strong>Marinus and Daleen</strong> understand firsthand how overwhelming it can be to juggle work, family, and household responsibilities.
+          Zen Zone Cleaning Services was created with one primary goal: to make
+          life easier for our clients by providing reliable, high-quality
+          cleaning services. Founders
+          <strong>Marinus and Daleen</strong> understand firsthand how
+          overwhelming it can be to juggle work, family, and household
+          responsibilities.
         </p>
         <p>
-          What started as a small side job quickly grew into a trusted, top-rated cleaning service. Today, Zen Zone Cleaning helps busy homeowners, businesses, and rental property owners enjoy spotless spaces without the stress.
+          What started as a small side job quickly grew into a trusted,
+          top-rated cleaning service. Today, Zen Zone Cleaning helps busy
+          homeowners, businesses, and rental property owners enjoy spotless
+          spaces without the stress.
         </p>
-        <div class="mission">
+        <div>
           <h3>Our Mission</h3>
           <ul>
-            <li>Connecting homes and businesses with trustworthy, insured, background-checked cleaners.</li>
-            <li>Providing great job opportunities with fair compensation for our cleaners.</li>
+            <li>
+              Connecting homes and businesses with trustworthy, insured,
+              background-checked cleaners.
+            </li>
+            <li>
+              Providing great job opportunities with fair compensation for our
+              cleaners.
+            </li>
           </ul>
         </div>
         <p>
-          We know that both our clients and our cleaners are the heart of our business, and we’re committed to treating them with the respect and care they deserve.
+          We know that both our clients and our cleaners are the heart of our
+          business, and we’re committed to treating them with the respect and
+          care they deserve.
         </p>
         <p>
-          <strong>Let us help you reclaim your time and enjoy a cleaner, stress-free space!</strong>
+          <strong
+            >Let us help you reclaim your time and enjoy a cleaner, stress-free
+            space!</strong
+          >
         </p>
-      </div>
-    </section> -->
+      </section>
 
-    <!-- REVIEWS SECTION -->
-    <section class="reviews" id="reviews" aria-label="Client Reviews">
-      <h2>
-        <!-- <i class="fas fa-comments" aria-hidden="true"></i>  -->
-        <!-- <svg width="48" height="48" fill="currentColor">
+      <!-- REVIEWS SECTION -->
+      <section class="reviews" id="reviews" aria-label="Client Reviews">
+        <h2>
+          <!-- <i class="fas fa-comments" aria-hidden="true"></i>  -->
+          <!-- <svg width="48" height="48" fill="currentColor">
           <use href="#comments-icon"></use>
         </svg> -->
 
-        Reviews
-      </h2>
-      <div class="google-button-container">
-        <a href="https://maps.app.goo.gl/EyMWdSuMsExvrxaG7" target="_blank" rel="noopener noreferrer"
-          class="google-button">
-          <!-- <i class="fab fa-google" aria-hidden="true"></i> -->
-          <svg width="20" height="20">
-            <use href="/assets/icons.svg#google-icon"></use>
-          </svg>
-
-          Google Business Profile
-        </a>
-      </div>
-
-
-      <div class="reviews-container">
-
-        <!-- Review 1 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-
-            <div class="reviewer-info">
-              <strong>Michelle</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">January 18, 2025</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Zen Zone Cleaning Services is amazing and I would highly recommend them. Our company recently found
-            them online and used them for the first time last week. They were quick, kind, and extremely
-            professional and we look forward to our weekly cleaning with them. Definitely did a great job!"
-          </blockquote>
-          <em class="review-service">Office Cleaning</em>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Rick R</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">January 1, 2025</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Very thorough move-out cleaning! Amazing work."
-          </blockquote>
-          <em class="review-service">Standard Cleaning</em>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Kylee Munro</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">January 1, 2025</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Zen cleaning did an awesome job. I would recommend them to anyone looking for a trustworthy company."
-          </blockquote>
-          <em class="review-service">Deep Moving Cleaning</em>
-        </div>
-
-        <!-- Review 4 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Paul Carletti</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">December 9, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Zen cleaning did an awesome job. I would recommend them to anyone looking for a trustworthy company."
-          </blockquote>
-          <em class="review-service">Deep Cleaning</em>
-        </div>
-
-        <!-- Review 5 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>W N</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">December 8, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "I've had a bi-weekly cleaning service for a while now at my home in Innisfil, and they never
-            disappoint. The team is professional and really pays attention to the details. They did a great job
-            with my baseboards and other areas that haven’t been cleaned in a while. Highly recommend!"
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 6 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Khalil Barakzai</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">December 8, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "I've been using Zen Zone Cleaning for weekly cleanings at my home in Barrie, and they've been
-            incredible. The team is always on time, professional, and leaves my house looking spotless every time.
-            It's such a relief to have a consistently clean home without worrying about it myself. Highly
-            recommend their weekly service if you want reliable and thorough cleaners!"
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 7 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Jlb</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">December 6, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "I called last minute looking for help with my MIL move from her house and they accommodated our
-            schedule. They did a fantastic job. Extremely thorough and very friendly. I would 100% recommend them
-            and use them again."
-          </blockquote>
-          <em class="review-service">General Cleaning</em>
-        </div>
-
-        <!-- Review 8 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Elizabeth Wrenshall</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">November 29, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "The job gets done with Zen Zone Cleaning! They are professional, thorough, and efficient. I am happy
-            to have them come back routinely to help keep up with the tasks. I can now enjoy my beautiful home
-            even more."
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 9 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Lucia Haggart</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">November 28, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "The cleaning job that my husband and I come home to is excellent! Everything we request to be
-            addressed is cleaned and done so. We even get follow-up texts to check that nothing was missed. We are
-            happy with the service we have received from this company so far and appreciate their attention to
-            detail."
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 10 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Hgalasaad</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">November 27, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Excellent service. Very professional."
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 11 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Stefanie Dale Lilly</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">November 4, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "I would recommend Zen Zone Cleaning Services! They clean the office I work in and the cleaners are
-            very respectful and responsive to requests!"
-          </blockquote>
-          <em class="review-service">Office Cleaning</em>
-        </div>
-
-        <!-- Review 12 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Tye Hunt</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">November 1, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Been using Zen Zone for a few months now. Great service. Very reliable. Danee is very professional
-            and prompt. I highly recommend them."
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 13 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Kim Wickett</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">October 21, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Always friendly and asks if there is anything special that needs to be done before they start. Always
-            on time and very efficient."
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 14 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Jackie and Rob</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">October 21, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Great work—fabulous attention to detail!"
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 15 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Sean Deece-Cassidy</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">October 21, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Wonderful experience. I had two cleaners come to assist in an Estate clean. They truly worked harder
-            and longer than I anticipated and remained happy and positive. Highly recommended. Thanks again!"
-          </blockquote>
-          <em class="review-service">Deep Moving Cleaning</em>
-        </div>
-
-        <!-- Review 16 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Jeremy Walker</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">October 19, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "Great group of professional cleaners. Zen Zone is reliable and my go-to cleaners when I have a
-            property that needs cleaning."
-          </blockquote>
-          <em class="review-service">Airbnb Cleaning</em>
-        </div>
-
-        <!-- Review 17 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Iga de Beer</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">August 6, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "I've been using Zen Zone Cleaning Services for biweekly home cleanings, and I couldn't be happier.
-            The team is always friendly, on time, and professional. After every clean, my home isn't just
-            spotless—it smells amazing too. I highly recommend Zen Zone Cleaning Services to anyone who needs
-            reliable and
-            thorough home cleaning!"
-          </blockquote>
-          <em class="review-service">Recurring Cleaning</em>
-        </div>
-
-        <!-- Review 18 -->
-        <div class="review">
-          <div class="review-header">
-            <div class="review-avatar" aria-hidden="true">
-              <svg width="48" height="48">
-                <use href="/assets/icons.svg#avatar"></use>
-              </svg>
-            </div>
-            <div class="reviewer-info">
-              <strong>Yinze X</strong>
-              <div class="review-rating" aria-label="5 out of 5 stars">
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-                <svg width="20" height="20">
-                  <use href="/assets/icons.svg#star"></use>
-                </svg>
-
-              </div>
-              <span class="review-date">June 28, 2024</span>
-            </div>
-          </div>
-          <blockquote class="review-text">
-            "I've hired Zen Zone a number of times to clean my rental property, both for tenant turnover and for
-            post-construction clean-up. Each time they've done a stellar job, really taking care to leave it in
-            perfect shape. Fair pricing for the services too. Will continue to use Zen Zone for any future
-            cleaning needs."
-          </blockquote>
-          <em class="review-service">Post-Construction Cleaning</em>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section class="services" id="services" aria-label="Our Cleaning Services">
-      <div class="services-content">
-        <h2>Our Cleaning Services</h2>
-        <div class="services-hero-tiles">
-          <div class="service-tile">
-            <h3>Deep Cleaning</h3>
-            <p class="truncate">
-              Our Deep Cleaning Service is designed to give your home a fresh start by tackling both the visible and
-              hidden dirt. We thoroughly clean all common areas…
-            </p>
-            <button class="learn-more-btn" data-modal="tooltip-DeepCleaning"
-              aria-label="Learn more about Deep Cleaning">Learn More</button>
-          </div>
-          <div class="service-tile">
-            <h3>Standard Cleaning</h3>
-            <p class="truncate">
-              Our Standard Cleaning Service ensures a thorough cleaning of all common areas, including bedrooms,
-              kitchens, and bathrooms. We wipe and dust surfaces…
-            </p>
-            <button class="learn-more-btn" data-modal="tooltip-StandardCleaning"
-              aria-label="Learn more about Standard Cleaning">Learn More</button>
-          </div>
-          <div class="service-tile">
-            <h3>Post-Construction Cleaning</h3>
-            <p class="truncate">
-              Our Post-Construction Cleaning Service handles the mess left behind after construction or renovation
-              projects. We ensure your property is spotless…
-            </p>
-            <button class="learn-more-btn" data-modal="tooltip-PostConstructionCleaning"
-              aria-label="Learn more about Post-Construction Cleaning">Learn More</button>
-          </div>
-          <div class="service-tile">
-            <h3>Standard Moving Cleaning</h3>
-            <p class="truncate">
-              Our Move-In/Out Standard Cleaning Service is perfect for homes that need a general refresh during a move.
-              We focus on cleaning all common areas…
-            </p>
-            <button class="learn-more-btn" data-modal="tooltip-MoveInCleaning"
-              aria-label="Learn more about Standard Moving Cleaning">Learn More</button>
-          </div>
-          <div class="service-tile">
-            <h3>Deep Moving Cleaning</h3>
-            <p class="truncate">
-              Our Move-In/Out Deep Cleaning Service provides a comprehensive, detailed clean ensuring every corner of
-              your home is spotless…
-            </p>
-            <button class="learn-more-btn" data-modal="tooltip-MoveOutCleaning"
-              aria-label="Learn more about Deep Moving Cleaning">Learn More</button>
-          </div>
-          <div class="service-tile">
-            <h3>Airbnb Cleaning</h3>
-            <p class="truncate">
-              Enhance guest satisfaction with our fast and efficient cleaning services for seamless Airbnb turnovers…
-            </p>
-            <button class="learn-more-btn" data-modal="tooltip-AirbnbCleaning"
-              aria-label="Learn more about Airbnb Cleaning">Learn More</button>
-          </div>
-          <div class="service-tile">
-            <h3>Office Cleaning</h3>
-            <p class="truncate">
-              Boost productivity and maintain a professional image with our comprehensive office cleaning services…
-            </p>
-            <button class="learn-more-btn" data-modal="tooltip-OfficeCleaning"
-              aria-label="Learn more about Office Cleaning">Learn More</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Deep Cleaning Modal -->
-      <div id="tooltip-DeepCleaning" class="tooltip">
-        <button type="button" class="tooltip-close tooltip-close-icon" aria-label="Close modal">
-          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <div class="tooltip-content">
-          <h3>Deep Cleaning</h3>
-          <p>
-            Our Deep Cleaning Service is designed to give your home a fresh start by tackling both the visible and
-            hidden dirt.
-            We thoroughly clean all common areas, including bedrooms, kitchens, and bathrooms. This includes wiping and
-            dusting
-            surfaces, sweeping and mopping floors, vacuuming carpets, and cleaning mirrors, door handles, and light
-            switches.
-          </p>
-          <p>
-            We also focus on areas that are often overlooked or hard to reach, such as cleaning behind appliances,
-            baseboards,
-            door frames, interior windows, blinds, ceiling fans, light fixtures, wall spots, and grout. High-touch areas
-            are sanitized
-            to help reduce the spread of germs.
-          </p>
-          <a href="/booking.html" class="cta-button book-now" aria-label="Free Quote">Free Quote</a>
-        </div>
-      </div>
-
-      <!-- Standard Cleaning Modal -->
-      <div id="tooltip-StandardCleaning" class="tooltip">
-        <button type="button" class="tooltip-close tooltip-close-icon" aria-label="Close modal">
-          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <div class="tooltip-content">
-          <h3>Standard Cleaning</h3>
-          <p>
-            Our Standard Cleaning Service ensures a thorough cleaning of all common areas, including bedrooms, kitchens,
-            and bathrooms.
-            We wipe and dust surfaces, sweep and mop floors and baseboards, vacuum carpets, and clean mirrors, door
-            handles, light switches,
-            and kitchen cabinet fronts.
-          </p>
-          <p>
-            High-touch areas receive extra attention to reduce the spread of germs, making this service ideal for
-            maintaining a fresh, clean,
-            and healthy living environment.
-          </p>
-          <a href="/booking.html" class="cta-button book-now" aria-label="Request Quote">Free Quote</a>
-        </div>
-      </div>
-
-      <!-- Post-Construction Cleaning Modal -->
-      <div id="tooltip-PostConstructionCleaning" class="tooltip">
-        <button type="button" class="tooltip-close tooltip-close-icon" aria-label="Close modal">
-          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <div class="tooltip-content">
-          <h3>Post-Construction Cleaning</h3>
-          <p>
-            Our Post-Construction Cleaning Service handles the mess left behind after construction or renovation
-            projects.
-            We ensure your property is spotless, safe, and move-in ready by tackling dust, debris, and residue with
-            precision.
-          </p>
-          <p>
-            This service includes removing construction dust and debris, deep cleaning all surfaces, windows, fixtures,
-            and hard-to-reach areas.
-          </p>
-          <a href="/booking.html" class="cta-button book-now" aria-label="Request Quote">Free Quote</a>
-        </div>
-      </div>
-
-      <!-- Standard Moving Cleaning Modal -->
-      <div id="tooltip-MoveInCleaning" class="tooltip">
-        <button type="button" class="tooltip-close tooltip-close-icon" aria-label="Close modal">
-          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <div class="tooltip-content">
-          <h3>Standard Moving Cleaning</h3>
-          <p>
-            Our Move-In/Out Standard Cleaning Service is perfect for homes that need a general refresh during a move.
-            We clean all common areas, including bedrooms, kitchens, and bathrooms, ensuring surfaces, floors, and
-            fixtures are spotless.
-          </p>
-          <p>
-            High-touch areas receive extra care to reduce the spread of germs, making it ideal for preparing a home for
-            new occupants.
-          </p>
-          <a href="/booking.html" class="cta-button book-now" aria-label="Request Quote">Free Quote</a>
-        </div>
-      </div>
-
-      <!-- Deep Moving Cleaning Modal -->
-      <div id="tooltip-MoveOutCleaning" class="tooltip">
-        <button type="button" class="tooltip-close tooltip-close-icon" aria-label="Close modal">
-          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <div class="tooltip-content">
-          <h3>Deep Moving Cleaning</h3>
-          <p>
-            Our Move-In/Out Deep Cleaning Service provides a comprehensive, detailed clean to ensure every corner of
-            your home is spotless.
-            In addition to standard cleaning tasks, we clean behind appliances, baseboards, door frames, interior
-            windows, blinds,
-            ceiling fans, light fixtures, and grout.
-          </p>
-          <p>
-            High-touch areas are sanitized to minimize the spread of germs, making this service perfect for a thorough
-            reset during a move.
-          </p>
-          <a href="/booking.html" class="cta-button book-now" aria-label="Request Quote">Free Quote</a>
-        </div>
-      </div>
-
-      <!-- Airbnb Cleaning Modal -->
-      <div id="tooltip-AirbnbCleaning" class="tooltip">
-        <button type="button" class="tooltip-close tooltip-close-icon" aria-label="Close modal">
-          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <div class="tooltip-content">
-          <h3>Airbnb Cleaning</h3>
-          <p>
-            Our Airbnb Cleaning Service is designed to prepare your property for guests by delivering a fast, efficient,
-            and thorough cleaning.
-            We ensure that every area—from living spaces and kitchens to bathrooms—is meticulously cleaned and
-            sanitized, creating a welcoming environment
-            that encourages positive guest reviews.
-          </p>
-          <p>
-            The service includes dusting, vacuuming, mopping, and disinfecting high-touch surfaces. Additionally, we
-            manage laundry services by washing, drying,
-            and ironing linens and towels so that all bedding and guest supplies are fresh and guest-ready for a
-            seamless turnover.
-          </p>
-          <a href="/booking.html" class="cta-button book-now" aria-label="Request Quote">Free Quote</a>
-        </div>
-      </div>
-
-      <!-- Office Cleaning Modal -->
-      <div id="tooltip-OfficeCleaning" class="tooltip">
-        <button type="button" class="tooltip-close tooltip-close-icon" aria-label="Close modal">
-          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor"
-              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          </svg>
-        </button>
-        <div class="tooltip-content">
-          <h3>Office Cleaning</h3>
-          <p>
-            Our Office Cleaning Service is designed to maintain a healthy, professional workspace by ensuring that all
-            areas are thoroughly cleaned and disinfected.
-            We focus on high-traffic spaces such as workstations, meeting rooms, break areas, and restrooms to promote a
-            productive and inviting environment.
-          </p>
-          <p>
-            The service includes dusting, vacuuming, mopping, and sanitizing surfaces including desks, countertops, and
-            common equipment.
-            Our comprehensive approach not only enhances the professional image of your office but also contributes to
-            employee well-being by reducing allergens and germs.
-          </p>
-          <a href="/booking.html" class="cta-button book-now" aria-label="Request Quote">Free Quote</a>
-        </div>
-      </div>
-
-
-    </section>
-
-
-
-    <!-- GALLERY SECTION -->
-    <section class="gallery" id="gallery" aria-label="Gallery of Our Cleaning Work">
-      <h2>Gallery</h2>
-      <div class="gallery-track">
-        <!-- Original Gallery Container -->
-        <div class="gallery-container">
-          <!-- Gallery Items 1 to 32 -->
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/1.JPG" alt="Spotless kitchen after cleaning" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/2.JPG" alt="Shiny bathroom surfaces" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/3.JPG" alt="Organized living room" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/4.JPG" alt="Cleaned office workspace" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/5.JPG" alt="Freshly cleaned bedroom" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/6.JPG" alt="Polished hardwood floors" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/7.JPG" alt="Sparkling windows" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/8.JPG" alt="Immaculate kitchen countertops" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/9.JPG" alt="Tidy and organized office" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/10.JPG" alt="Cleaned and sanitized bathroom" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/11.JPG" alt="Pristine dining area" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/12.JPG" alt="Neatly arranged study desk" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/13.JPG" alt="Sanitized and organized workspace" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/14.JPG" alt="Thoroughly cleaned shelves" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/15.JPG" alt="Sparkling kitchen appliances" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/16.JPG" alt="Gleaming bathroom fixtures" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/17.JPG" alt="Spotless floors and rugs" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/18.JPG" alt="Well-maintained exterior windows" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/19.JPG" alt="Perfectly arranged pantry" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/20.JPG" alt="Dust-free furniture" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/21.JPG" alt="Bright and clean children's room" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/22.JPG" alt="Sanitized laundry area" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/23.JPG" alt="Shiny glass doors" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/24.JPG" alt="Stain-free carpets" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/25.JPG" alt="Cleaned and polished mirrors" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/26.JPG" alt="Neatly folded towels" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/27.JPG" alt="Organized closet space" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/28.JPG" alt="Dust-free electronics" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/29.JPG" alt="Gleaming kitchen sink" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/30.JPG" alt="Shiny and clean tile surfaces" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/31.JPG" alt="Immaculate staircase" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/32.JPG" alt="Well-organized garage" loading="lazy" />
-          </div>
-        </div>
-
-        <!-- Duplicate Gallery Container for Seamless Loop -->
-        <div class="gallery-container">
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/1.JPG" alt="Spotless kitchen after cleaning" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/2.JPG" alt="Shiny bathroom surfaces" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/3.JPG" alt="Organized living room" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/4.JPG" alt="Cleaned office workspace" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/5.JPG" alt="Freshly cleaned bedroom" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/6.JPG" alt="Polished hardwood floors" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/7.JPG" alt="Sparkling windows" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/8.JPG" alt="Immaculate kitchen countertops" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/9.JPG" alt="Tidy and organized office" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/10.JPG" alt="Cleaned and sanitized bathroom" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/11.JPG" alt="Pristine dining area" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/12.JPG" alt="Neatly arranged study desk" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/13.JPG" alt="Sanitized and organized workspace" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/14.JPG" alt="Thoroughly cleaned shelves" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/15.JPG" alt="Sparkling kitchen appliances" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/16.JPG" alt="Gleaming bathroom fixtures" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/17.JPG" alt="Spotless floors and rugs" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/18.JPG" alt="Well-maintained exterior windows" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/19.JPG" alt="Perfectly arranged pantry" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/20.JPG" alt="Dust-free furniture" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/21.JPG" alt="Bright and clean children's room" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/22.JPG" alt="Sanitized laundry area" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/23.JPG" alt="Shiny glass doors" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/24.JPG" alt="Stain-free carpets" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/25.JPG" alt="Cleaned and polished mirrors" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/26.JPG" alt="Neatly folded towels" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/27.JPG" alt="Organized closet space" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/28.JPG" alt="Dust-free electronics" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/29.JPG" alt="Gleaming kitchen sink" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/30.JPG" alt="Shiny and clean tile surfaces" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/31.JPG" alt="Immaculate staircase" loading="lazy" />
-          </div>
-          <div class="gallery-item" tabindex="0" role="button" aria-pressed="false">
-            <img src="assets/portfolio/32.JPG" alt="Well-organized garage" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- AREAS WE SERVE SECTION -->
-    <section class="areas" id="areas" aria-labelledby="areas-heading">
-      <div class="areas-card">
-        <h2 id="areas-heading">
-          Areas We Serve
+          Reviews
         </h2>
-        <div class="areas-content">
-          <!-- List of Areas -->
-          <div class="areas-list">
-            <ul>
-              <li>Barrie</li>
-              <li>Orillia</li>
-              <li>Midland</li>
-              <li>Innisfil</li>
-              <li>Bradford</li>
-              <li>Wasaga Beach</li>
-              <li>Severn</li>
-              <li>Oro-Medonte</li>
-              <li>Angus</li>
-              <li>Elmvale</li>
-              <li>Tay</li>
-              <li>Horseshoe Valley</li>
-            </ul>
+        <div class="google-button-container">
+          <a
+            href="https://maps.app.goo.gl/EyMWdSuMsExvrxaG7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="google-button"
+          >
+            <!-- <i class="fab fa-google" aria-hidden="true"></i> -->
+            <svg width="20" height="20">
+              <use href="/assets/icons.svg#google-icon"></use>
+            </svg>
+
+            Google Business Profile
+          </a>
+        </div>
+
+        <div class="reviews-container">
+          <!-- Review 1 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+
+              <div class="reviewer-info">
+                <strong>Michelle</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">January 18, 2025</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Zen Zone Cleaning Services is amazing and I would highly
+              recommend them. Our company recently found them online and used
+              them for the first time last week. They were quick, kind, and
+              extremely professional and we look forward to our weekly cleaning
+              with them. Definitely did a great job!"
+            </blockquote>
+            <em class="review-service">Office Cleaning</em>
           </div>
-          <!-- Accessible Interactive Map -->
-          <div class="map-container">
-            <div id="map" role="application"
-              aria-label="Interactive map showing the areas Zen Zone Cleaning serves in and around Barrie, Orillia, and surrounding areas"
-              tabindex="0"></div>
+
+          <!-- Review 2 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Rick R</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">January 1, 2025</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Very thorough move-out cleaning! Amazing work."
+            </blockquote>
+            <em class="review-service">Standard Cleaning</em>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Kylee Munro</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">January 1, 2025</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Zen cleaning did an awesome job. I would recommend them to anyone
+              looking for a trustworthy company."
+            </blockquote>
+            <em class="review-service">Deep Moving Cleaning</em>
+          </div>
+
+          <!-- Review 4 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Paul Carletti</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">December 9, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Zen cleaning did an awesome job. I would recommend them to anyone
+              looking for a trustworthy company."
+            </blockquote>
+            <em class="review-service">Deep Cleaning</em>
+          </div>
+
+          <!-- Review 5 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>W N</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">December 8, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "I've had a bi-weekly cleaning service for a while now at my home
+              in Innisfil, and they never disappoint. The team is professional
+              and really pays attention to the details. They did a great job
+              with my baseboards and other areas that haven’t been cleaned in a
+              while. Highly recommend!"
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 6 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Khalil Barakzai</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">December 8, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "I've been using Zen Zone Cleaning for weekly cleanings at my home
+              in Barrie, and they've been incredible. The team is always on
+              time, professional, and leaves my house looking spotless every
+              time. It's such a relief to have a consistently clean home without
+              worrying about it myself. Highly recommend their weekly service if
+              you want reliable and thorough cleaners!"
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 7 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Jlb</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">December 6, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "I called last minute looking for help with my MIL move from her
+              house and they accommodated our schedule. They did a fantastic
+              job. Extremely thorough and very friendly. I would 100% recommend
+              them and use them again."
+            </blockquote>
+            <em class="review-service">General Cleaning</em>
+          </div>
+
+          <!-- Review 8 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Elizabeth Wrenshall</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">November 29, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "The job gets done with Zen Zone Cleaning! They are professional,
+              thorough, and efficient. I am happy to have them come back
+              routinely to help keep up with the tasks. I can now enjoy my
+              beautiful home even more."
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 9 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Lucia Haggart</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">November 28, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "The cleaning job that my husband and I come home to is excellent!
+              Everything we request to be addressed is cleaned and done so. We
+              even get follow-up texts to check that nothing was missed. We are
+              happy with the service we have received from this company so far
+              and appreciate their attention to detail."
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 10 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Hgalasaad</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">November 27, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Excellent service. Very professional."
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 11 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Stefanie Dale Lilly</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">November 4, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "I would recommend Zen Zone Cleaning Services! They clean the
+              office I work in and the cleaners are very respectful and
+              responsive to requests!"
+            </blockquote>
+            <em class="review-service">Office Cleaning</em>
+          </div>
+
+          <!-- Review 12 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Tye Hunt</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">November 1, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Been using Zen Zone for a few months now. Great service. Very
+              reliable. Danee is very professional and prompt. I highly
+              recommend them."
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 13 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Kim Wickett</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">October 21, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Always friendly and asks if there is anything special that needs
+              to be done before they start. Always on time and very efficient."
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 14 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Jackie and Rob</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">October 21, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Great work—fabulous attention to detail!"
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 15 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Sean Deece-Cassidy</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">October 21, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Wonderful experience. I had two cleaners come to assist in an
+              Estate clean. They truly worked harder and longer than I
+              anticipated and remained happy and positive. Highly recommended.
+              Thanks again!"
+            </blockquote>
+            <em class="review-service">Deep Moving Cleaning</em>
+          </div>
+
+          <!-- Review 16 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Jeremy Walker</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">October 19, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "Great group of professional cleaners. Zen Zone is reliable and my
+              go-to cleaners when I have a property that needs cleaning."
+            </blockquote>
+            <em class="review-service">Airbnb Cleaning</em>
+          </div>
+
+          <!-- Review 17 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Iga de Beer</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">August 6, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "I've been using Zen Zone Cleaning Services for biweekly home
+              cleanings, and I couldn't be happier. The team is always friendly,
+              on time, and professional. After every clean, my home isn't just
+              spotless—it smells amazing too. I highly recommend Zen Zone
+              Cleaning Services to anyone who needs reliable and thorough home
+              cleaning!"
+            </blockquote>
+            <em class="review-service">Recurring Cleaning</em>
+          </div>
+
+          <!-- Review 18 -->
+          <div class="review">
+            <div class="review-header">
+              <div class="review-avatar" aria-hidden="true">
+                <svg width="48" height="48">
+                  <use href="/assets/icons.svg#avatar"></use>
+                </svg>
+              </div>
+              <div class="reviewer-info">
+                <strong>Yinze X</strong>
+                <div class="review-rating" aria-label="5 out of 5 stars">
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+
+                  <svg width="20" height="20">
+                    <use href="/assets/icons.svg#star"></use>
+                  </svg>
+                </div>
+                <span class="review-date">June 28, 2024</span>
+              </div>
+            </div>
+            <blockquote class="review-text">
+              "I've hired Zen Zone a number of times to clean my rental
+              property, both for tenant turnover and for post-construction
+              clean-up. Each time they've done a stellar job, really taking care
+              to leave it in perfect shape. Fair pricing for the services too.
+              Will continue to use Zen Zone for any future cleaning needs."
+            </blockquote>
+            <em class="review-service">Post-Construction Cleaning</em>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-
-
-    <section class="blog-section" id="blog">
-      <a href="/blogs.html" class="featured-blogs">
-        <h2>Featured Blogs</h2>
-      </a>
-      <div class="blog-list">
-
-        <a href="/blogs/barrie-deep-cleaning.html" class="blog-card"
-          aria-label="Read more about Revitalize Your Barrie Home with Expert Deep Cleaning Services">
-          <div class="blog-entry">
-            <img src="/assets/deep.webp"
-              alt="Revitalize Your Barrie Home with Expert Deep Cleaning Services" class="blog-thumbnail"
-              loading="lazy" />
-            <h3>Revitalize Your Barrie Home with Expert Deep Cleaning Services</h3>
-            <p class="post-date-entry">Published on March 1, 2025</p>
-            <p class="post-description">Discover how Zen Zone Cleaning can refresh your home in Barrie with expert deep cleaning services that target every corner for a spotless living space.</p>
+      <!-- SERVICES SECTION -->
+      <section
+        class="services"
+        id="services"
+        aria-label="Our Cleaning Services"
+      >
+        <div class="services-content">
+          <h2>Our Cleaning Services</h2>
+          <div class="services-hero-tiles">
+            <div class="service-tile">
+              <h3>Deep Cleaning</h3>
+              <p class="truncate">
+                Our Deep Cleaning Service is designed to give your home a fresh
+                start by tackling both the visible and hidden dirt. We
+                thoroughly clean all common areas…
+              </p>
+              <button
+                class="learn-more-btn"
+                data-modal="tooltip-DeepCleaning"
+                aria-label="Learn more about Deep Cleaning"
+              >
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Standard Cleaning</h3>
+              <p class="truncate">
+                Our Standard Cleaning Service ensures a thorough cleaning of all
+                common areas, including bedrooms, kitchens, and bathrooms. We
+                wipe and dust surfaces…
+              </p>
+              <button
+                class="learn-more-btn"
+                data-modal="tooltip-StandardCleaning"
+                aria-label="Learn more about Standard Cleaning"
+              >
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Post-Construction Cleaning</h3>
+              <p class="truncate">
+                Our Post-Construction Cleaning Service handles the mess left
+                behind after construction or renovation projects. We ensure your
+                property is spotless…
+              </p>
+              <button
+                class="learn-more-btn"
+                data-modal="tooltip-PostConstructionCleaning"
+                aria-label="Learn more about Post-Construction Cleaning"
+              >
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Standard Moving Cleaning</h3>
+              <p class="truncate">
+                Our Move-In/Out Standard Cleaning Service is perfect for homes
+                that need a general refresh during a move. We focus on cleaning
+                all common areas…
+              </p>
+              <button
+                class="learn-more-btn"
+                data-modal="tooltip-MoveInCleaning"
+                aria-label="Learn more about Standard Moving Cleaning"
+              >
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Deep Moving Cleaning</h3>
+              <p class="truncate">
+                Our Move-In/Out Deep Cleaning Service provides a comprehensive,
+                detailed clean ensuring every corner of your home is spotless…
+              </p>
+              <button
+                class="learn-more-btn"
+                data-modal="tooltip-MoveOutCleaning"
+                aria-label="Learn more about Deep Moving Cleaning"
+              >
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Airbnb Cleaning</h3>
+              <p class="truncate">
+                Enhance guest satisfaction with our fast and efficient cleaning
+                services for seamless Airbnb turnovers…
+              </p>
+              <button
+                class="learn-more-btn"
+                data-modal="tooltip-AirbnbCleaning"
+                aria-label="Learn more about Airbnb Cleaning"
+              >
+                Learn More
+              </button>
+            </div>
+            <div class="service-tile">
+              <h3>Office Cleaning</h3>
+              <p class="truncate">
+                Boost productivity and maintain a professional image with our
+                comprehensive office cleaning services…
+              </p>
+              <button
+                class="learn-more-btn"
+                data-modal="tooltip-OfficeCleaning"
+                aria-label="Learn more about Office Cleaning"
+              >
+                Learn More
+              </button>
+            </div>
           </div>
-        </a>
-
-        <a href="/blogs/professional-cleaning-saves-you-money-time.html" class="blog-card"
-        aria-label="Read more about Why Hiring a Professional Cleaning Service Saves You Time and Money">
-        <div class="blog-entry">
-          <img src="/assets/save-time-and-money.webp"
-            alt="Why Hiring a Professional Cleaning Service Saves You Time and Money" class="blog-thumbnail"
-            loading="lazy" />
-          <h3>Why Hiring a Professional Cleaning Service Saves You Time and Money</h3>
-          <p class="post-date-entry">Published on February 22, 2025</p>
-          <p class="post-description">Discover how professional cleaning services can streamline your routine and save you both time and money with expert techniques and quality results.</p>
-
         </div>
-        </a>
 
-        <!-- Blog Entry 2 -->
-        <a href="/blogs/declutter-your-space-declutter-your-mind.html" class="blog-card"
-          aria-label="Read more about Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity">
-          <div class="blog-entry">
-            <img src="/assets/standard.webp"
-              alt="Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity"
-              class="blog-thumbnail" loading="lazy" />
-            <h3>Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity</h3>
-            <p class="post-date-entry">Published on January 10, 2025</p>
-            <p class="post-description">Discover effective strategies to keep your space clutter-free and boost your
-              mental clarity.</p>
-            <!-- <span class="read-more-btn"
+        <!-- Deep Cleaning Modal -->
+        <div id="tooltip-DeepCleaning" class="tooltip">
+          <button
+            type="button"
+            class="tooltip-close tooltip-close-icon"
+            aria-label="Close modal"
+          >
+            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+          <div class="tooltip-content">
+            <h3>Deep Cleaning</h3>
+            <p>
+              Our Deep Cleaning Service is designed to give your home a fresh
+              start by tackling both the visible and hidden dirt. We thoroughly
+              clean all common areas, including bedrooms, kitchens, and
+              bathrooms. This includes wiping and dusting surfaces, sweeping and
+              mopping floors, vacuuming carpets, and cleaning mirrors, door
+              handles, and light switches.
+            </p>
+            <p>
+              We also focus on areas that are often overlooked or hard to reach,
+              such as cleaning behind appliances, baseboards, door frames,
+              interior windows, blinds, ceiling fans, light fixtures, wall
+              spots, and grout. High-touch areas are sanitized to help reduce
+              the spread of germs.
+            </p>
+            <a
+              href="/booking.html"
+              class="cta-button book-now"
+              aria-label="Free Quote"
+              >Free Quote</a
+            >
+          </div>
+        </div>
+
+        <!-- Standard Cleaning Modal -->
+        <div id="tooltip-StandardCleaning" class="tooltip">
+          <button
+            type="button"
+            class="tooltip-close tooltip-close-icon"
+            aria-label="Close modal"
+          >
+            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+          <div class="tooltip-content">
+            <h3>Standard Cleaning</h3>
+            <p>
+              Our Standard Cleaning Service ensures a thorough cleaning of all
+              common areas, including bedrooms, kitchens, and bathrooms. We wipe
+              and dust surfaces, sweep and mop floors and baseboards, vacuum
+              carpets, and clean mirrors, door handles, light switches, and
+              kitchen cabinet fronts.
+            </p>
+            <p>
+              High-touch areas receive extra attention to reduce the spread of
+              germs, making this service ideal for maintaining a fresh, clean,
+              and healthy living environment.
+            </p>
+            <a
+              href="/booking.html"
+              class="cta-button book-now"
+              aria-label="Request Quote"
+              >Free Quote</a
+            >
+          </div>
+        </div>
+
+        <!-- Post-Construction Cleaning Modal -->
+        <div id="tooltip-PostConstructionCleaning" class="tooltip">
+          <button
+            type="button"
+            class="tooltip-close tooltip-close-icon"
+            aria-label="Close modal"
+          >
+            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+          <div class="tooltip-content">
+            <h3>Post-Construction Cleaning</h3>
+            <p>
+              Our Post-Construction Cleaning Service handles the mess left
+              behind after construction or renovation projects. We ensure your
+              property is spotless, safe, and move-in ready by tackling dust,
+              debris, and residue with precision.
+            </p>
+            <p>
+              This service includes removing construction dust and debris, deep
+              cleaning all surfaces, windows, fixtures, and hard-to-reach areas.
+            </p>
+            <a
+              href="/booking.html"
+              class="cta-button book-now"
+              aria-label="Request Quote"
+              >Free Quote</a
+            >
+          </div>
+        </div>
+
+        <!-- Standard Moving Cleaning Modal -->
+        <div id="tooltip-MoveInCleaning" class="tooltip">
+          <button
+            type="button"
+            class="tooltip-close tooltip-close-icon"
+            aria-label="Close modal"
+          >
+            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+          <div class="tooltip-content">
+            <h3>Standard Moving Cleaning</h3>
+            <p>
+              Our Move-In/Out Standard Cleaning Service is perfect for homes
+              that need a general refresh during a move. We clean all common
+              areas, including bedrooms, kitchens, and bathrooms, ensuring
+              surfaces, floors, and fixtures are spotless.
+            </p>
+            <p>
+              High-touch areas receive extra care to reduce the spread of germs,
+              making it ideal for preparing a home for new occupants.
+            </p>
+            <a
+              href="/booking.html"
+              class="cta-button book-now"
+              aria-label="Request Quote"
+              >Free Quote</a
+            >
+          </div>
+        </div>
+
+        <!-- Deep Moving Cleaning Modal -->
+        <div id="tooltip-MoveOutCleaning" class="tooltip">
+          <button
+            type="button"
+            class="tooltip-close tooltip-close-icon"
+            aria-label="Close modal"
+          >
+            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+          <div class="tooltip-content">
+            <h3>Deep Moving Cleaning</h3>
+            <p>
+              Our Move-In/Out Deep Cleaning Service provides a comprehensive,
+              detailed clean to ensure every corner of your home is spotless. In
+              addition to standard cleaning tasks, we clean behind appliances,
+              baseboards, door frames, interior windows, blinds, ceiling fans,
+              light fixtures, and grout.
+            </p>
+            <p>
+              High-touch areas are sanitized to minimize the spread of germs,
+              making this service perfect for a thorough reset during a move.
+            </p>
+            <a
+              href="/booking.html"
+              class="cta-button book-now"
+              aria-label="Request Quote"
+              >Free Quote</a
+            >
+          </div>
+        </div>
+
+        <!-- Airbnb Cleaning Modal -->
+        <div id="tooltip-AirbnbCleaning" class="tooltip">
+          <button
+            type="button"
+            class="tooltip-close tooltip-close-icon"
+            aria-label="Close modal"
+          >
+            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+          <div class="tooltip-content">
+            <h3>Airbnb Cleaning</h3>
+            <p>
+              Our Airbnb Cleaning Service is designed to prepare your property
+              for guests by delivering a fast, efficient, and thorough cleaning.
+              We ensure that every area—from living spaces and kitchens to
+              bathrooms—is meticulously cleaned and sanitized, creating a
+              welcoming environment that encourages positive guest reviews.
+            </p>
+            <p>
+              The service includes dusting, vacuuming, mopping, and disinfecting
+              high-touch surfaces. Additionally, we manage laundry services by
+              washing, drying, and ironing linens and towels so that all bedding
+              and guest supplies are fresh and guest-ready for a seamless
+              turnover.
+            </p>
+            <a
+              href="/booking.html"
+              class="cta-button book-now"
+              aria-label="Request Quote"
+              >Free Quote</a
+            >
+          </div>
+        </div>
+
+        <!-- Office Cleaning Modal -->
+        <div id="tooltip-OfficeCleaning" class="tooltip">
+          <button
+            type="button"
+            class="tooltip-close tooltip-close-icon"
+            aria-label="Close modal"
+          >
+            <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+          <div class="tooltip-content">
+            <h3>Office Cleaning</h3>
+            <p>
+              Our Office Cleaning Service is designed to maintain a healthy,
+              professional workspace by ensuring that all areas are thoroughly
+              cleaned and disinfected. We focus on high-traffic spaces such as
+              workstations, meeting rooms, break areas, and restrooms to promote
+              a productive and inviting environment.
+            </p>
+            <p>
+              The service includes dusting, vacuuming, mopping, and sanitizing
+              surfaces including desks, countertops, and common equipment. Our
+              comprehensive approach not only enhances the professional image of
+              your office but also contributes to employee well-being by
+              reducing allergens and germs.
+            </p>
+            <a
+              href="/booking.html"
+              class="cta-button book-now"
+              aria-label="Request Quote"
+              >Free Quote</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- GALLERY SECTION -->
+      <section
+        class="gallery"
+        id="gallery"
+        aria-label="Gallery of Our Cleaning Work"
+      >
+        <h2>Gallery</h2>
+        <div class="gallery-track">
+          <!-- Original Gallery Container -->
+          <div class="gallery-container">
+            <!-- Gallery Items 1 to 32 -->
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/1.JPG"
+                alt="Spotless kitchen after cleaning"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/2.JPG"
+                alt="Shiny bathroom surfaces"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/3.JPG"
+                alt="Organized living room"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/4.JPG"
+                alt="Cleaned office workspace"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/5.JPG"
+                alt="Freshly cleaned bedroom"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/6.JPG"
+                alt="Polished hardwood floors"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/7.JPG"
+                alt="Sparkling windows"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/8.JPG"
+                alt="Immaculate kitchen countertops"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/9.JPG"
+                alt="Tidy and organized office"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/10.JPG"
+                alt="Cleaned and sanitized bathroom"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/11.JPG"
+                alt="Pristine dining area"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/12.JPG"
+                alt="Neatly arranged study desk"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/13.JPG"
+                alt="Sanitized and organized workspace"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/14.JPG"
+                alt="Thoroughly cleaned shelves"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/15.JPG"
+                alt="Sparkling kitchen appliances"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/16.JPG"
+                alt="Gleaming bathroom fixtures"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/17.JPG"
+                alt="Spotless floors and rugs"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/18.JPG"
+                alt="Well-maintained exterior windows"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/19.JPG"
+                alt="Perfectly arranged pantry"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/20.JPG"
+                alt="Dust-free furniture"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/21.JPG"
+                alt="Bright and clean children's room"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/22.JPG"
+                alt="Sanitized laundry area"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/23.JPG"
+                alt="Shiny glass doors"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/24.JPG"
+                alt="Stain-free carpets"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/25.JPG"
+                alt="Cleaned and polished mirrors"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/26.JPG"
+                alt="Neatly folded towels"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/27.JPG"
+                alt="Organized closet space"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/28.JPG"
+                alt="Dust-free electronics"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/29.JPG"
+                alt="Gleaming kitchen sink"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/30.JPG"
+                alt="Shiny and clean tile surfaces"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/31.JPG"
+                alt="Immaculate staircase"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/32.JPG"
+                alt="Well-organized garage"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Duplicate Gallery Container for Seamless Loop -->
+          <div class="gallery-container">
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/1.JPG"
+                alt="Spotless kitchen after cleaning"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/2.JPG"
+                alt="Shiny bathroom surfaces"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/3.JPG"
+                alt="Organized living room"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/4.JPG"
+                alt="Cleaned office workspace"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/5.JPG"
+                alt="Freshly cleaned bedroom"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/6.JPG"
+                alt="Polished hardwood floors"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/7.JPG"
+                alt="Sparkling windows"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/8.JPG"
+                alt="Immaculate kitchen countertops"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/9.JPG"
+                alt="Tidy and organized office"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/10.JPG"
+                alt="Cleaned and sanitized bathroom"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/11.JPG"
+                alt="Pristine dining area"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/12.JPG"
+                alt="Neatly arranged study desk"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/13.JPG"
+                alt="Sanitized and organized workspace"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/14.JPG"
+                alt="Thoroughly cleaned shelves"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/15.JPG"
+                alt="Sparkling kitchen appliances"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/16.JPG"
+                alt="Gleaming bathroom fixtures"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/17.JPG"
+                alt="Spotless floors and rugs"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/18.JPG"
+                alt="Well-maintained exterior windows"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/19.JPG"
+                alt="Perfectly arranged pantry"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/20.JPG"
+                alt="Dust-free furniture"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/21.JPG"
+                alt="Bright and clean children's room"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/22.JPG"
+                alt="Sanitized laundry area"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/23.JPG"
+                alt="Shiny glass doors"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/24.JPG"
+                alt="Stain-free carpets"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/25.JPG"
+                alt="Cleaned and polished mirrors"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/26.JPG"
+                alt="Neatly folded towels"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/27.JPG"
+                alt="Organized closet space"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/28.JPG"
+                alt="Dust-free electronics"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/29.JPG"
+                alt="Gleaming kitchen sink"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/30.JPG"
+                alt="Shiny and clean tile surfaces"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/31.JPG"
+                alt="Immaculate staircase"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="gallery-item"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <img
+                src="assets/portfolio/32.JPG"
+                alt="Well-organized garage"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AREAS WE SERVE SECTION -->
+      <section class="areas" id="areas" aria-labelledby="areas-heading">
+        <div class="areas-card">
+          <h2 id="areas-heading">Areas We Serve</h2>
+          <div class="areas-content">
+            <!-- List of Areas -->
+            <div class="areas-list">
+              <ul>
+                <li>Barrie</li>
+                <li>Orillia</li>
+                <li>Midland</li>
+                <li>Innisfil</li>
+                <li>Bradford</li>
+                <li>Wasaga Beach</li>
+                <li>Severn</li>
+                <li>Oro-Medonte</li>
+                <li>Angus</li>
+                <li>Elmvale</li>
+                <li>Tay</li>
+                <li>Horseshoe Valley</li>
+              </ul>
+            </div>
+            <!-- Accessible Interactive Map -->
+            <div class="map-container">
+              <div
+                id="map"
+                role="application"
+                aria-label="Interactive map showing the areas Zen Zone Cleaning serves in and around Barrie, Orillia, and surrounding areas"
+                tabindex="0"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="blog-section" id="blog">
+        <a href="/blogs.html" class="featured-blogs">
+          <h2>Featured Blogs</h2>
+        </a>
+        <div class="blog-list">
+          <a
+            href="/blogs/barrie-deep-cleaning.html"
+            class="blog-card"
+            aria-label="Read more about Revitalize Your Barrie Home with Expert Deep Cleaning Services"
+          >
+            <div class="blog-entry">
+              <img
+                src="/assets/deep.webp"
+                alt="Revitalize Your Barrie Home with Expert Deep Cleaning Services"
+                class="blog-thumbnail"
+                loading="lazy"
+              />
+              <h3>
+                Revitalize Your Barrie Home with Expert Deep Cleaning Services
+              </h3>
+              <p class="post-date-entry">Published on March 1, 2025</p>
+              <p class="post-description">
+                Discover how Zen Zone Cleaning can refresh your home in Barrie
+                with expert deep cleaning services that target every corner for
+                a spotless living space.
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="/blogs/professional-cleaning-saves-you-money-time.html"
+            class="blog-card"
+            aria-label="Read more about Why Hiring a Professional Cleaning Service Saves You Time and Money"
+          >
+            <div class="blog-entry">
+              <img
+                src="/assets/save-time-and-money.webp"
+                alt="Why Hiring a Professional Cleaning Service Saves You Time and Money"
+                class="blog-thumbnail"
+                loading="lazy"
+              />
+              <h3>
+                Why Hiring a Professional Cleaning Service Saves You Time and
+                Money
+              </h3>
+              <p class="post-date-entry">Published on February 22, 2025</p>
+              <p class="post-description">
+                Discover how professional cleaning services can streamline your
+                routine and save you both time and money with expert techniques
+                and quality results.
+              </p>
+            </div>
+          </a>
+
+          <!-- Blog Entry 2 -->
+          <a
+            href="/blogs/declutter-your-space-declutter-your-mind.html"
+            class="blog-card"
+            aria-label="Read more about Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity"
+          >
+            <div class="blog-entry">
+              <img
+                src="/assets/standard.webp"
+                alt="Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity"
+                class="blog-thumbnail"
+                loading="lazy"
+              />
+              <h3>
+                Declutter Your Space, Declutter Your Mind: The Link Between
+                Cleanliness and Mental Clarity
+              </h3>
+              <p class="post-date-entry">Published on January 10, 2025</p>
+              <p class="post-description">
+                Discover effective strategies to keep your space clutter-free
+                and boost your mental clarity.
+              </p>
+              <!-- <span class="read-more-btn"
               aria-label="Read Declutter Your Space, Declutter Your Mind: The Link Between Cleanliness and Mental Clarity">Read
               More</span> -->
-          </div>
-        </a>
-      </div>
-    </section>
+            </div>
+          </a>
+        </div>
+      </section>
 
-
-
-    <!-- REFERRAL & GIFT CARDS -->
-    <!-- <section class="referral" id="referral">
+      <!-- REFERRAL & GIFT CARDS -->
+      <!-- <section class="referral" id="referral">
       <h2>Gift Cards & Referral Program</h2>
       <p>
         Give the gift of a spotless home! Purchase a <strong>Gift Card</strong> for friends or family.
@@ -1574,138 +2365,192 @@
         <button class="cta-button" aria-label="Join Referral Program">Join Referral Program</button>
       </div>
     </section> -->
-
-  </main>
-  <!-- Footer with Terms and Privacy Links -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <p>© 2025 Zen Zone Cleaning Services. All rights reserved.</p>
+    </main>
+    <!-- Footer with Terms and Privacy Links -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <p>© 2025 Zen Zone Cleaning Services. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a
+            href="/terms-of-service.html"
+            id="openTermsModal"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Terms of Service</a
+          >
+          •
+          <a
+            href="/privacy-policy.html"
+            id="openPrivacyModal"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Privacy Policy</a
+          >
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="/terms-of-service.html" id="openTermsModal" target="_blank" rel="noopener noreferrer">Terms of
-          Service</a> •
-        <a href="/privacy-policy.html" id="openPrivacyModal" target="_blank" rel="noopener noreferrer">Privacy
-          Policy</a>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-
-
-  <!-- External JS -->
-  <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Zen Zone Cleaning Services",
-      "description": "Fast, reliable, and professional cleaning services for Barrie, Orillia, Midland, and surrounding areas.",
-      "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Servicing Barrie, Orillia, Midland, and surrounding areas",
-        "addressLocality": "Orillia",
-        "addressRegion": "ON",
-        "postalCode": "",
-        "addressCountry": "CA"
-      },
-      "telephone": "+17052425462",
-      "url": "https://zenzonecleaning.ca",
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 44.6085,
-        "longitude": -79.4202
-      },
-      "openingHours": ["Mo-Sun 09:00-18:00"]
-    }
+    <!-- External JS -->
+    <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Zen Zone Cleaning Services",
+        "description": "Fast, reliable, and professional cleaning services for Barrie, Orillia, Midland, and surrounding areas.",
+        "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Servicing Barrie, Orillia, Midland, and surrounding areas",
+          "addressLocality": "Orillia",
+          "addressRegion": "ON",
+          "postalCode": "",
+          "addressCountry": "CA"
+        },
+        "telephone": "+17052425462",
+        "url": "https://zenzonecleaning.ca",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 44.6085,
+          "longitude": -79.4202
+        },
+        "openingHours": ["Mo-Sun 09:00-18:00"]
+      }
     </script>
 
+    <!-- JavaScript Files (Order Matters) -->
+    <script src="js/reviews.js" defer></script>
+    <script src="js/navbar.js" defer></script>
+    <script src="js/main.js" defer></script>
 
-  <!-- JavaScript Files (Order Matters) -->
-  <script src="js/reviews.js" defer></script>
-  <script src="js/navbar.js" defer></script>
-  <script src="js/main.js" defer></script>
+    <!-- PostHog Analytics -->
+    <script>
+      !(function (t, e) {
+        var o, n, p, r;
+        e.__SV ||
+          ((window.posthog = e),
+          (e._i = []),
+          (e.init = function (i, s, a) {
+            function g(t, e) {
+              var o = e.split(".");
+              2 == o.length && ((t = t[o[0]]), (e = o[1])),
+                (t[e] = function () {
+                  t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+                });
+            }
+            ((p = t.createElement("script")).type = "text/javascript"),
+              (p.crossOrigin = "anonymous"),
+              (p.async = !0),
+              (p.src =
+                s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
+                "/static/array.js"),
+              (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(
+                p,
+                r
+              );
+            var u = e;
+            for (
+              void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+                u.people = u.people || [],
+                u.toString = function (t) {
+                  var e = "posthog";
+                  return (
+                    "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e
+                  );
+                },
+                u.people.toString = function () {
+                  return u.toString(1) + ".people (stub)";
+                },
+                o =
+                  "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId".split(
+                    " "
+                  ),
+                n = 0;
+              n < o.length;
+              n++
+            )
+              g(u, o[n]);
+            e._i.push([i, s, a]);
+          }),
+          (e.__SV = 1));
+      })(document, window.posthog || []);
+      posthog.init("phc_owjzFx1YRrgDgk83WSitkE7VW6va3VwHXPaB7esRzzR", {
+        api_host: "https://us.i.posthog.com",
+        disable_session_recording: window.location.hostname === "localhost",
+        person_profiles: "always",
+      });
 
-  <!-- PostHog Analytics -->
-  <script>
-    !function (t, e) {
-      var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) {
-        function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }
-        (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r);
-        var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a])
-      }, e.__SV = 1)
-    }(document, window.posthog || []);
-    posthog.init('phc_owjzFx1YRrgDgk83WSitkE7VW6va3VwHXPaB7esRzzR', {
-      api_host: 'https://us.i.posthog.com',
-      disable_session_recording: window.location.hostname === 'localhost',
-      person_profiles: 'always'
-    });
+      posthog.onFeatureFlags(() => {
+        const userId = posthog.get_distinct_id();
+        if (userId === "0194bd19-58dc-7531-96c9-aa11544a3415") {
+          posthog.stopSessionRecording(); // Stops recording for this session
+        }
+      });
 
-    posthog.onFeatureFlags(() => {
-      const userId = posthog.get_distinct_id();
-      if (userId === "0194bd19-58dc-7531-96c9-aa11544a3415") {
-        posthog.stopSessionRecording(); // Stops recording for this session
+      // Differentiate between sites
+      posthog.register({ site_domain: window.location.hostname });
+
+      posthog.identify(posthog.get_distinct_id(), {
+        site_domain: window.location.hostname,
+      });
+    </script>
+
+    <!-- Tawk.to Chat -->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/65fafd4ea0c6737bd122e1cd/1hpe6qv15";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
-    });
+      gtag("js", new Date());
+      gtag("config", "G-8H1891ZW72");
+    </script>
 
-    // Differentiate between sites
-    posthog.register({ site_domain: window.location.hostname });
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", () => {
+        const map = L.map("map").setView([44.5856, -79.7691], 9);
 
-    posthog.identify(posthog.get_distinct_id(), {
-      site_domain: window.location.hostname
-    });
-  </script>
+        // Add OpenStreetMap tiles
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          // attribution: "&copy; OpenStreetMap contributors",
+        }).addTo(map);
 
-  <!-- Tawk.to Chat -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/65fafd4ea0c6737bd122e1cd/1hpe6qv15';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
-
-  <!-- Google Tag Manager -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-8H1891ZW72');
-  </script>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", () => {
-      const map = L.map("map").setView([44.5856, -79.7691], 9);
-
-      // Add OpenStreetMap tiles
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        // attribution: "&copy; OpenStreetMap contributors",
-      }).addTo(map);
-
-      // Add a circle centered at Hillsdale
-      L.circle([44.5856, -79.7691], {
-        color: 'var(--color-secondary)',           // Circle border color (Deep Green)
-        fillColor: 'var(--color-secondary)',      // Circle fill color (Vibrant Green)
-        fillOpacity: 0.3,           // Opacity of the circle
-        radius: 45000,             // Radius in meters (15 km)
-      }).addTo(map);
-      // Add a label to the map
-      // const label = L.marker([44.5856, -79.7691])
-      //   .addTo(map)
-      //   .bindPopup("Areas we serve")
-      //   .openPopup();
-    });
-  </script>
-
-</body>
-
+        // Add a circle centered at Hillsdale
+        L.circle([44.5856, -79.7691], {
+          color: "var(--color-secondary)", // Circle border color (Deep Green)
+          fillColor: "var(--color-secondary)", // Circle fill color (Vibrant Green)
+          fillOpacity: 0.3, // Opacity of the circle
+          radius: 45000, // Radius in meters (15 km)
+        }).addTo(map);
+        // Add a label to the map
+        // const label = L.marker([44.5856, -79.7691])
+        //   .addTo(map)
+        //   .bindPopup("Areas we serve")
+        //   .openPopup();
+      });
+    </script>
+  </body>
 </html>
