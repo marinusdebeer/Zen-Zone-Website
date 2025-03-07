@@ -37,13 +37,13 @@
 }
 
 .desktop-menu {
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
 
 .desktop-menu ul {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .desktop-menu a.nav-link {
@@ -246,6 +246,9 @@
 }
 
 @media (max-width: 1150px) {
+  .company-name {
+    font-size: 1.1rem;
+  }
   .toggle-switch {
     margin-right: 0;
   }
