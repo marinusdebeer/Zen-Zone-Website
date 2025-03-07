@@ -1,35 +1,40 @@
-/* Container uses CSS Grid */
+/* Container: Mobile & Tablet (default) */
 #about-us .container {
   display: grid;
-  grid-template-columns: 1fr; /* Single column by default (mobile & iPad) */
+  grid-template-columns: 1fr; /* Single column by default */
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px; /* Adds horizontal padding so text isn't flush on small screens */
+  padding: 0 20px;
   margin-bottom: 20px;
 }
 
+/* Button centering if used */
 #about-us .book-now {
   max-width: 200px;
-  display: flex; /* Ensures flex properties work */
-  justify-content: center; /* Centers content inside the button */
-  align-items: center; /* Ensures text is vertically centered */
-  margin: 0 auto; /* Centers the button within its container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
+/* Spacing for list items */
+#about-us li {
+  margin-bottom: 20px;
+}
 
-/* Intro and Main Text */
+/* Intro & Main Text */
 .intro-content p,
 .main-content p {
   line-height: 1.8;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   text-align: left;
 }
 
-/* Images Container (default for mobile & iPad) */
+/* Images container (mobile default) */
 .images {
   display: flex;
-  flex-direction: row; /* Arrange images side by side on mobile & iPad */
+  flex-direction: row; /* side by side on mobile/tablet */
   gap: 10px;
   align-items: center;
   justify-content: center;
@@ -42,9 +47,8 @@
   overflow: hidden;
 }
 
-/* Image Sizing: smaller on mobile/iPad */
 .image-item img {
-  max-width: 220px; /* Even smaller on mobile */
+  max-width: 220px; /* smaller on mobile/tablet */
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -64,37 +68,42 @@
   color: var(--color-primary-text);
 }
 
-/* Desktop (min-width: 900px) */
+/* ----------------------------------------
+   Desktop (min-width: 900px)
+   2 columns, images span both rows
+----------------------------------------- */
 @media (min-width: 900px) {
   #about-us .container {
-    /* Two columns: left for text, right for images */
     grid-template-columns: 1fr 0.6fr;
+    grid-template-areas:
+      "intro images"
+      "main images";
     gap: 40px;
   }
 
-  /* Position intro-content and images in the first row */
   .intro-content {
-    grid-column: 1;
-    grid-row: 1;
+    grid-area: intro;
   }
 
   .images {
-    grid-column: 2;
-    grid-row: 1;
-    /* Ensure images are still arranged in a row */
-    flex-direction: row;
+    grid-area: images;
+    /* vertical stack or column alignment? 
+       If you prefer them stacked:
+       flex-direction: column; 
+       align-items: flex-start; 
+       justify-content: flex-start; 
+    */
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
   }
 
-  /* Place main-content in the second row spanning both columns */
   .main-content {
-    grid-column: 1 / span 2;
-    grid-row: 2;
+    grid-area: main;
   }
 
-  /* Increase image size on desktop/tablet */
+  /* Larger images on desktop */
   .image-item img {
     max-width: 300px;
   }
