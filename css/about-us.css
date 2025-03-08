@@ -28,7 +28,7 @@
 .main-content p {
   line-height: 1.8;
   margin-bottom: 0.5rem;
-  text-align: left;
+  text-align: justify;
 }
 
 /* Images container (mobile default) */
@@ -108,3 +108,26 @@
     max-width: 300px;
   }
 }
+
+#about-us strong {
+  color: var(--color-secondary);
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+#about-us li {
+  text-align: justify;
+}
+#about-us li strong {
+  color: var(--color-secondary);
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+#about-us h3 {
+  color: var(--color-secondary);
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.9rem;
+}
+
