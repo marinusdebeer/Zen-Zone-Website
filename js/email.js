@@ -25,8 +25,10 @@ const Email = (() => {
       Bathrooms: ${data.bathrooms || "N/A"}
       Powder Rooms: ${data.powderRooms || "N/A"}
       Extras: ${data.extras || "N/A"}
-      Package: ${data.package || "N/A"}
+      Package: ${data.package || "N/A"} Hours
+      Price: ${data.price || "N/A"}
       Address: ${data.address || "N/A"}
+      City: ${data.city || "N/A"}
       Preferred Date: ${data.date || "N/A"}
       Additional Details: ${data.details || "N/A"}
     `.trim();

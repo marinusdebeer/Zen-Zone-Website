@@ -173,7 +173,7 @@
               <input type="radio" id="industry-office" name="industry" value="Office Cleaning">
               <label for="industry-office" class="booking-btn-option industry">Office Cleaning</label>
             </div>
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select an
+            <span class="error-message" aria-live="polite" style="display: none;">Please select an
               industry.</span>
           </div>
           <div class="booking-form-nav">
@@ -190,7 +190,7 @@
               <input type="radio" id="booking-type-recurring" name="bookingType" value="Recurring">
               <label for="booking-type-recurring" class="booking-btn-option service">Recurring Cleaning</label>
             </div>
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select a service
+            <span class="error-message" aria-live="polite" style="display: none;">Please select a service
               type.</span>
           </div>
 
@@ -207,7 +207,7 @@
               <input type="radio" id="frequency-other" name="frequency" value="Other" required>
               <label for="frequency-other" class="booking-btn-option service">Other</label>
             </div>
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select a
+            <span class="error-message" aria-live="polite" style="display: none;">Please select a
               frequency.</span>
           </div>
 
@@ -281,7 +281,7 @@
                 </div>
               </label>
             </div>
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select a service
+            <span class="error-message" aria-live="polite" style="display: none;">Please select a service
               type.</span>
           </div>
           <div class="booking-form-nav">
@@ -293,43 +293,43 @@
         <div class="booking-form-step" data-step="4" aria-hidden="true">
           <div class="booking-form-group">
             <label for="booking-squareFootage">Square Footage <span aria-hidden="true">*</span></label>
-            <input type="range" id="booking-squareFootage" name="squareFootage" min="0" max="7000" step="100" value="0"
+            <input type="input" id="booking-squareFootage" name="squareFootage" value=""
               required data-units="sq ft" />
-            <span id="booking-squareFootageValue">0 sq ft</span>
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select the square
+            <!-- <span id="booking-squareFootageValue">0 sq ft</span> -->
+            <span class="error-message" aria-live="polite" style="display: none;">Please select the square
               footage.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-bathrooms">Number of Bathrooms <span aria-hidden="true">*</span></label>
-            <input type="range" id="booking-bathrooms" name="bathrooms" max="10" step="1" value="0" required />
-            <span id="booking-bathroomsValue">0</span>
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select the number
+            <input type="input" id="booking-bathrooms" name="bathrooms" value="" required />
+            <!-- <span id="booking-bathroomsValue">0</span> -->
+            <span class="error-message" aria-live="polite" style="display: none;">Please select the number
               of bathrooms.</span>
           </div>
 
           <div id="residentialFields">
             <div class="booking-form-group">
               <label for="booking-bedrooms">Number of Bedrooms <span aria-hidden="true">*</span></label>
-              <input type="range" id="booking-bedrooms" name="bedrooms" max="10" step="1" value="0" required />
-              <span id="booking-bedroomsValue">0</span>
-              <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select the number
+              <input type="input" id="booking-bedrooms" name="bedrooms" value="" required />
+              <!-- <span id="booking-bedroomsValue">0</span> -->
+              <span class="error-message" aria-live="polite" style="display: none;">Please select the number
                 of bedrooms.</span>
             </div>
             <div class="booking-form-group">
               <label for="booking-powderRooms">Number of Powder Rooms <span aria-hidden="true">*</span></label>
-              <input type="range" id="booking-powderRooms" name="powderRooms" min="0" max="5" step="1" value="0"
+              <input type="input" id="booking-powderRooms" name="powderRooms" value=""
                 required />
-              <span id="booking-powderRoomsValue">0</span>
-              <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select the number
+              <!-- <span id="booking-powderRoomsValue">0</span> -->
+              <span class="error-message" aria-live="polite" style="display: none;">Please select the number
                 of powder rooms.</span>
             </div>
           </div>
           <div id="officeFields" style="display: none;">
             <div class="booking-form-group">
               <label for="booking-offices">Number of Offices <span aria-hidden="true">*</span></label>
-              <input type="range" id="booking-offices" name="offices" min="0" max="20" step="1" value="0" />
-              <span id="booking-officesValue">0</span>
-              <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select the number
+              <input type="input" id="booking-offices" name="offices" value="" />
+              <!-- <span id="booking-officesValue">0</span> -->
+              <span class="error-message" aria-live="polite" style="display: none;">Please select the number
                 of offices.</span>
             </div>
           </div>
@@ -359,7 +359,7 @@
               <input type="radio" id="package-5" name="package" value="5">
               <label for="package-5" class="booking-btn-option package-option"><strong>5 Hours</strong><br>$250</label>
             </div>
-            <span class="error-message" aria-live="polite" style="color: red; display: none;">Please select a cleaning
+            <span class="error-message" aria-live="polite" style="display: none;">Please select a cleaning
               package.</span>
           </div>
 
@@ -367,12 +367,25 @@
             data-conditional-value="One-Time" style="display: none;" aria-hidden="true">
             <div class="extras-container">
               <div class="extra-item">
+                <button type="button" class="extras-btn" data-value="Inside Fridge" aria-pressed="false">Inside
+                  Fridge</button>
+              </div>
+              <div class="extra-item">
+                <button type="button" class="extras-btn" data-value="Behind Fridge" aria-pressed="false">Behind
+                  Fridge</button>
+              </div>
+
+              <div class="extra-item">
                 <button type="button" class="extras-btn" data-value="Inside Oven" aria-pressed="false">Inside
                   Oven</button>
               </div>
               <div class="extra-item">
                 <button type="button" class="extras-btn" data-value="Behind Stove" aria-pressed="false">Behind
                   Stove</button>
+              </div>
+              <div class="extra-item">
+                <button type="button" class="extras-btn" data-value="Grout Cleaning" aria-pressed="false">Grout
+                  Cleaning</button>
               </div>
               <div class="extra-item">
                 <button type="button" class="extras-btn" data-value="Inside Kitchen Cabinets"
@@ -397,30 +410,26 @@
 
               <div class="extra-item countable-extra">
                 <label class="custom-label">Windows</label>
-                <div class="slider-container" id="windowsSliderContainer">
-                  <input type="range" id="windowsSlider" name="windowsCount" min="0" max="20" value="0" />
-                  <span id="windowsCountDisplay">0</span>
+                <div class="input-container" id="windowsContainer">
+                  <input type="input" id="windowsInput" name="windowsCount" value="" />
                 </div>
               </div>
               <div class="extra-item countable-extra">
                 <label class="custom-label">Window Blinds</label>
-                <div class="slider-container" id="windowBlindsSliderContainer">
-                  <input type="range" id="windowBlindsSlider" name="windowBlindsCount" min="0" max="20" value="0" />
-                  <span id="windowBlindsCountDisplay">0</span>
+                <div class="input-container" id="windowBlindsContainer">
+                  <input type="input" id="windowBlindsInput" name="windowBlindsCount" value="" />
                 </div>
               </div>
               <div class="extra-item countable-extra">
                 <label class="custom-label">Ceiling Fans</label>
-                <div class="slider-container" id="ceilingFansSliderContainer">
-                  <input type="range" id="ceilingFansSlider" name="ceilingFansCount" min="0" max="10" value="0" />
-                  <span id="ceilingFansCountDisplay">0</span>
+                <div class="input-container" id="ceilingFansContainer">
+                  <input type="input" id="ceilingFansInput" name="ceilingFansCount" value="" />
                 </div>
               </div>
               <div class="extra-item countable-extra">
-                <label class="custom-label">Laundry &amp; Folding (Loads)</label>
-                <div class="slider-container" id="laundryFoldingSliderContainer">
-                  <input type="range" id="laundryFoldingSlider" name="laundryFoldingCount" min="0" max="20" value="0" />
-                  <span id="laundryFoldingCountDisplay">0</span>
+                <label class="custom-label">Laundry (Loads)</label>
+                <div class="input-container" id="laundryFoldingContainer">
+                  <input type="input" id="laundryFoldingInput" name="laundryFoldingCount" value="" />
                 </div>
               </div>
             </div>
@@ -433,14 +442,20 @@
 
         <div class="booking-form-step" data-step="6" aria-hidden="true">
           <div class="booking-form-group">
-            <label for="booking-address">Full Address <span aria-hidden="true">*</span></label>
-            <input type="text" id="booking-address" name="address" placeholder="Enter your full address" required
-              autocomplete="street-address" />
-            <span class="error-message" aria-live="polite" style="display: none;">Please enter your full address.</span>
+            <label for="booking-address">Street Address <span aria-hidden="true">*</span></label>
+            <input type="text" id="booking-address" name="address" placeholder="Enter your street address" required
+               />
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter your street address.</span>
+          </div>
+          <div class="booking-form-group">
+            <label for="booking-city">City <span aria-hidden="true">*</span></label>
+            <input type="text" id="booking-city" name="city" placeholder="Enter your city" required
+               />
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter your city.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-date">Preferred Dates <span aria-hidden="true">*</span></label>
-            <input type="text" id="booking-date" name="date" required />
+            <input type="text" id="booking-date" name="date" placeholder="Enter your preferred dates" required />
             <span class="error-message" aria-live="polite" style="display: none;">Please select your preferred dates.</span>
           </div>
           <div class="booking-form-group">

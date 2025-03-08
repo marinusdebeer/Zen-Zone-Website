@@ -275,7 +275,9 @@ function hedgehog() {
     const desiredLeft = hedgehogRect.left + hedgehogRect.width / 2 - 150; // Center tooltip over hedgehog
     // Then set the tooltip’s left with a clamped value:
     tooltip.style.left = `clamp(10px, ${desiredLeft}px, calc(100vw - 310px))`;
-    tooltip.style.bottom = window.innerHeight - hedgehogRect.top + 10 + "px";
+    const tooltipHeight = tooltip.offsetHeight;
+    const hedgehogAbsoluteTop = hedgehogRect.top + window.scrollY;
+    tooltip.style.top = hedgehogAbsoluteTop - tooltipHeight - 10 + "px";
     // tooltip.style.transform = "translateX(-50%)";
 
     const tooltipRect = tooltip.getBoundingClientRect();

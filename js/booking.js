@@ -189,23 +189,6 @@ class BookingForm {
     this.stepTracker.init(this.currentStep);
     this.showFormStep(this.currentStep);
     this.attachListeners();
-    this.initializeSliderBackgrounds();
-    this.initializeExtrasCountInputs();
-    this.initializeRangeDisplays();
-  }
-
-  updateSliderBackground(slider) {
-    const min = +slider.min || 0,
-          max = +slider.max || 100,
-          val = +slider.value;
-    const pct = ((val - min) * 100) / (max - min);
-    slider.style.backgroundImage = `linear-gradient(to right, var(--slider-fill-color) ${pct}%, var(--slider-track-color) ${pct}%)`;
-  }
-
-  initializeSliderBackgrounds() {
-    this.bookingForm.querySelectorAll("input[type='range']").forEach(slider =>
-      this.updateSliderBackground(slider)
-    );
   }
 
   showFormStep(step) {
@@ -306,7 +289,6 @@ class BookingForm {
     if (this.currentStep === 5) {
       this.displayStep5Sections();
     }
-    this.initializeExtrasCountInputs();
   }
 
   goToStep(step) {
@@ -396,12 +378,7 @@ class BookingForm {
         wrapper.setAttribute('aria-hidden', 'true');
         wrapper.querySelectorAll('input, select, textarea').forEach(input => {
           if (['radio', 'checkbox'].includes(input.type)) input.checked = false;
-          else if (input.type === 'range') {
-            input.value = 0;
-            const disp = this.bookingForm.querySelector(`#${input.id}Value`);
-            if (disp) disp.textContent = `0 ${input.getAttribute('data-units') || ''}`.trim();
-            this.updateSliderBackground(input);
-          } else input.value = '';
+          else input.value = '';
           input.removeAttribute('required');
         });
       }
@@ -586,7 +563,6 @@ class BookingForm {
         extrasGroup.style.display = 'none';
         extrasGroup.setAttribute('aria-hidden', 'true');
         extrasGroup.querySelectorAll('input, select, textarea').forEach(i => i.removeAttribute('required'));
-        this.resetExtrasSliders();
       }
       if (packageGroup) {
         packageGroup.style.display = 'block';
@@ -603,7 +579,6 @@ class BookingForm {
       if (extrasGroup) {
         extrasGroup.style.display = 'block';
         extrasGroup.setAttribute('aria-hidden', 'false');
-        this.initializeSliderValues();
       }
     } else {
       if (packageGroup) {
@@ -616,38 +591,8 @@ class BookingForm {
         extrasGroup.style.display = 'none';
         extrasGroup.setAttribute('aria-hidden', 'true');
         extrasGroup.querySelectorAll('input, select, textarea').forEach(i => i.removeAttribute('required'));
-        this.resetExtrasSliders();
       }
     }
-  }
-
-  initializeSliderValues() {
-    const countableExtras = ['windows', 'windowBlinds', 'ceilingFans', 'laundryFolding'];
-    countableExtras.forEach(extra => {
-      const slider = document.getElementById(`${extra}Slider`);
-      const display = document.getElementById(`${extra}CountDisplay`);
-      if (slider && display) {
-        const storedValue = this.formDataStore[`${extra}Count`] || 0;
-        slider.value = storedValue;
-        display.textContent = `${storedValue} ${slider.getAttribute('data-units') || ''}`.trim();
-        this.updateSliderBackground(slider);
-      }
-    });
-  }
-
-  initializeRangeDisplays() {
-    Array.from(this.bookingForm.querySelectorAll("input[type='range']")).forEach(input => {
-      const disp = this.bookingForm.querySelector(`#${input.id}Value`);
-      if (disp) {
-        const label = input.getAttribute('data-units') || '';
-        disp.textContent = `${input.value} ${label}`.trim();
-        this.updateSliderBackground(input);
-        input.addEventListener('input', () => {
-          disp.textContent = `${input.value} ${label}`.trim();
-          this.updateSliderBackground(input);
-        });
-      }
-    });
   }
 
   resetForm() {
@@ -686,7 +631,6 @@ class BookingForm {
     const label = document.querySelector(`.booking-step[data-step="1"] .booking-step-label`).textContent;
     const title = document.getElementById("bookingFormTitle");
     if (title) title.textContent = label;
-    this.initializeRangeDisplays();
   }
 
   resetPackageSelections() {
@@ -694,19 +638,6 @@ class BookingForm {
       .forEach(i => i.checked = false);
     Array.from(this.bookingForm.querySelectorAll(`[data-conditional-field="bookingType"][data-conditional-value="Recurring"] label.booking-btn-option`))
       .forEach(l => l.classList.remove('active'));
-  }
-
-  resetExtrasSliders() {
-    ['windows', 'windowBlinds', 'ceilingFans', 'laundryFolding'].forEach(extra => {
-      const slider = document.getElementById(`${extra}Slider`);
-      const disp = document.getElementById(`${extra}CountDisplay`);
-      if (slider && disp) {
-        slider.value = 0;
-        disp.textContent = `0 ${slider.getAttribute('data-units') || ''}`.trim();
-        this.formDataStore[`${extra}Count`] = 0;
-        this.updateSliderBackground(slider);
-      }
-    });
   }
 
   compileExtras() {
@@ -723,32 +654,6 @@ class BookingForm {
       }
     });
     if (!Array.isArray(this.formDataStore.extras)) this.formDataStore.extras = [];
-  }
-
-  initializeExtrasCountInputs() {
-    const extras = [
-      { name: 'windows' },
-      { name: 'windowBlinds' },
-      { name: 'ceilingFans' },
-      { name: 'laundryFolding' }
-    ];
-    extras.forEach(item => {
-      const container = document.getElementById(`${item.name}SliderContainer`),
-            slider = document.getElementById(`${item.name}Slider`),
-            disp = document.getElementById(`${item.name}CountDisplay`);
-      if (container && slider && disp) {
-        container.style.display = 'flex';
-        disp.textContent = slider.value;
-        this.updateSliderBackground(slider);
-        this.formDataStore[`${item.name}Count`] = +slider.value;
-        slider.addEventListener('input', () => {
-          disp.textContent = slider.value;
-          this.formDataStore[`${item.name}Count`] = +slider.value;
-          this.appendStepData(this.currentStep, this.formDataStore);
-          this.updateSliderBackground(slider);
-        });
-      }
-    });
   }
 
   handleExtrasButtonClick(button) {
