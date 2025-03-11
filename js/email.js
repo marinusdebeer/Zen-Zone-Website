@@ -41,8 +41,7 @@ const Email = (() => {
   const sendBookingRequest = (data) => {
     // Prepare the Admin Email Parameters
     const adminParams = {
-      to_email: "admin@zenzonecleaning.com",
-      from_name: data.name,
+      lead_name: data.name,
       message: formatMessage(data),
     };
     // console.log("Admin email params:", adminParams, adminParams.message);
