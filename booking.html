@@ -260,12 +260,7 @@
               <label for="service-deep-move-in" class="booking-btn-option service">
                 Deep Move-In/Out Cleaning
                 <div class="tooltip">
-                  <p><strong>Our Move-In/Out Deep Cleaning Service</strong> is designed for a comprehensive and detailed
-                    clean, ensuring every corner of your home is spotless and refreshed.</p>
-                  <p>This service includes all tasks from our Standard Move-In/Out Cleaning Service, plus cleaning
-                    behind appliances, baseboards, door frames, interior windows, blinds, ceiling fans, light fixtures,
-                    wall spots, and grout.</p>
-                  <p>High-touch areas are sanitized to minimize the spread of germs.</p>
+                  <p>Our <strong>Moving Deep Cleaning Service</strong> provides a comprehensive and detailed clean, ensuring your home is spotless and refreshed before move-in or move-out. This service covers all common areas, bedrooms, kitchens, and bathrooms. We wipe and dust surfaces, sweep and mop floors, vacuum carpets, and clean mirrors, door handles, light switches, and kitchen cabinet fronts. Additionally, we clean behind appliances (such as the fridge and oven), inside the oven, baseboards, door frames, interior windows, blinds, ceiling fans, light fixtures, wall spots, and grout. High-touch areas receive extra sanitization to help reduce the spread of germs. Whether you're settling into a new space or leaving your old one in top condition, this service ensures a thorough reset for a smooth transition.</p>
                 </div>
               </label>
               <input type="radio" id="service-post-construction" name="serviceType" value="Post Construction Cleaning">
@@ -491,6 +486,33 @@
   <script src="/js/navbar.js" defer></script>
   <script src="/js/email.js" defer></script>
   <script src="/js/booking.js" defer></script>
+
+  <script>
+    (function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const campaign = urlParams.get('utm_campaign');
+      const source = urlParams.get('utm_source');
+      const medium = urlParams.get('utm_medium');
+      const content = urlParams.get('utm_content');
+      const gclid = urlParams.get('gclid');
+  
+      if (campaign && !localStorage.getItem('utm_campaign')) {
+        localStorage.setItem('utm_campaign', campaign);
+      }
+      if (source && !localStorage.getItem('utm_source')) {
+        localStorage.setItem('utm_source', source);
+      }
+      if (medium && !localStorage.getItem('utm_medium')) {
+        localStorage.setItem('utm_medium', medium);
+      }
+      if (content && !localStorage.getItem('utm_content')) {
+        localStorage.setItem('utm_content', content);
+      }
+      if (gclid && !localStorage.getItem('gclid')) {
+        localStorage.setItem('gclid', gclid);
+      }
+    })();
+  </script>
 
   <!-- PostHog Analytics -->
   <script>

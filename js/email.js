@@ -43,6 +43,11 @@ const Email = (() => {
     const adminParams = {
       lead_name: data.name,
       message: formatMessage(data),
+      utm_campaign: localStorage.getItem('utm_campaign'),
+      utm_source: localStorage.getItem('utm_source'),
+      utm_medium: localStorage.getItem('utm_medium'),
+      utm_content: localStorage.getItem('utm_content'),
+      gclid: localStorage.getItem('gclid'),
     };
     // console.log("Admin email params:", adminParams, adminParams.message);
 

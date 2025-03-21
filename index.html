@@ -2476,6 +2476,33 @@
     <script src="js/navbar.js" defer></script>
     <script src="js/main.js" defer></script>
 
+    <script>
+      (function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const campaign = urlParams.get('utm_campaign');
+        const source = urlParams.get('utm_source');
+        const medium = urlParams.get('utm_medium');
+        const content = urlParams.get('utm_content');
+        const gclid = urlParams.get('gclid');
+    
+        if (campaign && !localStorage.getItem('utm_campaign')) {
+          localStorage.setItem('utm_campaign', campaign);
+        }
+        if (source && !localStorage.getItem('utm_source')) {
+          localStorage.setItem('utm_source', source);
+        }
+        if (medium && !localStorage.getItem('utm_medium')) {
+          localStorage.setItem('utm_medium', medium);
+        }
+        if (content && !localStorage.getItem('utm_content')) {
+          localStorage.setItem('utm_content', content);
+        }
+        if (gclid && !localStorage.getItem('gclid')) {
+          localStorage.setItem('gclid', gclid);
+        }
+      })();
+    </script>
+
     <!-- PostHog Analytics -->
     <script>
       !(function (t, e) {
