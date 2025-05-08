@@ -1,0 +1,13 @@
+# robots.txt for https://zenzonecleaning.ca
+
+User-agent: *
+# Prevent crawling of low-value or conversion pages
+Disallow: /thankyou.html
+Disallow: /privacy-policy.html
+Disallow: /terms-of-service.html
+
+# Allow everything else
+Allow: /
+
+# Sitemap reference
+Sitemap: https://zenzonecleaning.ca/sitemap.xml

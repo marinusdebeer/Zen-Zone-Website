@@ -139,14 +139,10 @@ function initializeNavbar() {
   });
 }
 
-/**
- * Initialize Smooth Scrolling (Only on index.html)
- */
 function initializeSmoothScrolling() {
   // Determine if we’re on the index page
   const isIndexPage =
-    window.location.pathname === "/" ||
-    window.location.pathname === "/index.html";
+    window.location.pathname === "/" 
 
   // Select all nav links that point to sections using a hash, e.g. "/#services"
   const navLinks = document.querySelectorAll('a[href^="/#"]');
@@ -212,15 +208,13 @@ function initializeSmoothScrolling() {
  * Initialize Active Section Highlighting
  */
 function initializeActiveSectionHighlighting() {
-  // Check if the current page is index.html
   const isIndexPage =
-    window.location.pathname === "/" ||
-    window.location.pathname === "/index.html";
+    window.location.pathname === "/" 
 
-  if (!isIndexPage) return; // Exit if not on index.html
+  if (!isIndexPage) return;
 
   const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll('a.nav-link[href^="/index.html#"]');
+  const navLinks = document.querySelectorAll('a.nav-link[href^="/#"]');
 
   window.addEventListener(
     "scroll",
@@ -236,7 +230,7 @@ function initializeActiveSectionHighlighting() {
 
       navLinks.forEach((link) => {
         link.classList.remove("active");
-        if (link.getAttribute("href") === `/index.html#${current}`) {
+        if (link.getAttribute("href") === `/#${current}`) {
           link.classList.add("active");
         }
       });

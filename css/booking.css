@@ -599,3 +599,23 @@
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
+
+.moose-in-suit {
+  display: block;
+  margin: 0 auto;
+  max-width: 120px;
+  height: auto;
+  margin-bottom: -20px;
+  animation: peekIn 1s ease-out both;
+}
+
+@keyframes peekIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

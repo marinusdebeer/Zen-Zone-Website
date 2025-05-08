@@ -509,9 +509,17 @@ p {
   background-color: var(--color-primary);
   text-decoration: none;
 }
+.cta-button.book-now.dark-green {
+  background-color: var(--color-tertiary);
+  text-decoration: none;
+}
 
 .cta-button.book-now::after {
   background-color: var(--color-primary-hover);
+  color: var(--color-white)
+}
+.cta-button.book-now.dark-green::after {
+  background-color: var(--color-tertiary-hover);
   color: var(--color-white)
 }
 
