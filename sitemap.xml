@@ -6,29 +6,29 @@
     <priority>1.00</priority>
   </url>
   <url>
+    <loc>https://zenzonecleaning.ca/privacy-policy.html</loc>
+    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
     <loc>https://zenzonecleaning.ca/booking.html</loc>
     <lastmod>2025-05-08T15:17:01-04:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://zenzonecleaning.ca/thankyou.html</loc>
+    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
+    <priority>0.10</priority>
+  </url>
+  <url>
+    <loc>https://zenzonecleaning.ca/terms-of-service.html</loc>
+    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
     <loc>https://zenzonecleaning.ca/blogs.html</loc>
     <lastmod>2025-05-08T15:17:01-04:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://zenzonecleaning.ca/blogs/barrie-deep-cleaning.html</loc>
-    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://zenzonecleaning.ca/blogs/professional-cleaning-saves-you-money-time.html</loc>
-    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://zenzonecleaning.ca/blogs/10-cleaning-mistakes.html</loc>
-    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
-    <priority>0.75</priority>
+    <priority>0.60</priority>
   </url>
   <url>
     <loc>https://zenzonecleaning.ca/blogs/declutter-your-space-declutter-your-mind.html</loc>
@@ -41,23 +41,23 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://zenzonecleaning.ca/blogs/10-cleaning-mistakes.html</loc>
+    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zenzonecleaning.ca/blogs/barrie-deep-cleaning.html</loc>
+    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://zenzonecleaning.ca/blogs/discover-cleaning-services.html</loc>
     <lastmod>2025-05-08T15:17:01-04:00</lastmod>
-    <priority>0.64</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://zenzonecleaning.ca/privacy-policy.html</loc>
+    <loc>https://zenzonecleaning.ca/blogs/professional-cleaning-saves-you-money-time.html</loc>
     <lastmod>2025-05-08T15:17:01-04:00</lastmod>
-    <priority>0.30</priority>
-  </url>
-  <url>
-    <loc>https://zenzonecleaning.ca/terms-of-service.html</loc>
-    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
-    <priority>0.30</priority>
-  </url>
-  <url>
-    <loc>https://zenzonecleaning.ca/thankyou.html</loc>
-    <lastmod>2025-05-08T15:17:01-04:00</lastmod>
-    <priority>0.10</priority>
+    <priority>0.75</priority>
   </url>
 </urlset>
