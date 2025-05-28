@@ -619,3 +619,9 @@
     opacity: 1;
   }
 }
+
+#a75a9775-3d4c-4627-9ffe-a6d5c10e0308 iframe {
+  width: 40vw !important;
+  max-width: 50vw !important;
+  min-width: 30vw !important;
+}
