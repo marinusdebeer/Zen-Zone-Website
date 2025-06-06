@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Professional cleaning services in Barrie, Orillia, and beyond. Book today for spotless homes and offices!"
+      content="Professional cleaning services in Barrie, Orillia, and all areas within Simcoe County. Book today for spotless homes and offices!"
     />
-    <meta
-      name="keywords"
-      content="house cleaning, cleaning services, Barrie, Orillia, surrounding areas, home cleaning"
-    />
+    <meta name="keywords" content="house cleaning, cleaning services, Simcoe County, Barrie, Orillia, Midland, Innisfil, home cleaning, professional cleaning services, residential cleaning, deep cleaning" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Zen Zone Cleaning Services" />
@@ -25,14 +23,14 @@
     />
 
     <title>
-      House Cleaning Services in Barrie & Orillia | Zen Zone Cleaning
+      House Cleaning Services in Simcoe County | Zen Zone Cleaning
     </title>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Zen Zone Cleaning Services" />
     <meta
       property="og:description"
-      content="Trusted and professional house cleaning services in Barrie, Orillia, and surrounding areas. Book your cleaning today!"
+      content="Trusted and professional house cleaning services in Barrie, Orillia, Midland, Innisfil, Horseshoe Valley, and all areas within Simcoe County. Book your cleaning today!"
     />
     <meta
       property="og:image"
@@ -44,7 +42,7 @@
     <meta name="twitter:title" content="Zen Zone Cleaning Services" />
     <meta
       name="twitter:description"
-      content="Fast, reliable house cleaning services in Barrie & Orillia. Let us keep your home spotless."
+      content="Fast, reliable house cleaning services in Barrie, Orillia, Midland, Innisfil, Horseshoe Valley, and all areas within Simcoe County. Let us keep your home spotless."
     />
     <meta
       name="twitter:image"
@@ -64,7 +62,7 @@
         height: calc(100vh - var(--navbar-height));
         /* min-height: 100vh; */
         /* Default: Desktop version */
-        background-image: url("/assets/hero_large.avif");
+        /* background-image: url("/assets/hero_large.avif"); */
         background-size: cover;
         background-position: center;
         display: flex;
@@ -73,19 +71,17 @@
         color: #fff;
       }
 
-      /* Tablet: Use medium image */
-      @media (max-width: 768px) {
+      /* @media (max-width: 768px) {
         .hero {
           background-image: url("/assets/hero_medium.avif");
         }
       }
 
-      /* Mobile: Use small image */
       @media (max-width: 480px) {
         .hero {
           background-image: url("/assets/hero_small.avif");
         }
-      }
+      } */
 
       .hero::before {
         content: "";
@@ -162,19 +158,38 @@
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Zen Zone Cleaning Services",
-        "description": "Fast, reliable, and professional house cleaning services for Barrie, Orillia, and surrounding areas.",
+        "description": "Fast, reliable, and professional house cleaning services for Barrie, Orillia, and all areas within Simcoe County.",
         "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Servicing Barrie, Orillia, and surrounding areas",
+          "streetAddress": "66 Nottawasaga Street",
           "addressLocality": "Orillia",
+          "postalCode": "L3V 3J4",
           "addressRegion": "ON",
-          "postalCode": "",
           "addressCountry": "CA"
         },
         "telephone": "+17052425462",
         "url": "https://zenzonecleaning.ca",
-        "areaServed": ["Barrie", "Orillia", "Surrounding Areas"],
+        "areaServed": [
+          "Orillia",
+          "Barrie",
+          "Midland",
+          "Penetanguishene",
+          "Innisfil",
+          "Bradford West Gwillimbury",
+          "Wasaga Beach",
+          "Collingwood",
+          "Oro-Medonte",
+          "Severn",
+          "Tay",
+          "Essa",
+          "Clearview",
+          "Springwater",
+          "Ramara",
+          "Adjala-Tosorontio",
+          "New Tecumseth",
+          "Simcoe County"
+        ],
         "geo": {
           "@type": "GeoCoordinates",
           "latitude": 44.6085,
@@ -197,7 +212,26 @@
             "@type": "ContactPoint",
             "telephone": "+17052425462",
             "contactType": "customer service",
-            "areaServed": "CA",
+            "areaServed": [
+              "Orillia",
+              "Barrie",
+              "Midland",
+              "Penetanguishene",
+              "Innisfil",
+              "Bradford West Gwillimbury",
+              "Wasaga Beach",
+              "Collingwood",
+              "Oro-Medonte",
+              "Severn",
+              "Tay",
+              "Essa",
+              "Clearview",
+              "Springwater",
+              "Ramara",
+              "Adjala-Tosorontio",
+              "New Tecumseth",
+              "Simcoe County"
+            ],
             "availableLanguage": ["English"]
           }
         ]
@@ -211,6 +245,20 @@
 
     <main id="home">
       <section class="hero" role="banner">
+
+        <picture>
+          <source srcset="/assets/hero_large.avif" media="(min-width: 769px)" type="image/avif">
+          <source srcset="/assets/hero_medium.avif" media="(min-width: 481px)" type="image/avif">
+          <img
+            src="/assets/hero_small.avif"
+            alt="Professional Cleaning Services"
+            loading="eager"
+            fetchpriority="high"
+            style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;"
+          >
+        </picture>
+
+        
         <div class="hero-content">
           <div class="hero-text">
             <header class="hero-header">
@@ -2474,31 +2522,6 @@
     <!-- External JS -->
     <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Zen Zone Cleaning Services",
-        "description": "Fast, reliable, and professional cleaning services for Barrie, Orillia, Midland, and surrounding areas.",
-        "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Servicing Barrie, Orillia, Midland, and surrounding areas",
-          "addressLocality": "Orillia",
-          "addressRegion": "ON",
-          "postalCode": "",
-          "addressCountry": "CA"
-        },
-        "telephone": "+17052425462",
-        "url": "https://zenzonecleaning.ca",
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 44.6085,
-          "longitude": -79.4202
-        },
-        "openingHours": ["Mo-Sun 09:00-18:00"]
-      }
-    </script>
 
     <!-- JavaScript Files (Order Matters) -->
     <script src="js/reviews.js" defer></script>
