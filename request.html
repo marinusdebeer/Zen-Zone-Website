@@ -132,7 +132,7 @@
     <!-- Navbar -->
     <nav id="navbar"></nav>
     <main class="request-container">
-      <!-- <div class="form-frame">
+      <div class="form-frame">
         <div id="a75a9775-3d4c-4627-9ffe-a6d5c10e0308"></div>
       </div>
       <link
@@ -141,33 +141,22 @@
         media="screen"
       />
       <script>
-        window.addEventListener("DOMContentLoaded", function () {
-          // Get values from localStorage or use defaults
-          const utm_source = localStorage.getItem("utm_source") || "website";
-          const utm_medium = localStorage.getItem("utm_medium") || "organic";
-          const utm_campaign = localStorage.getItem("utm_campaign") || "";
-          const gclid = localStorage.getItem("gclid") || "";
-          const content = localStorage.getItem("content") || "";
-      
-          const script = document.createElement("script");
-          script.src = "https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js";
-          script.setAttribute("clienthub_id", "a75a9775-3d4c-4627-9ffe-a6d5c10e0308");
-          script.setAttribute(
-            "form_url",
-            `https://clienthub.getjobber.com/client_hubs/a75a9775-3d4c-4627-9ffe-a6d5c10e0308/public/work_request/embedded_work_request_form?utm_source=${utm_source}&utm_medium=${utm_medium}&utm_campaign=${utm_campaign}&gclid=${gclid}&content=${content}`
-          );
-          document.getElementById("a75a9775-3d4c-4627-9ffe-a6d5c10e0308").appendChild(script);
-        });
-      </script> -->
-
-      
-    <div class="form-frame">
-      <div id="a75a9775-3d4c-4627-9ffe-a6d5c10e0308"></div>
-    </div>
-      <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
-      <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="a75a9775-3d4c-4627-9ffe-a6d5c10e0308" form_url="https://clienthub.getjobber.com/client_hubs/a75a9775-3d4c-4627-9ffe-a6d5c10e0308/public/work_request/embedded_work_request_form"></script>
-    </main>
-
+        // Get values from localStorage or use defaults
+        const utm_source = localStorage.getItem("utm_source") || "website";
+        const utm_medium = localStorage.getItem("utm_medium") || "organic";
+        const utm_campaign = localStorage.getItem("utm_campaign") || "";
+        const gclid = localStorage.getItem("gclid") || "";
+        const content = localStorage.getItem("content") || "";
+    
+        const script = document.createElement("script");
+        script.src = "https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js";
+        script.setAttribute("clienthub_id", "a75a9775-3d4c-4627-9ffe-a6d5c10e0308");
+        script.setAttribute(
+          "form_url",
+          `https://clienthub.getjobber.com/client_hubs/a75a9775-3d4c-4627-9ffe-a6d5c10e0308/public/work_request/embedded_work_request_form?utm_source=${utm_source}&utm_medium=${utm_medium}&utm_campaign=${utm_campaign}&gclid=${gclid}&content=${content}`
+        );
+        document.getElementById("a75a9775-3d4c-4627-9ffe-a6d5c10e0308").appendChild(script);
+      </script>
 
     <footer class="footer">
       <div class="footer-container">
