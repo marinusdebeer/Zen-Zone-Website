@@ -141,7 +141,7 @@
         media="screen"
       />
       <script>
-        window.addEventListener("DOMContentLoaded", function () {
+        // window.addEventListener("DOMContentLoaded", function () {
           // Get values from localStorage or use defaults
           const utm_source = localStorage.getItem("utm_source") || "website";
           const utm_medium = localStorage.getItem("utm_medium") || "organic";
@@ -157,7 +157,7 @@
             `https://clienthub.getjobber.com/client_hubs/a75a9775-3d4c-4627-9ffe-a6d5c10e0308/public/work_request/embedded_work_request_form?utm_source=${utm_source}&utm_medium=${utm_medium}&utm_campaign=${utm_campaign}&gclid=${gclid}&content=${content}`
           );
           document.getElementById("a75a9775-3d4c-4627-9ffe-a6d5c10e0308").appendChild(script);
-        });
+        // });
       </script>
       </main>
 
