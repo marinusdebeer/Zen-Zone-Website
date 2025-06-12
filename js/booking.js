@@ -307,7 +307,14 @@ class BookingForm {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    if (this.validateFormStep(this.currentStep)) {
+    const emailInput = document.getElementById('booking-email');
+    const phoneInput = document.getElementById('booking-phone');
+    emailInput?.setAttribute('required', 'required');
+    phoneInput?.setAttribute('required', 'required');
+
+    const step1Valid = this.validateFormStep(1);
+    const currentValid = this.validateFormStep(this.currentStep);
+    if (step1Valid && currentValid) {
       this.updateFormData(this.currentStep);
       const submitBtn = document.querySelector('.booking-btn-submit');
       submitBtn.classList.add('loading');
@@ -328,6 +335,9 @@ class BookingForm {
           console.error('EmailJS Error:', err);
         });
     } else {
+      if (!step1Valid) {
+        this.goToStep(1);
+      }
       Toast.show('Please correct the errors on this step before submitting.', false);
     }
   }
