@@ -141,21 +141,21 @@
 
         <div class="booking-form-step booking-form-step--active" data-step="1" aria-hidden="false">
           <div class="booking-form-group">
-            <label for="booking-name">Full Name <span aria-hidden="true">*</span></label>
-            <input type="text" id="booking-name" name="name" placeholder="Enter your full name" autocomplete="name" required/>
+            <label for="booking-name">Full Name</label>
+            <input type="text" id="booking-name" name="name" placeholder="Enter your full name" autocomplete="name"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter your full name.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-email">Email Address <span aria-hidden="true">*</span></label>
-            <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email" required/>
+            <label for="booking-email">Email Address</label>
+            <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter a valid email
               address.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-phone">Phone Number <span aria-hidden="true">*</span></label>
+            <label for="booking-phone">Phone Number</label>
             <input type="tel" id="booking-phone" name="phone" placeholder="Enter your phone number"
               pattern="^\+?\d{10,15}$" title="Please enter a valid phone number (10 to 15 digits)."
-              autocomplete="tel" required/>
+              autocomplete="tel"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter a valid phone
               number.</span>
           </div>
@@ -167,7 +167,7 @@
         <div class="booking-form-step" data-step="2" aria-hidden="true">
           <div class="booking-form-group" data-name="industry" data-required="true">
             <div class="booking-form-options">
-              <input type="radio" id="industry-home" name="industry" value="Home Cleaning" required>
+              <input type="radio" id="industry-home" name="industry" value="Home Cleaning">
               <label for="industry-home" class="booking-btn-option industry">Home Cleaning</label>
               <input type="radio" id="industry-airbnb" name="industry" value="Airbnb Cleaning">
               <label for="industry-airbnb" class="booking-btn-option industry">Airbnb Cleaning</label>
@@ -186,7 +186,7 @@
         <div class="booking-form-step" data-step="3" aria-hidden="true">
           <div class="booking-form-group" data-name="bookingType" data-required="true">
             <div class="booking-form-options">
-              <input type="radio" id="booking-type-one-time" name="bookingType" value="One-Time" required>
+              <input type="radio" id="booking-type-one-time" name="bookingType" value="One-Time">
               <label for="booking-type-one-time" class="booking-btn-option service">One-Time Cleaning</label>
               <input type="radio" id="booking-type-recurring" name="bookingType" value="Recurring">
               <label for="booking-type-recurring" class="booking-btn-option service">Recurring Cleaning</label>
@@ -199,13 +199,13 @@
             data-conditional-value="Recurring" style="display: none;" aria-hidden="true">
             <h3>Select Frequency</h3>
             <div class="booking-form-options">
-              <input type="radio" id="frequency-weekly" name="frequency" value="Weekly" required>
+              <input type="radio" id="frequency-weekly" name="frequency" value="Weekly">
               <label for="frequency-weekly" class="booking-btn-option service">Weekly</label>
-              <input type="radio" id="frequency-biweekly" name="frequency" value="Bi-Weekly" required>
+              <input type="radio" id="frequency-biweekly" name="frequency" value="Bi-Weekly">
               <label for="frequency-biweekly" class="booking-btn-option service">Bi-Weekly</label>
-              <input type="radio" id="frequency-every4weeks" name="frequency" value="Every 4 Weeks" required>
+              <input type="radio" id="frequency-every4weeks" name="frequency" value="Every 4 Weeks">
               <label for="frequency-every4weeks" class="booking-btn-option service">Every 4 Weeks</label>
-              <input type="radio" id="frequency-other" name="frequency" value="Other" required>
+              <input type="radio" id="frequency-other" name="frequency" value="Other">
               <label for="frequency-other" class="booking-btn-option service">Other</label>
             </div>
             <span class="error-message" aria-live="polite" style="display: none;">Please select a
@@ -216,7 +216,7 @@
             data-conditional-value="One-Time" style="display: none;" aria-hidden="true">
             <h3>Select Service Type</h3>
             <div class="booking-form-options">
-              <input type="radio" id="service-standard" name="serviceType" value="Standard Cleaning" required>
+              <input type="radio" id="service-standard" name="serviceType" value="Standard Cleaning">
               <label for="service-standard" class="booking-btn-option service">
                 Standard Cleaning
                 <div class="tooltip">
@@ -288,38 +288,38 @@
 
         <div class="booking-form-step" data-step="4" aria-hidden="true">
           <div class="booking-form-group">
-            <label for="booking-squareFootage">Square Footage <span aria-hidden="true">*</span></label>
+            <label for="booking-squareFootage">Square Footage</label>
             <input type="input" id="booking-squareFootage" name="squareFootage" value=""
-              required data-units="sq ft" placeholder="Enter your square footage" />
+              data-units="sq ft" placeholder="Enter your square footage" />
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the square
               footage.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-bathrooms">Number of Bathrooms <span aria-hidden="true">*</span></label>
-            <input type="input" id="booking-bathrooms" name="bathrooms" value="" required placeholder="Enter number of bathrooms" />
+            <label for="booking-bathrooms">Number of Bathrooms</label>
+            <input type="input" id="booking-bathrooms" name="bathrooms" value="" placeholder="Enter number of bathrooms" />
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
               of bathrooms.</span>
           </div>
 
           <div id="residentialFields">
             <div class="booking-form-group">
-              <label for="booking-bedrooms">Number of Bedrooms <span aria-hidden="true">*</span></label>
-              <input type="input" id="booking-bedrooms" name="bedrooms" value="" required placeholder="Enter number of bedrooms" />
+              <label for="booking-bedrooms">Number of Bedrooms</label>
+              <input type="input" id="booking-bedrooms" name="bedrooms" value="" placeholder="Enter number of bedrooms" />
               <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
                 of bedrooms.</span>
             </div>
             <div class="booking-form-group">
-              <label for="booking-powderRooms">Number of Powder Rooms <span aria-hidden="true">*</span></label>
+              <label for="booking-powderRooms">Number of Powder Rooms</label>
               <input type="input" id="booking-powderRooms" name="powderRooms" value=""
-                required placeholder="Enter number of powder rooms" />
+                placeholder="Enter number of powder rooms" />
               <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
                 of powder rooms.</span>
             </div>
           </div>
           <div id="officeFields" style="display: none;">
             <div class="booking-form-group">
-              <label for="booking-offices">Number of Offices <span aria-hidden="true">*</span></label>
-              <input type="input" id="booking-offices" name="offices" value="" placeholder="Enter number of offices" required/>
+              <label for="booking-offices">Number of Offices</label>
+              <input type="input" id="booking-offices" name="offices" value="" placeholder="Enter number of offices"/>
               <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
                 of offices.</span>
             </div>
@@ -334,7 +334,7 @@
           <div class="booking-form-group" data-name="package" data-conditional-field="bookingType"
             data-conditional-value="Recurring" style="display: none;" aria-hidden="true">
             <div class="booking-form-options">
-              <input type="radio" id="package-2.5" name="package" value="2.5" required>
+              <input type="radio" id="package-2.5" name="package" value="2.5">
               <label for="package-2.5" class="booking-btn-option package-option"><strong>2.5 Hours</strong><br>$130</label>
               <input type="radio" id="package-3" name="package" value="3">
               <label for="package-3" class="booking-btn-option package-option"><strong>3 Hours</strong><br>$150</label>
@@ -426,30 +426,30 @@
 
         <div class="booking-form-step" data-step="6" aria-hidden="true">
           <div class="booking-form-group">
-            <label for="booking-address">Street Address <span aria-hidden="true">*</span></label>
-            <input type="text" id="booking-address" name="address" placeholder="Enter your street address" required
+            <label for="booking-address">Street Address</label>
+            <input type="text" id="booking-address" name="address" placeholder="Enter your street address"
                />
             <span class="error-message" aria-live="polite" style="display: none;">Please enter your street address.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-city">City <span aria-hidden="true">*</span></label>
-            <input type="text" id="booking-city" name="city" placeholder="Enter your city" required
+            <label for="booking-city">City</label>
+            <input type="text" id="booking-city" name="city" placeholder="Enter your city"
                />
             <span class="error-message" aria-live="polite" style="display: none;">Please enter your city.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-date">Preferred Dates <span aria-hidden="true">*</span></label>
-            <input type="text" id="booking-date" name="date" placeholder="Enter your preferred dates" required />
+            <label for="booking-date">Preferred Dates</label>
+            <input type="text" id="booking-date" name="date" placeholder="Enter your preferred dates" />
             <span class="error-message" aria-live="polite" style="display: none;">Please enter your preferred dates.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-details">Additional Details</label>
+            <label for="booking-details">Message</label>
             <textarea id="booking-details" name="details" rows="4"
               placeholder="Provide any additional details about your cleaning request"></textarea>
           </div>
           <div class="booking-form-nav">
             <button type="button" class="booking-btn-prev">Previous</button>
-            <button type="submit" class="booking-btn-submit">Request Booking</button>
+            <button type="submit" class="booking-btn-submit">Request Estimate</button>
           </div>
         </div>
       </form>
