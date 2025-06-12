@@ -312,7 +312,7 @@ class BookingForm {
     emailInput?.setAttribute('required', 'required');
     phoneInput?.setAttribute('required', 'required');
 
-    const step1Valid = this.validateFormStep(1);
+    const step1Valid = this.validateFormStep(1, true);
     const currentValid = this.validateFormStep(this.currentStep);
     if (step1Valid && currentValid) {
       this.updateFormData(this.currentStep);
@@ -430,12 +430,12 @@ class BookingForm {
     Tracking.sendData(e.target.id.replace('booking-', ''), e.target.value.trim());
   }
 
-  validateFormStep(step) {
+  validateFormStep(step, ignoreVisibility = false) {
     const stepEl = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
     if (!stepEl) return true;
     let valid = true;
     Array.from(stepEl.querySelectorAll('input, select, textarea')).forEach(input => {
-      if (input.closest('.booking-form-group')?.offsetParent === null) return;
+      if (!ignoreVisibility && input.closest('.booking-form-group')?.offsetParent === null) return;
       if (!input.checkValidity()) {
         valid = false;
         input.classList.add('border-red-500');
