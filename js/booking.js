@@ -63,7 +63,7 @@ const Toast = (() => {
 })();
 
 const Tracking = (() => {
-  const GOOGLE_SCRIPT_ID = 'AKfycbwtSQA6FCXIBMyQQw4NqP-YImC8NB22VahYx1gzUOr2SqI7k_vxfMPaeMWwOYMtxu0M';
+  const GOOGLE_SCRIPT_ID = 'AKfycbyvuW6VB6aG4nDt2k7tUhQdsHrOJL8AX6MIfRqUiAf2ZQy_ZjFIqy2Jbqnf-Edtv5by';
 
   let sendPromise = Promise.resolve();
 
