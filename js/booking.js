@@ -65,22 +65,30 @@ const Toast = (() => {
 const Tracking = (() => {
   const GOOGLE_SCRIPT_ID = 'AKfycbwtSQA6FCXIBMyQQw4NqP-YImC8NB22VahYx1gzUOr2SqI7k_vxfMPaeMWwOYMtxu0M';
 
+  let sendPromise = Promise.resolve();
+
   const sendData = (fieldId, value) => {
     const hostname = location.hostname;
     const userId = localStorage.getItem('userId') || Utilities.getFormattedUserId();
     localStorage.setItem('userId', userId);
     const sessionId = localStorage.getItem('sessionId');
-    const data = { hostname, userId, sessionId, fieldId, value };
+    const gclid = localStorage.getItem('gclid');
+    const data = { hostname, userId, sessionId, gclid, fieldId, value };
 
     if (['name', 'email', 'phone'].includes(fieldId)) {
       posthog?.people?.set({ [fieldId]: value });
     }
 
-    fetch(`https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(data)
-    }).catch(err => console.error(`Error sending data for ${fieldId}:`, err));
+    sendPromise = sendPromise
+      .then(() =>
+        fetch(`https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(data)
+        })
+      )
+      .catch(err => console.error(`Error sending data for ${fieldId}:`, err));
+    return sendPromise;
   };
 
   const sendDataDebounced = Utilities.debounce(sendData, 300);
@@ -174,10 +182,12 @@ class BookingForm {
   }
 
   _generateSessionId() {
-    const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c =>
-      ((Math.random() * 16) | 0).toString(16)
-    );
-    localStorage.setItem('sessionId', uuid);
+    if (!localStorage.getItem('sessionId')) {
+      const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c =>
+        ((Math.random() * 16) | 0).toString(16)
+      );
+      localStorage.setItem('sessionId', uuid);
+    }
   }
 
   init() {
