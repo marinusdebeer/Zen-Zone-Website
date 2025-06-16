@@ -17,7 +17,7 @@
 /* CTA Buttons in the Hero Section */
 .hero .cta-button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  /* transition: transform 0.2s ease, box-shadow 0.3s ease; */
 }
 
 .hero .cta-button:hover,
