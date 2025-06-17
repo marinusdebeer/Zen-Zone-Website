@@ -473,7 +473,7 @@ p {
   border: none;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  /* transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; */
   font-size: 18px;
   padding: 0.5rem 0.5rem;
   color: var(--color-white);
@@ -491,7 +491,7 @@ p {
   left: 0;
   width: 0;
   height: 100%;
-  transition: width 0.3s ease;
+  /* transition: width 0.3s ease; */
   z-index: -1;
 }
 
@@ -575,7 +575,7 @@ p {
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  /* transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; */
 }
 
 .button-link:hover,
@@ -607,13 +607,13 @@ p {
 .footer {
   background-color: var(--color-footer-background);
   color: var(--color-footer-link);
-  transition: background-color 0.3s ease;
+  /* transition: background-color 0.3s ease; */
 }
 
 .header a,
 .footer a {
   color: var(--color-footer-link);
-  transition: color 0.3s ease;
+  /* transition: color 0.3s ease; */
 }
 
 .header a:hover,
@@ -626,7 +626,7 @@ input[type="button"],
 input[type="submit"] {
   background-color: var(--color-primary);
   color: var(--color-white);
-  transition: background-color 0.3s ease;
+  /* transition: background-color 0.3s ease; */
 }
 
 button:hover,
@@ -638,7 +638,7 @@ input[type="submit"]:hover {
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.3s ease;
+  /* transition: color 0.3s ease; */
 }
 
 a:hover,
@@ -655,7 +655,7 @@ select {
   border: 1px solid var(--color-input-border);
   padding: 0.5rem;
   border-radius: 5px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  /* transition: background-color 0.3s ease, border-color 0.3s ease; */
 }
 
 input:focus,

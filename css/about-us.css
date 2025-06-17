@@ -52,7 +52,7 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
 
 .image-item img:hover {
