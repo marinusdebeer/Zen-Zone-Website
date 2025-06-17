@@ -267,7 +267,7 @@ class BookingForm {
       return;
     }
     this.updateFormData(this.currentStep);
-    const industry = (this.formDataStore.industry || '').toLowerCase();
+    const industry = (this.formDataStore.industryType || '').toLowerCase();
     // Custom step skipping logic:
     if (this.currentStep === 2 && industry === 'airbnb cleaning') {
       this.currentStep = 4;
@@ -285,7 +285,7 @@ class BookingForm {
   }
 
   goToPreviousStep() {
-    const industry = (this.formDataStore.industry || '').toLowerCase();
+    const industry = (this.formDataStore.industryType || '').toLowerCase();
     if (this.currentStep === 6 && (industry === 'office cleaning' || industry === 'airbnb cleaning')) {
       this.currentStep = 4;
     } else if (this.currentStep === 4 && industry === 'airbnb cleaning') {
@@ -302,7 +302,7 @@ class BookingForm {
   }
 
   goToStep(step) {
-    const industry = (this.formDataStore.industry || '').toLowerCase();
+    const industry = (this.formDataStore.industryType || '').toLowerCase();
     // Prevent direct navigation to Step 5 if Office Cleaning
     if (step === 5 && industry === 'office cleaning') return;
     if (step < 1 || step > this.totalSteps) return;
@@ -405,7 +405,7 @@ class BookingForm {
     });
 
     // When industry changes, update Step 3 and 5 visibility as needed.
-    if (field === 'industry') {
+    if (field === 'industryType') {
       this.toggleStepVisibility(3, true);
       this.toggleStepVisibility(5, true);
       if (value === 'Office Cleaning') {
@@ -513,7 +513,7 @@ class BookingForm {
         </div>`;
         break;
       case 2:
-        html = `<div class="step-value"><strong>Industry:</strong> ${Utilities.sanitizeHTML(data.industry || 'N/A')}</div>`;
+        html = `<div class="step-value"><strong>Industry:</strong> ${Utilities.sanitizeHTML(data.industryType || 'N/A')}</div>`;
         break;
       case 3:
         html = data.bookingType === 'Recurring'
@@ -527,7 +527,7 @@ class BookingForm {
           </div>`;
         break;
       case 4:
-        if ((this.formDataStore.industry || '').toLowerCase() === 'office cleaning') {
+        if ((this.formDataStore.industryType || '').toLowerCase() === 'office cleaning') {
           html = `<div class="step-value">
             <strong>Square Footage:</strong> ${Utilities.sanitizeHTML(data.squareFootage || 'N/A')} sq ft<br>
             <strong>Bathrooms:</strong> ${Utilities.sanitizeHTML(data.bathrooms || 'N/A')}<br>
