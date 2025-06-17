@@ -106,7 +106,7 @@
   overflow-y: auto;
   z-index: 3000;
   display: none;
-  animation: fadeInModal 0.3s ease-out;
+  /* animation: fadeInModal 0.3s ease-out; */
 }
 
 .services .tooltip.open {
@@ -137,7 +137,7 @@
 }
 
 /* Fade-in animation */
-@keyframes fadeInModal {
+/* @keyframes fadeInModal {
   from {
     opacity: 0;
     transform: translate(-50%, -45%);
@@ -146,7 +146,7 @@
     opacity: 1;
     transform: translate(-50%, -50%);
   }
-}
+} */
 
 /* Close Button Styling */
 .services .tooltip-close {

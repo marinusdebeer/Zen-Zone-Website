@@ -121,14 +121,14 @@
 .booking-form-step--active {
   display: block;
   width: 100%;
-  animation: fadeIn 0.5s ease-in-out;
+  /* animation: fadeIn 0.5s ease-in-out; */
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  /* transition: opacity 0.5s ease-in-out; */
 }
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
+} */
 
 /* Form Group */
 .booking-form-group {
@@ -163,7 +163,7 @@
   background: var(--slider-track-color);
   border-radius: 4px;
   outline: none;
-  transition: background 0.3s ease-in-out;
+  /* transition: background 0.3s ease-in-out; */
 }
 .booking-form-step input[type="range"]::-webkit-slider-thumb,
 .booking-form-step input[type="range"]::-moz-range-thumb,
@@ -176,7 +176,7 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.3s;
+  /* transition: background 0.3s; */
 }
 .booking-form-step input[type="range"]::-webkit-slider-thumb:hover,
 .booking-form-step input[type="range"]::-moz-range-thumb:hover,
@@ -220,7 +220,7 @@
   text-align: center;
   user-select: none;
   margin-bottom: 0.5rem;
-  transition: background 0.3s ease;
+  /* transition: background 0.3s ease; */
 }
 .booking-form-options label.booking-btn-option:hover,
 .booking-form-options input[type="radio"]:checked + label.booking-btn-option {
@@ -283,7 +283,7 @@
   text-align: center;
   user-select: none;
   margin-bottom: 1rem;
-  transition: background 0.3s ease, transform 0.2s ease;
+  /* transition: background 0.3s ease, transform 0.2s ease; */
 }
 .package-option:hover,
 .package-option.active {
@@ -313,7 +313,7 @@
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  /* transition: background 0.3s ease, transform 0.2s ease; */
 }
 .booking-btn-next,
 .booking-btn-submit {
@@ -350,7 +350,7 @@
   color: var(--color-white);
   z-index: 3000;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  /* transition: opacity 0.5s ease-in-out; */
 }
 .toast.show {
   opacity: 1;
@@ -394,7 +394,7 @@
   background: var(--color-bg);
   border: 2px solid var(--color-secondary);
   border-radius: 4px;
-  transition: background 0.3s, border-color 0.3s;
+  /* transition: background 0.3s, border-color 0.3s; */
   flex-shrink: 0;
 }
 .custom-checkbox .checkmark::after {
@@ -450,7 +450,7 @@
   transform: translateX(-50%);
   margin-bottom: 8px;
   opacity: 0;
-  transition: opacity 0.3s, transform 0.2s;
+  /* transition: opacity 0.3s, transform 0.2s; */
   z-index: 1000;
 }
 .service .tooltip p {
@@ -578,7 +578,7 @@
   background: var(--color-bg);
   color: var(--color-primary-text);
   cursor: pointer;
-  transition: background 0.3s, color 0.3s, transform 0.2s;
+  /* transition: background 0.3s, color 0.3s, transform 0.2s; */ 
   font-size: 1rem;
   width: 250px;
   text-align: center;
@@ -606,10 +606,10 @@
   max-width: 120px;
   height: auto;
   margin-bottom: -20px;
-  animation: peekIn 1s ease-out both;
+  /* animation: peekIn 1s ease-out both; */
 }
 
-@keyframes peekIn {
+/* @keyframes peekIn {
   from {
     transform: translateY(-20px);
     opacity: 0;
@@ -618,4 +618,4 @@
     transform: translateY(0);
     opacity: 1;
   }
-}
+} */

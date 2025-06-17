@@ -165,17 +165,17 @@
   width: 100%;
   height: auto;
   opacity: 0;
-  animation: waveFrames 1s infinite;
+  /* animation: waveFrames 1s infinite; */
 }
 
 .frame-1 {
-  animation-delay: 0s;
+  /* animation-delay: 0s; */
 }
 
 .frame-2 {
-  animation-delay: 0.5s;
+  /* animation-delay: 0.5s; */
 }
-
+/* 
 @keyframes waveFrames {
   0%, 100% {
     opacity: 1;
@@ -183,7 +183,7 @@
   50% {
     opacity: 0;
   }
-}
+} */
 
 
 
@@ -193,10 +193,10 @@
   max-width: 120px;
   height: auto;
   margin-bottom: -23px;
-  animation: peekIn 1s ease-out both;
+  /* animation: peekIn 1s ease-out both; */
 }
 
-@keyframes peekIn {
+/* @keyframes peekIn {
   from {
     transform: translateY(-20px);
     opacity: 0;
@@ -205,7 +205,7 @@
     transform: translateY(0);
     opacity: 1;
   }
-}
+} */
 
 
 
