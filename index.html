@@ -2568,17 +2568,43 @@
     </script> -->
 
     <!-- Google Analytics (load async, defer config) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72" defer></script>
     <script>
-      window.addEventListener("DOMContentLoaded", function () {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-          dataLayer.push(arguments);
+      (function() {
+        // Function to inject GA script and initialize
+        function loadGA() {
+          var ga = document.createElement('script');
+          ga.src   = 'https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72';
+          ga.async = true;
+          document.head.appendChild(ga);
+    
+          ga.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            gtag('js', new Date());
+    
+            // Defer the config call to idle time
+            if ('requestIdleCallback' in window) {
+              requestIdleCallback(function() {
+                gtag('config', 'G-8H1891ZW72');
+              });
+            } else {
+              setTimeout(function() {
+                gtag('config', 'G-8H1891ZW72');
+              }, 300);
+            }
+          };
         }
-        gtag("js", new Date());
-        gtag("config", "G-8H1891ZW72");
-      });
+    
+        // Kick off loadGA when the browser is idle, with a 2s timeout,
+        // or immediately after load if requestIdleCallback isn't supported.
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadGA, { timeout: 2000 });
+        } else {
+          window.addEventListener('load', loadGA);
+        }
+      })();
     </script>
+    
 
     <!-- Tawk.to Chat (load after page load) -->
     <!-- <script>
