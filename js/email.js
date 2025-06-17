@@ -13,24 +13,43 @@ const Email = (() => {
    */
   const formatMessage = (data) => {
     return `
-      Name: ${data.name}
+      First Name: ${data.firstName || ""}
+      Last Name: ${data.lastName || ""}
+      Company: ${data.company || ""}
       Email: ${data.email}
       Phone: ${data.phone}
-      Cleaning Type: ${data.industry || "N/A"}
+      Industry Type: ${data.industryType || "N/A"}
+      Property Type: ${data.propertyType || "N/A"}
+      Reason: ${data.reason || ""}
+      Frequency: ${data.cleanFrequency || data.frequency || "N/A"}
       Booking Type: ${data.bookingType || "N/A"}
-      Frequency: ${data.frequency || "N/A"}
       Service Type: ${data.serviceType || "N/A"}
       Square Footage: ${data.squareFootage || "N/A"}
+      Kitchens: ${data.kitchens || "N/A"}
       Bedrooms: ${data.bedrooms || "N/A"}
       Bathrooms: ${data.bathrooms || "N/A"}
       Powder Rooms: ${data.powderRooms || "N/A"}
+      Other Rooms: ${data.otherRooms || "N/A"}
+      Airbnb Beds: ${data.airbnbBeds || "N/A"}
+      Last Cleaned: ${data.lastCleaned || ""}
+      Built/Renovated: ${data.builtYear || ""}
+      Pets: ${data.pets || ""}
+      Occupants: ${data.occupants || ""}
+      Occupied: ${data.occupied || ""}
+      Furnished: ${data.furnished || ""}
       Extras: ${data.extras || "N/A"}
       Package: ${data.package || "N/A"} Hours
       Price: ${data.price || "N/A"}
-      Address: ${data.address || "N/A"}
-      City: ${data.city || "N/A"}
-      Preferred Date: ${data.date || "N/A"}
-      Additional Details: ${data.details || "N/A"}
+      Street1: ${data.street1 || ""}
+      Street2: ${data.street2 || ""}
+      City: ${data.city || ""}
+      Province: ${data.province || ""}
+      Postal: ${data.postal || ""}
+      Interior Windows: ${data.interiorWindows || ""}
+      Empty Cabinets: ${data.emptyCabinets || ""}
+      Preferred Date: ${data.date || ""}
+      Notes: ${data.details || ""}
+      Hear About Us: ${data.hearAbout || ""}
     `.trim();
   };
 
