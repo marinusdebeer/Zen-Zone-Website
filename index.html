@@ -2495,8 +2495,7 @@
       })();
     </script>
 
-    <!-- PostHog Analytics -->
-    <script>
+    <!-- <script>
       !(function (t, e) {
         var o, n, p, r;
         e.__SV ||
@@ -2567,7 +2566,6 @@
       });
     </script>
 
-    <!-- Tawk.to Chat -->
     <script type="text/javascript">
       var Tawk_API = Tawk_API || {},
         Tawk_LoadStart = new Date();
@@ -2582,7 +2580,6 @@
       })();
     </script>
 
-    <!-- Google Tag Manager -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72"
@@ -2596,18 +2593,14 @@
       gtag("config", "G-8H1891ZW72");
     </script>
 
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script defer>
       document.addEventListener("DOMContentLoaded", () => {
         const map = L.map("map").setView([44.5856, -79.7691], 9);
 
-        // Add OpenStreetMap tiles
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          // attribution: "&copy; OpenStreetMap contributors",
         }).addTo(map);
 
-        // Add a circle centered at Hillsdale
         L.circle([44.5856, -79.7691], {
           color: "var(--color-secondary)", // Circle border color (Deep Green)
           fillColor: "var(--color-secondary)", // Circle fill color (Vibrant Green)
@@ -2620,6 +2613,6 @@
         //   .bindPopup("Areas we serve")
         //   .openPopup();
       });
-    </script>
+    </script> -->
   </body>
 </html>
