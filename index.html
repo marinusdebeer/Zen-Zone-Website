@@ -2461,6 +2461,14 @@
     <script src="js/navbar.js"></script>
     <script src="js/main.js"></script>
 
+    <link rel="stylesheet" href="css/about-us.css" />
+    <link rel="stylesheet" href="css/services.css" />
+    <link rel="stylesheet" href="css/blog.css" />
+    <link rel="stylesheet" href="css/reviews.css" />
+    <link rel="stylesheet" href="css/gallery.css" />
+    <link rel="stylesheet" href="css/areas.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+
     <script>
       (function () {
         const urlParams = new URLSearchParams(window.location.search);
@@ -2559,33 +2567,32 @@
       });
     </script> -->
 
-    <script type="text/javascript">
-      var Tawk_API = Tawk_API || {},
-        Tawk_LoadStart = new Date();
-      (function () {
-        var s1 = document.createElement("script"),
-          s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
+    <!-- Google Analytics (load async, defer config) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72"></script>
+    <script>
+      window.addEventListener("load", function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-8H1891ZW72");
+      });
+    </script>
+
+    <!-- Tawk.to Chat (load after page load) -->
+    <script>
+      window.addEventListener("load", function () {
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        var s1 = document.createElement("script");
         s1.src = "https://embed.tawk.to/65fafd4ea0c6737bd122e1cd/1hpe6qv15";
+        s1.async = true;
         s1.charset = "UTF-8";
         s1.setAttribute("crossorigin", "*");
-        s0.parentNode.insertBefore(s1, s0);
-      })();
+        document.body.appendChild(s1);
+      });
     </script>
 
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72"
-    ></script>
-
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-8H1891ZW72");
-    </script>
 
     <!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script defer>
@@ -2609,12 +2616,5 @@
       });
     </script> -->
 
-    <link rel="stylesheet" href="css/about-us.css" />
-    <link rel="stylesheet" href="css/services.css" />
-    <link rel="stylesheet" href="css/blog.css" />
-    <link rel="stylesheet" href="css/reviews.css" />
-    <link rel="stylesheet" href="css/gallery.css" />
-    <link rel="stylesheet" href="css/areas.css" />
-    <link rel="stylesheet" href="css/footer.css" />
   </body>
 </html>
