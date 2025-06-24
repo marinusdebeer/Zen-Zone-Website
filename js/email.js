@@ -1,13 +1,50 @@
+// Email.js
 const Email = (() => {
   // Configuration Constants
   const SERVICE_ID = "service_156d2p8"; // Replace with your actual EmailJS service ID
   const FORM_TEMPLATE_ID = "template_i7i7zz7";
   const CONFIRMATION_TEMPLATE_ID = "template_nrcx4ff";
   const USER_ID = "9CwBWUPI_pCtZXPr0"; // Replace with your actual EmailJS user ID
-
+  const SCRIPT_ID = "AKfycbyn3NfpohU44cSGMC6R9Dp4UyidZ5FbqXMy2Ift1CWbxWx6m951QhiyabOiuo34S3XhsA"
   // Initialize EmailJS
   emailjs.init(USER_ID);
 
+  async function uploadImageToAppsScript(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+  
+      reader.onload = async () => {
+        try {
+          const base64Data = reader.result.split(',')[1]; // remove data URI prefix
+          console.log("uploading image to apps script");
+          const response = await fetch(`https://script.google.com/macros/s/${SCRIPT_ID}/exec`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: new URLSearchParams({
+              image: base64Data,
+              contentType: file.type
+            })
+          });
+          console.log("image uploaded to apps script");
+          const result = await response.json();
+          console.log("result", result);
+          if (result.status === "success") {
+            resolve(result.url); // ✅ return URL
+          } else {
+            reject(result.message || "Unknown error during upload.");
+          }
+        } catch (err) {
+          reject(err.toString());
+        }
+      };
+  
+      reader.onerror = () => reject("File reading failed.");
+      reader.readAsDataURL(file);
+    });
+  }
+  
+  
+  
   /**
    * Formats the booking request details into a structured message
    */
@@ -57,35 +94,48 @@ const Email = (() => {
    * Send booking request emails via EmailJS
    * @returns {Promise} - Returns a promise to enable `.then()` chaining
    */
-  const sendBookingRequest = (data) => {
-    // Prepare the Admin Email Parameters
+  const sendBookingRequest = async (data) => {
+    // const imageInput = document.getElementById('booking-images');
+    // let imageLinks = [];
+
+    // if (imageInput?.files?.length) {
+    //   for (const file of imageInput.files) {
+    //     const url = await uploadImageToAppsScript(file);
+    //     imageLinks.push(url);
+    //   }
+    // }
+
+    // const imageLinksHTML = imageLinks.length
+    //   ? `<br><br><strong>Uploaded Images:</strong><br>` + imageLinks.map(url => `<a href="${url}" target="_blank">${url}</a>`).join('<br>')
+    //   : '';
+
+    // const messageBody = formatMessage(data).replace(/\n/g, '<br>') + imageLinksHTML;
+    const messageBody = formatMessage(data)
+
+  
     const adminParams = {
       lead_name: data.name,
-      message: formatMessage(data),
+      message: messageBody,
       utm_campaign: localStorage.getItem('utm_campaign'),
       utm_source: localStorage.getItem('utm_source'),
       utm_medium: localStorage.getItem('utm_medium'),
       utm_content: localStorage.getItem('utm_content'),
+      utm_term: localStorage.getItem('utm_term'),
       gclid: localStorage.getItem('gclid'),
     };
-    // console.log("Admin email params:", adminParams, adminParams.message);
-
-    // Return the promise chain
-    return emailjs.send(SERVICE_ID, FORM_TEMPLATE_ID, adminParams)
-      .then(() => {
-        // Prepare the User Confirmation Email Parameters
-        const userParams = {
-          to_email: data.email,
-          from_name: "Zen Zone Cleaning Services",
-          to_name: data.name,
-          message: formatMessage(data),
-        };
-        // console.log("User email params:", userParams, userParams.message);
-
-        // Return second email send promise
-        return emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, userParams);
-      });
+  
+    await emailjs.send(SERVICE_ID, FORM_TEMPLATE_ID, adminParams);
+  
+    const userParams = {
+      to_email: data.email,
+      from_name: "Zen Zone Cleaning Services",
+      to_name: data.name,
+      message: messageBody,
+    };
+  
+    return emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, userParams);
   };
+  
 
   return { sendBookingRequest };
 })();

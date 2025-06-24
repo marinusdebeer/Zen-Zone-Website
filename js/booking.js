@@ -490,6 +490,13 @@ class BookingForm {
       this.compileExtras();
       data.extras = this.formDataStore.extras.join(', ');
     }
+    // if (step === 6) {
+    //   const imageInput = document.getElementById('booking-images');
+    //   if (imageInput?.files?.length) {
+    //     Tracking.sendData('images', imageInput.files);
+    //   }
+    // }
+    
     this.appendStepData(step, data);
     Object.entries(data).forEach(([fid, val]) => {
       console.log(fid, val)
@@ -700,4 +707,8 @@ class BookingForm {
 
 document.addEventListener('DOMContentLoaded', () => {
   window.BookingFormInstance = new BookingForm();
+
+  window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring'
+  window.BookingFormInstance.displayStep5Sections();
+  // window.BookingFormInstance.goToStep(5);
 });
