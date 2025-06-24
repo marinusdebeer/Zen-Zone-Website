@@ -55,7 +55,7 @@ const Email = (() => {
       Company: ${data.company || ""}
       Email: ${data.email}
       Phone: ${data.phone}
-      Industry Type: ${data.industryType || "N/A"}
+      Industry Type: ${data.industry || "N/A"}
       Property Type: ${data.propertyType || "N/A"}
       Reason: ${data.reason || ""}
       Frequency: ${data.cleanFrequency || data.frequency || "N/A"}
@@ -66,13 +66,10 @@ const Email = (() => {
       Bedrooms: ${data.bedrooms || "N/A"}
       Bathrooms: ${data.bathrooms || "N/A"}
       Powder Rooms: ${data.powderRooms || "N/A"}
-      Other Rooms: ${data.otherRooms || "N/A"}
-      Airbnb Beds: ${data.airbnbBeds || "N/A"}
-      Last Cleaned: ${data.lastCleaned || ""}
-      Built/Renovated: ${data.builtYear || ""}
+      Built Year: ${data.builtYear || ""}
+      Last Renovated: ${data.lastRenovated || ""}
       Pets: ${data.pets || ""}
-      Occupants: ${data.occupants || ""}
-      Occupied: ${data.occupied || ""}
+      Occupants: ${data.people || ""}
       Furnished: ${data.furnished || ""}
       Extras: ${data.extras || "N/A"}
       Package: ${data.package || "N/A"} Hours
@@ -83,12 +80,13 @@ const Email = (() => {
       Province: ${data.province || ""}
       Postal: ${data.postal || ""}
       Interior Windows: ${data.interiorWindows || ""}
-      Empty Cabinets: ${data.emptyCabinets || ""}
+      Inside Empty Kitchen Cabinets: ${data.insideEmptyKitchenCabinets || ""}
       Preferred Date: ${data.date || ""}
       Notes: ${data.details || ""}
       Hear About Us: ${data.hearAbout || ""}
     `.trim();
   };
+  
 
   /**
    * Send booking request emails via EmailJS
