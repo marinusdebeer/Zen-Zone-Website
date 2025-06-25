@@ -74,7 +74,7 @@ const Tracking = (() => {
     const sessionId = localStorage.getItem('sessionId');
     const gclid = localStorage.getItem('gclid');
     const data = { hostname, userId, sessionId, gclid, fieldId, value };
-
+    
     if (['name', 'email', 'phone'].includes(fieldId)) {
       posthog?.people?.set({ [fieldId]: value });
     }
@@ -316,6 +316,8 @@ class BookingForm {
   }
 
   handleFormSubmit(e) {
+    Tracking.sendData('submitClicked', 'Submitted');
+    console.log('submitClicked', 'Submitted');
     e.preventDefault();
     const emailInput = document.getElementById('booking-email');
     const phoneInput = document.getElementById('booking-phone');
@@ -329,7 +331,7 @@ class BookingForm {
       const submitBtn = document.querySelector('.booking-btn-submit');
       submitBtn.classList.add('loading');
       submitBtn.innerHTML = `<div class="spinner"></div> Submitting...`;
-      Tracking.sendData('submitClicked', 'Submitted');
+      
       Email.sendBookingRequest(this.formDataStore)
         .then(() => {
           Toast.show('Your request has been submitted successfully. We will contact you shortly.', true);
@@ -498,10 +500,24 @@ class BookingForm {
     // }
     
     this.appendStepData(step, data);
+    // check if fid is "package" then send the price field id as well with the value of package x 50
     Object.entries(data).forEach(([fid, val]) => {
-      console.log(fid, val)
-      if (Array.isArray(val)) val.forEach(v => Tracking.sendData(fid, v));
-      else Tracking.sendData(fid, val);
+      console.log(fid, val);
+    
+      const send = v => {
+        Tracking.sendData(fid, v);
+        if (fid === 'package') {
+          let price = v * 50;
+          if (price < 130) price = 130;
+          Tracking.sendData('price', price);
+        }
+      };
+    
+      if (Array.isArray(val)) {
+        val.forEach(send);
+      } else {
+        send(val);
+      }
     });
     this.updateSessionStorage('meta-data', data);
   }
@@ -708,7 +724,7 @@ class BookingForm {
 document.addEventListener('DOMContentLoaded', () => {
   window.BookingFormInstance = new BookingForm();
 
-  // window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring'
+  window.BookingFormInstance.formDataStore.bookingType = 'Recurring'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
-  // window.BookingFormInstance.goToStep(2);
+  window.BookingFormInstance.goToStep(5);
 });
