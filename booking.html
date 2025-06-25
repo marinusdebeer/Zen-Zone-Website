@@ -83,6 +83,37 @@
   }
   </script>
 
+  <script>
+    (function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const campaign = urlParams.get('utm_campaign');
+      const source = urlParams.get('utm_source');
+      const medium = urlParams.get('utm_medium');
+      const content = urlParams.get('utm_content');
+      const term = urlParams.get('utm_term');
+      const gclid = urlParams.get('gclid');
+  
+      if (campaign) {
+        localStorage.setItem('utm_campaign', campaign);
+      }
+      if (source) {
+        localStorage.setItem('utm_source', source);
+      }
+      if (medium) {
+        localStorage.setItem('utm_medium', medium);
+      }
+      if (content) {
+        localStorage.setItem('utm_content', content);
+      }
+      if (term) {
+        localStorage.setItem('utm_term', term);
+      }
+      if (gclid) {
+        localStorage.setItem('gclid', gclid);
+      }
+    })();
+  </script>
+
 
 </head>
 

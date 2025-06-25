@@ -68,12 +68,12 @@ const Tracking = (() => {
   let sendPromise = Promise.resolve();
 
   const sendData = (fieldId, value) => {
+    console.log('sendData', fieldId, value);
     const hostname = location.hostname;
     const userId = localStorage.getItem('userId') || Utilities.getFormattedUserId();
     localStorage.setItem('userId', userId);
-    const sessionId = localStorage.getItem('sessionId');
-    const gclid = localStorage.getItem('gclid');
-    const data = { hostname, userId, sessionId, gclid, fieldId, value };
+    const sessionId = sessionStorage.getItem('sessionId');
+    const data = { hostname, userId, sessionId, fieldId, value };
     
     if (['name', 'email', 'phone'].includes(fieldId)) {
       posthog?.people?.set({ [fieldId]: value });
@@ -182,11 +182,11 @@ class BookingForm {
   }
 
   _generateSessionId() {
-    if (!localStorage.getItem('sessionId')) {
+    if (!sessionStorage.getItem('sessionId')) {
       const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c =>
         ((Math.random() * 16) | 0).toString(16)
       );
-      localStorage.setItem('sessionId', uuid);
+      sessionStorage.setItem('sessionId', uuid);
     }
   }
 
@@ -722,9 +722,37 @@ class BookingForm {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  
   window.BookingFormInstance = new BookingForm();
+  window.BookingFormInstance._generateSessionId();
 
-  window.BookingFormInstance.formDataStore.bookingType = 'Recurring'; // or 'Recurring' or "One-Time"
+  let gclid = localStorage.getItem('gclid');
+  let utm_campaign = localStorage.getItem('utm_campaign');
+  let utm_source = localStorage.getItem('utm_source');
+  let utm_medium = localStorage.getItem('utm_medium');
+  let utm_content = localStorage.getItem('utm_content');
+  let utm_term = localStorage.getItem('utm_term');
+
+  if (gclid) {
+    Tracking.sendData('gclid', gclid);
+  }
+  if (utm_campaign) {
+    Tracking.sendData('utm_campaign', utm_campaign);
+  }  
+  if (utm_source) {
+    Tracking.sendData('utm_source', utm_source);
+  }
+  if (utm_medium) {
+    Tracking.sendData('utm_medium', utm_medium);
+  }
+  if (utm_content) {
+    Tracking.sendData('utm_content', utm_content);
+  }
+  if (utm_term) {
+    Tracking.sendData('utm_term', utm_term);
+  }
+
+  // window.BookingFormInstance.formDataStore.bookingType = 'Recurring'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
-  window.BookingFormInstance.goToStep(5);
+  // window.BookingFormInstance.goToStep(5);
 });
