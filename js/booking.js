@@ -708,7 +708,7 @@ class BookingForm {
 document.addEventListener('DOMContentLoaded', () => {
   window.BookingFormInstance = new BookingForm();
 
-  window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring'
-  window.BookingFormInstance.displayStep5Sections();
-  // window.BookingFormInstance.goToStep(5);
+  // window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring'
+  // window.BookingFormInstance.displayStep5Sections();
+  // window.BookingFormInstance.goToStep(2);
 });

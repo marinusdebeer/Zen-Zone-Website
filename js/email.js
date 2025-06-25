@@ -74,8 +74,7 @@ const Email = (() => {
       Extras: ${data.extras || "N/A"}
       Package: ${data.package || "N/A"} Hours
       Price: ${data.price || "N/A"}
-      Street1: ${data.street1 || ""}
-      Street2: ${data.street2 || ""}
+      Address: ${data.address || ""}
       City: ${data.city || ""}
       Province: ${data.province || ""}
       Postal: ${data.postal || ""}

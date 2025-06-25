@@ -142,12 +142,12 @@
         <div class="booking-form-step booking-form-step--active" data-step="1" aria-hidden="false">
           <div class="booking-form-group">
             <label for="booking-firstName">First Name</label>
-            <input type="text" id="booking-firstName" name="firstName" placeholder="Enter your first name" autocomplete="given-name"/>
+            <input type="text" id="booking-firstName" name="firstName" placeholder="Enter your first name" autocomplete="given-name" required/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter your first name.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-lastName">Last Name</label>
-            <input type="text" id="booking-lastName" name="lastName" placeholder="Enter your last name" autocomplete="family-name"/>
+            <input type="text" id="booking-lastName" name="lastName" placeholder="Enter your last name" autocomplete="family-name" required/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter your last name.</span>
           </div>
           <div class="booking-form-group">
@@ -156,7 +156,7 @@
           </div>
           <div class="booking-form-group">
             <label for="booking-email">Email Address</label>
-            <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email"/>
+            <input type="email" id="booking-email" name="email" placeholder="Enter your email" autocomplete="email" required/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter a valid email
               address.</span>
           </div>
@@ -164,7 +164,7 @@
             <label for="booking-phone">Phone Number</label>
             <input type="tel" id="booking-phone" name="phone" placeholder="Enter your phone number"
               pattern="^\+?\d{10,15}$" title="Please enter a valid phone number (10 to 15 digits)."
-              autocomplete="tel"/>
+              autocomplete="tel" required/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter a valid phone
               number.</span>
           </div>
@@ -273,7 +273,7 @@
                 </div>
               </label>
               <input type="radio" id="service-standard-move-in" name="serviceType"
-                value="Standard Move-In/Out Cleaning" required>
+                value="Standard Move-In/Out Cleaning" required aria-required="true">
               <label for="service-standard-move-in" class="booking-btn-option service">
                 Standard Move-In/Out Cleaning
                 <div class="tooltip">
@@ -285,14 +285,14 @@
                   <p>High-touch areas receive extra care to help reduce the spread of germs.</p>
                 </div>
               </label>
-              <input type="radio" id="service-deep-move-in" name="serviceType" value="Deep Move-In/Out Cleaning" required>
+              <input type="radio" id="service-deep-move-in" name="serviceType" value="Deep Move-In/Out Cleaning" required aria-required="true">
               <label for="service-deep-move-in" class="booking-btn-option service">
                 Deep Move-In/Out Cleaning
                 <div class="tooltip">
                   <p>Our <strong>Moving Deep Cleaning Service</strong> provides a comprehensive and detailed clean, ensuring your home is spotless and refreshed before move-in or move-out. This service covers all common areas, bedrooms, kitchens, and bathrooms. We wipe and dust surfaces, sweep and mop floors, vacuum carpets, and clean mirrors, door handles, light switches, and kitchen cabinet fronts. Additionally, we clean behind appliances (such as the fridge and oven), inside the oven, baseboards, door frames, interior windows, blinds, ceiling fans, light fixtures, and wall spots. High-touch areas receive extra sanitization to help reduce the spread of germs. Whether you're settling into a new space or leaving your old one in top condition, this service ensures a thorough reset for a smooth transition.</p>
                 </div>
               </label>
-              <input type="radio" id="service-post-construction" name="serviceType" value="Post Construction Cleaning" required>
+              <input type="radio" id="service-post-construction" name="serviceType" value="Post Construction Cleaning" required aria-required="true">
               <label for="service-post-construction" class="booking-btn-option service">
                 Post-Construction Cleaning
                 <div class="tooltip">
@@ -318,26 +318,26 @@
           <div class="booking-form-group">
             <label for="booking-squareFootage">Square Footage</label>
             <input type="number" id="booking-squareFootage" name="squareFootage" value=""
-              data-units="sq ft" placeholder="Enter your square footage" required/>
+              data-units="sq ft" placeholder="Enter your square footage" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the square
               footage.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-bedrooms">Number of Bedrooms</label>
-            <input type="number" id="booking-bedrooms" name="bedrooms" value="" placeholder="Enter number of bedrooms" required/>
+            <input type="number" id="booking-bedrooms" name="bedrooms" value="" placeholder="Enter number of bedrooms" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
               of bedrooms.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-bathrooms">Number of Full Bathrooms</label>
-            <input type="number" id="booking-bathrooms" name="bathrooms" value="" placeholder="Enter number of bathrooms" required/>
+            <input type="number" id="booking-bathrooms" name="bathrooms" value="" placeholder="Enter number of bathrooms" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
               of bathrooms.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-powderRooms">Number of Powder Rooms</label>
             <input type="number" id="booking-powderRooms" name="powderRooms" value=""
-              placeholder="Enter number of powder rooms" required/>
+              placeholder="Enter number of powder rooms" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
               of powder rooms.</span>
           </div>
@@ -345,7 +345,7 @@
             
             <div class="booking-form-group">
               <label for="booking-kitchens">Number of Kitchens</label>
-              <input type="number" id="booking-kitchens" name="kitchens" value="" placeholder="Number of kitchens" required/>
+              <input type="number" id="booking-kitchens" name="kitchens" value="" placeholder="Number of kitchens" required aria-required="true"/>
               <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
                 of kitchens.</span>
             </div>
@@ -368,30 +368,30 @@
           </div> -->
           <div class="booking-form-group">
             <label for="booking-people">Number of people living in the household</label>
-            <input type="text" id="booking-people" name="people" placeholder="e.g., 3" required/>
+            <input type="text" id="booking-people" name="people" placeholder="e.g., 3" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
               of people living in the household.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-builtYear">Year house was built (approximate if not known)</label>
-            <input type="text" id="booking-builtYear" name="builtYear" placeholder="Year or description" required/>
+            <label for="booking-builtYear">Year house was built <br><small>(approximate if not known)</small></label>
+            <input type="text" id="booking-builtYear" name="builtYear" placeholder="Year or description" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the year the house was built.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-lastRenovated">Year house was last renovated (if applicable)</label>
-            <input type="text" id="booking-lastRenovated" name="lastRenovated" placeholder="Year or description" required/>
+            <label for="booking-lastRenovated">Year house was last renovated <br><small>(if applicable)</small></label>
+            <input type="text" id="booking-lastRenovated" name="lastRenovated" placeholder="Year or description" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the year the house was last renovated.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-pets">Got any fluffy housemates?  <br>
               <small>We'd love to know about your pets!</small>
             </label>
-            <input type="text" id="booking-pets" name="pets" placeholder="Type and number of pets" required/>
+            <input type="text" id="booking-pets" name="pets" placeholder="Type and number of pets" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the type and number of pets.</span>
           </div>
           <div class="booking-form-group">
-            <label for="booking-furnished">Will the property be furnished at the time of cleaning?</label>
-            <input type="text" id="booking-furnished" name="furnished" required/>
+            <label for="booking-furnished">Is the property furnished?</label>
+            <input type="text" id="booking-furnished" name="furnished" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter if the property will be furnished at the time of cleaning.</span>
           </div>
           
@@ -405,21 +405,21 @@
           <div class="booking-form-group" data-name="package" data-conditional-field="bookingType"
             data-conditional-value="Recurring" style="display: none;" aria-hidden="true" data-required="true">
             <div class="booking-form-options">
-              <input type="radio" id="package-2.5" name="package" value="2.5" required>
+              <input type="radio" id="package-2.5" name="package" value="2.5" required aria-required="true">
               <label for="package-2.5" class="booking-btn-option package-option"><strong>2.5 Hours</strong><br>$130</label>
-              <input type="radio" id="package-3" name="package" value="3" required>
+              <input type="radio" id="package-3" name="package" value="3" required aria-required="true">
               <label for="package-3" class="booking-btn-option package-option"><strong>3 Hours</strong><br>$150</label>
-              <input type="radio" id="package-3.5" name="package" value="3.5" required>
+              <input type="radio" id="package-3.5" name="package" value="3.5" required aria-required="true">
               <label for="package-3.5" class="booking-btn-option package-option"><strong>3.5 Hours</strong><br>$175</label>
-              <input type="radio" id="package-4" name="package" value="4" required>
+              <input type="radio" id="package-4" name="package" value="4" required aria-required="true">
               <label for="package-4" class="booking-btn-option package-option"><strong>4 Hours</strong><br>$200</label>
-              <input type="radio" id="package-4.5" name="package" value="4.5" required>
+              <input type="radio" id="package-4.5" name="package" value="4.5" required aria-required="true">
               <label for="package-4.5" class="booking-btn-option package-option"><strong>4.5 Hours</strong><br>$225</label>
-              <input type="radio" id="package-5" name="package" value="5" required>
+              <input type="radio" id="package-5" name="package" value="5" required aria-required="true">
               <label for="package-5" class="booking-btn-option package-option"><strong>5 Hours</strong><br>$250</label>
-              <input type="radio" id="package-6" name="package" value="6" required>
+              <input type="radio" id="package-6" name="package" value="6" required aria-required="true">
               <label for="package-6" class="booking-btn-option package-option"><strong>6 Hours</strong><br>$300</label>
-              <input type="radio" id="package-na" name="package" value="NA" required>
+              <input type="radio" id="package-na" name="package" value="NA" required aria-required="true">
               <label for="package-na" class="booking-btn-option package-option"><strong>Not Sure Yet</strong><br>$N/A</label>
             </div>
             <span class="error-message" aria-live="polite" style="display: none;">Please select a cleaning
@@ -431,52 +431,69 @@
           <div class="extras-container">
         
             <!-- ✅ EXTRAS: Checkboxes styled as buttons -->
-            <div class="extra-item custom-checkbox">
-              <input type="checkbox" id="extra-baseboards" name="extras" value="Deep clean of baseboards">
-              <label class="checkmark" for="extra-baseboards"></label>
-              <span class="label-text">Deep clean of baseboards</span>
+            <div class="extra-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="extras" value="Deep clean of baseboards" id="extra-baseboards" />
+                <span class="checkmark"></span>
+                <span class="label-text">Deep clean of baseboards</span>
+              </label>
+            </div>
+            
+        
+            <div class="extra-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="extras" value="Inside Oven" id="extra-oven" />
+                <span class="checkmark"></span>
+                <span class="label-text">Inside Oven</span>
+              </label>
             </div>
         
-            <div class="extra-item custom-checkbox">
-              <input type="checkbox" id="extra-oven" name="extras" value="Inside Oven">
-              <label class="checkmark" for="extra-oven"></label>
-              <span class="label-text">Inside Oven</span>
+            <div class="extra-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="extras" value="Behind Stove" id="extra-stove" />
+                <span class="checkmark"></span>
+                <span class="label-text">Behind Stove</span>
+              </label>
             </div>
         
-            <div class="extra-item custom-checkbox">
-              <input type="checkbox" id="extra-stove" name="extras" value="Behind Stove">
-              <label class="checkmark" for="extra-stove"></label>
-              <span class="label-text">Behind Stove</span>
+            <div class="extra-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="extras" value="Inside Fridge" id="extra-fridge" />
+                <span class="checkmark"></span>
+                <span class="label-text">Inside Fridge (empty)</span>
+              </label>
             </div>
         
-            <div class="extra-item custom-checkbox">
-              <input type="checkbox" id="extra-fridge" name="extras" value="Inside Fridge">
-              <label class="checkmark" for="extra-fridge"></label>
-              <span class="label-text">Inside Fridge (empty)</span>
+            <div class="extra-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="extras" value="Behind Fridge" id="extra-behind-fridge" />
+                <span class="checkmark"></span>
+                <span class="label-text">Behind Fridge</span>
+              </label>
             </div>
         
-            <div class="extra-item custom-checkbox">
-              <input type="checkbox" id="extra-behind-fridge" name="extras" value="Behind Fridge">
-              <label class="checkmark" for="extra-behind-fridge"></label>
-              <span class="label-text">Behind Fridge</span>
+            <div class="extra-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="extras" value="Window Blinds" id="extra-blinds" />
+                <span class="checkmark"></span>
+                <span class="label-text">Window Blinds</span>
+              </label>
             </div>
         
-            <div class="extra-item custom-checkbox">
-              <input type="checkbox" id="extra-blinds" name="extras" value="Window Blinds">
-              <label class="checkmark" for="extra-blinds"></label>
-              <span class="label-text">Window Blinds</span>
+            <div class="extra-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="extras" value="Wall Spots" id="extra-wall" />
+                <span class="checkmark"></span>
+                <span class="label-text">Wall Spot Cleaning</span>
+              </label>
             </div>
         
-            <div class="extra-item custom-checkbox">
-              <input type="checkbox" id="extra-wall" name="extras" value="Wall Spots">
-              <label class="checkmark" for="extra-wall"></label>
-              <span class="label-text">Wall Spot Cleaning</span>
-            </div>
-        
-            <div class="extra-item custom-checkbox">
-              <input type="checkbox" id="extra-cabinet-fronts" name="extras" value="Cabinet Fronts">
-              <label class="checkmark" for="extra-cabinet-fronts"></label>
-              <span class="label-text">Cabinet Fronts (Deep Clean)</span>
+            <div class="extra-item">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="extras" value="Cabinet Fronts" id="extra-cabinet-fronts" />
+                <span class="checkmark"></span>
+                <span class="label-text">Cabinet Fronts (Deep Clean)</span>
+              </label>  
             </div>
         
             <!-- <div class="extra-item custom-checkbox">
@@ -489,7 +506,7 @@
         
             <div class="extra-item countable-extra">
               <label class="custom-label" for="interiorWindows">Interior Windows</label>
-              <select id="interiorWindows" name="interiorWindows" required>
+              <select id="interiorWindows" name="interiorWindows" required aria-required="true">
                 <option value="">Select an option</option>
                 <option value="Basic">Basic – Shine glass</option>
                 <option value="Deep">Deep – Scrub frame & shine glass</option>
@@ -499,7 +516,7 @@
         
             <div class="extra-item countable-extra">
               <label class="custom-label" for="insideCabinets">Inside Empty Kitchen Cabinets</label>
-              <select id="insideCabinets" name="insideEmptyKitchenCabinets" required>
+              <select id="insideCabinets" name="insideEmptyKitchenCabinets" required aria-required="true">
                 <option value="">Select an option</option>
                 <option value="Wipe Out">Wipe out cabinets</option>
                 <option value="Deep Clean">Deep Clean</option>
@@ -518,27 +535,32 @@
 
         <div class="booking-form-step" data-step="6" aria-hidden="true">
           <div class="booking-form-group">
-            <label for="booking-street1">Street Address</label>
-            <input type="text" id="booking-street1" name="street1" placeholder="Street address" />
+            <label for="booking-address">Street Address</label>
+            <input type="text" id="booking-address" name="address" placeholder="Street address" required/>
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter the street address.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-city">City</label>
-            <input type="text" id="booking-city" name="city" placeholder="City" />
+            <input type="text" id="booking-city" name="city" placeholder="City" required/>
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter the city.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-province">Province</label>
-            <input type="text" id="booking-province" name="province" placeholder="Province" />
+            <input type="text" id="booking-province" name="province" placeholder="Province" required/>
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter the province.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-postal">Postal Code</label>
-            <input type="text" id="booking-postal" name="postal" placeholder="Postal code" />
+            <input type="text" id="booking-postal" name="postal" placeholder="Postal code" required/>
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter the postal code.</span>
           </div>
 
           <div class="booking-form-group">
             <label for="booking-date">Preferred dates <br>
               <small>Flexible scheduling = better rates & availability!</small>
             </label>
-            <input type="text" id="booking-date" name="date" placeholder="Preferred dates" />
+            <input type="text" id="booking-date" name="date" placeholder="Preferred dates" required/>
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter the preferred dates.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-details">
@@ -551,12 +573,13 @@
               rows="4"
               placeholder="E.g. key code, parking tips, pet info, or special instructions"
               aria-label="Additional booking details"
+              required
             ></textarea>
           </div>
           
           <div class="booking-form-group">
             <label for="booking-hearAbout" class="custom-label">How did you hear about us?</label>
-            <select id="booking-hearAbout" name="hearAbout" required>
+            <select id="booking-hearAbout" name="hearAbout" required aria-required="true">
               <option value="">Select an option</option>
               <option value="Google Maps">Google Maps</option>
               <option value="Google Business Profile">Google Business Profile</option>
@@ -566,6 +589,7 @@
               <option value="Referral">Referral</option>
               <option value="Other">Other</option>
             </select>
+            <span class="error-message" aria-live="polite" style="display: none;">Please select how you heard about us.</span>
           </div>
           
           <!-- <div class="booking-form-group">
