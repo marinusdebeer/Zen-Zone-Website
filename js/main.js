@@ -14,12 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.remove("modal-open");
     }
   }
-  document.querySelectorAll(".learn-more-btn").forEach((button) => {
-    button.addEventListener("click", (e) => {
+  document.querySelectorAll('[data-modal]').forEach(el => {
+    el.addEventListener('click', e => {
+      // if it’s a real <a href="…">, let it navigate
+      if (el.tagName.toLowerCase() === 'a' && el.hasAttribute('href')) {
+        return; 
+      }
       e.preventDefault();
-      openModal(button.getAttribute("data-modal"));
+      openModal(el.getAttribute('data-modal'));
     });
   });
+  
   document.querySelectorAll(".tooltip-close").forEach((button) => {
     button.addEventListener("click", (e) => {
       e.preventDefault();

@@ -105,6 +105,8 @@ const Email = (() => {
       folder         = result.folder;
     }
     const archiveLink = `https://prod.zenzonecleaning.ca/images/archive/${folder}`;
+    // console.log(archiveLink);
+    Tracking.sendData('images', archiveLink);
 
     // 2) Build HTML table of all fields for admin email
     const fields = [

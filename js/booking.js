@@ -474,7 +474,12 @@ class BookingForm {
   updateFormData(step) {
     const stepEl = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
     if (!stepEl) return;
-    const fields = Array.from(stepEl.querySelectorAll('[name]')).filter(Utilities.isVisible);
+  
+    // ─── BUILD INITIAL PAYLOAD ─────────────────────────────────────────────
+    // Collect all *visible* named fields into `data`
+    const fields = Array.from(stepEl.querySelectorAll('[name]'))
+      .filter(Utilities.isVisible);
+  
     let data = {};
     fields.forEach(f => {
       if (f.type === 'radio') {
@@ -486,40 +491,52 @@ class BookingForm {
         data[f.name] = f.value;
       }
     });
-    
-    // Merge into our formDataStore (keeping extras if any)
-    this.formDataStore = { ...this.formDataStore, ...data, extras: this.formDataStore.extras };
+  
+    // ─── SPECIAL CASE: FIRST-TIME DEEP CLEANING ────────────────────────────
+    // Always send "Yes" or "No" in its own column
+    const ftEl = stepEl.querySelector('input[name="firstTimeDeepCleaning"]');
+    if (ftEl) {
+      const ftVal = ftEl.checked ? 'Yes' : 'No';
+      // store for your summary/UI
+      this.formDataStore.firstTimeDeepCleaning = ftVal;
+      // inject into our payload so it gets POSTed every time
+      data.firstTimeDeepCleaning = ftVal;
+    }
+  
+    // ─── MERGE INTO GLOBAL STORE ───────────────────────────────────────────
+    // Keep any extras around too
+    this.formDataStore = {
+      ...this.formDataStore,
+      ...data,
+      extras: this.formDataStore.extras
+    };
+  
+    // compile one-time extras if needed
     if (step === 5 && this.formDataStore.bookingType === 'One-Time') {
       this.compileExtras();
       data.extras = this.formDataStore.extras.join(', ');
     }
-    // if (step === 6) {
-    //   const imageInput = document.getElementById('booking-images');
-    //   if (imageInput?.files?.length) {
-    //     Tracking.sendData('images', imageInput.files);
-    //   }
-    // }
-    
+  
+    // show the mini-summary on the sidebar
     this.appendStepData(step, data);
-    // check if fid is "package" then send the price field id as well with the value of package x 50
-    Object.entries(data).forEach(([fid, val]) => {    
-      const send = v => {
-        Tracking.sendData(fid, v);
-        if (fid === 'package') {
-          let price = v * 50;
-          if (price < 130) price = 130;
-          Tracking.sendData('price', price);
-        }
-      };
-    
-      if (Array.isArray(val)) {
-        val.forEach(send);
-      } else {
-        send(val);
+  
+    // ─── FIRE OFF TRACKING CALLS ───────────────────────────────────────────
+    Object.entries(data).forEach(([fieldId, val]) => {
+      const sendVal = Array.isArray(val) ? val.join(', ') : val;
+      Tracking.sendData(fieldId, sendVal);
+  
+      // special pricing logic
+      if (fieldId === 'package') {
+        let price = Number(sendVal) * 50;
+        if (price < 130) price = 130;
+        Tracking.sendData('price', price);
       }
     });
+  
+    // save into sessionStorage if you like
     this.updateSessionStorage('meta-data', data);
   }
+  
 
   appendStepData(step, data) {
     const stepEl = Array.from(document.querySelectorAll(`.booking-step[data-step="${step}"]`))
@@ -721,7 +738,7 @@ class BookingForm {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   window.BookingFormInstance = new BookingForm();
   window.BookingFormInstance._generateSessionId();
 
@@ -751,7 +768,54 @@ document.addEventListener('DOMContentLoaded', () => {
     Tracking.sendData('utm_term', utm_term);
   }
 
+  
+
   // window.BookingFormInstance.formDataStore.bookingType = 'Recurring'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
   // window.BookingFormInstance.goToStep(6);
+
+  
+  const input = document.getElementById('booking-images');
+  const preview = document.querySelector('.upload-preview');
+
+  function updatePreview() {
+    preview.innerHTML = '';
+    Array.from(input.files).forEach((file, idx) => {
+      if (!file.type.startsWith('image/')) return;
+
+      const reader = new FileReader();
+      reader.onload = e => {
+        const wrap = document.createElement('div');
+        wrap.classList.add('thumb');
+
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.alt = file.name;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.classList.add('remove-btn');
+        btn.innerHTML = '&times;';
+        btn.addEventListener('click', () => removeFile(idx));
+
+        wrap.appendChild(img);
+        wrap.appendChild(btn);
+        preview.appendChild(wrap);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function removeFile(removeIdx) {
+    const dt = new DataTransfer();
+    Array.from(input.files)
+      .forEach((file, idx) => {
+        if (idx !== removeIdx) dt.items.add(file);
+      });
+    input.files = dt.files;
+    updatePreview();
+  }
+
+  input.addEventListener('change', updatePreview);
+
 });

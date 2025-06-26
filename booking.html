@@ -183,7 +183,7 @@
           </div>
           <div class="booking-form-group">
             <label for="booking-company">Company Name</label>
-            <small>If you are booking for a company, please enter the company name. (optional)</small>
+            <small>If you are booking for a company, please enter the company name (optional).</small>
             <input type="text" id="booking-company" name="company" placeholder="Company name" autocomplete="organization"/>
           </div>
           <div class="booking-form-group">
@@ -340,6 +340,19 @@
             <span class="error-message" aria-live="polite" style="display: none;">Please select a service
               type.</span>
           </div>
+          <div class="booking-form-group" data-name="firstTimeDeepCleaning" data-conditional-field="bookingType"
+          data-conditional-value="Recurring" style="display: none;" aria-hidden="true">
+            <div class="extras-container">
+              <div class="extra-item">
+                <label class="custom-checkbox">
+                  <input type="checkbox" name="firstTimeDeepCleaning" value="Yes" id="extra-first-time-deep-cleaning" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">First Time Deep Cleaning</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
           <div class="booking-form-nav">
             <button type="button" class="booking-btn-prev">Previous</button>
             <button type="button" class="booking-btn-next">Next</button>
@@ -627,7 +640,7 @@
               id="booking-details"
               name="details"
               rows="4"
-              placeholder="E.g. key code, parking tips, pet info, or special instructions"
+              placeholder="Anything else you would like us to know"
               aria-label="Additional booking details"
               required
             ></textarea>
@@ -638,9 +651,7 @@
             <label for="booking-hearAbout" class="custom-label">How did you hear about us?</label>
             <select id="booking-hearAbout" name="hearAbout" required aria-required="true">
               <option value="">Select an option</option>
-              <option value="Google Maps">Google Maps</option>
-              <option value="Google Business Profile">Google Business Profile</option>
-              <option value="Google Ads">Google Ads</option>
+              <option value="Google Maps">Google Maps/Google Business Profile</option>
               <option value="Google Guaranteed">Google Guaranteed</option>
               <option value="Brochure">Brochure</option>
               <option value="Referral">Referral</option>
@@ -649,10 +660,49 @@
             <span class="error-message" aria-live="polite" style="display: none;">Please select how you heard about us.</span>
           </div>
           
-          <div class="booking-form-group">
-            <label for="booking-images">Upload images</label>
-            <input type="file" id="booking-images" name="images" multiple accept="image/*" />
+          <div class="booking-form-group upload-wrapper">
+            <div class="upload-header">
+              <h3 class="upload-title">Upload images</h3>
+              <small id="upload-desc">
+                Please attach as many photos as possible of the areas you believe need the most attention.  
+                The more photos you provide, the more accurately we can estimate the time and cost.
+              </small>
+              <br>
+              <small>
+                Also include photos of the kitchen, bathroom, living room and any extras chosen like windows, baseboards, oven, etc. 
+              </small>
+              
+            </div>
+            <br>
+            <label for="booking-images" class="upload-label">
+              <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M5 20h14v-2H5v2zm7-18L5.33 9h3.34v4h4.66V9h3.34L12 2z"/>
+              </svg>
+              <span>Choose files</span>
+            </label>
+            <br>
+            <div class="upload-instructions">
+              <p id="privacy-note" class="privacy-note">
+                All images remain private and will not be shared outside of Zen Zone Cleaning Services.
+              </p>
+            </div>
+          
+            <input
+              type="file"
+              id="booking-images"
+              name="images"
+              class="upload-input"
+              multiple
+              required
+              accept="image/*"
+              aria-describedby="upload-desc privacy-note"
+            />
+          
+            <div class="upload-preview" aria-live="polite"></div>
+            <span class="error-message" aria-live="polite" style="display: none;">Please upload images of the areas you believe need the most attention.</span>
           </div>
+          
+          
           <div class="booking-form-nav">
             <button type="button" class="booking-btn-prev">Previous</button>
             <button type="submit" class="booking-btn-submit">Request Estimate</button>

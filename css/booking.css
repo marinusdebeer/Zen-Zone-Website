@@ -760,3 +760,109 @@ select:focus {
   /* align center */
   text-align: center;
 }
+/* —— Upload group overall spacing —— */
+.upload-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+/* First label: “Upload images” + small */
+.upload-wrapper > label[for="booking-images-label"] {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary-text);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+.upload-wrapper > label[for="booking-images-label"] small {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--color-secondary-text);
+  line-height: 1.4;
+}
+
+/* The big “Upload” button */
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .75rem 1.25rem;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background .2s;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+.upload-label svg {
+  flex-shrink: 0;
+}
+.upload-label:hover {
+  background: var(--color-secondary-hover);
+}
+
+/* Extra instructions under the button */
+.upload-instructions {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--color-primary-text);
+}
+.upload-instructions p {
+  margin: 0 0 0.75rem;
+}
+.upload-instructions .privacy-note {
+  margin: 0;
+  font-style: italic;
+  color: var(--color-secondary-text);
+}
+
+/* Hide the real file-input */
+.upload-input {
+  display: none;
+}
+
+/* Live preview grid */
+.upload-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: .75rem;
+  width: 100%;
+}
+
+/* Thumbnail + remove button */
+.upload-preview .thumb {
+  position: relative;
+}
+.upload-preview img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px var(--color-shadow);
+}
+.upload-preview .remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+}
+.upload-preview .remove-btn:hover {
+  background: rgba(255,0,0,0.8);
+}
