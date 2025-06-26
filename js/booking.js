@@ -546,7 +546,7 @@ class BookingForm {
     switch (step) {
       case 1:
         html = `<div class="step-value">
-          <strong>Full Name:</strong> ${Utilities.sanitizeHTML(data.name || 'N/A')}<br>
+          <strong>Full Name:</strong> ${Utilities.sanitizeHTML(data.firstName) + ' ' + Utilities.sanitizeHTML(data.lastName)}<br>
           <strong>Email:</strong> ${Utilities.sanitizeHTML(data.email || 'N/A')}<br>
           <strong>Phone:</strong> ${Utilities.sanitizeHTML(data.phone || 'N/A')}
         </div>`;
