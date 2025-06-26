@@ -314,17 +314,19 @@ class BookingForm {
       this.displayStep5Sections();
     }
   }
-
+  
+  
   handleFormSubmit(e) {
     Tracking.sendData('submitClicked', 'Submitted');
     console.log('submitClicked', 'Submitted');
     e.preventDefault();
-    const emailInput = document.getElementById('booking-email');
-    const phoneInput = document.getElementById('booking-phone');
-    emailInput?.setAttribute('required', 'required');
-    phoneInput?.setAttribute('required', 'required');
+    let step1Valid = true;
+    // const emailInput = document.getElementById('booking-email');
+    // const phoneInput = document.getElementById('booking-phone');
+    // emailInput?.setAttribute('required', 'required');
+    // phoneInput?.setAttribute('required', 'required');
 
-    const step1Valid = this.validateFormStep(1, true);
+    // step1Valid = this.validateFormStep(1, true);
     const currentValid = this.validateFormStep(this.currentStep);
     if (step1Valid && currentValid) {
       this.updateFormData(this.currentStep);
@@ -754,5 +756,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // window.BookingFormInstance.formDataStore.bookingType = 'Recurring'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
-  // window.BookingFormInstance.goToStep(5);
+  // window.BookingFormInstance.goToStep(6);
 });

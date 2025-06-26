@@ -348,10 +348,19 @@
         <div class="booking-form-step" data-step="4" aria-hidden="true">
           <div class="booking-form-group">
             <label for="booking-squareFootage">Square Footage</label>
+            <small>Please enter the square footage of the property including the basement if being cleaned.</small>
             <input type="number" id="booking-squareFootage" name="squareFootage" value=""
               data-units="sq ft" placeholder="Enter your square footage" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the square
               footage.</span>
+          </div>
+          <div class="booking-form-group">
+            <label for="booking-levels">How many levels are there?</label>
+            <small>Please enter the number of levels of the property including the basement if being cleaned.</small>
+            <input type="number" id="booking-levels" name="levels" value=""
+              data-units="sq ft" placeholder="Enter number of levels" required aria-required="true"/>
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter the number
+              of levels.</span>
           </div>
           <div class="booking-form-group">
             <label for="booking-bedrooms">Number of Bedrooms</label>
@@ -594,9 +603,24 @@
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the preferred dates.</span>
           </div>
           <div class="booking-form-group">
+            <label for="booking-access">
+              How will we access the property? <br>
+              <small>Will you be home or will we need to access the property through a key code or other means?</small>
+            </label>
+            <textarea
+              id="booking-access"
+              name="access"
+              rows="2"
+              placeholder="Access instructions"
+              aria-label="How will we access the property?"
+              required
+            ></textarea>
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter how we will access the property.</span>
+          </div>
+          <div class="booking-form-group">
             <label for="booking-details">
-              Anything else you'd like us to know? <br>
-              <small>Special requests, preferences, or helpful details!</small>
+              Additional details <br>
+              <small>Please provide any additional details like the state of the property or any other details that you would like us to know.</small>
             </label>
             <textarea
               id="booking-details"
@@ -606,6 +630,7 @@
               aria-label="Additional booking details"
               required
             ></textarea>
+            <span class="error-message" aria-live="polite" style="display: none;">Please enter additional booking details.</span>
           </div>
           
           <div class="booking-form-group">
@@ -623,10 +648,10 @@
             <span class="error-message" aria-live="polite" style="display: none;">Please select how you heard about us.</span>
           </div>
           
-          <!-- <div class="booking-form-group">
+          <div class="booking-form-group">
             <label for="booking-images">Upload images</label>
             <input type="file" id="booking-images" name="images" multiple accept="image/*" />
-          </div> -->
+          </div>
           <div class="booking-form-nav">
             <button type="button" class="booking-btn-prev">Previous</button>
             <button type="submit" class="booking-btn-submit">Request Estimate</button>
