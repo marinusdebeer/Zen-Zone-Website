@@ -533,7 +533,7 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .booking-form-group label {
-    font-size: 15px;
+    font-size: 18px;
   }
   .booking-form-group small{
     font-size: 12px;
