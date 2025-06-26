@@ -68,7 +68,6 @@ const Tracking = (() => {
   let sendPromise = Promise.resolve();
 
   const sendData = (fieldId, value) => {
-    console.log('sendData', fieldId, value);
     const hostname = location.hostname;
     const userId = localStorage.getItem('userId') || Utilities.getFormattedUserId();
     localStorage.setItem('userId', userId);
@@ -318,7 +317,6 @@ class BookingForm {
   
   handleFormSubmit(e) {
     Tracking.sendData('submitClicked', 'Submitted');
-    console.log('submitClicked', 'Submitted');
     e.preventDefault();
     let step1Valid = true;
     // const emailInput = document.getElementById('booking-email');
@@ -488,6 +486,7 @@ class BookingForm {
         data[f.name] = f.value;
       }
     });
+    
     // Merge into our formDataStore (keeping extras if any)
     this.formDataStore = { ...this.formDataStore, ...data, extras: this.formDataStore.extras };
     if (step === 5 && this.formDataStore.bookingType === 'One-Time') {
@@ -503,9 +502,7 @@ class BookingForm {
     
     this.appendStepData(step, data);
     // check if fid is "package" then send the price field id as well with the value of package x 50
-    Object.entries(data).forEach(([fid, val]) => {
-      console.log(fid, val);
-    
+    Object.entries(data).forEach(([fid, val]) => {    
       const send = v => {
         Tracking.sendData(fid, v);
         if (fid === 'package') {
