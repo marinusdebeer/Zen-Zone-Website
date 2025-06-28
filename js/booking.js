@@ -770,16 +770,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
 
-  // window.BookingFormInstance.formDataStore.bookingType = 'Recurring'; // or 'Recurring' or "One-Time"
+  // window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
-  // window.BookingFormInstance.goToStep(3);
+  // window.BookingFormInstance.goToStep(6);
 
   
   const input = document.getElementById('booking-images');
   const preview = document.querySelector('.upload-preview');
-
   function updatePreview() {
     preview.innerHTML = '';
+
     Array.from(input.files).forEach((file, idx) => {
       if (!file.type.startsWith('image/')) return;
 
@@ -817,5 +817,43 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   input.addEventListener('change', updatePreview);
+
+  const select = document.getElementById('booking-accessMethod');
+  const detailsGroup = document.getElementById('access-details-group');
+  const detailsField = document.getElementById('booking-accessDetails');
+
+  select.addEventListener('change', () => {
+    if (select.value === 'other') {
+      detailsGroup.style.display = 'block';
+      detailsField.setAttribute('required', 'required');
+    } else {
+      detailsGroup.style.display = 'none';
+      detailsField.removeAttribute('required');
+      detailsField.value = '';
+    }
+  });
+
+    // ─── Hide/require images only for One-Time bookings ────────────────────
+  function updateImageRequirement() {
+    const selected = document.querySelector('input[name="bookingType"]:checked');
+    const isRecurring = selected && selected.value === 'Recurring';
+
+    const imageInput    = document.getElementById('booking-images');
+
+    if (isRecurring) {
+      imageInput.removeAttribute('required');
+    } else {
+      imageInput.setAttribute('required', 'required');
+    }
+  }
+
+
+  // run on load
+  updateImageRequirement();
+
+  // re-run whenever the user switches bookingType
+  document.querySelectorAll('input[name="bookingType"]').forEach(radio =>
+    radio.addEventListener('change', updateImageRequirement)
+  );
 
 });

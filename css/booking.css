@@ -677,13 +677,13 @@
 .extras-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .extra-item {
   display: flex;
   /* align-items: center; */
-  gap: 10px;
+  /* gap: 10px; */
   flex-wrap: wrap;
 }
 
@@ -710,7 +710,7 @@
 
 .custom-label {
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 select {

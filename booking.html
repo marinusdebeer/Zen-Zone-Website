@@ -139,7 +139,7 @@
       </li>
       <li class="booking-step incomplete clickable" data-step="3" aria-disabled="true" tabindex="0">
         <div class="step-header">
-          <span class="booking-step-label">Select Frequency</span>
+          <span class="booking-step-label">Select Service</span>
         </div>
         <div class="step-summary" id="summary-step-3" aria-live="polite"></div>
       </li>
@@ -231,12 +231,6 @@
             </span>
           </div>
           
-          <div class="booking-form-group">
-            <label for="booking-reason">What is the reason for this cleaning?</label>
-            <input type="textarea" id="booking-reason" name="reason" placeholder="Reason for cleaning" required/>
-            <span class="error-message" aria-live="polite" style="display: none;">Please enter a reason for cleaning.</span>
-          </div>
-          
           <div class="booking-form-nav">
             <button type="button" class="booking-btn-prev">Previous</button>
             <button type="button" class="booking-btn-next">Next</button>
@@ -246,18 +240,42 @@
         <div class="booking-form-step" data-step="3" aria-hidden="true">
           <div class="booking-form-group" data-name="bookingType" data-required="true">
             <div class="booking-form-options">
+              <!-- One-Time Cleaning -->
               <input type="radio" id="booking-type-one-time" name="bookingType" value="One-Time" required>
-              <label for="booking-type-one-time" class="booking-btn-option service">One-Time Cleaning</label>
+              <label for="booking-type-one-time" class="booking-btn-option service">
+                One-Time Cleaning
+                <div class="tooltip">
+                  <!-- Full description -->
+                  <p>Refresh your home in one session with our one-time cleaning: we tackle every room—bedrooms, living areas, kitchen and bathrooms—dusting surfaces, removing cobwebs, lightly cleaning baseboards, and vacuuming and mopping floors. We sanitize mirrors, door handles, light switches and glass surfaces throughout. In the kitchen we clean counters, appliance exteriors, microwave inside and out, stovetop, oven door, sink and cabinet fronts. In bathrooms we disinfect sinks, toilets, mirrors, tubs and showers. Laundry rooms and all floors are cleaned, and bins are emptied and relined.</p>
+                  <p>Additional services—like interior window cleaning, inside oven cleaning, or other specialty extras—can be selected in a later step of the booking form.</p>
+                </div>
+              </label>
+          
+              <!-- Recurring Cleaning -->
               <input type="radio" id="booking-type-recurring" name="bookingType" value="Recurring" required>
-              <label for="booking-type-recurring" class="booking-btn-option service">Recurring Cleaning</label>
+              <label for="booking-type-recurring" class="booking-btn-option service">
+                Recurring Cleaning
+                <div class="tooltip">
+                  <!-- Full description -->
+                  <p>Maintain a consistently clean home with our recurring service: we clean every room, dust surfaces, remove cobwebs, lightly clean baseboards, and vacuum and mop floors. We also sanitize mirrors, door handles, light switches, and glass surfaces. In the kitchen, we clean counters, appliance exteriors, microwave (inside/out), stovetop, sink, and cabinet fronts; in bathrooms, we disinfect sinks, toilets, mirrors, tubs, and showers. Laundry rooms and floors are cleaned, and all bins are emptied.</p>
+                  <ul>
+                    <li>- Priority scheduling & steady availability</li>
+                    <li>- Discounted rates for regular service</li>
+                  </ul>
+                </div>
+              </label>
             </div>
-            <span class="error-message" aria-live="polite" style="display: none;">Please select a service
-              type.</span>
+            <span class="error-message" aria-live="polite" style="display: none;">
+              Please select a service type.
+            </span>
           </div>
+          
 
           <div class="booking-form-group" data-name="frequency" data-conditional-field="bookingType"
             data-conditional-value="Recurring" style="display: none;" aria-hidden="true" data-required="true">
             <h3>Select Frequency</h3>
+            <br>
+
             <div class="booking-form-options">
               <input type="radio" id="frequency-weekly" name="frequency" value="Weekly" required>
               <label for="frequency-weekly" class="booking-btn-option service">Weekly</label>
@@ -272,11 +290,50 @@
               frequency.</span>
           </div>
 
+
+          
           <div class="booking-form-group" data-name="serviceType" data-conditional-field="bookingType"
             data-conditional-value="One-Time" style="display: none;" aria-hidden="true">
-            <h3>Select Your Service</h3>
+            <!-- <h3>Select Your Service</h3>
+            <small>Start building your custom cleaning plan in a later step you can select additional services like interior window cleaning, inside oven cleaning, or other specialty extras.</small>
+            <br>
+            <br> -->
+            <div class="booking-form-group">
+              <label for="booking-reason">What is the reason for this cleaning?</label>
+              <input type="textarea" id="booking-reason" name="reason" placeholder="Reason for cleaning" required/>
+              <span class="error-message" aria-live="polite" style="display: none;">Please enter a reason for cleaning.</span>
+            </div>
             <div class="booking-form-options">
-              <input type="radio" id="service-standard" name="serviceType" value="Standard Cleaning" required>
+
+              <!-- <input type="radio" id="service-standard" name="serviceType" value="Standard Cleaning" required>
+                <label for="service-standard" class="booking-btn-option service">
+                  Standard
+                </label>
+              <input type="radio" id="service-move-in" name="serviceType" value="Move-In Cleaning" required>
+              <label for="service-move-in" class="booking-btn-option service">
+                Moving In
+              </label>
+              <input type="radio" id="service-move-out" name="serviceType" value="Move-Out Cleaning" required>
+              <label for="service-move-out" class="booking-btn-option service">
+                Moving Out
+              </label>
+              <input type="radio" id="service-post-renovation" name="serviceType" value="Post-Renovation Cleaning" required>
+              <label for="service-post-renovation" class="booking-btn-option service">
+                Post-Renovation
+              </label>
+              <input type="radio" id="service-listing" name="serviceType" value="Listing Cleaning" required>
+              <label for="service-listing" class="booking-btn-option service">
+                Listing for Market
+              </label>
+              <input type="radio" id="service-other" name="serviceType" value="Other" required>
+              <label for="service-other" class="booking-btn-option service">
+                Other
+              </label> -->
+
+
+
+
+              <!-- <input type="radio" id="service-standard" name="serviceType" value="Standard Cleaning" required>
               <label for="service-standard" class="booking-btn-option service">
                 Standard Cleaning
                 <div class="tooltip">
@@ -324,22 +381,27 @@
                   <p>Our <strong>Moving Deep Cleaning Service</strong> provides a comprehensive and detailed clean, ensuring your home is spotless and refreshed before move-in or move-out. This service covers all common areas, bedrooms, kitchens, and bathrooms. We wipe and dust surfaces, sweep and mop floors, vacuum carpets, and clean mirrors, door handles, light switches, and kitchen cabinet fronts. Additionally, we clean behind appliances (such as the fridge and oven), inside the oven, baseboards, door frames, interior windows, blinds, ceiling fans, light fixtures, and wall spots. High-touch areas receive extra sanitization to help reduce the spread of germs. Whether you're settling into a new space or leaving your old one in top condition, this service ensures a thorough reset for a smooth transition.</p>
                 </div>
               </label>
-              <input type="radio" id="service-post-construction" name="serviceType" value="Post Construction Cleaning" required aria-required="true">
-              <label for="service-post-construction" class="booking-btn-option service">
-                Post-Construction Cleaning
+              <input type="radio" id="service-post-renovation" name="serviceType" value="Post-Renovation Cleaning" required aria-required="true">
+              <label for="service-post-renovation" class="booking-btn-option service">
+                Post-Renovation Cleaning
                 <div class="tooltip">
-                  <p><strong>Our Post-Construction Cleaning Service</strong> is designed to handle the mess left behind
+                  <p><strong>Our Post-Renovation Cleaning Service</strong> is designed to handle the mess left behind
                     after construction or renovation projects.</p>
                   <p>We ensure your property is spotless, safe, and move-in ready by tackling dust, debris, and residue
                     with precision.</p>
                   <p>This service includes removing construction dust and debris, deep cleaning all surfaces, windows,
                     fixtures, and hard-to-reach areas.</p>
                 </div>
-              </label>
+              </label> -->
             </div>
+
+
             <span class="error-message" aria-live="polite" style="display: none;">Please select a service
               type.</span>
           </div>
+
+
+
           <div class="booking-form-group" data-name="firstTimeDeepCleaning" data-conditional-field="bookingType"
           data-conditional-value="Recurring" style="display: none;" aria-hidden="true">
             <div class="extras-container">
@@ -433,11 +495,12 @@
             <input type="text" id="booking-builtYear" name="builtYear" placeholder="Year or description" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the year the house was built.</span>
           </div>
+          <!-- 
           <div class="booking-form-group">
             <label for="booking-lastRenovated">Year house was last renovated <br><small>(if applicable)</small></label>
             <input type="text" id="booking-lastRenovated" name="lastRenovated" placeholder="Year or description" required aria-required="true"/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the year the house was last renovated.</span>
-          </div>
+          </div> -->
           <div class="booking-form-group">
             <label for="booking-pets">Got any fluffy housemates?  <br>
               <small>We'd love to know about your pets!</small>
@@ -559,25 +622,28 @@
             </div> -->
         
             <!-- ✅ DROPDOWNS: Required grouped options -->
-        
-            <div class="extra-item countable-extra">
+            <br>
+            <div class="extra-item">
               <label class="custom-label" for="interiorWindows">Interior Windows</label>
               <select id="interiorWindows" name="interiorWindows" required aria-required="true">
-                <option value="">Select an option</option>
-                <option value="Basic">Basic – Shine glass</option>
-                <option value="Deep">Deep – Scrub frame & shine glass</option>
+                <option value="">Select An Option</option>
+                <option value="Basic - Shine Glass">Basic - Shine Glass</option>
+                <option value="Deep - Scrub Frame & Shine Glass">Deep - Scrub Frame & Shine Glass</option>
                 <option value="Not Needed">Not Needed</option>
               </select>
+              <span class="error-message" aria-live="polite" style="display: none;">Please select if you want us to clean the interior windows.</span>
             </div>
+            <br>
         
-            <div class="extra-item countable-extra">
+            <div class="extra-item">
               <label class="custom-label" for="insideCabinets">Inside Empty Kitchen Cabinets</label>
               <select id="insideCabinets" name="insideEmptyKitchenCabinets" required aria-required="true">
-                <option value="">Select an option</option>
-                <option value="Wipe Out">Wipe out cabinets</option>
+                <option value="">Select An Option</option>
+                <option value="Basic Wipe Out">Basic Wipe Out</option>
                 <option value="Deep Clean">Deep Clean</option>
                 <option value="Not Needed">Not Needed</option>
               </select>
+              <span class="error-message" aria-live="polite" style="display: none;">Please select if you want us to clean the inside empty kitchen cabinets.</span>
             </div>
         
           </div>
@@ -618,21 +684,53 @@
             <input type="text" id="booking-date" name="date" placeholder="Preferred dates" required/>
             <span class="error-message" aria-live="polite" style="display: none;">Please enter the preferred dates.</span>
           </div>
+
+
           <div class="booking-form-group">
-            <label for="booking-access">
-              How will we access the property? <br>
+            <label for="booking-accessMethod">
+              Access to the property<br>
               <small>Will you be home or will we need to access the property through a key code or other means?</small>
             </label>
-            <textarea
-              id="booking-access"
-              name="access"
-              rows="2"
-              placeholder="Access instructions"
-              aria-label="How will we access the property?"
+            <select
+              id="booking-accessMethod"
+              name="accessMethod"
               required
-            ></textarea>
-            <span class="error-message" aria-live="polite" style="display: none;">Please enter how we will access the property.</span>
+              aria-describedby="booking-access-desc"
+            >
+              <option value="">Select an option</option>
+              <option value="on_site">I’ll be home to let you in</option>
+              <option value="lockbox_code">I’ll provide a lockbox or keypad code</option>
+              <option value="hidden_key">Key hidden on premises (e.g. under mat)</option>
+              <option value="neighbor_key">Key left with neighbor/concierge</option>
+              <option value="other">Other (please specify below)</option>
+            </select>
+            <small id="booking-access-desc" class="sr-only">
+              Choose how we’ll get into your property
+            </small>
+            <span class="error-message" aria-live="polite" style="display:none;">
+              Please select how we will access the property.
+            </span>
           </div>
+          
+          <div class="booking-form-group" id="access-details-group" style="display:none;">
+            <label for="booking-accessDetails">
+              Please describe how we’ll gain access
+            </label>
+            <textarea
+              id="booking-accessDetails"
+              name="accessDetails"
+              rows="3"
+              placeholder="E.g. Key code: 1234; key under flower pot"
+              aria-label="Other access instructions"
+            ></textarea>
+            <span class="error-message" aria-live="polite" style="display:none;">
+              Please provide access instructions.
+            </span>
+          </div>
+
+
+
+
           <div class="booking-form-group">
             <label for="booking-details">
               Additional details <br>
@@ -680,7 +778,7 @@
               <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M5 20h14v-2H5v2zm7-18L5.33 9h3.34v4h4.66V9h3.34L12 2z"/>
               </svg>
-              <span>Choose files</span>
+              <span>Choose Images</span>
             </label>
             <br>
             <div class="upload-instructions">
@@ -701,7 +799,7 @@
             />
           
             <div class="upload-preview" aria-live="polite"></div>
-            <span class="error-message" aria-live="polite" style="display: none;">Please upload images of the areas you believe need the most attention.</span>
+            <span class="error-message" aria-live="polite" style="display: none;">Please upload at least 3 images of the areas you believe need the most attention.</span>
           </div>
           
           

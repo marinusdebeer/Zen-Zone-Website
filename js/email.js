@@ -1,202 +1,170 @@
 // Email.js
 const Email = (() => {
-  // ─── Configuration Constants ───────────────────────────────────────────────
-  const SERVICE_ID               = "service_156d2p8";     // Your EmailJS service ID
-  const FORM_TEMPLATE_ID         = "template_i7i7zz7";   // Admin template
-  const CONFIRMATION_TEMPLATE_ID = "template_nrcx4ff";   // User template
-  const USER_ID                  = "9CwBWUPI_pCtZXPr0";   // Your EmailJS user ID
+  // ─── Configuration ────────────────────────────────────────────────
+  const SERVICE_ID         = "service_156d2p8";     // Your EmailJS service ID
+  const ADMIN_TEMPLATE_ID  = "template_i7i7zz7";   // Admin notification template
+  const CLIENT_TEMPLATE_ID = "template_nrcx4ff";   // Client confirmation template
+  const USER_ID            = "9CwBWUPI_pCtZXPr0";   // Your EmailJS user ID
 
   // Initialize EmailJS
   emailjs.init(USER_ID);
 
-  // ─── Helpers ────────────────────────────────────────────────────────────
+  // ─── Helpers ─────────────────────────────────────────────────────
+
+  /** Generic EmailJS send wrapper */
+  const sendEmail = (templateId, payload) =>
+    emailjs.send(SERVICE_ID, templateId, payload);
 
   /**
-   * Uploads all chosen files to your FastAPI / S3 endpoint and returns
-   * { success, urls: string[], folder: string }
+   * Uploads all image files to your FastAPI/S3 endpoint.
+   * Returns { urls: string[], folder: string }.
    */
   async function uploadAllImages(files, data) {
     const formData = new FormData();
+    const time = new Date().getTime();
     for (const file of files) {
       formData.append("images", file);
-      formData.append('first_name', data.firstName);
-      formData.append('last_name',  data.lastName);
-      formData.append('phone',      data.phone);
+      formData.append("first_name", data.firstName || "Client");
+      formData.append("last_name",  data.lastName || "Client");
+      formData.append("phone",      data.phone || time.toString());
     }
-
     const resp = await fetch("https://prod.zenzonecleaning.ca/upload-images", {
       method: "POST",
       body: formData,
     });
     const result = await resp.json();
-    if (!result.success) {
-      throw new Error("Image upload failed");
-    }
-    return result; // { urls: [...], folder: "uploads/booking-..." }
+    if (!result.success) throw new Error("Image upload failed");
+    return result; // { urls, folder }
   }
+
+  /** Flattens your booking data into [label, value] pairs */
+  const fieldRows = data => [
+    ["First Name",               data.firstName],
+    ["Last Name",                data.lastName],
+    ["Company",                  data.company],
+    ["Email",                    data.email],
+    ["Phone",                    data.phone],
+    ["Industry",                 data.industry],
+    ["Property Type",            data.propertyType],
+    ["Reason for Cleaning",      data.reason],
+    ["Service Type",             data.serviceType],
+    ["Booking Type",             data.bookingType],
+    ["Frequency",                data.frequency],
+    ["First Time Deep Cleaning", data.firstTimeDeepCleaning],
+    ["Package (hrs)",            data.package],
+    ["Extras",                   Array.isArray(data.extras) ? data.extras.join(", ") : data.extras],
+    ["Interior Windows",         data.interiorWindows],
+    ["Kitchen Cabinets",         data.insideEmptyKitchenCabinets],
+    ["Square Footage",           data.squareFootage],
+    ["Levels",                   data.levels],
+    ["Bedrooms",                 data.bedrooms],
+    ["Bathrooms",                data.bathrooms],
+    ["Powder Rooms",             data.powderRooms],
+    ["Kitchens",                 data.kitchens],
+    ["People in Household",      data.people],
+    ["Pets",                     data.pets],
+    ["Furnished",                data.furnished],
+    ["Street",                   data.address],
+    ["City",                     data.city],
+    ["Province",                 data.province],
+    ["Postal",                   data.postal],
+    ["Preferred Date",           data.date],
+    ["Access Method",            data.accessMethod],
+    ["Access Details",           data.accessDetails],
+    ["Notes",                    data.details],
+    ["Heard About",              data.hearAbout]
+  ];
 
   /**
-   * Formats the booking data into a plain-text block.
-   * Used for the customer confirmation email.
+   * Builds the shared <h2> + <table> HTML block.
+   * @param {string} title — heading text
+   * @param {[string,string][]} rows — output of fieldRows(data)
    */
-  function formatPlainText(data) {
-    return [
-      "===== Contact Information =====",
-      `First Name: ${data.firstName || ""}`,
-      `Last Name:  ${data.lastName || ""}`,
-      `Company:    ${data.company || ""}`,
-      `Email:      ${data.email || ""}`,
-      `Phone:      ${data.phone || ""}`,
-      "",
-      "===== Cleaning Details =====",
-      `Industry:              ${data.industry || ""}`,
-      `Property Type:         ${data.propertyType || "N/A"}`,
-      `Reason for Cleaning:   ${data.reason || "N/A"}`,
-      "",
-      "===== Service Details =====",
-      `Service Type:          ${data.serviceType  || "N/A"}`,
-      `Booking Type:          ${data.bookingType  || "N/A"}`,
-      `Frequency:             ${data.frequency    || "N/A"}`,
-      `First Time Deep Cleaning: ${data.firstTimeDeepCleaning || "N/A"}`,
-      `Package (hrs):         ${data.package      || "N/A"}`,
-      `Extras:                ${Array.isArray(data.extras) ? data.extras.join(", ") : (data.extras||"N/A")}`,
-      `Interior Windows:      ${data.interiorWindows || "N/A"}`,
-      `Kitchen Cabinets:      ${data.insideEmptyKitchenCabinets || "N/A"}`,
-      "",
-      "===== Property Details =====",
-      `Square Footage:        ${data.squareFootage || "N/A"}`,
-      `Levels:                ${data.levels        || "N/A"}`,
-      `Bedrooms:              ${data.bedrooms      || "N/A"}`,
-      `Bathrooms:             ${data.bathrooms     || "N/A"}`,
-      `Powder Rooms:          ${data.powderRooms   || "N/A"}`,
-      `Kitchens:              ${data.kitchens      || "N/A"}`,
-      `People in Household:   ${data.people        || "N/A"}`,
-      `Year Built:            ${data.builtYear     || "N/A"}`,
-      `Last Renovated:        ${data.lastRenovated || "N/A"}`,
-      `Pets:                  ${data.pets          || "N/A"}`,
-      `Furnished:             ${data.furnished     || "N/A"}`,
-      "",
-      "===== Address =====",
-      `Street:    ${data.address || ""}`,
-      `City:      ${data.city    || ""}`,
-      `Province:  ${data.province|| ""}`,
-      `Postal:    ${data.postal  || ""}`,
-      "",
-      "===== Dates =====",
-      `Preferred Date: ${data.date || ""}`,
-      "",
-      "===== Notes & Access =====",
-      `Access: ${data.access || ""}`,
-      `Notes:  ${data.details || ""}`,
-      "",
-      `Heard About Us: ${data.hearAbout || ""}`
-    ].join("\n");
-  }
+  const buildBaseHtml = (title, rows) => `
+    <h2 style="font-family:sans-serif;color:#333;margin-bottom:8px;">
+      ${title}
+    </h2>
+    <table style="border-collapse:collapse;width:100%;font-family:sans-serif;color:#333;margin-bottom:16px;">
+      ${rows.map(
+        ([label, val]) => `
+        <tr>
+          <th style="text-align:left;padding:4px 8px;border-bottom:1px solid #eee;">
+            ${label}
+          </th>
+          <td style="padding:4px 8px;border-bottom:1px solid #eee;">
+            ${val || "—"}
+          </td>
+        </tr>`
+      ).join("")}
+    </table>`;
 
-  // ─── Main function ───────────────────────────────────────────────────────
+  /** Builds the UTM/GCLID tracking block for admin */
+  const buildTrackingBlock = () => `
+    <h3 style="font-family:sans-serif;margin-top:0;">Marketing Tracking</h3>
+    <ul style="font-family:sans-serif;line-height:1.4;margin-top:4px;">
+      ${["utm_campaign","utm_source","utm_medium","utm_content","utm_term","gclid"]
+        .map(key => `
+          <li>
+            <strong>${key.replace(/_/g,' ').toUpperCase()}:</strong>
+            ${localStorage.getItem(key) || "—"}
+          </li>`).join("")}
+    </ul>`;
 
-  async function sendBookingRequest(data) {
-    // 1) Upload images (if any) to S3 via your FastAPI endpoint
-    const imageInput = document.getElementById("booking-images");
-    let imageUrls = [];
-    let folder     = "";
-    if (imageInput?.files?.length) {
-      const result   = await uploadAllImages(imageInput.files, data);
-      imageUrls      = result.urls;
-      folder         = result.folder;
-    }
-    const archiveLink = `https://prod.zenzonecleaning.ca/images/archive/${folder}`;
-    // console.log(archiveLink);
-    Tracking.sendData('images', archiveLink);
-
-    // 2) Build HTML table of all fields for admin email
-    const fields = [
-      ["First Name",               data.firstName],
-      ["Last Name",                data.lastName],
-      ["Company",                  data.company],
-      ["Email",                    data.email],
-      ["Phone",                    data.phone],
-      ["Industry",                 data.industry],
-      ["Property Type",            data.propertyType],
-      ["Reason for Cleaning",      data.reason],
-      ["Service Type",             data.serviceType],
-      ["Booking Type",             data.bookingType],
-      ["Frequency",                data.frequency],
-      ["First Time Deep Cleaning", data.firstTimeDeepCleaning],
-      ["Package (hrs)",            data.package],
-      ["Extras",                   Array.isArray(data.extras) ? data.extras.join(", ") : data.extras],
-      ["Interior Windows",         data.interiorWindows],
-      ["Kitchen Cabinets",         data.insideEmptyKitchenCabinets],
-      ["Square Footage",           data.squareFootage],
-      ["Levels",                   data.levels],
-      ["Bedrooms",                 data.bedrooms],
-      ["Bathrooms",                data.bathrooms],
-      ["Powder Rooms",             data.powderRooms],
-      ["Kitchens",                 data.kitchens],
-      ["People in Household",      data.people],
-      ["Year Built",               data.builtYear],
-      ["Last Renovated",           data.lastRenovated],
-      ["Pets",                     data.pets],
-      ["Furnished",                data.furnished],
-      ["Street",                   data.address],
-      ["City",                     data.city],
-      ["Province",                 data.province],
-      ["Postal",                   data.postal],
-      ["Preferred Date",           data.date],
-      ["Access",                   data.access],
-      ["Notes",                    data.details],
-      ["Heard About",              data.hearAbout]
-    ];
-    const rowsHtml = fields.map(
-      ([label, val]) => `
-      <tr>
-        <th style="text-align:left;padding:4px 8px;border-bottom:1px solid #eee;">${label}</th>
-        <td style="padding:4px 8px;border-bottom:1px solid #eee;">${val||"—"}</td>
-      </tr>`
-    ).join("");
-
-    // 3) Inline thumbnails for admin
-    const thumbsHtml = imageUrls.length
-      ? `<p style="font-family:sans-serif;">
-           <a href="${archiveLink}">Download all images as ZIP</a>
+  /**
+   * Builds the admin-only image download link block.
+   * @param {string[]} urls
+   * @param {string} folder
+   */
+  const buildImageSection = (urls, folder) =>
+    urls.length
+      ? `<p style="font-family:sans-serif;margin-top:0;">
+           <a href="https://prod.zenzonecleaning.ca/images/archive/${folder}">
+             📦 Download all images as ZIP
+           </a>
          </p>`
       : "";
 
-    // 4) UTM/GCLID block
-    const utmHtml = `
-      <h3 style="font-family:sans-serif;">Marketing Tracking</h3>
-      <ul style="font-family:sans-serif;line-height:1.4;">
-        <li><strong>UTM Campaign:</strong> ${localStorage.getItem("utm_campaign")||"—"}</li>
-        <li><strong>UTM Source:</strong>   ${localStorage.getItem("utm_source")||"—"}</li>
-        <li><strong>UTM Medium:</strong>   ${localStorage.getItem("utm_medium")||"—"}</li>
-        <li><strong>UTM Content:</strong>  ${localStorage.getItem("utm_content")||"—"}</li>
-        <li><strong>UTM Term:</strong>     ${localStorage.getItem("utm_term")||"—"}</li>
-        <li><strong>GCLID:</strong>        ${localStorage.getItem("gclid")||"—"}</li>
-      </ul>`;
+  // ─── Main Function ─────────────────────────────────────────────────
 
-    // 5) Compose full admin HTML
+  /**
+   * Sends both the admin notification and the client confirmation emails.
+   * @param {object} data — your collected booking data
+   */
+  async function sendBookingRequest(data) {
+    // 1) Handle image upload (if any)
+    const imageInput = document.getElementById("booking-images");
+    let imageUrls = [], folder = "";
+    if (imageInput?.files?.length) {
+      const result = await uploadAllImages(imageInput.files, data);
+      imageUrls = result.urls;
+      folder    = result.folder;
+    }
+
+    // 2) Track the archive link
+    const archiveLink = `https://prod.zenzonecleaning.ca/images/archive/${folder}`;
+    Tracking.sendData('images', archiveLink);
+
+    // 3) Prepare the shared table HTML
+    const rows = fieldRows(data);
+
+    // 4) Compose & send Admin email
     const adminHtml = `
-      <h2 style="font-family:sans-serif;color:#333;">New Booking Request</h2>
-      <table style="border-collapse:collapse;width:100%;font-family:sans-serif;color:#333;margin-bottom:16px;">
-        ${rowsHtml}
-      </table>
-      ${thumbsHtml}
-      ${utmHtml}
+      ${buildBaseHtml("New Booking Request", rows)}
+      ${buildImageSection(imageUrls, folder)}
+      ${buildTrackingBlock()}
     `;
-
-    // 6) Send Admin email (use {{{message}}} in your EmailJS template!)
-    await emailjs.send(SERVICE_ID, FORM_TEMPLATE_ID, {
-      lead_name: `${data.firstName||""} ${data.lastName||""}`.trim(),
+    await sendEmail(ADMIN_TEMPLATE_ID, {
+      lead_name: `${data.firstName} ${data.lastName}`.trim(),
       message:   adminHtml
     });
 
-    // 7) Send Confirmation to User (simple HTML summary)
-    const userHtml = formatPlainText(data).replace(/\n/g, "<br>");
-    return emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, {
-      to_email:  data.email,
+    // 5) Compose & send Client confirmation email
+    const clientHtml = buildBaseHtml("", rows);
+    return sendEmail(CLIENT_TEMPLATE_ID, {
+      to_email:  data.email || "marinusdebeer@gmail.com",
       from_name: "Zen Zone Cleaning Services",
-      to_name:   data.firstName,
-      message:   userHtml
+      to_name:   data.firstName || "Client",
+      message:   clientHtml
     });
   }
 
