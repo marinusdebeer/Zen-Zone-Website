@@ -819,8 +819,8 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script> -->
   <!-- Other JS Files -->
   <script src="/js/navbar.js" defer></script>
-  <!-- <script src="/js/email.js" defer></script>
-  <script src="/js/booking.js" defer></script> -->
+  <!-- <script src="/js/email.js" defer></script> -->
+  <script src="/js/booking.js" defer></script>
 
   <script>
     (function () {
@@ -854,134 +854,117 @@
   </script>
 
 <script>
-  (function () {
+  (function() {
+    // Idle helper
     function onIdle(fn) {
       if ('requestIdleCallback' in window) {
         requestIdleCallback(fn, { timeout: 2000 });
       } else {
-        window.addEventListener('load', function () {
+        window.addEventListener('load', function() {
           setTimeout(fn, 300);
         });
       }
     }
-
-    // Google Analytics, PostHog, Tawk.to Chat (on idle)
-    // onIdle(function () {
-    //   // ─────────── Google Analytics ───────────
-    //   var ga = document.createElement('script');
-    //   ga.async = true;
-    //   ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72';
-    //   document.head.appendChild(ga);
-    //   ga.onload = function () {
-    //     window.dataLayer = window.dataLayer || [];
-    //     function gtag() { dataLayer.push(arguments); }
-    //     gtag('js', new Date());
-    //     if ('requestIdleCallback' in window) {
-    //       requestIdleCallback(function () {
-    //         gtag('config', 'G-8H1891ZW72');
-    //       });
-    //     } else {
-    //       setTimeout(function () {
-    //         gtag('config', 'G-8H1891ZW72');
-    //       }, 300);
-    //     }
-    //   };
-
+  
+    // Run all third-party & custom loads when the browser is idle
+    onIdle(function() {
+      // ─────────── Google Analytics ───────────
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-8H1891ZW72';
+      document.head.appendChild(ga);
+      ga.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function(){ gtag('config', 'G-8H1891ZW72'); });
+        } else {
+          setTimeout(function(){ gtag('config', 'G-8H1891ZW72'); }, 300);
+        }
+      };
+  
       // ─────────── PostHog ───────────
-      !(function (t, e) {
-        var o, n, p, r;
-        e.__SV || ((window.posthog = e), (e._i = []), (e.init = function (i, s, a) {
-          function g(t, e) {
-            var o = e.split('.');
-            2 == o.length && ((t = t[o[0]]), (e = o[1]));
-            t[e] = function () {
-              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
-            };
-          }
-          p = t.createElement('script');
-          p.type = 'text/javascript';
-          p.async = !0;
-          p.crossOrigin = 'anonymous';
-          p.src = s.api_host.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js';
-          r = t.getElementsByTagName('script')[0];
-          r.parentNode.insertBefore(p, r);
-          var u = e;
-          void 0 !== a ? (u = e[a] = []) : (a = 'posthog');
-          u.people = u.people || [];
-          u.toString = function (t) {
-            var e = 'posthog';
-            return 'posthog' !== a && (e += '.' + a), t || (e += ' (stub)'), e;
+      (function(t,e){
+        if (!e.__SV) {
+          window.posthog = e; e._i = [];
+          e.init = function(i,s,a){
+            var p = t.createElement('script'),
+                r = t.getElementsByTagName('script')[0],
+                u = e,
+                methods = 'capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId'.split(' ');
+            
+            p.type = 'text/javascript';
+            p.async = true;
+            p.crossOrigin = 'anonymous';
+            p.src = s.api_host.replace('.i.posthog.com','-assets.i.posthog.com') + '/static/array.js';
+            r.parentNode.insertBefore(p, r);
+  
+            if (a !== undefined) u = e[a] = [];
+            u.people = u.people || [];
+            u.toString = function(t){ var n='posthog'; return a!=='posthog' && (n += '.'+a), t|| (n+' (stub)'); };
+            u.people.toString = function(){ return u.toString(1)+'.people (stub)'; };
+  
+            methods.forEach(function(name){ u[name] = function(){ u.push([name].concat([].slice.call(arguments))); }; });
+            e._i.push([i,s,a]);
           };
-          u.people.toString = function () {
-            return u.toString(1) + '.people (stub)';
-          };
-          o = 'init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId'.split(' ');
-          for (n = 0; n < o.length; n++) g(u, o[n]);
-          e._i.push([i, s, a]);
-        }), (e.__SV = 1));
+          e.__SV = 1;
+        }
       })(document, window.posthog || []);
       posthog.init('phc_owjzFx1YRrgDgk83WSitkE7VW6va3VwHXPaB7esRzzR', {
         api_host: 'https://us.i.posthog.com',
         disable_session_recording: location.hostname === 'localhost',
         person_profiles: 'always'
       });
-      posthog.onFeatureFlags(function () {
+      posthog.onFeatureFlags(function(){
         if (posthog.get_distinct_id() === '0194bd19-58dc-7531-96c9-aa11544a3415') {
           posthog.stopSessionRecording();
         }
       });
       posthog.register({ site_domain: location.hostname });
       posthog.identify(posthog.get_distinct_id(), { site_domain: location.hostname });
-
+  
       // ─────────── Tawk.to Chat ───────────
-    //   var tawk = document.createElement('script');
-    //   tawk.async = true;
-    //   tawk.src = 'https://embed.tawk.to/65fafd4ea0c6737bd122e1cd/1hpe6qv15';
-    //   tawk.charset = 'UTF-8';
-    //   tawk.setAttribute('crossorigin', '*');
-    //   document.body.appendChild(tawk);
-    // });
-
-    // 1) Load the EmailJS SDK
-    const sdk = document.createElement('script');
-    sdk.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-    sdk.async = true;
-
-    sdk.onload = function () {
-      // 2a) Now that `emailjs` is defined, load your email.js
-      const emailCustom = document.createElement('script');
-      emailCustom.src = '/js/email.js';
-      emailCustom.defer = true;
-      document.body.appendChild(emailCustom);
-
-      // 2b) Then load booking.js
-      const bookingScript = document.createElement('script');
-      bookingScript.src = '/js/booking.js';
-      bookingScript.defer = true;
-      document.body.appendChild(bookingScript);
-    };
-
-    document.head.appendChild(sdk);
-
-
-     // ─────────── reCAPTCHA (on idle) ───────────
-    //  onIdle(function () {
-    //   var rec = document.createElement('script');
-    //   rec.src = 'https://www.google.com/recaptcha/api.js?render=6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C';
-    //   rec.async = true;
-    //   document.head.appendChild(rec);
-    // });
-
-    // ─────────── Mascot (on idle) ───────────
-    // onIdle(function () {
-    //   var masc = document.createElement('script');
-    //   masc.src = 'js/mascot.js';
-    //   masc.defer = true;  // or masc.async = true
-    //   document.body.appendChild(masc);
-    // });
-
+      var tawk = document.createElement('script');
+      tawk.async = true;
+      tawk.src = 'https://embed.tawk.to/65fafd4ea0c6737bd122e1cd/1hpe6qv15';
+      tawk.charset = 'UTF-8';
+      tawk.setAttribute('crossorigin', '*');
+      document.body.appendChild(tawk);
+  
+      // ─────────── reCAPTCHA ───────────
+      var rec = document.createElement('script');
+      rec.src = 'https://www.google.com/recaptcha/api.js?render=6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C';
+      rec.async = true;
+      document.head.appendChild(rec);
+  
+      // ─────────── Mascot ───────────
+      var masc = document.createElement('script');
+      masc.src = 'js/mascot.js';
+      masc.defer = true;
+      document.body.appendChild(masc);
+  
+      // ─────────── EmailJS + Custom Scripts ───────────
+      var sdk = document.createElement('script');
+      sdk.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+      sdk.async = true;
+      sdk.onload = function() {
+        var emailJs = document.createElement('script');
+        emailJs.src = '/js/email.js';
+        emailJs.defer = true;
+        document.body.appendChild(emailJs);
+  
+        // var bookingJs = document.createElement('script');
+        // bookingJs.src = '/js/booking.js';
+        // bookingJs.defer = true;
+        // document.body.appendChild(bookingJs);
+      };
+      document.head.appendChild(sdk);
+    });
   })();
-</script>
+  </script>
+  
+
 </body>
 
 </html>
