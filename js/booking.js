@@ -791,7 +791,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
-  window.BookingFormInstance.goToStep(6);
+  // window.BookingFormInstance.goToStep(6);
 
   
   const input = document.getElementById('booking-images');
