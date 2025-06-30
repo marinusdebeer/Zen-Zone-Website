@@ -843,7 +843,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isRecurring) {
       imageInput.removeAttribute('required');
     } else {
-      imageInput.setAttribute('required', 'required');
+      // imageInput.setAttribute('required', 'required');
     }
   }
 
