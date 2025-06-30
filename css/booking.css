@@ -1,97 +1,64 @@
-/* booking.css */
+/* booking.css simplified and deduped */
 
-/* Base Styles */
-.navbar {
-  box-shadow: none;
+/* Layout */
+.moose-in-suit {
+  width: 120px;
+  height: 120px;
+  margin-bottom: -20px;
 }
-.grecaptcha-badge {
-  /* left: 0 !important; */
-  /* right: auto !important; */
-  bottom: 170px !important;
-}
-
 .booking-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
   padding: calc(var(--navbar-height) + 20px) 0 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background: var(--color-bg);
 }
 .booking-form-wrapper {
   width: 80%;
   max-width: 1000px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: auto;
 }
 
-/* Step Tracker */
-/* Updated for the consolidated step 5 element (#step5) and dynamic label (#step5Label) */
+/* Progress Tracker */
 .booking-progress-tracker {
+  position: sticky;
+  top: var(--navbar-height);
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 150px;
+  margin: 0;
   padding: 0;
   background: var(--color-tertiary);
-  position: sticky;
-  top: var(--navbar-height);
-  height: 150px;
   z-index: 1000;
 }
 .booking-progress-tracker ol {
   display: flex;
-  list-style: none;
+  width: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
+  list-style: none;
 }
 .booking-step {
   flex: 1;
-  position: relative;
+  margin: 3px;
+  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem 0;
-  margin: 3px;
   cursor: pointer;
   text-align: center;
 }
-.booking-step:last-child::after {
-  display: none;
-}
-.step-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0 1rem;
-}
-.booking-step-number {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-right: 0.5rem;
-}
 .booking-step-label {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-.step-summary {
-  margin-top: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--color-white);
-  font-weight: 500;
-  text-align: left;
-  padding: 0 1rem;
-  word-wrap: break-word;
-  width: 100%;
+  font: bold 1.1rem;
 }
 .booking-step.completed,
 .booking-step.active {
   background: var(--color-secondary);
-  color: var(--color-white);
+  color: #fff;
 }
 .booking-step.active {
   box-shadow: 0 6px 12px var(--color-shadow);
@@ -100,10 +67,9 @@
   background: var(--color-bg);
   color: var(--color-primary-text);
 }
-.booking-step.clickable:hover,
-.booking-step.active:hover {
+.booking-step:hover {
   background: var(--color-secondary-hover);
-  color: var(--color-white);
+  color: #fff;
 }
 .booking-step:focus {
   outline: 3px solid var(--color-focus);
@@ -111,109 +77,63 @@
 }
 
 /* Form Steps */
-.booking-form-step {
-  display: none;
-}
-.booking-form-step label {
-  display: block;
-  font-size: 1rem;
-  font-weight: 500;
-}
-.booking-form-step--active {
-  display: block;
-  width: 100%;
-  /* animation: fadeIn 0.5s ease-in-out; */
-  opacity: 1;
-  /* transition: opacity 0.5s ease-in-out; */
-}
-/* @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-} */
+.booking-form-step { display: none; }
+.booking-form-step--active { display: block; width: 100%; }
 
-/* Form Group */
+/* Form Groups */
 .booking-form-group {
   margin-bottom: 1.5rem;
-  line-height: 1;
 }
-.booking-form-group label {
+.booking-form-group label,
+.booking-form-group h3 {
+  display: block;
+  font-weight: 500;
   margin-bottom: 0.5rem;
-  font-size: 16px;
-  line-height: 1.2;
 }
-.booking-form-group small{
-  font-size: 12px;
-  margin-top: 0.2rem;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  /* line-height: 0.2 !important; */
-  font-weight: 400;
+.booking-form-group small {
+  display: block;
+  font: 12px/1.2 sans-serif;
   color: var(--color-secondary-text);
+  margin: 0.2rem 0 0.5rem;
 }
 .booking-form-group input,
-.booking-form-group select,
 .booking-form-group textarea,
-.booking-form-group input[type="range"] {
+.booking-form-group select {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--color-gray);
   border-radius: 4px;
-  font-size: 1rem;
-  margin-top: 0.5rem;
+  font: 1rem/1 sans-serif;
+  box-sizing: border-box;
 }
-.booking-form-group input[type="range"] {
-  padding: 0;
-  margin-top: 0.5rem;
-  cursor: pointer;
+.booking-form-group select {
+  border-width: 2px;
+  border-color: var(--color-secondary);
+  border-radius: 6px;
 }
-
-/* Range Slider */
-.booking-form-step input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 12px;
-  background: var(--slider-track-color);
-  border-radius: 4px;
+.booking-form-group select:focus {
   outline: none;
-  /* transition: background 0.3s ease-in-out; */
-}
-.booking-form-step input[type="range"]::-webkit-slider-thumb,
-.booking-form-step input[type="range"]::-moz-range-thumb,
-.booking-form-step input[type="range"]::-ms-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: var(--slider-thumb-color);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  /* transition: background 0.3s; */
-}
-.booking-form-step input[type="range"]::-webkit-slider-thumb:hover,
-.booking-form-step input[type="range"]::-moz-range-thumb:hover,
-.booking-form-step input[type="range"]::-ms-thumb:hover {
-  background: var(--color-secondary-hover);
-}
-.booking-form-step input[type="range"]::-moz-range-track,
-.booking-form-step input[type="range"]::-ms-fill-lower,
-.booking-form-step input[type="range"]::-ms-fill-upper {
-  height: 8px;
-  border-radius: 4px;
-  background: transparent;
-}
-.booking-form-step input[type="range"]::-moz-range-progress {
-  background: var(--slider-fill-color);
-  height: 8px;
-  border-radius: 4px;
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px var(--color-shadow);
 }
 
-/* Radio Buttons as Buttons */
+/* Buttons & Radio Options */
 .booking-form-options {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}
+.booking-btn-option {
+  flex: 1 1 45%;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--color-secondary);
+  border-radius: 6px;
+  background: var(--color-bg);
+  color: var(--color-primary-text);
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
 }
 .booking-form-options input[type="radio"] {
   position: absolute;
@@ -221,99 +141,66 @@
   width: 0;
   height: 0;
 }
-.booking-form-options label.booking-btn-option {
-  display: inline-block;
-  flex: 1 1 45%;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--color-secondary);
-  border-radius: 6px;
-  background: var(--color-bg);
-  color: var(--color-primary-text);
-  cursor: pointer;
-  text-align: center;
-  user-select: none;
-  margin-bottom: 0.5rem;
-  /* transition: background 0.3s ease; */
-}
-.booking-form-options label.booking-btn-option:hover,
-.booking-form-options input[type="radio"]:checked + label.booking-btn-option {
+.booking-form-options input:checked + .booking-btn-option,
+.booking-btn-option:hover {
   background: var(--color-secondary);
-  color: var(--color-white);
+  color: #fff;
   box-shadow: 0 4px 8px var(--color-shadow);
 }
-.booking-form-options input[type="radio"]:hover + label.booking-btn-option,
-.booking-form-options input[type="radio"]:focus + label.booking-btn-option {
-  background: var(--color-secondary-hover);
-  color: var(--color-white);
+.booking-form-options input[type="radio"]:hover + .booking-btn-option,
+.booking-form-options input[type="radio"]:focus + .booking-btn-option {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
-/* Extras Container */
-.extras-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: flex-start; /* ⬅️ LEFT align content */
-  width: 100%;
-  z-index: 1;
-}
-.extra-item {
-  width: 100%;
-  /* align vertically center */
+/* Checkboxes */
+.custom-checkbox {
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start; /* ⬅️ Left-align inside flex parent */
-}
-.extra-item.countable-extra {
-  /* flex-direction: column; */
-  width: 100%;
-  justify-content: flex-start;
-}
-.custom-label {
-  margin-bottom: 0;
-}
-.slider-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  width: 100%;
-}
-.slider-container input[type="range"] {
-  flex: 1;
+  gap: 0.5rem;
+  position: relative;
   cursor: pointer;
-}
-.slider-container span {
-  min-width: 30px;
-  font-weight: bold;
-}
-
-/* Package Options */
-.package-option {
-  display: block;
-  padding: 1rem;
-  border: 2px solid var(--color-primary);
-  border-radius: 8px;
-  background: var(--color-bg);
-  color: var(--color-primary-text);
-  cursor: pointer;
-  text-align: center;
   user-select: none;
-  margin-bottom: 1rem;
-  /* transition: background 0.3s ease, transform 0.2s ease; */
+  padding-left: 1.75em;
 }
-.package-option:hover,
-.package-option.active {
-  background: var(--color-primary-hover);
-  color: var(--color-white);
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  width: 1.25em;
+  height: 1.25em;
+  cursor: pointer;
 }
-.package-option.active {
-  transform: scale(1.02);
-  box-shadow: 0 4px 8px var(--color-shadow);
+.custom-checkbox .checkmark {
+  position: absolute;
+  left: 0;
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid var(--color-secondary);
+  border-radius: 4px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.package-option:focus {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
+.custom-checkbox .checkmark::after {
+  content: "";
+  display: none;
+  width: 0.35em;
+  height: 0.7em;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.custom-checkbox input:checked ~ .checkmark {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+.custom-checkbox input:checked ~ .checkmark::after {
+  display: block;
+}
+.custom-checkbox .label-text {
+  margin-left: 0.5rem;
 }
 
 /* Form Navigation */
@@ -328,25 +215,22 @@
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font: 1rem/1 sans-serif;
   cursor: pointer;
-  /* transition: background 0.3s ease, transform 0.2s ease; */
 }
 .booking-btn-next,
 .booking-btn-submit {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: #fff;
 }
 .booking-btn-prev {
   background: var(--color-gray);
   color: var(--color-primary-text);
 }
 .booking-btn-next:hover,
-.booking-btn-submit:hover {
-  background: var(--color-primary-hover);
-}
+.booking-btn-submit:hover,
 .booking-btn-prev:hover {
-  background: var(--color-light-gray);
+  opacity: 0.9;
 }
 .booking-btn-next:focus,
 .booking-btn-prev:focus,
@@ -355,152 +239,48 @@
   outline-offset: 2px;
 }
 
-/* Toast Notification */
+/* Toast */
 .toast {
   position: fixed;
   top: 20px;
   right: 20px;
   padding: 1rem 1.5rem;
   border-radius: 6px;
-  box-shadow: 0 4px 8px var(--color-shadow);
   background: var(--color-primary-text);
-  color: var(--color-white);
-  z-index: 3000;
+  color: #fff;
+  box-shadow: 0 4px 8px var(--color-shadow);
   opacity: 0;
-  /* transition: opacity 0.5s ease-in-out; */
+  transition: opacity 0.3s;
+  z-index: 3000;
 }
-.toast.show {
-  opacity: 1;
-}
-.toast.success {
-  background: var(--color-toast-success);
-}
-.toast.error {
-  background: var(--color-toast-error);
-}
+.toast.show { opacity: 1; }
 
-/* Error States */
-.border-red-500 {
-  border-color: var(--color-error);
-}
+/* Errors */
 .error-message {
   color: var(--color-error);
   font-size: 14px;
   font-weight: 400;
   margin-top: 0.2rem;
 }
+.border-red-500 { border-color: var(--color-error); }
 
-
-
-
-/* clickable row, inline-flex keeps box + text on one line */
-.custom-checkbox {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  user-select: none;
-  font-size: 1rem;
-  color: var(--color-secondary-text);
-  position: relative;
-}
-
-/* hide default checkbox (still accessible) */
-.custom-checkbox input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  width: 1em;
-  height: 1em;
-  margin: 0;
-  cursor: pointer;
-}
-
-/* custom box */
-.custom-checkbox .checkmark {
-  flex-shrink: 0;
-  width: 1.25em;
-  height: 1.25em;
-  border: 2px solid var(--color-secondary);
-  border-radius: 4px;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* checkmark icon */
-.custom-checkbox .checkmark::after {
-  content: "";
-  display: none;
-  width: 0.35em;
-  height: 0.7em;
-  border: solid var(--color-white);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-/* show when checked */
-.custom-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
-  display: block;
-}
-
-.custom-checkbox .label-text {
-  display: inline-block;
-  line-height: 1;
-  vertical-align: middle;
-}
-
-.extras-container .extra-item {
-  display: flex;
-}
-
-
-.booking-form-step label.custom-checkbox {
-  display: flex;
-}
-
-/* fill the box green when checked */
-.custom-checkbox input[type="checkbox"]:checked + .checkmark {
-  background-color: var(--color-secondary);
-  border-color: var(--color-secondary);
-}
-
-/* keep the little arrow in white */
-.custom-checkbox .checkmark::after {
-  border-color: #fff;
-}
-
-
-
-
-
-/* Tooltip for Service */
-.service {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
+/* Tooltip */
+.service { position: relative; cursor: pointer; }
 .service .tooltip {
-  visibility: hidden;
-  width: 400px;
-  background: var(--color-tertiary);
-  text-align: left;
-  padding: 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1.4;
   position: absolute;
   bottom: 120%;
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: 8px;
+  visibility: hidden;
+  width: 400px;
+  padding: 10px;
+  background: var(--color-tertiary);
+  color: #fff;
+  font: 14px/1.4 sans-serif;
+  border-radius: 6px;
   opacity: 0;
-  /* transition: opacity 0.3s, transform 0.2s; */
+  transition: opacity 0.2s, transform 0.2s;
   z-index: 1000;
-}
-.service .tooltip p {
-  color: var(--color-white);
 }
 .service .tooltip::after {
   content: '';
@@ -508,302 +288,16 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: black transparent transparent transparent;
+  border: 6px solid transparent;
+  border-top-color: var(--color-tertiary);
 }
-/* Show tooltip on both hover and focus */
 .service:hover .tooltip,
 .service:focus .tooltip {
   visibility: visible;
   opacity: 1;
-  transform: translateX(-50%) translateY(-5px);
-}
-@media (max-width: 480px) {
-  .service .tooltip {
-    width: 100%;
-    transform: translateX(-50%);
-  }
-  .service .tooltip::after {
-    top: -12px;
-    border-color: transparent transparent black transparent;
-  }
+  transform: translate(-50%, -5px);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .booking-form-group label {
-    font-size: 18px;
-  }
-  
-  .booking-form-group small{
-    font-size: 12px;
-    margin-top: 0.2rem;
-    line-height: 1.2;
-    font-weight: 400;
-    color: var(--color-secondary-text);
-  }
-  .booking-progress-tracker {
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    top: var(--navbar-height-tablet);
-    height: auto;
-    padding: 10px 0;
-  }
-  .booking-step {
-    border-bottom: 2px solid var(--color-primary);
-    min-height: 80px;
-  }
-  .booking-container {
-    padding-top: calc(var(--navbar-height-tablet) + 20px);
-    padding-bottom: 80px;
-  }
-  .step-summary {
-    font-size: 0.75rem;
-    padding: 0 0.5rem;
-  }
-  .package-option {
-    flex: 1 1 100%;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    max-width: 250px;
-  }
-  .booking-form-options {
-    gap: 0.5rem;
-  }
-  .custom-checkbox .checkmark {
-    height: 18px;
-    width: 18px;
-  }
-  .custom-checkbox {
-    font-size: 0.95rem;
-  }
-}
-@media (max-width: 580px) {
-  .service,
-  .industry {
-    max-width: 320px;
-    min-width: 250px;
-  }
-  .package-option {
-    max-width: 220px;
-  }
-  .booking-form-options {
-    justify-content: center;
-  }
-  .booking-container {
-    padding-top: calc(var(--navbar-height-mobile) + 20px);
-    padding-bottom: 60px;
-  }
-  .booking-container h2 {
-    font-size: 1.8rem;
-  }
-  .booking-step-label {
-    font-size: 0.9rem;
-  }
-  .booking-btn-next,
-  .booking-btn-prev,
-  .booking-btn-submit {
-    width: 100%;
-    padding: 0.75rem;
-  }
-  .step-summary {
-    font-size: 0.7rem;
-    padding: 0 0.3rem;
-  }
-  .custom-checkbox .checkmark {
-    height: 18px;
-    width: 18px;
-  }
-  .custom-checkbox {
-    font-size: 0.9rem;
-  }
-  .extras-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Extras Buttons */
-.extras-btn {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--color-secondary);
-  border-radius: 6px;
-  background: var(--color-bg);
-  color: var(--color-primary-text);
-  cursor: pointer;
-  /* transition: background 0.3s, color 0.3s, transform 0.2s; */ 
-  font-size: 1rem;
-  width: 250px;
-  text-align: center;
-}
-.extras-btn:hover,
-.extras-btn:focus {
-  background: var(--color-secondary-hover);
-  color: var(--color-white);
-  transform: translateY(-2px);
-  outline: none;
-}
-.extras-btn[aria-pressed="true"] {
-  background: var(--color-secondary);
-  color: var(--color-white);
-  box-shadow: 0 4px 8px var(--color-shadow);
-}
-.extras-btn:focus {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
-.moose-in-suit {
-  width: 120px;
-  height: 120px;
-  margin-bottom: -20px;
-  /* animation: peekIn 1s ease-out both; */
-}
-
-/* @keyframes peekIn {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-} */
-
-.extras-container {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.extra-item {
-  display: flex;
-  /* align-items: center; */
-  /* gap: 10px; */
-  flex-wrap: wrap;
-}
-
-.extras-checkbox {
-  display: none;
-}
-
-.extras-label {
-  display: inline-block;
-  padding: 10px 15px;
-  background-color: #222;
-  color: #fff;
-  border: 2px solid #555;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  user-select: none;
-}
-
-.extras-checkbox:checked + .extras-label {
-  background-color: #00aaff;
-  border-color: #008ecc;
-}
-
-.custom-label {
-  font-weight: 600;
-  margin-bottom: 0px;
-}
-
-select {
-  appearance: none;
-  background-color: var(--color-bg);
-  border: 2px solid var(--color-secondary);
-  border-radius: 6px;
-  /* color: var(--color-white); */
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-select:focus {
-  outline: none;
-  border-color: var(--color-focus);
-  box-shadow: 0 0 0 2px var(--color-focus);
-}
-
-
-.dropdown-extra {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-}
-
-.booking-form-group select {
-  background-color: var(--color-bg);
-  border: 2px solid var(--color-secondary);
-  /* color: var(--color-white); */
-  border-radius: 6px;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.booking-form-group select:focus {
-  border-color: var(--color-focus);
-  outline: none;
-  box-shadow: 0 0 0 3px var(--color-shadow);
-}
-
-.booking-form-group h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  /* align center */
-  text-align: center;
-}
-/* —— Upload group overall spacing —— */
-.upload-wrapper {
-  margin-bottom: 1.5rem;
-}
-
-/* First label: “Upload images” + small */
-.upload-wrapper > label[for="booking-images-label"] {
-  display: block;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--color-primary-text);
-  line-height: 1.4;
-  margin-bottom: 1rem;
-}
-.upload-wrapper > label[for="booking-images-label"] small {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: var(--color-secondary-text);
-  line-height: 1.4;
-}
-
-/* The big “Upload” button */
-.upload-label {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .75rem 1.25rem;
-  background: var(--color-secondary);
-  color: var(--color-white);
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background .2s;
-  text-decoration: none;
-  margin-bottom: 1rem;
-}
-.upload-label svg {
-  flex-shrink: 0;
-}
-.upload-label:hover {
-  background: var(--color-secondary-hover);
-}
-
-/* Extra instructions under the button */
 .upload-instructions {
   margin-bottom: 1rem;
   font-size: 0.9rem;
@@ -813,54 +307,23 @@ select:focus {
 .upload-instructions p {
   margin: 0 0 0.75rem;
 }
+
 .upload-instructions .privacy-note {
   margin: 0;
   font-style: italic;
   color: var(--color-secondary-text);
 }
 
-/* Hide the real file-input */
-.upload-input {
-  display: none;
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-form-group label { font-size: 18px; }
+  .booking-progress-tracker { display: none; }
+  .booking-step { border-bottom: 2px solid var(--color-primary); min-height: 80px; }
 }
-
-/* Live preview grid */
-.upload-preview {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: .75rem;
-  width: 100%;
-}
-
-/* Thumbnail + remove button */
-.upload-preview .thumb {
-  position: relative;
-}
-.upload-preview img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px var(--color-shadow);
-}
-.upload-preview .remove-btn {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 20px;
-  height: 20px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  font-size: 14px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background .2s;
-}
-.upload-preview .remove-btn:hover {
-  background: rgba(255,0,0,0.8);
+@media (max-width: 580px) {
+  .booking-container { padding: calc(var(--navbar-height-mobile) + 20px) 0 60px; }
+  .booking-step-label { font-size: 0.9rem; }
+  .booking-btn-next,
+  .booking-btn-prev,
+  .booking-btn-submit { width: 100%; padding: 0.75rem; }
 }

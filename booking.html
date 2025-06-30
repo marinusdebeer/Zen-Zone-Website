@@ -683,7 +683,7 @@
 
           <div class="booking-form-group">
             <label for="booking-accessMethod">
-              Access to the property<br>
+              Access to the property
               <small>Will you be home or will we need to access the property through a key code or other means?</small>
             </label>
             <select
@@ -761,26 +761,15 @@
               <small id="upload-desc">
                 Please attach as many photos as possible of the areas you believe need the most attention.  
                 The more photos you provide, the more accurately we can estimate the time and cost.
-              </small>
-              <br>
-              <small>
                 Also include photos of the kitchen, bathroom, living room and any extras chosen like windows, baseboards, oven, etc. 
               </small>
-              
             </div>
-            <br>
             <!-- <label for="booking-images" class="upload-label">
               <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M5 20h14v-2H5v2zm7-18L5.33 9h3.34v4h4.66V9h3.34L12 2z"/>
               </svg>
               <span>Choose Images</span>
             </label> -->
-            <br>
-            <div class="upload-instructions">
-              <p id="privacy-note" class="privacy-note">
-                All images remain private and will not be shared outside of Zen Zone Cleaning Services.
-              </p>
-            </div>
           
             <input
               type="file"
@@ -790,7 +779,11 @@
               accept="image/*"
               aria-describedby="upload-desc privacy-note"
             />
-          
+            <div class="upload-instructions">
+              <p id="privacy-note" class="privacy-note">
+                All images remain private and will not be shared outside of Zen Zone Cleaning Services.
+              </p>
+            </div>
             <div class="upload-preview" aria-live="polite"></div>
             <span class="error-message" aria-live="polite" style="display: none;">Please upload at least 3 images of the areas you believe need the most attention.</span>
           </div>
@@ -895,50 +888,50 @@
     //   };
 
       // ─────────── PostHog ───────────
-      // !(function (t, e) {
-      //   var o, n, p, r;
-      //   e.__SV || ((window.posthog = e), (e._i = []), (e.init = function (i, s, a) {
-      //     function g(t, e) {
-      //       var o = e.split('.');
-      //       2 == o.length && ((t = t[o[0]]), (e = o[1]));
-      //       t[e] = function () {
-      //         t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
-      //       };
-      //     }
-      //     p = t.createElement('script');
-      //     p.type = 'text/javascript';
-      //     p.async = !0;
-      //     p.crossOrigin = 'anonymous';
-      //     p.src = s.api_host.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js';
-      //     r = t.getElementsByTagName('script')[0];
-      //     r.parentNode.insertBefore(p, r);
-      //     var u = e;
-      //     void 0 !== a ? (u = e[a] = []) : (a = 'posthog');
-      //     u.people = u.people || [];
-      //     u.toString = function (t) {
-      //       var e = 'posthog';
-      //       return 'posthog' !== a && (e += '.' + a), t || (e += ' (stub)'), e;
-      //     };
-      //     u.people.toString = function () {
-      //       return u.toString(1) + '.people (stub)';
-      //     };
-      //     o = 'init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId'.split(' ');
-      //     for (n = 0; n < o.length; n++) g(u, o[n]);
-      //     e._i.push([i, s, a]);
-      //   }), (e.__SV = 1));
-      // })(document, window.posthog || []);
-      // posthog.init('phc_owjzFx1YRrgDgk83WSitkE7VW6va3VwHXPaB7esRzzR', {
-      //   api_host: 'https://us.i.posthog.com',
-      //   disable_session_recording: location.hostname === 'localhost',
-      //   person_profiles: 'always'
-      // });
-      // posthog.onFeatureFlags(function () {
-      //   if (posthog.get_distinct_id() === '0194bd19-58dc-7531-96c9-aa11544a3415') {
-      //     posthog.stopSessionRecording();
-      //   }
-      // });
-      // posthog.register({ site_domain: location.hostname });
-      // posthog.identify(posthog.get_distinct_id(), { site_domain: location.hostname });
+      !(function (t, e) {
+        var o, n, p, r;
+        e.__SV || ((window.posthog = e), (e._i = []), (e.init = function (i, s, a) {
+          function g(t, e) {
+            var o = e.split('.');
+            2 == o.length && ((t = t[o[0]]), (e = o[1]));
+            t[e] = function () {
+              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+            };
+          }
+          p = t.createElement('script');
+          p.type = 'text/javascript';
+          p.async = !0;
+          p.crossOrigin = 'anonymous';
+          p.src = s.api_host.replace('.i.posthog.com', '-assets.i.posthog.com') + '/static/array.js';
+          r = t.getElementsByTagName('script')[0];
+          r.parentNode.insertBefore(p, r);
+          var u = e;
+          void 0 !== a ? (u = e[a] = []) : (a = 'posthog');
+          u.people = u.people || [];
+          u.toString = function (t) {
+            var e = 'posthog';
+            return 'posthog' !== a && (e += '.' + a), t || (e += ' (stub)'), e;
+          };
+          u.people.toString = function () {
+            return u.toString(1) + '.people (stub)';
+          };
+          o = 'init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId'.split(' ');
+          for (n = 0; n < o.length; n++) g(u, o[n]);
+          e._i.push([i, s, a]);
+        }), (e.__SV = 1));
+      })(document, window.posthog || []);
+      posthog.init('phc_owjzFx1YRrgDgk83WSitkE7VW6va3VwHXPaB7esRzzR', {
+        api_host: 'https://us.i.posthog.com',
+        disable_session_recording: location.hostname === 'localhost',
+        person_profiles: 'always'
+      });
+      posthog.onFeatureFlags(function () {
+        if (posthog.get_distinct_id() === '0194bd19-58dc-7531-96c9-aa11544a3415') {
+          posthog.stopSessionRecording();
+        }
+      });
+      posthog.register({ site_domain: location.hostname });
+      posthog.identify(posthog.get_distinct_id(), { site_domain: location.hostname });
 
       // ─────────── Tawk.to Chat ───────────
     //   var tawk = document.createElement('script');
