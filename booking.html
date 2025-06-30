@@ -37,13 +37,13 @@
   <link rel="preconnect" href="https://embed.tawk.to" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-    media="print"
-    onload="this.media='all'">
+  rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Poppins:…&display=swap"
+  as="style"
+  onload="this.rel='stylesheet'">
   <noscript>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:…&display=swap"
       rel="stylesheet">
   </noscript>
 
@@ -54,100 +54,70 @@
   <link rel="stylesheet" href="/css/booking.css">
 
 
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" as="script">
-
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Zen Zone Cleaning Services",
-      "description": "Fast, reliable, and professional house cleaning services for Barrie, Orillia, and all areas within Simcoe County.",
-      "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "66 Nottawasaga Street",
-        "addressLocality": "Orillia",
-        "postalCode": "L3V 3J4",
-        "addressRegion": "ON",
-        "addressCountry": "CA"
-      },
-      "telephone": "+17052425462",
-      "url": "https://zenzonecleaning.ca",
-      "areaServed": [
-        "Orillia",
-        "Barrie",
-        "Midland",
-        "Penetanguishene",
-        "Innisfil",
-        "Bradford West Gwillimbury",
-        "Wasaga Beach",
-        "Collingwood",
-        "Oro-Medonte",
-        "Severn",
-        "Tay",
-        "Essa",
-        "Clearview",
-        "Springwater",
-        "Ramara",
-        "Adjala-Tosorontio",
-        "New Tecumseth",
-        "Simcoe County"
-      ],
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 44.6085,
-        "longitude": -79.4202
-      },
-      "openingHours": ["Mo-Sun 09:00-18:00"]
-    }
-  </script>
-
-  <!-- Structured Data for Organization -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Zen Zone Cleaning Services",
-      "url": "https://zenzonecleaning.ca",
-      "logo": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
-      "contactPoint": [
+      "@graph": [
         {
-          "@type": "ContactPoint",
+          "@type": "LocalBusiness",
+          "name": "Zen Zone Cleaning Services",
+          "description": "Fast, reliable, and professional house cleaning services for Barrie, Orillia, and all areas within Simcoe County.",
+          "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "66 Nottawasaga Street",
+            "addressLocality": "Orillia",
+            "postalCode": "L3V 3J4",
+            "addressRegion": "ON",
+            "addressCountry": "CA"
+          },
           "telephone": "+17052425462",
-          "contactType": "customer service",
+          "url": "https://zenzonecleaning.ca",
           "areaServed": [
-            "Orillia",
-            "Barrie",
-            "Midland",
-            "Penetanguishene",
-            "Innisfil",
-            "Bradford West Gwillimbury",
-            "Wasaga Beach",
-            "Collingwood",
-            "Oro-Medonte",
-            "Severn",
-            "Tay",
-            "Essa",
-            "Clearview",
-            "Springwater",
-            "Ramara",
-            "Adjala-Tosorontio",
-            "New Tecumseth",
+            "Orillia", "Barrie", "Midland", "Penetanguishene", "Innisfil",
+            "Bradford West Gwillimbury", "Wasaga Beach", "Collingwood",
+            "Oro-Medonte", "Severn", "Tay", "Essa", "Clearview",
+            "Springwater", "Ramara", "Adjala-Tosorontio", "New Tecumseth",
             "Simcoe County"
           ],
-          "availableLanguage": ["English"]
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 44.6085,
+            "longitude": -79.4202
+          },
+          "openingHours": ["Mo-Sun 09:00-18:00"]
+        },
+        {
+          "@type": "Organization",
+          "name": "Zen Zone Cleaning Services",
+          "url": "https://zenzonecleaning.ca",
+          "logo": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+17052425462",
+              "contactType": "customer service",
+              "areaServed": [
+                "Orillia", "Barrie", "Midland", "Penetanguishene", "Innisfil",
+                "Bradford West Gwillimbury", "Wasaga Beach", "Collingwood",
+                "Oro-Medonte", "Severn", "Tay", "Essa", "Clearview",
+                "Springwater", "Ramara", "Adjala-Tosorontio", "New Tecumseth",
+                "Simcoe County"
+              ],
+              "availableLanguage": ["English"]
+            }
+          ]
         }
       ]
     }
-  </script>
+    </script>
+    
 
 </head>
 
 <body>
   <!-- Navbar -->
   <nav id="navbar"></nav>
-
-  <!-- <iframe src="https://zenzonecleaningservices.bookingkoala.com/booknow?embed=true" style="border:none;height:1000px" width="100%" scrolling="no"></iframe><script src="https://zenzonecleaningservices.bookingkoala.com/resources/embed.js" defer></script> -->
 
   <nav class="booking-progress-tracker" aria-label="Booking Progress">
     <ol>
@@ -854,7 +824,7 @@
     <div class="toast-body"></div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script> -->
   <!-- Other JS Files -->
   <script src="/js/navbar.js" defer></script>
   <script src="/js/email.js" defer></script>
@@ -978,6 +948,14 @@
       tawk.charset = 'UTF-8';
       tawk.setAttribute('crossorigin', '*');
       document.body.appendChild(tawk);
+    });
+
+    // ─────────── EmailJS (on idle) ───────────
+    onIdle(function () {
+      var emailjs = document.createElement('script');
+      emailjs.async = true;
+      emailjs.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+      document.head.appendChild(emailjs);
     });
 
   })();
