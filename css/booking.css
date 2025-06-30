@@ -95,7 +95,7 @@
   display: block;
   font: 12px/1.2 sans-serif;
   color: var(--color-secondary-text);
-  margin: 0.2rem 0 2rem;
+  margin: 0.2rem 0 0.5rem;
 }
 .booking-form-group input,
 .booking-form-group textarea {
