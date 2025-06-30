@@ -1,5 +1,6 @@
 // Email.js
 const Email = (() => {
+  const Tracking = window.Tracking;
   // ─── Configuration ────────────────────────────────────────────────
   const SERVICE_ID         = "service_156d2p8";     // Your EmailJS service ID
   const ADMIN_TEMPLATE_ID  = "template_i7i7zz7";   // Admin notification template
@@ -124,6 +125,7 @@ const Email = (() => {
          </p>`
       : "";
 
+
   // ─── Main Function ─────────────────────────────────────────────────
 
   /**
@@ -142,7 +144,14 @@ const Email = (() => {
 
     // 2) Track the archive link
     const archiveLink = `https://prod.zenzonecleaning.ca/images/archive/${folder}`;
-    Tracking.sendData('images', archiveLink);
+    if (window.Tracking?.sendData) {
+      console.log(archiveLink);
+      console.log('Tracking available, sending data');
+      window.Tracking.sendData('images', archiveLink);
+    } else {
+      console.warn('Tracking UNAVAILABLE, skipping sendData');
+    }
+
 
     // 3) Prepare the shared table HTML
     const rows = fieldRows(data);

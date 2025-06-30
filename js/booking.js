@@ -65,35 +65,43 @@ const Toast = (() => {
 
 const Tracking = (() => {
   const GOOGLE_SCRIPT_ID = 'AKfycbyvuW6VB6aG4nDt2k7tUhQdsHrOJL8AX6MIfRqUiAf2ZQy_ZjFIqy2Jbqnf-Edtv5by';
+  const endpoint = `https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`;
 
-  let sendPromise = Promise.resolve();
-
-  const sendData = (fieldId, value) => {
-    const hostname = location.hostname;
-    const userId = localStorage.getItem('userId') || Utilities.getFormattedUserId();
+  /**
+   * Fire-and-forget analytics ping.
+   * Each call issues its own fetch immediately.
+   */
+  function sendData(fieldId, value) {
+    const hostname  = location.hostname;
+    const userId    = localStorage.getItem('userId') || Utilities.getFormattedUserId();
     localStorage.setItem('userId', userId);
     const sessionId = sessionStorage.getItem('sessionId');
-    const data = { hostname, userId, sessionId, fieldId, value };
-    
+    const payload   = JSON.stringify({ hostname, userId, sessionId, fieldId, value });
+
+    // Enrich your PostHog profile if applicable
     if (['name', 'email', 'phone'].includes(fieldId)) {
       posthog?.people?.set({ [fieldId]: value });
     }
 
-    sendPromise = sendPromise
-      .then(() =>
-        fetch(`https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(data)
-        })
-      )
-      .catch(err => console.error(`Error sending data for ${fieldId}:`, err));
-    return sendPromise;
-  };
+    // Kick off a non-blocking fetch
+    return fetch(endpoint, {
+      method:    'POST',
+      mode:      'no-cors',
+      headers:   { 'Content-Type': 'application/json' },
+      body:      payload
+    }).catch(err =>
+      console.error(`Tracking failed for ${fieldId}:`, err)
+    );
+  }
 
+  // Debounced variant, if you need to throttle rapid calls
   const sendDataDebounced = Utilities.debounce(sendData, 300);
+
   return { sendData, sendDataDebounced };
 })();
+
+// Expose it globally
+window.Tracking = Tracking;
 
 class StepTracker {
   constructor(totalSteps) {
@@ -747,42 +755,43 @@ class BookingForm {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
 
   window.BookingFormInstance = new BookingForm();
   window.BookingFormInstance._generateSessionId();
 
-  let gclid = localStorage.getItem('gclid');
-  let utm_campaign = localStorage.getItem('utm_campaign');
-  let utm_source = localStorage.getItem('utm_source');
-  let utm_medium = localStorage.getItem('utm_medium');
-  let utm_content = localStorage.getItem('utm_content');
-  let utm_term = localStorage.getItem('utm_term');
+  // ─── Grab your stored values ───────────────────────────────────────
+  const gclid     = localStorage.getItem('gclid');
+  const utmParams = [
+    'utm_campaign',
+    'utm_source',
+    'utm_medium',
+    'utm_content',
+    'utm_term'
+  ];
 
+  // ─── 1) Delay & send GCLID ────────────────────────────────────────
   if (gclid) {
-    Tracking.sendData('gclid', gclid);
+    // wait 2 seconds
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    // send it (and wait for the network call)
+    await Tracking.sendData('gclid', gclid);
   }
-  if (utm_campaign) {
-    Tracking.sendData('utm_campaign', utm_campaign);
-  }  
-  if (utm_source) {
-    Tracking.sendData('utm_source', utm_source);
-  }
-  if (utm_medium) {
-    Tracking.sendData('utm_medium', utm_medium);
-  }
-  if (utm_content) {
-    Tracking.sendData('utm_content', utm_content);
-  }
-  if (utm_term) {
-    Tracking.sendData('utm_term', utm_term);
-  }
+
+  // ─── 2) Now send all your UTM params in parallel ─────────────────
+  utmParams.forEach(key => {
+    const val = localStorage.getItem(key);
+    if (val) {
+      // fire-and-forget, no need to await
+      Tracking.sendData(key, val);
+    }
+  });
 
   
 
   // window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
-  // window.BookingFormInstance.goToStep(6);
+  window.BookingFormInstance.goToStep(6);
 
   
   const input = document.getElementById('booking-images');
@@ -833,7 +842,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const detailsField = document.getElementById('booking-accessDetails');
 
   select.addEventListener('change', () => {
-    if (select.value === 'other') {
+    if (select.value === 'Other (please specify below)') {
       detailsGroup.style.display = 'block';
       detailsField.setAttribute('required', 'required');
     } else {
