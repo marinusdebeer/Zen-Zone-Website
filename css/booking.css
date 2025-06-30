@@ -263,6 +263,9 @@
   z-index: 3000;
 }
 .toast.show { opacity: 1; }
+.toast.success { background: var(--color-success); }
+.toast.error { background: var(--color-error); }
+
 
 /* Errors */
 .error-message {
