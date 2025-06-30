@@ -30,59 +30,121 @@
   <meta name="twitter:image" content="https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Link to External CSS -->
-  <link rel="stylesheet" href="/css/utilities.css" />
-  <link rel="stylesheet" href="/css/navbar.css" />
-  <link rel="stylesheet" href="/css/footer.css" />
-  <link rel="stylesheet" href="/css/booking.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://us.i.posthog.com" crossorigin>
+  <link rel="preconnect" href="https://embed.tawk.to" crossorigin>
 
-  <!-- Structured Data for Local Business -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+  </noscript>
+
+  <!-- Link to External CSS -->
+  <link rel="preload" href="/css/utilities.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="/css/navbar.css"     as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="/css/footer.css"     as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="/css/booking.css"    as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/booking.css">
+  </noscript>
+
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" as="script">
+
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Zen Zone Cleaning Services",
-    "description": "Fast, reliable, and professional house cleaning services for Barrie, Orillia, and surrounding areas.",
-    "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Servicing Barrie, Orillia, and surrounding areas",
-      "addressLocality": "Orillia",
-      "addressRegion": "ON",
-      "postalCode": "",
-      "addressCountry": "CA"
-    },
-    "telephone": "+17052425462",
-    "url": "https://zenzonecleaning.ca",
-    "areaServed": ["Barrie", "Orillia", "Surrounding Areas"],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 44.6085,
-      "longitude": -79.4202
-    },
-    "openingHours": ["Mo-Sun 09:00-18:00"]
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Zen Zone Cleaning Services",
+      "description": "Fast, reliable, and professional house cleaning services for Barrie, Orillia, and all areas within Simcoe County.",
+      "image": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "66 Nottawasaga Street",
+        "addressLocality": "Orillia",
+        "postalCode": "L3V 3J4",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      },
+      "telephone": "+17052425462",
+      "url": "https://zenzonecleaning.ca",
+      "areaServed": [
+        "Orillia",
+        "Barrie",
+        "Midland",
+        "Penetanguishene",
+        "Innisfil",
+        "Bradford West Gwillimbury",
+        "Wasaga Beach",
+        "Collingwood",
+        "Oro-Medonte",
+        "Severn",
+        "Tay",
+        "Essa",
+        "Clearview",
+        "Springwater",
+        "Ramara",
+        "Adjala-Tosorontio",
+        "New Tecumseth",
+        "Simcoe County"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.6085,
+        "longitude": -79.4202
+      },
+      "openingHours": ["Mo-Sun 09:00-18:00"]
+    }
   </script>
 
   <!-- Structured Data for Organization -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Zen Zone Cleaning Services",
-    "url": "https://zenzonecleaning.ca",
-    "logo": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "telephone": "+17052425462",
-      "contactType": "customer service",
-      "areaServed": "CA",
-      "availableLanguage": ["English"]
-    }]
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Zen Zone Cleaning Services",
+      "url": "https://zenzonecleaning.ca",
+      "logo": "https://zenzonecleaning.ca/assets/thumbnails/moose_logo.png",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+17052425462",
+          "contactType": "customer service",
+          "areaServed": [
+            "Orillia",
+            "Barrie",
+            "Midland",
+            "Penetanguishene",
+            "Innisfil",
+            "Bradford West Gwillimbury",
+            "Wasaga Beach",
+            "Collingwood",
+            "Oro-Medonte",
+            "Severn",
+            "Tay",
+            "Essa",
+            "Clearview",
+            "Springwater",
+            "Ramara",
+            "Adjala-Tosorontio",
+            "New Tecumseth",
+            "Simcoe County"
+          ],
+          "availableLanguage": ["English"]
+        }
+      ]
+    }
   </script>
-
 
 </head>
 
@@ -925,6 +987,17 @@
 
   })();
 </script>
+<script>
+  onIdle(() => {
+    const rc = document.createElement('script');
+    rc.async = true;
+    rc.defer = true;
+    rc.src = 'https://www.google.com/recaptcha/api.js?render=6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C';
+    document.head.appendChild(rc);
+  });
+</script>
+
+  <script defer src="js/mascot.js"></script>
 </body>
 
 </html>
