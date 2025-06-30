@@ -655,10 +655,8 @@
 }
 
 .moose-in-suit {
-  display: block;
-  margin: 0 auto;
-  max-width: 120px;
-  height: auto;
+  width: 120px;
+  height: 120px;
   margin-bottom: -20px;
   /* animation: peekIn 1s ease-out both; */
 }
