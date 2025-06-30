@@ -987,17 +987,9 @@
 
   })();
 </script>
-<script>
-  onIdle(() => {
-    const rc = document.createElement('script');
-    rc.async = true;
-    rc.defer = true;
-    rc.src = 'https://www.google.com/recaptcha/api.js?render=6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C';
-    document.head.appendChild(rc);
-  });
-</script>
+<script defer src="https://www.google.com/recaptcha/api.js?render=6LeRBs0qAAAAAIiW1Z7PUUx7pl6DtOpCvp9byo9C"></script>
 
-  <script defer src="js/mascot.js"></script>
+<script defer src="js/mascot.js"></script>
 </body>
 
 </html>
