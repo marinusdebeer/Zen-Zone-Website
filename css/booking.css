@@ -266,7 +266,9 @@
 .toast.success { background: var(--color-success); }
 .toast.error { background: var(--color-error); }
 
-
+.grecaptcha-badge {
+  bottom: 170px !important;
+}
 /* Errors */
 .error-message {
   color: var(--color-error);
