@@ -1,3 +1,4 @@
+// booking.js
 'use strict';
 
 const Utilities = (() => {
@@ -202,11 +203,12 @@ class BookingForm {
 
   showFormStep(step) {
     this.bookingForm.querySelectorAll('.booking-form-step').forEach(el => {
-      el.style.display = ''; // allow CSS to control display via active class
+      el.style.display = '';
       const sn = parseInt(el.getAttribute('data-step'), 10);
       el.classList.toggle('booking-form-step--active', sn === step);
       el.setAttribute('aria-hidden', sn === step ? 'false' : 'true');
     });
+  
     const title = document.getElementById('bookingFormTitle');
     const cur = this.stepTracker.progressSteps.find(
       s => parseInt(s.getAttribute('data-step'), 10) === step
@@ -214,7 +216,15 @@ class BookingForm {
     if (cur && title) {
       title.textContent = cur.querySelector('.booking-step-label').textContent;
     }
+  
+    // 🔥 Track the step reached with PostHog
+    const stepLabel = cur?.querySelector('.booking-step-label')?.textContent || `Step ${step}`;
+    window.posthog?.capture?.('booking_step_reached', {
+      step_number: step,
+      step_label: stepLabel,
+    });
   }
+  
 
   attachListeners() {
     this.bookingForm.addEventListener('click', e => this.handleButtonClick(e));
