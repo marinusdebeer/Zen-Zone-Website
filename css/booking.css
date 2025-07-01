@@ -132,6 +132,10 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
+.booking-form-options label {
+  min-width: 200px;
+}
+
 .booking-btn-option {
   flex: 1 1 45%;
   padding: 0.75rem 1.5rem;
@@ -281,35 +285,41 @@
 /* Tooltip */
 .service { position: relative; cursor: pointer; }
 .service .tooltip {
+  visibility: hidden;
+  width: 400px;
+  background: var(--color-tertiary);
+  text-align: left;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.4;
   position: absolute;
   bottom: 120%;
   left: 50%;
   transform: translateX(-50%);
-  visibility: hidden;
-  width: 400px;
-  padding: 10px;
-  background: var(--color-tertiary);
-  color: #fff;
-  font: 14px/1.4 sans-serif;
-  border-radius: 6px;
+  margin-bottom: 8px;
   opacity: 0;
-  transition: opacity 0.2s, transform 0.2s;
+  /* transition: opacity 0.3s, transform 0.2s; */
   z-index: 1000;
 }
+.service .tooltip p {
+  color: var(--color-white);
+}
 .service .tooltip::after {
-  content: ''; 
+  content: '';
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px solid transparent;
-  border-top-color: var(--color-tertiary);
+  border-width: 6px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
 }
 .service:hover .tooltip,
 .service:focus .tooltip {
   visibility: visible;
   opacity: 1;
-  transform: translate(-50%, -5px);
+  transform: translateX(-50%) translateY(-5px);
 }
 
 /* Live preview grid */
@@ -365,4 +375,14 @@
   .booking-btn-next,
   .booking-btn-prev,
   .booking-btn-submit { width: 100%; padding: 0.75rem; }
+}
+@media (max-width: 480px) {
+  .service .tooltip {
+    width: 120%;
+    transform: translateX(-50%);
+  }
+  .service .tooltip::after {
+    top: -12px;
+    border-color: transparent transparent black transparent;
+  }
 }

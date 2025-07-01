@@ -760,38 +760,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.BookingFormInstance = new BookingForm();
   window.BookingFormInstance._generateSessionId();
 
-  // ─── Grab your stored values ───────────────────────────────────────
-  const gclid     = localStorage.getItem('gclid');
-  const utmParams = [
-    'utm_campaign',
-    'utm_source',
-    'utm_medium',
-    'utm_content',
-    'utm_term'
-  ];
-
-  // ─── 1) Delay & send GCLID ────────────────────────────────────────
-  if (gclid) {
-    // wait 2 seconds
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    // send it (and wait for the network call)
-    await Tracking.sendData('gclid', gclid);
-  }
-
-  // ─── 2) Now send all your UTM params in parallel ─────────────────
-  utmParams.forEach(key => {
-    const val = localStorage.getItem(key);
-    if (val) {
-      // fire-and-forget, no need to await
-      Tracking.sendData(key, val);
-    }
-  });
-
-  
-
   // window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
-  // window.BookingFormInstance.goToStep(6);
+  // window.BookingFormInstance.goToStep(2);
 
   
   const input = document.getElementById('booking-images');
@@ -874,5 +845,32 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.querySelectorAll('input[name="bookingType"]').forEach(radio =>
     radio.addEventListener('change', updateImageRequirement)
   );
+
+  // ─── Grab your stored values ───────────────────────────────────────
+  const gclid     = localStorage.getItem('gclid');
+  const utmParams = [
+    'utm_campaign',
+    'utm_source',
+    'utm_medium',
+    'utm_content',
+    'utm_term'
+  ];
+
+  // ─── 1) Delay & send GCLID ────────────────────────────────────────
+  if (gclid) {
+    // wait 2 seconds
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    // send it (and wait for the network call)
+    await Tracking.sendData('gclid', gclid);
+  }
+
+  // ─── 2) Now send all your UTM params in parallel ─────────────────
+  utmParams.forEach(key => {
+    const val = localStorage.getItem(key);
+    if (val) {
+      // fire-and-forget, no need to await
+      Tracking.sendData(key, val);
+    }
+  });
 
 });
