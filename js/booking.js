@@ -580,7 +580,6 @@ class BookingForm {
           </div>`
           : `<div class="step-value">
             <strong>Booking Type:</strong> One-Time<br>
-            <strong>Service Type:</strong> ${Utilities.sanitizeHTML(data.serviceType || 'N/A')}
           </div>`;
         break;
       case 4:

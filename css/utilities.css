@@ -35,8 +35,21 @@
   --color-secondary-hover: #5e774c;
   --color-tertiary: #2E3D2F;
   --color-tertiary-hover: #1f2a1d;
-  --color-quaternary: #ffffff;
-  --color-quaternary-hover: #000000;
+  --color-fourth-color: #6b5b95;
+  --color-fourth-color-hover: #574f8f;
+
+  /* --color-primary: #FE7235;
+  --color-primary-hover: rgb(254, 114, 53);
+  --color-secondary: #00C3FF;
+  --color-secondary-hover: rgb(0, 195, 255); */
+  --color-tertiary: #1C4274;
+  --color-tertiary-hover: rgb(28, 66, 116);
+  /* --color-fourth-color: #2E3D2F;
+  --color-fourth-color-hover: #2E3D2F; */
+
+  --color-fourth-color: #FEA735;
+  --color-fourth-color-hover:rgba(254, 167, 53, 0.8);
+
   --color-secondary-text: #37474F;
   --color-primary-text: #2e3d2f;
   --color-shadow: rgba(0, 0, 0, 0.5);
@@ -75,6 +88,7 @@
 
 /* default dark mode */
 [data-theme="dark"] {
+
   --color-primary: #6b5b95;
   --color-primary-hover: #574f8f;
   --color-secondary: #78A265;
@@ -83,6 +97,16 @@
   --color-tertiary-hover:rgb(28, 44, 30);
   --color-quaternary: #1E1E1E;
   --color-quaternary-hover: #2A2A2A;
+
+  /* --color-primary: #FE7235;
+  --color-primary-hover: rgb(254, 114, 53);
+  --color-secondary: #00C3FF;
+  --color-secondary-hover: rgb(0, 195, 255); */
+  --color-tertiary: #1C4274;
+  --color-tertiary-hover: rgb(28, 66, 116);
+  --color-fourth-color: #FEA735;
+  --color-fourth-color-hover:rgba(254, 167, 53, 0.8);
+
   --color-secondary-text: #B0BEC5;
   --color-primary-text: #EAEAEA;
   --color-shadow: rgba(255, 255, 255, 0.3);
@@ -92,6 +116,7 @@
   --color-light-gray: #2C2C2C;
   --color-input-bg: #333333;
   --color-bg: rgb(22, 22, 22);
+  /* --color-text: #000; */
   --color-text: #EAEAEA;
   --color-modal-background: #333333;
   --color-modal-overlay: rgba(0, 0, 0, 0.5);
@@ -119,28 +144,30 @@
 
 /* theme2 light mode */
 :root[data-color-theme="theme2"]:not([data-theme="dark"]) {
-  --color-primary: #3B82F6;
-  --color-primary-hover: rgb(25, 90, 200);
-  --color-secondary: #FFD700;
-  --color-secondary-hover: rgb(220, 180, 0);
-  --color-tertiary: #4CAF50;
-  --color-tertiary-hover: rgb(40, 150, 40);
-  --color-quaternary: #FAFFFA;
-  --color-quaternary-hover: #FAFFFA;
+  --color-primary: #FE7235;
+  --color-primary-hover: rgb(254, 114, 53);
+  --color-secondary: #00C3FF;
+  --color-secondary-hover: rgb(0, 195, 255);
+  --color-tertiary: #1C4274;
+  --color-tertiary-hover: rgb(28, 66, 116);
+  --color-fourth-color: #FEA735;
+  --color-fourth-color-hover:rgba(254, 167, 53, 0.8);
   --color-secondary-text: #37474F;
-  --color-primary-text: #2e3d2f;
+  --color-primary-text: var(--color-tertiary);
   --color-shadow: rgba(0, 0, 0, 0.5);
   --color-focus: #ffbf47;
   --color-light-green: #FAFFFA;
   --color-gray: #ccc;
   --color-light-gray: #F0F0F0;
   --color-input-bg: #ffffff;
-  --color-bg: #FAFFFA;
+  --color-bg: #FCF5EF;
   --color-text: #2e3d2f;
   --color-modal-background: #ffffff;
   --color-blog-section-bg: #ffffff;
   --slider-track-color: #ccc;
   --color-error: #ff0000;
+
+  --color-white: #FCF5EF;
 
   --color-input-border: var(--color-gray);
   --color-footer-background: var(--color-tertiary);
@@ -474,14 +501,16 @@ p {
   cursor: pointer;
   font-weight: 600;
   /* transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; */
-  font-size: 18px;
+  font-size: 16px;
   padding: 0.5rem 0.5rem;
   color: var(--color-white);
+  /* color: #000; */
   position: relative;
   overflow: hidden;
   min-width: 160px;
   margin-left: 10px;
   height: 50px;
+  border-radius: 6px;
 }
 
 .cta-button::after {
@@ -517,6 +546,7 @@ p {
   width: 100%;
 }
 
+
 .cta-button.book-now {
   background-color: var(--color-primary);
   text-decoration: none;
@@ -533,6 +563,13 @@ p {
 .cta-button.book-now.dark-green::after {
   background-color: var(--color-tertiary-hover);
   color: var(--color-white)
+}
+
+.cta-button.fourth-color {
+  background-color: var(--color-fourth-color);
+}
+.cta-button.fourth-color::after {
+  background-color: var(--color-fourth-color-hover);
 }
 
 .cta-button:hover {
@@ -552,17 +589,29 @@ p {
   background-color: var(--color-tertiary-hover);
 }
 
-.navbar .cta-button {
-  background-color: var(--color-bg);
-  height: 40px;
-}
 .navbar .call-button {
   color: var(--color-secondary);
 }
+
 .navbar .book-now {
   color: var(--color-primary);
 }
 .navbar .cta-button:hover {
+  color: var(--color-white);
+}
+.navbar .cta-button {
+  /* background-color: var(--color-bg); */
+  color: var(--color-white);
+  height: 40px;
+}
+.client-hub {
+  background-color: var(--color-fourth-color);
+  color: var(--color-white);
+}
+.client-hub:hover {
+  background-color: var(--color-fourth-color-hover);
+}
+.client-hub::after {
   color: var(--color-white);
 }
 .button-link {
