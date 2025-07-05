@@ -75,7 +75,8 @@ const Email = (() => {
     ["Access Method", data.accessMethod],
     ["Access Instructions", data.accessDetails],
     ["Additional Notes", data.details],
-    ["How Did You Hear About Us?", data.hearAbout]
+    ["How Did You Hear About Us?", data.hearAbout],
+    ["Referral Name", data.referralName]
   ];
   
 

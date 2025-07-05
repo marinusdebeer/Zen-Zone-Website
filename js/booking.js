@@ -754,6 +754,97 @@ class BookingForm {
   }
 }
 
+function registerFieldListeners() {
+  const hearAbout          = document.getElementById('booking-hearAbout');
+  const referralGroup      = document.getElementById('referral-name-group');
+  const referralInput      = document.getElementById('booking-referralName');
+  const accessSelect       = document.getElementById('booking-accessMethod');
+  const accessDetailsGroup = document.getElementById('access-details-group');
+  const accessDetailsInput = document.getElementById('booking-accessDetails');
+  const bookingTypeRadios  = document.querySelectorAll('input[name="bookingType"]');
+  const imageInput         = document.getElementById('booking-images');
+  const preview            = document.querySelector('.upload-preview');
+
+  if (!hearAbout || !accessSelect || !imageInput) {
+    console.warn('Missing form elements—listeners not registered.');
+    return;
+  }
+
+  // UPDATED toggle helper
+  function conditionalToggle(selectEl, matchVal, targetEl, inputEl) {
+    if (!targetEl) return;
+    const show = selectEl.value === matchVal;
+    targetEl.style.display = show ? '' : 'none';
+    targetEl.setAttribute('aria-hidden', (!show).toString());
+    if (inputEl) {
+      inputEl.required = show;
+      inputEl.setAttribute('aria-required', show.toString());
+      if (!show) {
+        inputEl.value = '';
+        inputEl.removeAttribute('aria-invalid');
+      }
+    }
+  }
+
+  function updateImageRequirement() {
+    const sel = document.querySelector('input[name="bookingType"]:checked');
+    const isRec = sel && sel.value === 'Recurring';
+    if (isRec) {
+      imageInput.removeAttribute('required');
+      imageInput.removeAttribute('aria-required');
+    } else {
+      // imageInput.required = true;
+      // imageInput.setAttribute('aria-required', 'true');
+    }
+  }
+
+  function updatePreview() {
+    preview.innerHTML = '';
+    Array.from(imageInput.files).forEach((file, idx) => {
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const wrap = document.createElement('div');
+        wrap.className = 'thumb';
+        wrap.innerHTML = `
+          <img src="${e.target.result}" alt="${file.name}" />
+          <button type="button" class="remove-btn" data-index="${idx}" aria-label="Remove image">×</button>
+        `;
+        preview.appendChild(wrap);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function removeFile(idx) {
+    const dt = new DataTransfer();
+    Array.from(imageInput.files).forEach((file, i) => {
+      if (i !== idx) dt.items.add(file);
+    });
+    imageInput.files = dt.files;
+    updatePreview();
+  }
+
+  // listeners
+  hearAbout.addEventListener('change', () =>
+    conditionalToggle(hearAbout, 'Referral', referralGroup, referralInput)
+  );
+  accessSelect.addEventListener('change', () =>
+    conditionalToggle(accessSelect, 'Other (please specify below)', accessDetailsGroup, accessDetailsInput)
+  );
+  bookingTypeRadios.forEach(r => r.addEventListener('change', updateImageRequirement));
+  imageInput.addEventListener('change', updatePreview);
+  preview.addEventListener('click', e => {
+    if (e.target.matches('.remove-btn')) removeFile(+e.target.dataset.index);
+  });
+
+  // initialize
+  conditionalToggle(hearAbout, 'Referral', referralGroup, referralInput);
+  conditionalToggle(accessSelect, 'Other (please specify below)', accessDetailsGroup, accessDetailsInput);
+  updateImageRequirement();
+}
+
+
 document.addEventListener('DOMContentLoaded', async () => {
 
   window.BookingFormInstance = new BookingForm();
@@ -761,89 +852,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // window.BookingFormInstance.formDataStore.bookingType = 'One-Time'; // or 'Recurring' or "One-Time"
   // window.BookingFormInstance.displayStep5Sections();
-  // window.BookingFormInstance.goToStep(2);
+  // window.BookingFormInstance.goToStep(6);
 
-  
-  const input = document.getElementById('booking-images');
-  const preview = document.querySelector('.upload-preview');
-  function updatePreview() {
-    preview.innerHTML = '';
-
-    Array.from(input.files).forEach((file, idx) => {
-      if (!file.type.startsWith('image/')) return;
-
-      const reader = new FileReader();
-      reader.onload = e => {
-        const wrap = document.createElement('div');
-        wrap.classList.add('thumb');
-
-        const img = document.createElement('img');
-        img.src = e.target.result;
-        img.alt = file.name;
-
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.classList.add('remove-btn');
-        btn.innerHTML = '&times;';
-        btn.addEventListener('click', () => removeFile(idx));
-
-        wrap.appendChild(img);
-        wrap.appendChild(btn);
-        preview.appendChild(wrap);
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
-  function removeFile(removeIdx) {
-    const dt = new DataTransfer();
-    Array.from(input.files)
-      .forEach((file, idx) => {
-        if (idx !== removeIdx) dt.items.add(file);
-      });
-    input.files = dt.files;
-    updatePreview();
-  }
-
-  input.addEventListener('change', updatePreview);
-
-  const select = document.getElementById('booking-accessMethod');
-  const detailsGroup = document.getElementById('access-details-group');
-  const detailsField = document.getElementById('booking-accessDetails');
-
-  select.addEventListener('change', () => {
-    if (select.value === 'Other (please specify below)') {
-      detailsGroup.style.display = 'block';
-      detailsField.setAttribute('required', 'required');
-    } else {
-      detailsGroup.style.display = 'none';
-      detailsField.removeAttribute('required');
-      detailsField.value = '';
-    }
-  });
-
-    // ─── Hide/require images only for One-Time bookings ────────────────────
-  function updateImageRequirement() {
-    const selected = document.querySelector('input[name="bookingType"]:checked');
-    const isRecurring = selected && selected.value === 'Recurring';
-
-    const imageInput    = document.getElementById('booking-images');
-
-    if (isRecurring) {
-      imageInput.removeAttribute('required');
-    } else {
-      // imageInput.setAttribute('required', 'required');
-    }
-  }
-
-
-  // run on load
-  updateImageRequirement();
-
-  // re-run whenever the user switches bookingType
-  document.querySelectorAll('input[name="bookingType"]').forEach(radio =>
-    radio.addEventListener('change', updateImageRequirement)
-  );
+  registerFieldListeners();
 
   // ─── Grab your stored values ───────────────────────────────────────
   const gclid     = localStorage.getItem('gclid');
