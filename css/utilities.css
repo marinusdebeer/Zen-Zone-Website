@@ -35,20 +35,20 @@
   --color-secondary-hover: #5e774c;
   --color-tertiary: #2E3D2F;
   --color-tertiary-hover: #1f2a1d;
-  --color-fourth-color: #6b5b95;
-  --color-fourth-color-hover: #574f8f;
+  --color-fourth: #6b5b95;
+  --color-fourth-hover: #574f8f;
 
   /* --color-primary: #FE7235;
   --color-primary-hover: rgb(254, 114, 53);
   --color-secondary: #00C3FF;
   --color-secondary-hover: rgb(0, 195, 255); */
-  --color-tertiary: #1C4274;
-  --color-tertiary-hover: rgb(28, 66, 116);
-  /* --color-fourth-color: #2E3D2F;
-  --color-fourth-color-hover: #2E3D2F; */
+  /* --color-tertiary: #1C4274;
+  --color-tertiary-hover: rgb(28, 66, 116); */
+  /* --color-fourth: #2E3D2F;
+  --color-fourth-hover: #2E3D2F; */
 
-  --color-fourth-color: #FEA735;
-  --color-fourth-color-hover:rgba(254, 167, 53, 0.8);
+  --color-fourth: #FEA735;
+  --color-fourth-hover:rgba(254, 167, 53, 0.8);
 
   --color-secondary-text: #37474F;
   --color-primary-text: #2e3d2f;
@@ -102,10 +102,10 @@
   --color-primary-hover: rgb(254, 114, 53);
   --color-secondary: #00C3FF;
   --color-secondary-hover: rgb(0, 195, 255); */
-  --color-tertiary: #1C4274;
-  --color-tertiary-hover: rgb(28, 66, 116);
-  --color-fourth-color: #FEA735;
-  --color-fourth-color-hover:rgba(254, 167, 53, 0.8);
+  /* --color-tertiary: #1C4274;
+  --color-tertiary-hover: rgb(28, 66, 116); */
+  --color-fourth: #FEA735;
+  --color-fourth-hover:rgba(254, 167, 53, 0.8);
 
   --color-secondary-text: #B0BEC5;
   --color-primary-text: #EAEAEA;
@@ -150,8 +150,8 @@
   --color-secondary-hover: rgb(0, 195, 255);
   --color-tertiary: #1C4274;
   --color-tertiary-hover: rgb(28, 66, 116);
-  --color-fourth-color: #FEA735;
-  --color-fourth-color-hover:rgba(254, 167, 53, 0.8);
+  --color-fourth: #FEA735;
+  --color-fourth-hover:rgba(254, 167, 53, 0.8);
   --color-secondary-text: #37474F;
   --color-primary-text: var(--color-tertiary);
   --color-shadow: rgba(0, 0, 0, 0.5);
@@ -548,7 +548,7 @@ p {
 
 
 .cta-button.book-now {
-  background-color: var(--color-primary);
+  background-color: var(--color-fourth);
   text-decoration: none;
 }
 .cta-button.book-now.dark-green {
@@ -557,19 +557,19 @@ p {
 }
 
 .cta-button.book-now::after {
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-fourth-hover);
   color: var(--color-white)
 }
 .cta-button.book-now.dark-green::after {
-  background-color: var(--color-tertiary-hover);
+  background-color: var(--color-fourth-hover);
   color: var(--color-white)
 }
 
 .cta-button.fourth-color {
-  background-color: var(--color-fourth-color);
+  background-color: var(--color-fourth);
 }
 .cta-button.fourth-color::after {
-  background-color: var(--color-fourth-color-hover);
+  background-color: var(--color-fourth-hover);
 }
 
 .cta-button:hover {
@@ -605,11 +605,11 @@ p {
   height: 40px;
 }
 .client-hub {
-  background-color: var(--color-fourth-color);
+  background-color: var(--color-primary);
   color: var(--color-white);
 }
 .client-hub:hover {
-  background-color: var(--color-fourth-color-hover);
+  background-color: var(--color-primary-hover);
 }
 .client-hub::after {
   color: var(--color-white);
