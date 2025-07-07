@@ -83,7 +83,7 @@
 
 /* ————— “Most Popular” Ribbon ————— */
 .services .service-tile.popular {
-  border-color: var(--color-secondary);
+  border-color: var(--color-fourth);
   position: relative;
 }
 .services .service-tile.popular::before {
@@ -91,7 +91,7 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  background: var(--color-primary);
+  background: var(--color-fourth);
   color: #fff;
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
