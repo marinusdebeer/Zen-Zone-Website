@@ -347,9 +347,14 @@ class BookingForm {
     if (step1Valid && currentValid) {
       this.updateFormData(this.currentStep);
       const submitBtn = document.querySelector('.booking-btn-submit');
+      const overlay = document.getElementById('submissionOverlay');
       submitBtn.classList.add('loading');
       submitBtn.innerHTML = `<div class="spinner"></div> Submitting...`;
-      
+      if (overlay) {
+        overlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+
       Email.sendBookingRequest(this.formDataStore)
         .then(() => {
           Toast.show('Your request has been submitted successfully. We will contact you shortly.', true);
@@ -357,12 +362,20 @@ class BookingForm {
           setTimeout(() => {
             submitBtn.classList.remove('loading');
             submitBtn.innerHTML = 'Request Quote';
+            if (overlay) {
+              overlay.classList.remove('show');
+              document.body.style.overflow = '';
+            }
             window.location.href = '/thankyou.html';
           }, 1000);
         })
         .catch(err => {
           Toast.show('Failed to submit your request. Please try again later.', false);
           console.error('EmailJS Error:', err);
+          if (overlay) {
+            overlay.classList.remove('show');
+            document.body.style.overflow = '';
+          }
         });
     } else {
       if (!step1Valid) {
