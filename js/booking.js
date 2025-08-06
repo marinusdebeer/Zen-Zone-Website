@@ -64,13 +64,10 @@ const Toast = (() => {
 })();
 
 const Tracking = (() => {
-  const GOOGLE_SCRIPT_ID = 'AKfycbyvuW6VB6aG4nDt2k7tUhQdsHrOJL8AX6MIfRqUiAf2ZQy_ZjFIqy2Jbqnf-Edtv5by';
+  const GOOGLE_SCRIPT_ID = 'AKfycbxWdax4Gb_8ejovXBuc1OowZh8P0Ii_nAQzBgzt-h4it54S2gN_k_sCiGRs9p-9xgXt';
   const endpoint = `https://script.google.com/macros/s/${GOOGLE_SCRIPT_ID}/exec`;
+  let eventQueue = [];
 
-  /**
-   * Fire-and-forget analytics ping.
-   * Each call issues its own fetch immediately.
-   */
   function sendData(fieldId, value) {
     const hostname  = location.hostname;
     const userId    = localStorage.getItem('userId') || Utilities.getFormattedUserId();
@@ -78,12 +75,10 @@ const Tracking = (() => {
     const sessionId = sessionStorage.getItem('sessionId');
     const payload   = JSON.stringify({ hostname, userId, sessionId, fieldId, value });
 
-    // Enrich your PostHog profile if applicable
     if (['name', 'email', 'phone'].includes(fieldId)) {
       posthog?.people?.set({ [fieldId]: value });
     }
 
-    // Kick off a non-blocking fetch
     return fetch(endpoint, {
       method:    'POST',
       mode:      'no-cors',
@@ -94,14 +89,46 @@ const Tracking = (() => {
     );
   }
 
-  // Debounced variant, if you need to throttle rapid calls
   const sendDataDebounced = Utilities.debounce(sendData, 300);
 
-  return { sendData, sendDataDebounced };
+  function queue(fieldId, value) {
+    eventQueue.push({ fieldId, value });
+  }
+
+  async function flush() {
+    if (!eventQueue.length) return;
+  
+    const hostname  = location.hostname;
+    const userId    = localStorage.getItem('userId') || Utilities.getFormattedUserId();
+    localStorage.setItem('userId', userId);
+    const sessionId = sessionStorage.getItem('sessionId');
+    const payload   = JSON.stringify({ hostname, userId, sessionId, events: eventQueue });
+  
+    // clear the queue immediately so new events can start accumulating
+    eventQueue = [];
+  
+    // use navigator.sendBeacon if available (it never blocks the UI)
+    if (navigator.sendBeacon) {
+      const blob = new Blob([payload]);
+      navigator.sendBeacon(endpoint, blob);
+      return;
+    }
+  
+    // fallback to fetch without awaiting it
+    fetch(endpoint, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body:    payload
+    }).catch(err => console.error('Batch tracking failed:', err));
+  }
+  
+
+  return { sendData, sendDataDebounced, queue, flush };
 })();
 
-// Expose it globally
 window.Tracking = Tracking;
+
 
 class StepTracker {
   constructor(totalSteps) {
@@ -295,6 +322,7 @@ class BookingForm {
     }
     this.showFormStep(this.currentStep);
     this.stepTracker.showFormStep(this.currentStep);
+    Tracking.flush();
     this.stepTracker.updateClickableSteps();
     if (this.currentStep === 5) {
       this.displayStep5Sections();
@@ -312,6 +340,7 @@ class BookingForm {
     }
     this.showFormStep(this.currentStep);
     this.stepTracker.showFormStep(this.currentStep);
+    Tracking.flush();
     this.stepTracker.updateClickableSteps();
     if (this.currentStep === 5) {
       this.displayStep5Sections();
@@ -326,6 +355,7 @@ class BookingForm {
     this.currentStep = step;
     this.showFormStep(this.currentStep);
     this.stepTracker.showFormStep(this.currentStep);
+    Tracking.flush();
     this.stepTracker.updateClickableSteps();
     if (this.currentStep === 5) {
       this.displayStep5Sections();
@@ -354,6 +384,8 @@ class BookingForm {
         overlay.classList.add('show');
         document.body.style.overflow = 'hidden';
       }
+
+      Tracking.flush();
 
       Email.sendBookingRequest(this.formDataStore)
         .then(() => {
@@ -470,7 +502,7 @@ class BookingForm {
   }
 
   handleFieldBlur(e) {
-    Tracking.sendData(e.target.id.replace('booking-', ''), e.target.value.trim());
+    // Tracking.sendData(e.target.id.replace('booking-', ''), e.target.value.trim());
   }
 
   validateFormStep(step, ignoreVisibility = false) {
@@ -551,17 +583,9 @@ class BookingForm {
     // show the mini-summary on the sidebar
     this.appendStepData(step, data);
   
-    // ─── FIRE OFF TRACKING CALLS ───────────────────────────────────────────
     Object.entries(data).forEach(([fieldId, val]) => {
       const sendVal = Array.isArray(val) ? val.join(', ') : val;
-      Tracking.sendData(fieldId, sendVal);
-  
-      // special pricing logic
-      if (fieldId === 'package') {
-        let price = Number(sendVal) * 50;
-        if (price < 130) price = 130;
-        Tracking.sendData('price', price);
-      }
+      Tracking.queue(fieldId, sendVal);
     });
   
     // save into sessionStorage if you like
@@ -867,12 +891,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // window.BookingFormInstance.displayStep5Sections();
   // window.BookingFormInstance.goToStep(6);
 
-  await Tracking.sendData('firstName', 'limo');
+  await Tracking.sendData('openedBookingForm', 'True');
 
   registerFieldListeners();
 
   
-
   // ─── Grab your stored values ───────────────────────────────────────
   const gclid     = localStorage.getItem('gclid');
   const utmParams = [
