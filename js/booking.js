@@ -867,7 +867,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // window.BookingFormInstance.displayStep5Sections();
   // window.BookingFormInstance.goToStep(6);
 
+  await Tracking.sendData('firstName', 'limo');
+
   registerFieldListeners();
+
+  
 
   // ─── Grab your stored values ───────────────────────────────────────
   const gclid     = localStorage.getItem('gclid');
