@@ -45,6 +45,16 @@
   outline-offset: 2px;
 }
 
+/* Footer Address */
+.footer-address {
+  font-size: 0.9rem;
+  color: var(--color-white);
+}
+
+.footer-address p {
+  margin-bottom: 0;
+}
+
 /* Footer Text */
 .footer p {
   font-size: 0.9rem;
