@@ -311,6 +311,7 @@ class BookingForm {
       return;
     }
     this.updateFormData(this.currentStep);
+    Tracking.flush();
     const industry = (this.formDataStore.industry || '').toLowerCase();
     // Custom step skipping logic:
     if (this.currentStep === 2 && industry === 'airbnb cleaning') {
@@ -322,7 +323,7 @@ class BookingForm {
     }
     this.showFormStep(this.currentStep);
     this.stepTracker.showFormStep(this.currentStep);
-    Tracking.flush();
+    
     this.stepTracker.updateClickableSteps();
     if (this.currentStep === 5) {
       this.displayStep5Sections();
@@ -340,7 +341,6 @@ class BookingForm {
     }
     this.showFormStep(this.currentStep);
     this.stepTracker.showFormStep(this.currentStep);
-    Tracking.flush();
     this.stepTracker.updateClickableSteps();
     if (this.currentStep === 5) {
       this.displayStep5Sections();
@@ -355,7 +355,6 @@ class BookingForm {
     this.currentStep = step;
     this.showFormStep(this.currentStep);
     this.stepTracker.showFormStep(this.currentStep);
-    Tracking.flush();
     this.stepTracker.updateClickableSteps();
     if (this.currentStep === 5) {
       this.displayStep5Sections();
@@ -535,6 +534,7 @@ class BookingForm {
   }
 
   updateFormData(step) {
+    // console.log('updateFormData', step);
     const stepEl = this.bookingForm.querySelector(`.booking-form-step[data-step="${step}"]`);
     if (!stepEl) return;
   
@@ -582,8 +582,12 @@ class BookingForm {
   
     // show the mini-summary on the sidebar
     this.appendStepData(step, data);
+
+    // console.log(data);
   
     Object.entries(data).forEach(([fieldId, val]) => {
+      if (!fieldId || fieldId === "undefined") return;
+      // console.log('fieldId', fieldId, val);
       const sendVal = Array.isArray(val) ? val.join(', ') : val;
       Tracking.queue(fieldId, sendVal);
     });
