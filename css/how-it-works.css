@@ -1,0 +1,24 @@
+/* how-it-works.css */
+.how-it-works {
+  padding: 4rem 2rem;
+  background-color: var(--color-bg);
+  text-align: center;
+}
+
+.how-it-works-steps {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: left;
+  list-style: decimal inside;
+  padding-left: 0;
+}
+
+.how-it-works-steps li {
+  margin-bottom: 1rem;
+  color: var(--color-primary-text);
+}
+
+.happiness-guarantee {
+  font-weight: bold;
+  color: var(--color-secondary);
+}
