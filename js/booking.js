@@ -583,11 +583,11 @@ class BookingForm {
     // show the mini-summary on the sidebar
     this.appendStepData(step, data);
 
-    console.log(data);
+    // console.log(data);
   
     Object.entries(data).forEach(([fieldId, val]) => {
       if (!fieldId || fieldId === "undefined") return;
-      console.log('fieldId', fieldId, val);
+      // console.log('fieldId', fieldId, val);
       const sendVal = Array.isArray(val) ? val.join(', ') : val;
       Tracking.queue(fieldId, sendVal);
     });
